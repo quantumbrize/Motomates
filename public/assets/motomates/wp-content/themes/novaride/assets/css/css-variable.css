@@ -1,0 +1,13 @@
+body{
+	--e-global-color-primary					: #040401;
+	--e-global-color-secondary					: #FFF8F6;
+	--e-global-color-text						: #616161;
+	--e-global-color-accent						: #FF3600;
+	--e-global-color-white						: #FFFFFF;
+	--e-global-color-divider					: #ECECEC;
+	--e-global-color-darkdivider				: #FFFFFF33;
+	--e-global-typography-primary-font-family	: "Epilogue", sans-serif;
+	--e-global-typography-secondary-font-family	: "Epilogue", sans-serif;
+	--e-global-typography-text-font-family		: "DM Sans", sans-serif;
+	--e-global-typography-accent-font-family    : "DM Sans", sans-serif;
+}
