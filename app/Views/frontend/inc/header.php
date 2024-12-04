@@ -29,7 +29,7 @@
 										<div class="ata-site-logo-set">
 											<div class="ata-site-logo-container">
 												<img class="ata-site-logo-img elementor-animation-"
-													src="../wp-content/uploads/2024/08/logo.svg" alt="default-logo">
+													src="" id="company_logo" alt="default-logo">
 											</div>
 										</div>
 									</a>
@@ -308,24 +308,60 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
   <script>
     let user_id = '<?= isset($_COOKIE['USER_user_id']) ? $_COOKIE['USER_user_id'] : '' ?>'
-    $.ajax({
+    // $.ajax({
+    //   url: "<?= base_url('/api/about') ?>",
+    //   type: "GET",
+    //   success: function (resp) {
+    //     console.log(resp)
+    //     if (resp.status) {
+    //       $('#about_description_footer').html(resp.data.about_description)
+    //       let newLogoSrc = `<?= base_url() ?>public/uploads/logo/${resp.data.logo}`;
+    //       $('#company_logo').attr('src', newLogoSrc);
+    //       $('#company_logo_mob').attr('src', newLogoSrc);
+    //       $('#company_footer').attr('src', newLogoSrc);
+    //       $('#daltonus_logo_header').attr('src', newLogoSrc);
+    //       $('#daltonus_logo_sidebar').attr('src', newLogoSrc);
+
+    //       $('#daltonus_logo').css('display', 'block')
+    //       $('#daltonus_logo_header').css('display', 'block')
+    //       $('#daltonus_logo_sidebar').css('display', 'block')
+
+    //     } else {
+    //       console.log(resp)
+    //     }
+    //   },
+    //   error: function (err) {
+    //     console.log(err)
+    //   },
+    // })
+	
+	$.ajax({
       url: "<?= base_url('/api/about') ?>",
       type: "GET",
       success: function (resp) {
-        console.log(resp)
+        console.log('aboutdata',resp)
         if (resp.status) {
           $('#about_description_footer').html(resp.data.about_description)
           let newLogoSrc = `<?= base_url() ?>public/uploads/logo/${resp.data.logo}`;
           $('#company_logo').attr('src', newLogoSrc);
+          $('#footer_company_logo').attr('src', newLogoSrc);
           $('#company_logo_mob').attr('src', newLogoSrc);
           $('#company_footer').attr('src', newLogoSrc);
           $('#daltonus_logo_header').attr('src', newLogoSrc);
           $('#daltonus_logo_sidebar').attr('src', newLogoSrc);
+          $('#copyright_text').html(resp.data.frontend_copyright);
+          $('#home_about_text').html(resp.data.about_description);
+          $('#home_mission_text').html(resp.data.mission);
+          $('#home_vision_text').html(resp.data.vision);
+		  $('#about_about_text').html(resp.data.about_description);
+          $('#about_mission_text').html(resp.data.mission);
+          $('#about_vision_text').html(resp.data.vision);
 
           $('#daltonus_logo').css('display', 'block')
           $('#daltonus_logo_header').css('display', 'block')
           $('#daltonus_logo_sidebar').css('display', 'block')
-
+		  title=`<title> ${resp.data.company_name} </title>`
+		$("head").append(title);
         } else {
           console.log(resp)
         }
@@ -334,7 +370,7 @@
         console.log(err)
       },
     })
-
+	
     $.ajax({
       url: "<?= base_url('api/user') ?>",
       type: "GET",

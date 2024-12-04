@@ -78,6 +78,52 @@
                             </div>
                         </div>
                     </div>
+                    <div class="card">
+                        <div class="card-body">
+                            <label class="form-label" for="product-image-input">Card Image 3</label>
+                            <input type="file" id="file-input3" multiple>
+                            <label for="file-input3" id="btn_upload1" class="btn btn-success">
+                                <i class="fas fa-upload"></i> &nbsp; Select Card Image 3
+                            </label>
+                            <p id="num-of-files3"></p>
+                            <div id="images3"></div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="mb-3">
+                                <label class="form-label" for="product-title-input">Image Link 3</label>
+                                <input type="text" class="form-control" id="imgLink3" value=""
+                                    placeholder="Enter a link" required="">
+                                <div class="invalid-feedback">Please Enter a link.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-body">
+                            <label class="form-label" for="product-image-input">Card Image 4</label>
+                            <input type="file" id="file-input4"multiple>
+                            <label for="file-input4" id="btn_upload1"  class="btn btn-success">
+                                <i class="fas fa-upload"></i> &nbsp; Select Card Image 4
+                            </label>
+                            <p id="num-of-files4"></p>
+                            <div id="images4"></div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="mb-3">
+                                <label class="form-label" for="product-title-input">Image Link 4</label>
+                                <input type="text" class="form-control" id="imgLink4" value=""
+                                    placeholder="Enter a link" required="">
+                                <div class="invalid-feedback">Please Enter a link.</div>
+                            </div>
+                        </div>
+                    </div>
+
                     <input type="hidden" name="card_id" id="card_id">
                     
                     <!-- end card -->

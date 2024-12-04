@@ -48,8 +48,9 @@
 						data-settings="{&quot;_animation&quot;:&quot;fadeInUp&quot;,&quot;_animation_delay&quot;:100,&quot;ekit_we_effect_on&quot;:&quot;none&quot;}"
 						data-widget_type="text-editor.default">
 						<div class="elementor-widget-container">
-							<p>Aqestic Optio Amet A Ququam Saepe Aliquid Voluate Dicta Fuga Dolor Saerror Sed Earum A
-								Magni Soluta Quam Minus Dolor Dolor</p>
+							<!-- <p>Aqestic Optio Amet A Ququam Saepe Aliquid Voluate Dicta Fuga Dolor Saerror Sed Earum A
+								Magni Soluta Quam Minus Dolor Dolor</p> -->
+								<p id="about_about_text"></p>
 						</div>
 					</div>
 					
@@ -265,13 +266,14 @@
 													data-settings="{&quot;_animation&quot;:&quot;fadeInUp&quot;,&quot;_animation_delay&quot;:200,&quot;ekit_we_effect_on&quot;:&quot;none&quot;}"
 													data-widget_type="text-editor.default">
 													<div class="elementor-widget-container">
-														<p>We aim to continually innovate and integrate the latest
+														<!-- <p>We aim to continually innovate and integrate the latest
 															technology into our services. From easy online bookings to
 															advanced vehicle tracking systems, our goal is to make the
 															car rental process seamless and efficient for our customers.
 															Quality is at the heart of everything we do. We maintain a
 															diverse fleet of well-maintained vehicles that meet the
-															highest standards of safety and comfort.</p>
+															highest standards of safety and comfort.</p> -->
+															<p id="about_mission_text"></p>
 													</div>
 												</div>
 												
@@ -320,14 +322,15 @@
 														data-settings="{&quot;_animation&quot;:&quot;fadeInUp&quot;,&quot;_animation_delay&quot;:200,&quot;ekit_we_effect_on&quot;:&quot;none&quot;}"
 														data-widget_type="text-editor.default">
 														<div class="elementor-widget-container">
-															<p>We aim to continually innovate and integrate the latest
+															<!-- <p>We aim to continually innovate and integrate the latest
 																technology into our services. From easy online bookings
 																to advanced vehicle tracking systems, our goal is to
 																make the car rental process seamless and efficient for
 																our customers. Quality is at the heart of everything we
 																do. We maintain a diverse fleet of well-maintained
 																vehicles that meet the highest standards of safety and
-																comfort.</p>
+																comfort.</p> -->
+																<p id="about_vision_text"></p>
 														</div>
 													</div>
 													

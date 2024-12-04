@@ -5,89 +5,109 @@
         get_promotion_card()
 
         $('#card_update_btn').on('click', function () {
+    var formData = new FormData();
 
-            var formData = new FormData();
+    // Append link data
+    formData.append('link1', $('#imgLink1').val());
+    formData.append('link2', $('#imgLink2').val());
+    formData.append('link3', $('#imgLink3').val());
+    formData.append('link4', $('#imgLink4').val());
+    formData.append('card_id', $('#card_id').val());
 
-            formData.append('link1', $('#imgLink1').val());
-            formData.append('link2', $('#imgLink2').val());
-            formData.append('card_id', $('#card_id').val());
-            
+    // Log the files for debugging
+    // console.log('Files for Image 1:', $('#file-input1')[0].files);
+    // console.log('Files for Image 2:', $('#file-input2')[0].files);
+    // console.log('Files for Image 3:', $('#file-input3')[0].files);
+    // console.log('Files for Image 4:', $('#file-input4')[0].files);
 
-            $.each($('#file-input1')[0].files, function (index, file) {
-                formData.append('images1[]', file);
-            })
-            $.each($('#file-input2')[0].files, function (index, file) {
-                formData.append('images2[]', file);
-            })
-            formData.forEach(function(value, key){
-                console.log(key + ": " + value);
-            });
-            $.ajax({
-                url: "<?= base_url('/api/update/promotion-card') ?>",
-                type: "POST",
-                data: formData,
-                contentType: false,
-                processData: false,
-                beforeSend: function () {
-                    $('#card_update_btn').html(`<div class="spinner-border" role="status"></div>`)
-                    $('#card_update_btn').attr('disabled', true)
+    // Append files from input fields to formData
+    $.each($('#file-input1')[0].files, function (index, file) {
+        formData.append('images1[]', file);
+    });
+    $.each($('#file-input2')[0].files, function (index, file) {
+        formData.append('images2[]', file);
+    });
+    $.each($('#file-input3')[0].files, function (index, file) {
+        formData.append('images3[]', file);
+    });
+    $.each($('#file-input4')[0].files, function (index, file) {
+        formData.append('images4[]', file);
+    });
 
-                },
-                success: function (resp) {
-                    let html = ''
+    // Perform AJAX request
+    $.ajax({
+        url: "<?= base_url('/api/update/promotion-card') ?>",
+        type: "POST",
+        data: formData,
+        contentType: false, // Don't set content type
+        processData: false, // Don't process data
+        beforeSend: function () {
+            $('#card_update_btn').html('<div class="spinner-border" role="status"></div>');
+            $('#card_update_btn').attr('disabled', true);
+        },
+        success: function (resp) {
+            let html = '';
+            if (resp.status) {
+                html += `<div class="alert alert-success alert-dismissible alert-label-icon label-arrow fade show material-shadow" role="alert">
+                            <i class="ri-checkbox-circle-fill label-icon"></i>${resp.message}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>`;
+                get_promotion_card();
+            } else {
+                html += `<div class="alert alert-warning alert-dismissible alert-label-icon label-arrow fade show material-shadow" role="alert">
+                            <i class="ri-alert-line label-icon"></i><strong>Warning</strong> - ${resp.message}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>`;
+            }
 
-                    if (resp.status) {
-                        html += `<div class="alert alert-success alert-dismissible alert-label-icon label-arrow fade show material-shadow" role="alert">
-                                <i class="ri-checkbox-circle-fill label-icon"></i>${resp.message}
-                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                            </div>`
-                            get_promotion_card()
-                    } else {
-                        html += `<div class="alert alert-warning alert-dismissible alert-label-icon label-arrow fade show material-shadow" role="alert">
-                                <i class="ri-alert-line label-icon"></i><strong>Warning</strong> - ${resp.message}
-                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                            </div>`
-                    }
+            $('#alert').html(html);
+            console.log(resp);
+        },
+        error: function (err) {
+            console.log(err);
+        },
+        complete: function () {
+            $('#card_update_btn').html('Submit');
+            $('#card_update_btn').attr('disabled', false);
+        }
+    });
+});
 
 
-                    $('#alert').html(html)
-                    console.log(resp)
-                },
-                error: function (err) {
-                    console.log(err)
-                },
-                complete: function () {
-                    $('#card_update_btn').html(`submit`)
-                    $('#card_update_btn').attr('disabled', false)
-                }
-            })
-        })
 
         
         
     });
 
     function preview(fileInput, imageContainer, numOfFiles) {
-        return function () {
-            imageContainer.html("");
-            numOfFiles.text(`${fileInput[0].files.length} Files Selected`);
+            return function () {
+                imageContainer.html(""); // Clear the container
+                numOfFiles.text(`${fileInput[0].files.length} Files Selected`);
 
-            $.each(fileInput[0].files, function (index, file) {
-                let reader = new FileReader();
-                let $figure = $("<figure>");
-                let $figCap = $("<figcaption>").text(file.name);
-                $figure.append($figCap);
-                reader.onload = function () {
-                    let $img = $("<img>").attr("src", reader.result);
-                    $figure.prepend($img);
-                }
-                imageContainer.append($figure);
-                reader.readAsDataURL(file);
-            });
+                $.each(fileInput[0].files, function (index, file) {
+                    let reader = new FileReader();
+                    let $figure = $("<figure>");
+                    let $figCap = $("<figcaption>").text(file.name);
+                    $figure.append($figCap);
+                    reader.onload = function () {
+                        let $img = $("<img>").attr("src", reader.result).css({
+                            "max-width": "500px",
+                            "max-height": "500px"
+                        });
+                        $figure.prepend($img);
+                    }
+                    imageContainer.append($figure);
+                    reader.readAsDataURL(file);
+                });
+            }
         }
-    }
-    $("#file-input1").change(preview($("#file-input1"), $("#images1"), $("#num-of-files1")));
-    $("#file-input2").change(preview($("#file-input2"), $("#images2"), $("#num-of-files2")));
+
+        // Attach preview function for file-input1, file-input2, file-input3, and file-input4
+        $("#file-input1").change(preview($("#file-input1"), $("#images1"), $("#num-of-files1")));
+        $("#file-input2").change(preview($("#file-input2"), $("#images2"), $("#num-of-files2")));
+        $("#file-input3").change(preview($("#file-input3"), $("#images3"), $("#num-of-files3")));
+        $("#file-input4").change(preview($("#file-input4"), $("#images4"), $("#num-of-files4")));
+
 
 
     function get_promotion_card(){
@@ -102,6 +122,11 @@
                 $('#imgLink1').val(resp.data.link1)
                 $('#images2').html(`<img src="<?= base_url('public/uploads/promotion_card_images/') ?>${resp.data.img2}" alt="" style="max-width: 500px; max-height: 500px;">`)
                 $('#imgLink2').val(resp.data.link2)
+                // $('#card_id').val(resp.data.uid)
+                $('#images3').html(`<img src="<?= base_url('public/uploads/promotion_card_images/') ?>${resp.data.img3}" alt="" style="max-width: 500px; max-height: 500px;">`)
+                $('#imgLink3').val(resp.data.link3)
+                $('#images4').html(`<img src="<?= base_url('public/uploads/promotion_card_images/') ?>${resp.data.img4}" alt="" style="max-width: 500px; max-height: 500px;">`)
+                $('#imgLink4').val(resp.data.link4)
                 $('#card_id').val(resp.data.uid)
                 
                 }else{

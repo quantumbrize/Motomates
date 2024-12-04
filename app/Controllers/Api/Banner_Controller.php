@@ -219,59 +219,81 @@ class Banner_Controller extends Api_Controller
             'message' => 'Banner not updated',
             'data' => null
         ];
+    
         
-        
-        if (empty ($data['link1'])) {
+        // Validate links
+        if (empty($data['link1'])) {
             $resp['message'] = 'Your Card 1 Has Link';
-        } else if (empty ($data['link2'])) {
+        } else if (empty($data['link2'])) {
             $resp['message'] = 'Your Card 2 Has Link';
         } else {
-
-
+    
+            // Prepare card data
             $card_data = [
                 'link1' => $data['link1'],
                 'link2' => $data['link2'],
+                'link3' => $data['link3'],
+                'link4' => $data['link4'],
             ];
             
+            // Get uploaded files
             $uploadedFiles = $this->request->getFiles();
-            if(isset($uploadedFiles['images1'])){
+    
+            // Process image uploads
+            if (isset($uploadedFiles['images1'])) {
                 foreach ($uploadedFiles['images1'] as $file) {
                     $file_src = $this->single_upload($file, PATH_PROMOTION_CARD_IMG);
                     $card_data['img1'] = $file_src;
                 }
             }
-            if(isset($uploadedFiles['images2'])){
+            if (isset($uploadedFiles['images2'])) {
                 foreach ($uploadedFiles['images2'] as $file) {
                     $file_src = $this->single_upload($file, PATH_PROMOTION_CARD_IMG);
                     $card_data['img2'] = $file_src;
                 }
             }
-
-            // $this->prd($card_data);
-            
-            $PromotionCardModel = new PromotionCardModel();
-
-
-            // Transaction Start
-            $PromotionCardModel->transStart();
-            try {
-                $PromotionCardModel
-                        ->where('uid', $data['card_id'])
-                        ->set($card_data)
-                        ->update();
-                $PromotionCardModel->transCommit();
-            } catch (\Exception $e) {
-                // Rollback the transaction if an error occurs
-                $PromotionCardModel->transRollback();
-                $resp['message'] = $e->getMessage();
+            if (isset($uploadedFiles['images3'])) {
+                foreach ($uploadedFiles['images3'] as $file) {
+                    $file_src = $this->single_upload($file, PATH_PROMOTION_CARD_IMG);
+                    $card_data['img3'] = $file_src;
+                }
             }
-
-            $resp['status'] = true;
-            $resp['message'] = 'Card Updated';
-            $resp['data'] = "";
+            if (isset($uploadedFiles['images4'])) {
+                foreach ($uploadedFiles['images4'] as $file) {
+                    $file_src = $this->single_upload($file, PATH_PROMOTION_CARD_IMG);
+                    $card_data['img4'] = $file_src;
+                }
+            }
+    
+            // $this->prd($card_data);
+            // Prepare the model and start transaction
+            $PromotionCardModel = new PromotionCardModel();
+            $PromotionCardModel->transStart();
+    
+            try {
+                // Update the promotion card in the database
+                $PromotionCardModel
+                    ->where('uid', $data['card_id'])
+                    ->set($card_data)
+                    ->update();
+    
+                // Commit the transaction
+                $PromotionCardModel->transCommit();
+    
+                // Set success response
+                $resp['status'] = true;
+                $resp['message'] = 'Card Updated';
+                $resp['data'] = "";
+            } catch (\Exception $e) {
+                // Rollback if an error occurs
+                $PromotionCardModel->transRollback();
+                $resp['message'] = 'Error: ' . $e->getMessage();
+            }
         }
+    
         return $resp;
     }
+    
 
     private function about($data)
     {

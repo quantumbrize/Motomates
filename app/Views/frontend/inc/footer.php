@@ -15,7 +15,7 @@
 									data-settings="{&quot;ekit_we_effect_on&quot;:&quot;none&quot;}"
 									data-widget_type="image.default">
 									<div class="elementor-widget-container">
-										<img width="209" height="31" src="../wp-content/uploads/2024/08/footer-logo.svg"
+										<img id="footer_company_logo"width="209" height="31" src=""
 											class="attachment-large size-large wp-image-92" alt="">
 									</div>
 								</div>
@@ -24,7 +24,8 @@
 									data-settings="{&quot;ekit_we_effect_on&quot;:&quot;none&quot;}"
 									data-widget_type="text-editor.default">
 									<div class="elementor-widget-container">
-										<p>Experience the ease and convenience of renting a car with Novaride.</p>
+										<!-- <p>Experience the ease and convenience of renting a car with Novaride.</p> -->
+										 <p class="about_description"></p>
 									</div>
 								</div>
 							</div>
@@ -189,7 +190,8 @@
 										data-settings="{&quot;ekit_we_effect_on&quot;:&quot;none&quot;}"
 										data-widget_type="text-editor.default">
 										<div class="elementor-widget-container">
-											<p>© 2024 Novaride. All rights reserved.</p>
+											<p id='copyright_text'></p>
+											<!-- <p>© 2024 Novaride. All rights reserved.</p> -->
 										</div>
 									</div>
 								</div>
@@ -201,8 +203,8 @@
 										data-widget_type="elementskit-social-media.default">
 										<div class="elementor-widget-container">
 											<div class="ekit-wid-con">
-												<ul class="ekit_social_media">
-													<li class="elementor-repeater-item-624b0af">
+												<ul class="ekit_social_media" id="social_link">
+													<!-- <li class="elementor-repeater-item-624b0af">
 														<a href="#" aria-label="Youtube" class="youtube">
 
 															<i aria-hidden="true" class="fab fa-youtube"></i>
@@ -231,7 +233,7 @@
 
 															<i aria-hidden="true" class="icon icon-linkedin"></i>
 														</a>
-													</li>
+													</li> -->
 												</ul>
 											</div>
 										</div>
@@ -244,3 +246,74 @@
 			</div>
 		</div>
 	</div>
+
+	<script>
+		 function get_social_link(){
+        $.ajax({
+            url: "<?= base_url('api/get/social') ?>",
+            type: "GET",
+            data: {},
+            success: function (resp) {
+                // resp = JSON.parse(resp)
+                // console.log(resp.user_data.number)
+                if (resp.status) {
+                    console.log('pro',resp);
+                    
+                    // html=`<div class="social">
+                    //     <a href="${resp.user_data.facebook}"><img src="<?=base_url()?>public/assets/ztImages/facebook_png.png" alt="facebook_icon" /></a>
+                    //     <a href="${resp.user_data.instagram}"><img src="<?=base_url()?>public/assets/ztImages/insta_png.png" alt="insta_icon" /></a>
+                    //     <a href="${resp.user_data.twitter}"><img src="<?=base_url()?>public/assets/ztImages/twitter_png.png" alt="twitter_icon" /></a>
+                    //     <a href="${resp.user_data.youtube}"><img src="<?=base_url()?>public/assets/ztImages/whatsapp_pnp.png" class='desktop_only_position' alt="whatsapp_icon" /></a>
+                    //     <a href="#"><img src="<?=base_url()?>public/assets/ztImages/contact_call_png.png" class='desktop_only_position' alt="call_icon" /></a>
+                    //   </div>`
+					html=`<li class="elementor-repeater-item-624b0af">
+														<a href="#" aria-label="Youtube" class="youtube">
+
+															<i aria-hidden="true" class="fab fa-youtube"></i>
+														</a>
+													</li>
+													<li class="elementor-repeater-item-7311842">
+														<a href="${resp.user_data.facebook}" aria-label="facebook" class="facebook">
+
+															<i aria-hidden="true" class="icon icon-facebook"></i>
+														</a>
+													</li>
+													<li class="elementor-repeater-item-fbd035f">
+														<a href="${resp.user_data.twitter}" aria-label="Twitter" class="twitter">
+
+															<i aria-hidden="true" class="fab fa-x-twitter"></i>
+														</a>
+													</li>
+													<li class="elementor-repeater-item-66d4b5c">
+														<a href="${resp.user_data.instagram}" aria-label="Instagram" class="1">
+
+															<i aria-hidden="true" class="icon icon-instagram-1"></i>
+														</a>
+													</li>
+													<li class="elementor-repeater-item-e751a50">
+														<a href="${resp.user_data.youtube}" aria-label="LinkedIn" class="linkedin">
+
+															<i aria-hidden="true" class="icon icon-linkedin"></i>
+														</a>
+													</li>`
+                    // $('#profile_image').html(`<img src="${user_img}" class="rounded-circle avatar-xl img-thumbnail user-profile-image material-shadow" alt="user-profile-image">`)
+                    // $('#facebooklink').val(resp.user_data.facebook)
+                    // $('#twitterlink').val(resp.user_data.twitter)
+                    // $('#instagramlink').val(resp.user_data.instagram)
+                    // $('#youtubelink').val(resp.user_data.youtube)
+                    // $('#uid').val(resp.user_data.uid)
+                    // $('#user_name').text(resp.user_data.user_name)
+                    // $('#user_role').text(resp.user_data.type)
+                    // var image_url = `https://usercontent.one/wp/www.vocaleurope.eu/wp-content/uploads/no-image.jpg?media=1642546813`
+                    $('#social_link').html(html);
+                } else {
+                    console.log(resp)
+                }
+            },
+            error: function (err) {
+                console.log(err)
+            }
+        })
+    }
+	get_social_link()
+	</script>

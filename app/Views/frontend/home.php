@@ -221,8 +221,9 @@
 						data-settings="{&quot;_animation&quot;:&quot;fadeInUp&quot;,&quot;_animation_delay&quot;:100,&quot;ekit_we_effect_on&quot;:&quot;none&quot;}"
 						data-widget_type="text-editor.default">
 						<div class="elementor-widget-container">
-							<p>Aqestic Optio Amet A Ququam Saepe Aliquid Voluate Dicta Fuga Dolor Saerror Sed Earum A
-								Magni Soluta Quam Minus Dolor Dolor</p>
+							<!-- <p>Aqestic Optio Amet A Ququam Saepe Aliquid Voluate Dicta Fuga Dolor Saerror Sed Earum A
+								Magni Soluta Quam Minus Dolor Dolor</p> -->
+								<p id='home_about_text'></p>
 						</div>
 					</div>
 					<div class="elementor-element elementor-element-2d43d4d e-con-full e-flex e-con e-child"
@@ -265,8 +266,9 @@
 											<div class="box-body">
 												<h3 class="elementskit-info-box-title">
 													Mission </h3>
-												<p>We Have Optimized The Booking Process So That Our Clients Can
-													Experience The Easiest And The Safest Service</p>
+												<!-- <p>We Have Optimized The Booking Process So That Our Clients Can
+													Experience The Easiest And The Safest Service</p> -->
+													<p id='home_mission_text'></p>
 											</div>
 
 
@@ -316,8 +318,9 @@
 											<div class="box-body">
 												<h3 class="elementskit-info-box-title">
 													Vision </h3>
-												<p>We Have Optimized The Booking Process So That Our Clients Can
-													Experience The Easiest And The Safest Service</p>
+												<!-- <p>We Have Optimized The Booking Process So That Our Clients Can
+													Experience The Easiest And The Safest Service</p> -->
+													<p id='home_vision_text'></p>
 											</div>
 
 
@@ -334,7 +337,7 @@
 						<div class="elementor-widget-container">
 							<div class="elementor-button-wrapper">
 								<a class="elementor-button elementor-button-link elementor-size-sm"
-									href="contact-us/index.htm">
+									href="<?= base_url()?>about-us">
 									<span class="elementor-button-content-wrapper">
 										<span class="elementor-button-icon">
 											<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14"
@@ -1039,11 +1042,11 @@
 								<div class="elementskit-info-image-box ekit-image-box text-left simple-card">
 
 
-									<div class="elementskit-box-header image-box-img-left">
+									<div id='promotion_img_1' class="elementskit-box-header image-box-img-left">
 
-										<img loading="lazy" decoding="async" width="467" height="646"
+										<!-- <img loading="lazy" decoding="async" width="467" height="646"
 											src="<?= base_url()?>public/assets/motomates/wp-content/uploads/2024/08/luxury-collection-img-1.jpg"
-											class="attachment-full size-full wp-image-896" alt="">
+											class="attachment-full size-full wp-image-896" alt=""> -->
 									</div>
 
 									<div class="elementskit-box-body ekit-image-box-body">
@@ -1081,11 +1084,11 @@
 								<div class="elementskit-info-image-box ekit-image-box text-left simple-card">
 
 
-									<div class="elementskit-box-header image-box-img-left">
+									<div id='promotion_img_2' class="elementskit-box-header image-box-img-left">
 
-										<img loading="lazy" decoding="async" width="467" height="645"
+										<!-- <img loading="lazy" decoding="async" width="467" height="645"
 											src="<?= base_url()?>public/assets/motomates/wp-content/uploads/2024/08/luxury-collection-img-2.jpg"
-											class="attachment-full size-full wp-image-897" alt="">
+											class="attachment-full size-full wp-image-897" alt=""> -->
 									</div>
 
 									<div class="elementskit-box-body ekit-image-box-body">
@@ -1123,11 +1126,11 @@
 								<div class="elementskit-info-image-box ekit-image-box text-left simple-card">
 
 
-									<div class="elementskit-box-header image-box-img-left">
+									<div id='promotion_img_3' class="elementskit-box-header image-box-img-left">
 
-										<img loading="lazy" decoding="async" width="467" height="647"
+										<!-- <img loading="lazy" decoding="async" width="467" height="647"
 											src="<?= base_url()?>public/assets/motomates/wp-content/uploads/2024/08/luxury-collection-img-3.jpg"
-											class="attachment-full size-full wp-image-898" alt="">
+											class="attachment-full size-full wp-image-898" alt=""> -->
 									</div>
 
 									<div class="elementskit-box-body ekit-image-box-body">
@@ -1165,11 +1168,11 @@
 								<div class="elementskit-info-image-box ekit-image-box text-left simple-card">
 
 
-									<div class="elementskit-box-header image-box-img-left">
+									<div id='promotion_img_4' class="elementskit-box-header image-box-img-left">
 
-										<img loading="lazy" decoding="async" width="467" height="647"
+										<!-- <img loading="lazy" decoding="async" width="467" height="647"
 											src="<?= base_url()?>public/assets/motomates/wp-content/uploads/2024/08/luxury-collection-img-4.jpg"
-											class="attachment-full size-full wp-image-899" alt="">
+											class="attachment-full size-full wp-image-899" alt=""> -->
 									</div>
 
 									<div class="elementskit-box-body ekit-image-box-body">
