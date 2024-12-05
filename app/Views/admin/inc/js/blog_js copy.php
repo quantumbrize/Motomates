@@ -4,23 +4,16 @@
         $('#blog_update_btn').on('click', function () {
         var formData = new FormData();
 
-        // Append text data (blog title, description, and UID)
         formData.append('blog_title', $('#blog_title').val());
         formData.append('blog_description', $('#blog_description').val());
         formData.append('blog_uid', $('#blog_uid').val());
 
-        // Check if any new files have been selected
-        var files = $('#file-input-blog')[0].files;
-        if (files.length > 0) {
-            // Append each file to the FormData object
-            $.each(files, function (index, file) {
-                formData.append('images[]', file);
-            });
-        }
+        $.each($('#file-input-blog')[0].files, function (index, file) {
+            formData.append('images[]', file);
+        });
 
-        // Send AJAX request to update the blog
         $.ajax({
-            url: "<?= base_url('/api/update/blog') ?>",  // Adjust URL if needed
+            url: "<?= base_url('/api/update/blog') ?>",
             type: "POST",
             data: formData,
             contentType: false,
@@ -32,7 +25,6 @@
             success: function (resp) {
                 let html = '';
 
-                // Show success or error message based on the response
                 if (resp.status) {
                     html += `<div class="alert alert-success alert-dismissible alert-label-icon label-arrow fade show material-shadow" role="alert">
                             <i class="ri-checkbox-circle-fill label-icon"></i>${resp.message}
@@ -51,7 +43,6 @@
                 console.log(err);
             },
             complete: function () {
-                // Reset the button after the AJAX call is complete
                 $('#blog_update_btn').html('Submit');
                 $('#blog_update_btn').attr('disabled', false);
             }

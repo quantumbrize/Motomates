@@ -57,9 +57,7 @@
 											<li id="menu-item-8428"
 												class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-8428 nav-item elementskit-dropdown-has relative_position elementskit-dropdown-menu-default_width elementskit-mobile-builder-content"
 												data-vertical-menu="750px"><a href="<?= base_url()?>"
-													class="ekit-menu-nav-link ekit-menu-dropdown-toggle">Home<i
-														aria-hidden="true"
-														class="icon icon-down-arrow1 elementskit-submenu-indicator"></i></a>
+													class="ekit-menu-nav-link ekit-menu-dropdown-toggle">Home</a>
 												<ul class="elementskit-dropdown elementskit-submenu-panel">
 													<li id="menu-item-4584"
 														class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-4584 nav-item elementskit-mobile-builder-content"
@@ -86,9 +84,7 @@
 											<li id="menu-item-7722"
 												class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-7722 nav-item elementskit-dropdown-has relative_position elementskit-dropdown-menu-default_width elementskit-mobile-builder-content"
 												data-vertical-menu="750px"><a href="<?= base_url()?>service"
-													class="ekit-menu-nav-link ekit-menu-dropdown-toggle">Service<i
-														aria-hidden="true"
-														class="icon icon-down-arrow1 elementskit-submenu-indicator"></i></a>
+													class="ekit-menu-nav-link ekit-menu-dropdown-toggle">Service</a>
 												<ul class="elementskit-dropdown elementskit-submenu-panel">
 													<li id="menu-item-6732"
 														class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6732 nav-item elementskit-mobile-builder-content"
@@ -115,9 +111,7 @@
 											<li id="menu-item-6727"
 												class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-6727 nav-item elementskit-dropdown-has relative_position elementskit-dropdown-menu-default_width elementskit-mobile-builder-content"
 												data-vertical-menu="750px"><a href="<?= base_url()?>cars"
-													class="ekit-menu-nav-link ekit-menu-dropdown-toggle">Cars<i
-														aria-hidden="true"
-														class="icon icon-down-arrow1 elementskit-submenu-indicator"></i></a>
+													class="ekit-menu-nav-link ekit-menu-dropdown-toggle">Cars</a>
 												<ul class="elementskit-dropdown elementskit-submenu-panel">
 													<li id="menu-item-7747"
 														class="menu-item menu-item-type-post_type_archive menu-item-object-cars menu-item-7747 nav-item elementskit-mobile-builder-content"
@@ -134,7 +128,7 @@
 															class=" dropdown-item">Car Single</a></li>
 												</ul>
 											</li>
-											<li id="menu-item-4597"
+											<!-- <li id="menu-item-4597"
 												class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-4597 nav-item elementskit-dropdown-has relative_position elementskit-dropdown-menu-default_width elementskit-mobile-builder-content"
 												data-vertical-menu="750px"><a href="#"
 													class="ekit-menu-nav-link ekit-menu-dropdown-toggle">Pages<i
@@ -248,7 +242,7 @@
 														</ul>
 													</li>
 												</ul>
-											</li>
+											</li> -->
 											<li id="menu-item-4588"
 												class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4588 nav-item elementskit-mobile-builder-content"
 												data-vertical-menu="750px"><a href="<?= base_url()?>contact-us"
