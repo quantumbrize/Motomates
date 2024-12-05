@@ -12,7 +12,7 @@
 						data-widget_type="image.default">
 						<div class="elementor-widget-container">
 							<img fetchpriority="high" decoding="async" width="410" height="564"
-								src="../wp-content/uploads/2024/08/about-img-1.jpg"
+								src="<?=base_url() ?>public/assets/motomates/wp-content/uploads/2024/08/about-img-1.jpg"
 								class="attachment-full size-full wp-image-546" alt="">
 						</div>
 					</div>
@@ -22,7 +22,7 @@
 						data-widget_type="image.default">
 						<div class="elementor-widget-container">
 							<img decoding="async" width="321" height="441"
-								src="../wp-content/uploads/2024/08/about-img-2.jpg"
+								src="<?=base_url() ?>public/assets/motomates/wp-content/uploads/2024/08/about-img-2.jpg"
 								class="attachment-full size-full wp-image-547" alt="">
 						</div>
 					</div>
@@ -92,7 +92,7 @@
 								data-widget_type="image.default">
 								<div class="elementor-widget-container">
 									<img decoding="async" width="202" height="41"
-										src="../wp-content/uploads/2024/08/icon-partners-1.svg"
+										src="<?=base_url() ?>public/assets/motomates/wp-content/uploads/2024/08/icon-partners-1.svg"
 										class="attachment-full size-full wp-image-857" alt="">
 								</div>
 							</div>
@@ -106,7 +106,7 @@
 								data-widget_type="image.default">
 								<div class="elementor-widget-container">
 									<img loading="lazy" decoding="async" width="168" height="41"
-										src="../wp-content/uploads/2024/08/icon-partners-2.svg"
+										src="<?=base_url() ?>public/assets/motomates/wp-content/uploads/2024/08/icon-partners-2.svg"
 										class="attachment-full size-full wp-image-856" alt="">
 								</div>
 							</div>
@@ -120,7 +120,7 @@
 								data-widget_type="image.default">
 								<div class="elementor-widget-container">
 									<img loading="lazy" decoding="async" width="170" height="41"
-										src="../wp-content/uploads/2024/08/icon-partners-3.svg"
+										src="<?=base_url() ?>public/assets/motomates/wp-content/uploads/2024/08/icon-partners-3.svg"
 										class="attachment-full size-full wp-image-855" alt="">
 								</div>
 							</div>
@@ -134,7 +134,7 @@
 								data-widget_type="image.default">
 								<div class="elementor-widget-container">
 									<img loading="lazy" decoding="async" width="168" height="41"
-										src="../wp-content/uploads/2024/08/icon-partners-4.svg"
+										src="<?=base_url() ?>public/assets/motomates/wp-content/uploads/2024/08/icon-partners-4.svg"
 										class="attachment-full size-full wp-image-854" alt="">
 								</div>
 							</div>
@@ -148,7 +148,7 @@
 								data-widget_type="image.default">
 								<div class="elementor-widget-container">
 									<img loading="lazy" decoding="async" width="170" height="41"
-										src="../wp-content/uploads/2024/08/icon-partners-3.svg"
+										src="<?=base_url() ?>public/assets/motomates/wp-content/uploads/2024/08/icon-partners-3.svg"
 										class="attachment-full size-full wp-image-855" alt="">
 								</div>
 							</div>
@@ -162,7 +162,7 @@
 								data-widget_type="image.default">
 								<div class="elementor-widget-container">
 									<img loading="lazy" decoding="async" width="168" height="41"
-										src="../wp-content/uploads/2024/08/icon-partners-4.svg"
+										src="<?=base_url() ?>public/assets/motomates/wp-content/uploads/2024/08/icon-partners-4.svg"
 										class="attachment-full size-full wp-image-854" alt="">
 								</div>
 							</div>
@@ -176,7 +176,7 @@
 								data-widget_type="image.default">
 								<div class="elementor-widget-container">
 									<img decoding="async" width="202" height="41"
-										src="../wp-content/uploads/2024/08/icon-partners-1.svg"
+										src="<?=base_url() ?>public/assets/motomates/wp-content/uploads/2024/08/icon-partners-1.svg"
 										class="attachment-full size-full wp-image-857" alt="">
 								</div>
 							</div>
@@ -190,7 +190,7 @@
 								data-widget_type="image.default">
 								<div class="elementor-widget-container">
 									<img loading="lazy" decoding="async" width="168" height="41"
-										src="../wp-content/uploads/2024/08/icon-partners-2.svg"
+										src="<?=base_url() ?>public/assets/motomates/wp-content/uploads/2024/08/icon-partners-2.svg"
 										class="attachment-full size-full wp-image-856" alt="">
 								</div>
 							</div>
@@ -286,7 +286,7 @@
 													data-widget_type="image.default">
 													<div class="elementor-widget-container">
 														<img loading="lazy" decoding="async" width="569" height="565"
-															src="../wp-content/uploads/2024/08/our-vision-img.jpg"
+															src="<?=base_url() ?>public/assets/motomates/wp-content/uploads/2024/08/our-vision-img.jpg"
 															class="attachment-full size-full wp-image-1302" alt="">
 													</div>
 												</div>
@@ -344,7 +344,7 @@
 														<div class="elementor-widget-container">
 															<img loading="lazy" decoding="async" width="572"
 																height="567"
-																src="../wp-content/uploads/2024/08/our-mission-img.jpg"
+																src="<?=base_url() ?>public/assets/motomates/wp-content/uploads/2024/08/our-mission-img.jpg"
 																class="attachment-full size-full wp-image-1301" alt="">
 														</div>
 													</div>
@@ -489,7 +489,7 @@
 							data-widget_type="image.default">
 							<div class="elementor-widget-container">
 								<img loading="lazy" decoding="async" width="311" height="514"
-									src="../wp-content/uploads/2024/08/why-choose-img.jpg"
+									src="<?=base_url() ?>public/assets/motomates/wp-content/uploads/2024/08/why-choose-img.jpg"
 									class="attachment-full size-full wp-image-1865" alt="">
 							</div>
 						</div>
@@ -499,7 +499,7 @@
 							data-widget_type="image.default">
 							<div class="elementor-widget-container">
 								<img loading="lazy" decoding="async" width="422" height="278"
-									src="../wp-content/uploads/2024/08/why-choose-car-img.png"
+									src="<?=base_url() ?>public/assets/motomates/wp-content/uploads/2024/08/why-choose-car-img.png"
 									class="attachment-full size-full wp-image-1866" alt="">
 							</div>
 						</div>
@@ -674,7 +674,7 @@
 																	class="elementskit-commentor-image ekit-testimonial--avatar">
 																	<img loading="lazy" decoding="async" width="60"
 																		height="60"
-																		src="../wp-content/uploads/2024/08/author-3.jpg"
+																		src="<?=base_url() ?>public/assets/motomates/wp-content/uploads/2024/08/author-3.jpg"
 																		class="attachment-full size-full" alt="">
 																</div>
 																<div class="elementskit-profile-info">
@@ -720,7 +720,7 @@
 																	class="elementskit-commentor-image ekit-testimonial--avatar">
 																	<img loading="lazy" decoding="async" width="60"
 																		height="60"
-																		src="../wp-content/uploads/2024/08/author-4.jpg"
+																		src="<?=base_url() ?>public/assets/motomates/wp-content/uploads/2024/08/author-4.jpg"
 																		class="attachment-full size-full" alt="">
 																</div>
 																<div class="elementskit-profile-info">
@@ -766,7 +766,7 @@
 																	class="elementskit-commentor-image ekit-testimonial--avatar">
 																	<img loading="lazy" decoding="async" width="60"
 																		height="60"
-																		src="../wp-content/uploads/2024/08/author-1.jpg"
+																		src="<?=base_url() ?>public/assets/motomates/wp-content/uploads/2024/08/author-1.jpg"
 																		class="attachment-full size-full" alt="">
 																</div>
 																<div class="elementskit-profile-info">
@@ -812,7 +812,7 @@
 																	class="elementskit-commentor-image ekit-testimonial--avatar">
 																	<img loading="lazy" decoding="async" width="60"
 																		height="60"
-																		src="../wp-content/uploads/2024/08/author-2.jpg"
+																		src="<?=base_url() ?>public/assets/motomates/wp-content/uploads/2024/08/author-2.jpg"
 																		class="attachment-full size-full" alt="">
 																</div>
 																<div class="elementskit-profile-info">

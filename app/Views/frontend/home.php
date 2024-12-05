@@ -1,3 +1,9 @@
+<style>
+	#blog_posts {
+    max-height: 600px; /* Adjust height as per your needs */
+    overflow-y: scroll;
+}
+</style>
 <div data-elementor-type="wp-page" data-elementor-id="9" class="elementor elementor-9">
 		<div class="elementor-element elementor-element-9edbf4d e-con-full e-flex e-con e-parent" data-id="9edbf4d"
 			data-element_type="container">
@@ -2001,7 +2007,7 @@
 										<!-- Blog Carousel markup render -->
 
 
-										<div class="col-lg-12 col-md-12">
+										<!-- <div class="col-lg-12 col-md-12">
 
 											<div class="elementskit-post-image-card">
 												<div class="elementskit-entry-header">
@@ -2010,10 +2016,10 @@
 														<img decoding="async"
 															src="<?= base_url()?>public/assets/motomates/wp-content/uploads/2024/08/post-1.jpg"
 															alt="Top tips for booking your car rental: what you need to know">
-													</a><!-- .elementskit-entry-thumb END -->
+													</a>
 
 
-												</div><!-- .elementskit-entry-header END -->
+												</div>
 
 												<div class="elementskit-post-body ">
 
@@ -2044,10 +2050,11 @@
 																	fill="white"></path>
 															</svg> </a>
 													</div>
-												</div><!-- .elementskit-post-body END -->
+												</div>
 											</div>
 
-										</div>
+										</div> -->
+										<div id="big_blog_post"></div>
 									</div>
 
 
@@ -2070,7 +2077,7 @@
 										<!-- Blog Carousel markup render -->
 
 
-										<div class="col-lg-12 col-md-12">
+										<!-- <div class="col-lg-12 col-md-12">
 
 											<div class="elementskit-post-image-card">
 												<div class="elementskit-entry-header">
@@ -2079,10 +2086,10 @@
 														<img decoding="async"
 															src="<?= base_url()?>public/assets/motomates/wp-content/uploads/2024/08/post-2.jpg"
 															alt="Exploring your rental car options: sedan, suv, or convertible?">
-													</a><!-- .elementskit-entry-thumb END -->
+													</a>
 
 
-												</div><!-- .elementskit-entry-header END -->
+												</div>
 
 												<div class="elementskit-post-body ">
 
@@ -2115,12 +2122,12 @@
 															</svg> </a>
 
 													</div>
-												</div><!-- .elementskit-post-body END -->
+												</div>
 											</div>
 
-										</div>
+										</div> -->
 
-										<div class="col-lg-12 col-md-12">
+										<!-- <div class="col-lg-12 col-md-12">
 
 											<div class="elementskit-post-image-card">
 												<div class="elementskit-entry-header">
@@ -2129,10 +2136,10 @@
 														<img decoding="async"
 															src="<?= base_url()?>public/assets/motomates/wp-content/uploads/2024/08/post-3.jpg"
 															alt="The pros and cons of renting a car vs. using rideshare services">
-													</a><!-- .elementskit-entry-thumb END -->
+													</a>
 
 
-												</div><!-- .elementskit-entry-header END -->
+												</div>
 
 												<div class="elementskit-post-body ">
 
@@ -2165,12 +2172,12 @@
 															</svg> </a>
 
 													</div>
-												</div><!-- .elementskit-post-body END -->
+												</div>
 											</div>
 
-										</div>
+										</div> -->
 
-										<div class="col-lg-12 col-md-12">
+										<!-- <div class="col-lg-12 col-md-12">
 
 											<div class="elementskit-post-image-card">
 												<div class="elementskit-entry-header">
@@ -2179,10 +2186,10 @@
 														<img decoding="async"
 															src="<?= base_url()?>public/assets/motomates/wp-content/uploads/2024/08/post-4.jpg"
 															alt="Why you should consider renting a luxury car for your next trip">
-													</a><!-- .elementskit-entry-thumb END -->
+													</a>
 
 
-												</div><!-- .elementskit-entry-header END -->
+												</div>
 
 												<div class="elementskit-post-body ">
 
@@ -2215,10 +2222,11 @@
 															</svg> </a>
 
 													</div>
-												</div><!-- .elementskit-post-body END -->
+												</div>
 											</div>
 
-										</div>
+										</div> -->
+										<div style="overflow:scroll" id="blog_posts"></div>
 									</div>
 
 

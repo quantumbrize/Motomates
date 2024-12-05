@@ -362,4 +362,28 @@ class Admin_Controller extends Main_Controller
 
     }
 
+    public function load_blog()
+    {
+        $data = PAGE_DATA_ADMIN;
+        $data = [
+            'data_page' => [],
+            'data_header' => [
+                'header_link' => [],
+                'header_asset_link' => [],
+                'title' => 'About',
+                'header' => [],
+                'sidebar' => ['about_add' => true],
+                'site' => 'admin'
+            ],
+            'data_footer' => [
+                'footer_link' => ['blog_js.php'],
+                'footer_asset_link' => [],
+                'footer' => [],
+                'site' => 'admin'
+            ]
+        ];
+
+        $this->isAuth('/admin/blog', $data);
+    }
+
 }

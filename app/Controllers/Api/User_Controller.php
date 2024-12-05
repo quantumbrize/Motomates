@@ -19,6 +19,7 @@ use App\Models\AboutModel;
 use App\Models\AdmintagModel;
 use App\Models\FrontendtagModel;
 use App\Models\ProductModel;
+use App\Models\BlogModel;
 
 
 class User_Controller extends Api_Controller
@@ -1716,6 +1717,94 @@ class User_Controller extends Api_Controller
             return $resp;
     }
 
+    private function blog_all()
+    {
+        $resp = [
+            'status' => false,
+            'message' => 'No blog found',
+            'data' => []
+        ];
+        try {
+            $BlogModel = new BlogModel();
+            $blogs = $BlogModel->findAll();
+            if (count($blogs) > 0) {
+                $resp = [
+                    'status' => true,
+                    'message' => 'Blogs found',
+                    'data' => $blogs
+                ];
+            }
+        } catch (\Exception $e) {
+            $resp['message'] = $e;
+        }
+        return $resp;
+    }
+
+    public function delete_blog($data) 
+    {
+        // Get the blog UID from the data passed
+        $blog_uid = $data['blog_uid'] ?? null; 
+        
+        // Validate the UID
+        if (empty($blog_uid)) {
+            return [
+                'status' => false, 
+                'message' => 'Invalid blog UID'
+            ];
+        }
+    
+        // Load the BlogModel
+        $blogModel = new BlogModel();
+        
+        // Attempt to delete the blog entry by UID
+        $result = $blogModel->where('uid', $blog_uid)->delete();
+        
+        // Check the result and return an appropriate response
+        if ($result) {
+            return [
+                'status' => true, 
+                'message' => 'Blog deleted successfully'
+            ];
+        } else {
+            return [
+                'status' => false, 
+                'message' => 'Failed to delete blog'
+            ];
+        }
+    }
+    private function blog_single($data)
+    {
+        // Check if the blog_id (uid) is provided in the data
+        if (!isset($data['uid']) || empty($data['uid'])) {
+            return [
+                'status' => false,
+                'message' => 'Blog ID is missing or invalid.'
+            ];
+        }
+
+        // Assume we have a model 'BlogModel' that fetches the data from the database
+        $blogModel = model('App\Models\BlogModel');
+
+        // Get the blog data based on the 'uid'
+        $blog = $blogModel->where('uid', $data['uid'])->first();
+
+        // Check if blog data was found
+        if (!$blog) {
+            return [
+                'status' => false,
+                'message' => 'Blog post not found.'
+            ];
+        }
+
+        // Return the blog data in a structured format
+        return [
+            'status' => true,
+            'data' => $blog
+        ];
+    }
+
+
+
     
 
 
@@ -1971,6 +2060,29 @@ class User_Controller extends Api_Controller
     {
         $data = $this->request->getPost();
         $resp = $this->get_sizechart($data);
+        return $this->response->setJSON($resp);
+
+    }
+
+    public function GET_blog_all()
+    {
+        $data = $this->request->getGet();
+        $resp = $this->blog_all($data);
+        return $this->response->setJSON($resp);
+
+    }
+
+    public function POST_delete_blog()
+    {
+        $data = $this->request->getPOST();
+        $resp = $this->delete_blog($data);
+        return $this->response->setJSON($resp);
+
+    }
+    public function GET_blog_single()
+    {
+        $data = $this->request->getGet();
+        $resp = $this->blog_single($data);
         return $this->response->setJSON($resp);
 
     }

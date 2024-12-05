@@ -10,6 +10,7 @@ use App\Models\AboutModel;
 use App\Models\TaxesModel;
 use App\Models\AdmintagModel;
 use App\Models\FrontendtagModel;
+use App\Models\BlogModel;
 
 class Banner_Controller extends Api_Controller
 {
@@ -568,7 +569,156 @@ class Banner_Controller extends Api_Controller
         // Return the response
         return $resp;
     }
-    
+
+    private function blog_update($data)
+    {
+        $resp = [
+            'status' => false,
+            'message' => 'Blog not updated',
+            'data' => null
+        ];
+        
+        // Check if title and description are provided
+        if (empty($data['blog_title'])) {
+            $resp['message'] = 'Please Add Blog Title';
+        } elseif (empty($data['blog_description'])) {
+            $resp['message'] = 'Please Add Blog Description';
+        } elseif (empty($data['blog_uid'])) {
+            $resp['message'] = 'No Uid';
+        }else {
+            // Prepare blog data
+            $blog_data = [
+                // "uid" => $this->generate_uid('VENAUTH'),
+                'blog_title' => $data['blog_title'],
+                'blog_description' => $data['blog_description']
+            ];
+
+            // Handle file uploads
+            $uploadedFiles = $this->request->getFiles();
+            if (isset($uploadedFiles['images'])) {
+                $imagePaths = [];
+                foreach ($uploadedFiles['images'] as $file) {
+                    if ($file->isValid() && !$file->hasMoved()) {
+                        // Save the file and get the file path
+                        $file_src = $this->single_upload($file, PATH_BLOG);
+                        if ($file_src) {
+                            $imagePaths[] = $file_src; // Store the image path
+                        } else {
+                            error_log('Failed to upload file: ' . $file->getName());
+                        }
+                    } else {
+                        error_log('Invalid file upload attempt: ' . $file->getName());
+                    }
+                }
+                // If images were uploaded, store their paths in blog data
+                if (!empty($imagePaths)) {
+                    $blog_data['blog_image'] = implode(',', $imagePaths); // Join paths with commas if multiple images
+                }
+            }
+
+            // Database insertion logic
+            $BlogModel = new BlogModel();
+
+            // Start a transaction
+            $BlogModel->transStart();
+            try {
+                // Insert the blog data into the database
+                // $BlogModel->insert($blog_data);
+                $BlogModel
+                        ->where('uid', $data['blog_uid'])
+                        ->set($blog_data)
+                        ->update();
+
+                // Commit the transaction
+                $BlogModel->transCommit();
+
+                // Update the response status
+                $resp['status'] = true;
+                $resp['message'] = 'Blog Updated Successfully';
+                $resp['data'] = $blog_data;
+            } catch (\Exception $e) {
+                // Rollback the transaction if an error occurs
+                $BlogModel->transRollback();
+                $resp['message'] = 'Error: ' . $e->getMessage();
+            }
+        }
+
+        return $resp;
+    }
+
+    private function blog_add($data)
+    {
+        $resp = [
+            'status' => false,
+            'message' => 'Blog not updated',
+            'data' => null
+        ];
+        
+        // Check if title and description are provided
+        if (empty($data['blog_title'])) {
+            $resp['message'] = 'Please Add Blog Title';
+        } elseif (empty($data['blog_description'])) {
+            $resp['message'] = 'Please Add Blog Description';
+        } else {
+            // Prepare blog data
+            $blog_data = [
+                "uid" => $this->generate_uid('VENAUTH'),
+                'blog_title' => $data['blog_title'],
+                'blog_description' => $data['blog_description']
+            ];
+
+            // Handle file uploads
+            $uploadedFiles = $this->request->getFiles();
+            if (isset($uploadedFiles['images'])) {
+                $imagePaths = [];
+                foreach ($uploadedFiles['images'] as $file) {
+                    if ($file->isValid() && !$file->hasMoved()) {
+                        // Save the file and get the file path
+                        $file_src = $this->single_upload($file, PATH_BLOG);
+                        if ($file_src) {
+                            $imagePaths[] = $file_src; // Store the image path
+                        } else {
+                            error_log('Failed to upload file: ' . $file->getName());
+                        }
+                    } else {
+                        error_log('Invalid file upload attempt: ' . $file->getName());
+                    }
+                }
+                // If images were uploaded, store their paths in blog data
+                if (!empty($imagePaths)) {
+                    $blog_data['blog_image'] = implode(',', $imagePaths); // Join paths with commas if multiple images
+                }
+            }
+
+            // Database insertion logic
+            $BlogModel = new BlogModel();
+
+            // Start a transaction
+            $BlogModel->transStart();
+            try {
+                // Insert the blog data into the database
+                $BlogModel->insert($blog_data);
+                // $BlogModel
+                //         ->where('uid', $data['about_id'])
+                //         ->set($blog_data)
+                //         ->update();
+
+                // Commit the transaction
+                $BlogModel->transCommit();
+
+                // Update the response status
+                $resp['status'] = true;
+                $resp['message'] = 'Blog Updated Successfully';
+                $resp['data'] = $blog_data;
+            } catch (\Exception $e) {
+                // Rollback the transaction if an error occurs
+                $BlogModel->transRollback();
+                $resp['message'] = 'Error: ' . $e->getMessage();
+            }
+        }
+
+        return $resp;
+    }
     
 
 
@@ -693,6 +843,21 @@ class Banner_Controller extends Api_Controller
     {
         $data = $this->request->getPost();
         $resp = $this->frontend_tags($data);
+        return $this->response->setJSON($resp);
+
+    }
+
+    public function POST_blog_update()
+    {
+        $data = $this->request->getPost();
+        $resp = $this->blog_update($data);
+        return $this->response->setJSON($resp);
+
+    }
+    public function POST_blog_add()
+    {
+        $data = $this->request->getPost();
+        $resp = $this->blog_add($data);
         return $this->response->setJSON($resp);
 
     }

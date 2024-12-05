@@ -254,6 +254,28 @@
                 }
                 ?>
 
+<?php
+                if (isset($_SESSION[SES_STAFF_USER_ID]) && in_array('blog', $_SESSION[SES_STAFF_ACCESS])) {
+                    ?>
+                    <li class="nav-item ">
+                        <a class="nav-link menu-link <?= isset($sidebar['blog']) ? 'active' : '' ?>"
+                            href="<?= base_url('admin/blog') ?>">
+                            <i class="bx bx-category"></i> <span data-key="t-widgets">Blog</span>
+                        </a>
+                    </li>
+                    <?php
+                } else if (isset($_SESSION[SES_ADMIN_USER_ID])) {
+                    ?>
+                        <li class="nav-item ">
+                            <a class="nav-link menu-link <?= isset($sidebar['blog']) ? 'active' : '' ?>"
+                                href="<?= base_url('admin/blog') ?>">
+                                <i class="bx bx-category"></i> <span data-key="t-widgets">Blog</span>
+                            </a>
+                        </li>
+                    <?php
+                }
+                ?>
+
 
                 <?php
                 if (isset($_SESSION[SES_STAFF_USER_ID]) && in_array('products', $_SESSION[SES_STAFF_ACCESS])) {
@@ -313,7 +335,7 @@
                 }
                 ?>
 
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a class="nav-link menu-link <?= isset($sidebar['expart_review']) ? 'active' : '' ?>"
                         href="#sidebarExpartReview" data-bs-toggle="collapse" role="button"
                         aria-expanded="<?= isset($sidebar['expart_review']) ? 'true' : 'false' ?>"
@@ -396,7 +418,7 @@
                         </li>
                     <?php
                 }
-                ?>
+                ?> -->
 
                 
 

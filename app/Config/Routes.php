@@ -53,6 +53,7 @@ $routes->get('/user/details',                       'Frontend\Frontend_Controlle
 $routes->get('/user/notification',                  'Frontend\Frontend_Controller::notification'); // User Notification page
 $routes->get('/promo-code',                         'Frontend\Frontend_Controller::promo_code'); // User Promo Code page
 $routes->get('/categoris',                          'Frontend\Frontend_Controller::categoris'); // User Categoris page
+$routes->get('/single-blog',                        'Frontend\Frontend_Controller::single_blog_post'); // User Categoris page
 
 
 
@@ -260,5 +261,19 @@ $routes->get('/cars-list',                               'Frontend\Frontend_Cont
 $routes->get('/car-types',                               'Frontend\Frontend_Controller::car_types');
 $routes->get('/car-single',                               'Frontend\Frontend_Controller::car_single');
 
+$routes->get('/admin/blog',                        'Admin\Admin_Controller::load_blog');
 
+$routes->post('/api/update/blog',                  'Api\Banner_Controller::POST_blog_update');
+
+$routes->post('/api/add/blog',                  'Api\Banner_Controller::POST_blog_add');
+
+$routes->get('/api/all/blog',                   'Api\User_Controller::GET_blog_all');
+
+$routes->post('/api/delete/blog',                   'Api\User_Controller::POST_delete_blog');
+
+// $routes->get('/blog/get/post/(:segment)', 'Frontend\Frontend_Controller::single_blog_post/$1');
+// $routes->get('/blog/get/post',                    'Frontend\Frontend_Controller::single_blog_post');
+
+
+$routes->get('blog/get/single',                   'Api\User_Controller::GET_blog_single');
 
