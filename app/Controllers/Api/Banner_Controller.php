@@ -11,6 +11,7 @@ use App\Models\TaxesModel;
 use App\Models\AdmintagModel;
 use App\Models\FrontendtagModel;
 use App\Models\BlogModel;
+use App\Models\ServicetagModel;
 
 class Banner_Controller extends Api_Controller
 {
@@ -739,6 +740,8 @@ class Banner_Controller extends Api_Controller
 
         return $resp;
     }
+
+    
     
 
 
@@ -881,4 +884,5 @@ class Banner_Controller extends Api_Controller
         return $this->response->setJSON($resp);
 
     }
+    
 }

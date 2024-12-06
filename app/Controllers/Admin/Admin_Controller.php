@@ -386,4 +386,28 @@ class Admin_Controller extends Main_Controller
         $this->isAuth('/admin/blog', $data);
     }
 
+    public function load_service()
+    {
+        $data = PAGE_DATA_ADMIN;
+        $data = [
+            'data_page' => [],
+            'data_header' => [
+                'header_link' => [],
+                'header_asset_link' => [],
+                'title' => 'Service',
+                'header' => [],
+                'sidebar' => ['service' => true],
+                'site' => 'admin'
+            ],
+            'data_footer' => [
+                'footer_link' => ['service_js.php'],
+                'footer_asset_link' => [],
+                'footer' => [],
+                'site' => 'admin'
+            ]
+        ];
+
+        $this->isAuth('/admin/service', $data);
+    }
+
 }

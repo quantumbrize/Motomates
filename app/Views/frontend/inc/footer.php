@@ -25,7 +25,7 @@
 									data-widget_type="text-editor.default">
 									<div class="elementor-widget-container">
 										<!-- <p>Experience the ease and convenience of renting a car with Novaride.</p> -->
-										 <p class="about_description"></p>
+										 <p id="about_description_footer"></p>
 									</div>
 								</div>
 							</div>
@@ -62,10 +62,10 @@
 															class="menu-item menu-item-type-custom menu-item-object-custom menu-item-167 nav-item elementskit-mobile-builder-content"
 															data-vertical-menu="750px"><a href="#"
 																class="ekit-menu-nav-link">Legal Notice</a></li>
-														<li id="menu-item-168"
+														<!-- <li id="menu-item-168"
 															class="menu-item menu-item-type-custom menu-item-object-custom menu-item-168 nav-item elementskit-mobile-builder-content"
 															data-vertical-menu="750px"><a href="#"
-																class="ekit-menu-nav-link">Accessibility</a></li>
+																class="ekit-menu-nav-link">Accessibility</a></li> -->
 													</ul>
 												</div>
 											</div>
@@ -101,10 +101,10 @@
 															class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-776 current_page_item menu-item-7635 nav-item elementskit-mobile-builder-content active"
 															data-vertical-menu="750px"><a href="index.htm"
 																class="ekit-menu-nav-link active">About Us</a></li>
-														<li id="menu-item-7636"
+														<!-- <li id="menu-item-7636"
 															class="menu-item menu-item-type-post_type menu-item-object-page menu-item-7636 nav-item elementskit-mobile-builder-content"
 															data-vertical-menu="750px"><a href="../car-type/index.htm"
-																class="ekit-menu-nav-link">Car Type</a></li>
+																class="ekit-menu-nav-link">Car Type</a></li> -->
 														<li id="menu-item-7637"
 															class="menu-item menu-item-type-post_type menu-item-object-page menu-item-7637 nav-item elementskit-mobile-builder-content"
 															data-vertical-menu="750px"><a href="../service/index.htm"
@@ -266,12 +266,7 @@
                     //     <a href="${resp.user_data.youtube}"><img src="<?=base_url()?>public/assets/ztImages/whatsapp_pnp.png" class='desktop_only_position' alt="whatsapp_icon" /></a>
                     //     <a href="#"><img src="<?=base_url()?>public/assets/ztImages/contact_call_png.png" class='desktop_only_position' alt="call_icon" /></a>
                     //   </div>`
-					html=`<li class="elementor-repeater-item-624b0af">
-														<a href="#" aria-label="Youtube" class="youtube">
-
-															<i aria-hidden="true" class="fab fa-youtube"></i>
-														</a>
-													</li>
+					html=`
 													<li class="elementor-repeater-item-7311842">
 														<a href="${resp.user_data.facebook}" aria-label="facebook" class="facebook">
 
@@ -290,10 +285,10 @@
 															<i aria-hidden="true" class="icon icon-instagram-1"></i>
 														</a>
 													</li>
-													<li class="elementor-repeater-item-e751a50">
-														<a href="${resp.user_data.youtube}" aria-label="LinkedIn" class="linkedin">
+													<li class="elementor-repeater-item-624b0af">
+														<a href="${resp.user_data.youtube}"" aria-label="Youtube" class="youtube">
 
-															<i aria-hidden="true" class="icon icon-linkedin"></i>
+															<i aria-hidden="true" class="fab fa-youtube"></i>
 														</a>
 													</li>`
                     // $('#profile_image').html(`<img src="${user_img}" class="rounded-circle avatar-xl img-thumbnail user-profile-image material-shadow" alt="user-profile-image">`)

@@ -95,7 +95,7 @@ $routes->get('/admin/taxes',                        'Admin\User_Controller::load
 $routes->get('/admin/add/expart-review',            'Admin\User_Controller::load_add_expart_review'); // Admin Expart Review page
 $routes->get('/admin/exparts-reviews',              'Admin\User_Controller::load_expart_review'); // Admin Expart Review page
 $routes->get('/admin/reviews',                      'Admin\User_Controller::load_review'); // Admin Expart Review page
-
+// $routes->get('/admin/service',                      'Admin\Admin_Controller::load_service');
 
 
 
@@ -276,4 +276,15 @@ $routes->post('/api/delete/blog',                   'Api\User_Controller::POST_d
 
 
 $routes->get('blog/get/single',                   'Api\User_Controller::GET_blog_single');
+
+$routes->post('/api/add/service',                    'Api\Product_Controller::POST_service_add');
+// $routes->post('/tags/service/save',                     'Api\Product_Controller::POST_service_tags');
+
+$routes->get('/api/all/service',                   'Api\User_Controller::GET_service_all');
+
+$routes->post('/api/update/service',                'Api\Product_Controller::POST_service_update');
+
+$routes->post('/api/delete/service',                'Api\Product_Controller::POST_service_delete');
+
+
 

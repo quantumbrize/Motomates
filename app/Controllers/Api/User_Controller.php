@@ -20,6 +20,8 @@ use App\Models\AdmintagModel;
 use App\Models\FrontendtagModel;
 use App\Models\ProductModel;
 use App\Models\BlogModel;
+use App\Models\ServicetagModel;
+use App\Models\ServiceModel;
 
 
 class User_Controller extends Api_Controller
@@ -1740,7 +1742,7 @@ class User_Controller extends Api_Controller
         return $resp;
     }
 
-    public function delete_blog($data) 
+    private function delete_blog($data) 
     {
         // Get the blog UID from the data passed
         $blog_uid = $data['blog_uid'] ?? null; 
@@ -1802,6 +1804,42 @@ class User_Controller extends Api_Controller
             'data' => $blog
         ];
     }
+
+    private function service_all()
+    {
+        $resp = [
+            'status' => false,
+            'message' => 'No service found',
+            'data' => []
+        ];
+        try {
+            $ServiceModel = new ServiceModel();
+            $ServicetagModel = new ServicetagModel();
+            
+            // Fetch all services
+            $services = $ServiceModel->findAll();
+
+            if (count($services) > 0) {
+                foreach ($services as &$service) {
+                    // Fetch tags for each service
+                    $tags = $ServicetagModel->where('service_uid', $service['uid'])->findAll();
+                    $tagNames = array_column($tags, 'tag_name');
+                    $service['tags'] = $tagNames; // Add tag names to the service array
+                }
+
+                $resp = [
+                    'status' => true,
+                    'message' => 'Services found',
+                    'data' => $services
+                ];
+            }
+        } catch (\Exception $e) {
+            $resp['message'] = $e->getMessage();
+        }
+        return $resp;
+    }
+    
+
 
 
 
@@ -2083,6 +2121,13 @@ class User_Controller extends Api_Controller
     {
         $data = $this->request->getGet();
         $resp = $this->blog_single($data);
+        return $this->response->setJSON($resp);
+
+    }
+    public function GET_service_all()
+    {
+        $data = $this->request->getGet();
+        $resp = $this->service_all($data);
         return $this->response->setJSON($resp);
 
     }

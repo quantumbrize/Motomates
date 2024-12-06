@@ -154,7 +154,8 @@
                                             
                                                 <img decoding="async"
                                                     src="<?= base_url()?>public/uploads/blog_images/${firstBlog.blog_image}"
-                                                    alt="Top tips for booking your car rental: what you need to know">
+                                                    alt="Top tips for booking your car rental: what you need to know" 
+                                                    style="object-fit:contain;">
                                             
                                         </div>
                                         <div class="elementskit-post-body">
@@ -167,16 +168,16 @@
                                                 </span>
                                             </div>
                                             <h2 class="entry-title">
-                                                <a href="/blog/get/post?blog_uid=${firstBlog.uid}">
+                                                <a href="<?= base_url('single-blog?blog_id=')?>${firstBlog.uid}">
                                                     ${firstBlog.blog_title}
                                                 </a>
                                             </h2>
                                             <p class="entry-description">
                                                 ${truncatedDescriptionb}
-                                                <input type="hidden" id='big_blog_uid' value="${firstBlog.uid}">
+                                                
                                             </p>
                                             <div class="btn-wraper">
-                                                <a href="#"
+                                                <a href="<?= base_url('single-blog?blog_id=')?>${firstBlog.uid}'"
                                                 class="elementskit-btn whitespace--normal">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14"
                                                         viewbox="0 0 14 14" fill="none">
@@ -204,7 +205,8 @@
                                                 
                                                     <img decoding="async"
                                                         src="<?= base_url()?>public/uploads/blog_images/${blog.blog_image}"
-                                                        alt="Exploring your rental car options: sedan, suv, or convertible?">
+                                                        alt="Exploring your rental car options: sedan, suv, or convertible?"
+                                                        style="object-fit:contain;">
                                                 
                                             </div>
                                             <div class="elementskit-post-body">
@@ -217,16 +219,16 @@
                                                     </span>
                                                 </div>
                                                 <h2 class="entry-title">
-                                                    <a href="/blog/get/post?blog_uid=${blog.uid}">
+                                                    <a href="<?= base_url('single-blog?blog_id=')?>${blog.uid}">
                                                         ${blog.blog_title}
                                                     </a>
                                                 </h2>
                                                 <p style="color:black" class="entry-description">
                                                     ${truncatedDescription}
-                                                    <input type="hidden" id='blog_uid' value="${blog.uid}">
+                                                    
                                                 </p>
                                                 <div class="btn-wraper">
-                                                    <a href="#">
+                                                    <a href='<?= base_url('single-blog?blog_id=')?>${blog.uid}'>
                                                         read story <svg xmlns="http://www.w3.org/2000/svg"
                                                                     width="25" height="25" viewbox="0 0 25 25" fill="none">
                                                             <rect x="0.0129395" y="0.436523" width="24" height="24"

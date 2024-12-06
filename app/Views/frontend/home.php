@@ -2226,7 +2226,7 @@
 											</div>
 
 										</div> -->
-										<div style="overflow:scroll" id="blog_posts"></div>
+										<div id="blog_posts"></div>
 									</div>
 
 

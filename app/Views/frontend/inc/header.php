@@ -58,7 +58,7 @@
 												class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-8428 nav-item elementskit-dropdown-has relative_position elementskit-dropdown-menu-default_width elementskit-mobile-builder-content"
 												data-vertical-menu="750px"><a href="<?= base_url()?>"
 													class="ekit-menu-nav-link ekit-menu-dropdown-toggle">Home</a>
-												<ul class="elementskit-dropdown elementskit-submenu-panel">
+												<!-- <ul class="elementskit-dropdown elementskit-submenu-panel">
 													<li id="menu-item-4584"
 														class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-4584 nav-item elementskit-mobile-builder-content"
 														data-vertical-menu="750px"><a href="<?= base_url()?>"
@@ -71,7 +71,7 @@
 														class="menu-item menu-item-type-post_type menu-item-object-page menu-item-8619 nav-item elementskit-mobile-builder-content"
 														data-vertical-menu="750px"><a href="../home-slideshow/index.htm"
 															class=" dropdown-item">Home – Slideshow</a></li>
-												</ul>
+												</ul> -->
 											</li>
 											<!-- <li id="menu-item-4586"
 												class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-776 current_page_item menu-item-4586 nav-item elementskit-mobile-builder-content"
@@ -335,7 +335,7 @@
       success: function (resp) {
         console.log('aboutdata',resp)
         if (resp.status) {
-          $('#about_description_footer').html(resp.data.about_description)
+        //   $('#about_description_footer').html(resp.data.about_description)
           let newLogoSrc = `<?= base_url() ?>public/uploads/logo/${resp.data.logo}`;
           $('#company_logo').attr('src', newLogoSrc);
           $('#footer_company_logo').attr('src', newLogoSrc);
@@ -350,6 +350,10 @@
 		  $('#about_about_text').html(resp.data.about_description);
           $('#about_mission_text').html(resp.data.mission);
           $('#about_vision_text').html(resp.data.vision);
+          $('#contact_us_contact_number').html(resp.data.phone1);
+          $('#contact_us_email').html(resp.data.email);
+          $('#contact_us_address').html(resp.data.address);
+          $('#contact_us_map').attr('src',resp.data.map);
 
           $('#daltonus_logo').css('display', 'block')
           $('#daltonus_logo_header').css('display', 'block')

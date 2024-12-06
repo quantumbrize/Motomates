@@ -20,10 +20,13 @@ use App\Models\ItemStocksModel;
 use App\Models\ExpartReviewModel;
 use App\Models\ReviewModel;
 use App\Models\ProductPricesModel;
+use App\Models\ServiceModel;
+use App\Models\ServicetagModel;
 
 
 class Product_Controller extends Api_Controller
 {
+    private $service_uid;
 
     public function index(): void
     {
@@ -2000,6 +2003,203 @@ class Product_Controller extends Api_Controller
         }
         return $resp;
     }
+    private function service_add($data)
+    {
+        $resp = [
+            'status' => false,
+            'message' => 'Service not added',
+            'data' => null
+        ];
+
+        $uploadedFiles = $this->request->getFiles();
+
+        // Validate required fields
+        if (empty($data['page_name'])) {
+            $resp['message'] = 'Please Add Page Name';
+        } else if (empty($data['service_title'])) {
+            $resp['message'] = 'Please Add A Title';
+        } else if (empty($data['service_description'])) {
+            $resp['message'] = 'Please Add Description';
+        } else {
+            // Generate service data
+            $this->service_uid = $this->generate_uid('SERPAG'); // Set the service_uid to the class variable
+
+            $service_data = [
+                'uid' => $this->service_uid,
+                'page_name' => $data['page_name'],
+                'service_title' => $data['service_title'],
+                'service_description' => $data['service_description']
+            ];
+
+            // Handle file uploads
+            if (isset($uploadedFiles['images'])) {
+                foreach ($uploadedFiles['images'] as $file) {
+                    $file_src = $this->single_upload($file, PATH_SERVICE);
+                    $service_data['service_img'] = $file_src;
+                }
+            }
+
+            $ServiceModel = new ServiceModel();
+            $ServicetagModel = new ServicetagModel();
+
+            // Transaction Start
+            $ServiceModel->transStart();
+            try {
+                // Insert service data
+                $ServiceModel->insert($service_data);
+
+                // Save tags if provided
+                if (isset($data['tags']) && is_array($data['tags'])) {
+                    foreach ($data['tags'] as $tag) {
+                        $tag_data = [
+                            'service_uid' => $this->service_uid,
+                            'tag_name' => $tag
+                        ];
+                        $ServicetagModel->insert($tag_data);
+                    }
+                }
+
+                // Commit the transaction
+                $ServiceModel->transComplete();
+
+                if ($ServiceModel->transStatus() === false) {
+                    throw new \Exception("Transaction failed.");
+                }
+
+                $resp['status'] = true;
+                $resp['message'] = 'Service and tags added successfully';
+                $resp['data'] = $service_data;
+            } catch (\Exception $e) {
+                // Rollback the transaction if an error occurs
+                $ServiceModel->transRollback();
+                $resp['message'] = $e->getMessage();
+            }
+        }
+
+        return $resp;
+    }
+
+    private function service_update($data)
+    {
+        $resp = [
+            'status' => false,
+            'message' => 'Service not updated',
+            'data' => null
+        ];
+
+        $uploadedFiles = $this->request->getFiles();
+
+        // Validate required fields
+        if (empty($data['page_name'])) {
+            $resp['message'] = 'Please Add Page Name';
+        } else if (empty($data['service_title'])) {
+            $resp['message'] = 'Please Add A Title';
+        } else if (empty($data['service_description'])) {
+            $resp['message'] = 'Please Add Description';
+        } else if (empty($data['service_uid'])) {
+            $resp['message'] = 'Unable to edit. Service UID is missing.';
+        } else {
+            // Set the service_uid from the request data
+            $service_uid = $data['service_uid'];
+
+            // Prepare service data
+            $service_data = [
+                'page_name' => $data['page_name'],
+                'service_title' => $data['service_title'],
+                'service_description' => $data['service_description']
+            ];
+
+            // Handle file uploads (if any)
+            if (isset($uploadedFiles['images'])) {
+                foreach ($uploadedFiles['images'] as $file) {
+                    $file_src = $this->single_upload($file, PATH_SERVICE);
+                    $service_data['service_img'] = $file_src;
+                }
+            }
+
+            // Instantiate the models
+            $ServiceModel = new ServiceModel();
+            $ServicetagModel = new ServicetagModel();
+
+            // Transaction Start
+            $ServiceModel->transStart();
+
+            try {
+                // Update the service data in the database
+                $ServiceModel->where('uid', $service_uid)
+                    ->set($service_data)
+                    ->update();
+
+                // Remove old tags (if necessary)
+                $ServicetagModel->where('service_uid', $service_uid)->delete();
+
+                // Insert new tags if provided
+                if (isset($data['tags']) && is_array($data['tags'])) {
+                    foreach ($data['tags'] as $tag) {
+                        $tag_data = [
+                            'service_uid' => $service_uid, // Use the correct service_uid
+                            'tag_name' => $tag
+                        ];
+                        $ServicetagModel->insert($tag_data);
+                    }
+                }
+
+                // Commit the transaction
+                $ServiceModel->transComplete();
+
+                if ($ServiceModel->transStatus() === false) {
+                    throw new \Exception("Transaction failed.");
+                }
+
+                $resp['status'] = true;
+                $resp['message'] = 'Service updated successfully';
+                $resp['data'] = $service_data;
+            } catch (\Exception $e) {
+                // Rollback the transaction if an error occurs
+                $ServiceModel->transRollback();
+                $resp['message'] = $e->getMessage();
+            }
+        }
+
+        return $resp;
+    }
+    private function service_delete($data)
+    {
+        // Get the service UID from the data passed
+        $service_uid = $data['service_uid'] ?? null;
+        
+        // Validate the UID
+        if (empty($service_uid)) {
+            return [
+                'status' => false, 
+                'message' => 'Invalid service UID'
+            ];
+        }
+    
+        // Load the ServiceModel
+        $serviceModel = new ServiceModel();
+    
+        // Attempt to delete the service entry by UID
+        $result = $serviceModel->where('uid', $service_uid)->delete();
+        
+        // Check the result and return an appropriate response
+        if ($result) {
+            return [
+                'status' => true, 
+                'message' => 'Service deleted successfully'
+            ];
+        } else {
+            return [
+                'status' => false, 
+                'message' => 'Failed to delete service'
+            ];
+        }
+    }
+    
+
+
+
+
     
 
 
@@ -2279,5 +2479,29 @@ class Product_Controller extends Api_Controller
 
     }
 
+    public function POST_service_add()
+    {
+        $data = $this->request->getPost();
+        $resp = $this->service_add($data);
+        return $this->response->setJSON($resp);
+
+    }
+
+    public function POST_service_update()
+    {
+        $data = $this->request->getPost();
+        $resp = $this->service_update($data);
+        return $this->response->setJSON($resp);
+
+    }
+
+    public function POST_service_delete()
+    {
+        $data = $this->request->getPost();
+        $resp = $this->service_delete($data);
+        return $this->response->setJSON($resp);
+
+    }
+    
 
 }

@@ -233,7 +233,7 @@ defined('PATH_BANNER_IMG')          || define('PATH_BANNER_IMG', ROOTPATH  . 'pu
 defined('PATH_LOGO')                || define('PATH_LOGO', ROOTPATH  . 'public/uploads/logo');
 defined('PATH_PROMOTION_CARD_IMG')  || define('PATH_PROMOTION_CARD_IMG', ROOTPATH  . 'public/uploads/promotion_card_images');
 defined('PATH_BLOG')                || define('PATH_BLOG', ROOTPATH  . 'public/uploads/blog_images');
-
+defined('PATH_SERVICE')                || define('PATH_SERVICE', ROOTPATH  . 'public/uploads/service_images');
 
 //////////////////////////////////////////////__PAGEDATA
 define(

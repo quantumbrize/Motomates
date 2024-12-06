@@ -253,6 +253,7 @@
                     <?php
                 }
                 ?>
+                
 
 <?php
                 if (isset($_SESSION[SES_STAFF_USER_ID]) && in_array('blog', $_SESSION[SES_STAFF_ACCESS])) {

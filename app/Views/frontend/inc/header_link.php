@@ -630,12 +630,13 @@
 			type: "GET",
 			success: function (resp) {
 				console.log(resp)
+				truncatedDescription=truncateText(resp.data.about_description,80)
 				if (resp.status) {
 				let newLogoSrc = `<?=base_url()?>public/uploads/logo/${resp.data.logo}`;
 				$('#daltonus_logo_meta').attr('href', newLogoSrc);
 				$('.company_name').text(resp.data.company_name)
 				$('.company_address').text(resp.data.address)
-				$('.about_description').html(resp.data.about_description)
+				$('#about_description_footer').html(truncatedDescription)
 				$('#mission').html(resp.data.mission)
 				$('#vision').html(resp.data.vision)
 
@@ -743,6 +744,13 @@ function load_tags() {
         }
     });
 }
+function truncateText(text, maxLength) {
+        if (text.length > maxLength) {
+            return text.substring(0, maxLength) + '...';
+        } else {
+            return text;
+        }
+    }
 
 $(document).ready(function () {
     get_admin_meta();

@@ -64,7 +64,7 @@
 																</clippath>
 															</defs>
 														</svg> </span>
-													<span class="elementor-icon-list-text">(+01) 789 854 856</span>
+													<span class="elementor-icon-list-text" id='contact_us_contact_number'></span>
 												</a>
 											</li>
 											<li class="elementor-icon-list-item">
@@ -85,7 +85,7 @@
 																</clippath>
 															</defs>
 														</svg> </span>
-													<span class="elementor-icon-list-text">info@domain.com</span>
+													<span class="elementor-icon-list-text" id="contact_us_email"></span>
 												</a>
 											</li>
 											<li class="elementor-icon-list-item">
@@ -109,8 +109,7 @@
 																</clippath>
 															</defs>
 														</svg> </span>
-													<span class="elementor-icon-list-text">1234 Elm Street, Suite 567
-														Springfield, United States</span>
+													<span class="elementor-icon-list-text" id="contact_us_address"></span>
 												</a>
 											</li>
 										</ul>
@@ -124,8 +123,8 @@
 									data-id="e2f377c" data-element_type="widget"
 									data-settings="{&quot;ekit_we_effect_on&quot;:&quot;none&quot;}"
 									data-widget_type="social-icons.default">
-									<div class="elementor-widget-container">
-										<div class="elementor-social-icons-wrapper elementor-grid">
+									<div class="elementor-widget-container" id='contact_us_social'>
+										<!-- <div class="elementor-social-icons-wrapper elementor-grid">
 											<span class="elementor-grid-item">
 												<a class="elementor-icon elementor-social-icon elementor-social-icon-facebook-f elementor-repeater-item-7249e57"
 													target="_blank">
@@ -150,7 +149,7 @@
 													<span class="elementor-screen-only">Instagram</span>
 													<i class="fab fa-instagram"></i> </a>
 											</span>
-										</div>
+										</div> -->
 									</div>
 								</div>
 							</div>
@@ -282,8 +281,8 @@
 						data-widget_type="google_maps.default">
 						<div class="elementor-widget-container">
 							<div class="elementor-custom-embed">
-								<iframe loading="lazy"
-									src="https://maps.google.com/maps?q=London%20Eye%2C%20London%2C%20United%20Kingdom&t=m&z=10&output=embed&iwloc=near"
+								<iframe id="contact_us_map" loading="lazy"
+									src=""
 									title="London Eye, London, United Kingdom"
 									aria-label="London Eye, London, United Kingdom"></iframe>
 							</div>
