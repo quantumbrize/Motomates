@@ -11,8 +11,8 @@ class BannersModel extends Model
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
-    protected $protectFields    = true;
-    protected $allowedFields    = ['uid', 'title', 'description', 'img', 'link'];
+    protected $protectFields    = false;
+    protected $allowedFields    = [];
 
     protected bool $allowEmptyInserts = false;
 

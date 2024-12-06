@@ -11,8 +11,8 @@ class MessageModel extends Model
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
-    protected $protectFields    = true;
-    protected $allowedFields    = ['uid', 'name', 'email', 'phone', 'subject', 'message'];
+    protected $protectFields    = false;
+    protected $allowedFields    = [];
 
     protected bool $allowEmptyInserts = false;
 

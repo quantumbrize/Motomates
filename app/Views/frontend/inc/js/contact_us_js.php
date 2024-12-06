@@ -1,4 +1,11 @@
 <script>
+
+$(document).ready(function () {
+    // Attach the click event handler to the "Send Message" button
+    $('#msgSubmit').on('click', function () {
+        upload_form_data();  // Call the function to submit the form data via AJAX
+    });
+});
 		 function get_social_link(){
         $.ajax({
             url: "<?= base_url('api/get/social') ?>",
@@ -48,5 +55,54 @@
             }
         })
     }
+	function upload_form_data() {
+    // Collect form data using FormData
+		var formData = new FormData();
+
+		// Append form fields to formData
+		formData.append('first_name', $('#first_name').val());
+		formData.append('last_name', $('#last_name').val());
+		formData.append('email', $('#email').val());
+		formData.append('phone', $('#phone').val());
+		formData.append('message', $('#msg').val());
+
+		// Send the form data via AJAX
+		$.ajax({
+			url: "<?= base_url() ?>submit/message",  // URL to send the form data to
+			type: "POST",
+			data: formData,
+			contentType: false,  // Don't set content type as it's handled by FormData
+			processData: false,  // Don't process data as query string
+			beforeSend: function () {
+				// You can show a loader here if you want
+				$('#msgSubmit').prop('disabled', true);  // Disable submit button while submitting
+				$('#msgSubmit').val('Sending...');
+			},
+			success: function (response) {
+				// Handle response from server
+				if (response.status) {
+					// If submission is successful, show success message
+					alert('Message sent successfully!');
+					// Optionally reset form fields
+					$('form')[0].reset();
+				} else {
+					// Show error message
+					alert('Error: ' + response.message);
+				}
+			},
+			error: function (err) {
+				// Handle any errors in the AJAX request
+				console.log(err);
+				alert('Error sending message. Please try again.');
+			},
+			complete: function () {
+				// Re-enable the submit button
+				$('#msgSubmit').prop('disabled', false);
+				$('#msgSubmit').val('Send Message');
+			}
+		});
+	}
+
+
 	get_social_link()
 	</script>

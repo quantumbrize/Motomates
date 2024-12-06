@@ -170,72 +170,55 @@
 												<p role="status" aria-live="polite" aria-atomic="true"></p>
 												<ul></ul>
 											</div>
-											<form action="/novaride/contact-us/#wpcf7-f8958-p3193-o1" method="post"
-												class="wpcf7-form init" aria-label="Contact form"
-												novalidate="novalidate" data-status="init">
+											<form action="#" class="wpcf7-form init" aria-label="Contact form" novalidate="novalidate" data-status="init" id="contact-form">
 												<div style="display: none;">
 													<input type="hidden" name="_wpcf7" value="8958">
 													<input type="hidden" name="_wpcf7_version" value="6.0">
 													<input type="hidden" name="_wpcf7_locale" value="en_US">
-													<input type="hidden" name="_wpcf7_unit_tag"
-														value="wpcf7-f8958-p3193-o1">
+													<input type="hidden" name="_wpcf7_unit_tag" value="wpcf7-f8958-p3193-o1">
 													<input type="hidden" name="_wpcf7_container_post" value="3193">
 													<input type="hidden" name="_wpcf7_posted_data_hash" value="">
 												</div>
 												<div class="row">
 													<div class="form-group col-md-6 mb-3">
 														<p><label> First Name </label><br>
-															<span class="wpcf7-form-control-wrap"
-																data-name="first"><input size="40" maxlength="400"
-																	class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required form-control"
-																	id="first_name" aria-required="true"
-																	aria-invalid="false" placeholder="Enter Your Name"
-																	value="" type="text" name="first"></span>
+															<span class="wpcf7-form-control-wrap" data-name="first">
+																<input size="40" maxlength="400" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required form-control" id="first_name" aria-required="true" aria-invalid="false" placeholder="Enter Your Name" value="" type="text" name="first">
+															</span>
 														</p>
 													</div>
 													<div class="form-group col-md-6 mb-3">
 														<p><label> Last Name </label><br>
-															<span class="wpcf7-form-control-wrap"
-																data-name="last"><input size="40" maxlength="400"
-																	class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required form-control"
-																	id="last_name" aria-required="true"
-																	aria-invalid="false" placeholder="Enter Your Name"
-																	value="" type="text" name="last"></span>
+															<span class="wpcf7-form-control-wrap" data-name="last">
+																<input size="40" maxlength="400" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required form-control" id="last_name" aria-required="true" aria-invalid="false" placeholder="Enter Your Name" value="" type="text" name="last">
+															</span>
 														</p>
 													</div>
 													<div class="form-group col-md-6 mb-3">
 														<p><label> Email </label><br>
-															<span class="wpcf7-form-control-wrap"
-																data-name="email"><input size="40" maxlength="400"
-																	class="wpcf7-form-control wpcf7-email wpcf7-validates-as-required wpcf7-text wpcf7-validates-as-email form-control"
-																	id="email" aria-required="true" aria-invalid="false"
-																	placeholder="Enter Your Email" value="" type="email"
-																	name="email"></span>
+															<span class="wpcf7-form-control-wrap" data-name="email">
+																<input size="40" maxlength="400" class="wpcf7-form-control wpcf7-email wpcf7-validates-as-required wpcf7-text wpcf7-validates-as-email form-control" id="email" aria-required="true" aria-invalid="false" placeholder="Enter Your Email" value="" type="email" name="email">
+															</span>
 														</p>
 													</div>
 													<div class="form-group col-md-6 mb-3">
 														<p><label> Phone </label><br>
-															<span class="wpcf7-form-control-wrap"
-																data-name="phone"><input size="40" maxlength="400"
-																	class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required form-control"
-																	id="phone" aria-required="true" aria-invalid="false"
-																	placeholder="Enter Your Number" value="" type="text"
-																	name="phone"></span>
+															<span class="wpcf7-form-control-wrap" data-name="phone">
+																<input size="40" maxlength="400" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required form-control" id="phone" aria-required="true" aria-invalid="false" placeholder="Enter Your Number" value="" type="text" name="phone">
+															</span>
 														</p>
 													</div>
 													<div class="form-group col-md-12 mb-3">
 														<p><label> Message </label><br>
-															<span class="wpcf7-form-control-wrap"
-																data-name="message"><textarea cols="40" rows="10"
-																	maxlength="2000"
-																	class="wpcf7-form-control wpcf7-textarea form-control"
-																	id="msg" aria-invalid="false"
-																	placeholder="Write Your Message"
-																	name="message"></textarea></span>
+															<span class="wpcf7-form-control-wrap" data-name="message">
+																<textarea cols="40" rows="10" maxlength="2000" class="wpcf7-form-control wpcf7-textarea form-control" id="msg" aria-invalid="false" placeholder="Write Your Message" name="message"></textarea>
+															</span>
 														</p>
 													</div>
 													<div class="col-md-12 form-btn">
-														<p><input
+														<p>
+															
+															<input
 																class="wpcf7-form-control wpcf7-submit has-spinner btn-default"
 																id="msgSubmit" type="submit" value="Send Message">
 														</p>
@@ -243,6 +226,7 @@
 												</div>
 												<div class="wpcf7-response-output" aria-hidden="true"></div>
 											</form>
+
 										</div>
 									</div>
 								</div>

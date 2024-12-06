@@ -78,6 +78,8 @@ class Banner_Controller extends Api_Controller
         $BanneData = $BannerModel
         ->get()
         ->getResultArray();
+        // $BanneData = $BannerModel
+        // ->first();
         $BanneData = !empty($BanneData) ? $BanneData : null;
 
         $resp = [
@@ -740,6 +742,30 @@ class Banner_Controller extends Api_Controller
 
         return $resp;
     }
+    private function single_banner()
+    {
+
+        $resp = [
+            "status" => false,
+            "message" => "Data Not Found",
+            "data" => ""
+        ];
+        
+        $BannerModel = new BannersModel();
+        // $BanneData = $BannerModel
+        // ->get()
+        // ->getResultArray();
+        $BanneData = $BannerModel
+        ->first();
+        $BanneData = !empty($BanneData) ? $BanneData : null;
+
+        $resp = [
+            "status" => true,
+            "message" => "Data fetched",
+            "data" => $BanneData,
+        ];
+        return $resp; 
+    }
 
     
     
@@ -881,6 +907,14 @@ class Banner_Controller extends Api_Controller
     {
         $data = $this->request->getPost();
         $resp = $this->blog_add($data);
+        return $this->response->setJSON($resp);
+
+    }
+
+    public function GET_single_banner()
+    {
+        $data = $this->request->getGet();
+        $resp = $this->single_banner($data);
         return $this->response->setJSON($resp);
 
     }

@@ -37,7 +37,10 @@
                                                 ${index+1}
                                             </td>
                                             <td>
-                                                ${msg.name}
+                                                ${msg.first_name}
+                                            </td>
+                                            <td>
+                                                ${msg.last_name}
                                             </td>
                                             <td>
                                                 ${msg.phone}
@@ -45,9 +48,7 @@
                                             <td>
                                                 ${msg.email}
                                             </td>
-                                            <td>
-                                                ${msg.subject}
-                                            </td>
+                                            
                                             <td>
                                                 ${msg.message}
                                             </td>

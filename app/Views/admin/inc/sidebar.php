@@ -253,7 +253,27 @@
                     <?php
                 }
                 ?>
-                
+                <?php
+                if (isset($_SESSION[SES_STAFF_USER_ID]) && in_array('service', $_SESSION[SES_STAFF_ACCESS])) {
+                    ?>
+                    <li class="nav-item ">
+                        <a class="nav-link menu-link <?= isset($sidebar['service']) ? 'active' : '' ?>"
+                            href="<?= base_url('admin/service') ?>">
+                            <i class="bx bx-category"></i> <span data-key="t-widgets">Service</span>
+                        </a>
+                    </li>
+                    <?php
+                } else if (isset($_SESSION[SES_ADMIN_USER_ID])) {
+                    ?>
+                        <li class="nav-item ">
+                            <a class="nav-link menu-link <?= isset($sidebar['service']) ? 'active' : '' ?>"
+                                href="<?= base_url('admin/service') ?>">
+                                <i class="bx bx-category"></i> <span data-key="t-widgets">Service</span>
+                            </a>
+                        </li>
+                    <?php
+                }
+                ?>
 
 <?php
                 if (isset($_SESSION[SES_STAFF_USER_ID]) && in_array('blog', $_SESSION[SES_STAFF_ACCESS])) {

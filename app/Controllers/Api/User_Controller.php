@@ -1838,6 +1838,55 @@ class User_Controller extends Api_Controller
         }
         return $resp;
     }
+
+    private function submit_message($data)
+    {
+
+        $resp = [
+            'status' => false,
+            'message' => 'Faild!',
+            'data' => null
+        ];
+
+        if (empty($data['first_name'])) {
+            $resp['message'] = 'Please Enter Name';
+        }   else if (empty($data['last_name'])) {
+            $resp['message'] = 'Please Enter Name';
+        } else if (empty($data['email'])) {
+            $resp['message'] = 'Please Enter Email';
+        } else if (empty($data['phone'])) {
+            $resp['message'] = 'Please Enter Phone No.';
+        } else if (empty($data['message'])) {
+            $resp['message'] = 'Please Enter Message';
+        } else {
+            $insert_message = [
+                'uid' => $this->generate_uid('USRMSG'),
+                'first_name' => $data['first_name'],
+                'last_name' => $data['last_name'],
+                'email' => $data['email'],
+                'phone' => $data['phone'],
+                // 'subject' => $data['subject'],
+                'message' => $data['message'],
+            ];
+            $MessageModel = new MessageModel();
+            $MessageModel->transStart();
+            try {
+                $messageData = $MessageModel->insert($insert_message);
+                $MessageModel->transCommit();
+            } catch (\Exception $e) {
+                $MessageModel->transRollback();
+                throw $e;
+            }
+
+            if ($messageData) {
+                $resp['status'] = true;
+                $resp['message'] = 'Message Submit Successful';
+                $resp['data'] = "";
+            }
+
+        }
+        return $resp;
+    }
     
 
 
@@ -2128,6 +2177,20 @@ class User_Controller extends Api_Controller
     {
         $data = $this->request->getGet();
         $resp = $this->service_all($data);
+        return $this->response->setJSON($resp);
+
+    }
+    public function POST_submit_message()
+    {
+        $data = $this->request->getPost();
+        $resp = $this->submit_message($data);
+        return $this->response->setJSON($resp);
+
+    }
+    public function GET_banner()
+    {
+        $data = $this->request->getGet();
+        $resp = $this->banner($data);
         return $this->response->setJSON($resp);
 
     }

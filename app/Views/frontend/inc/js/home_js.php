@@ -2,6 +2,7 @@
     $(document).ready(function () {
         get_promotion_card();
         load_all_blog();
+        loadBannerImage()
     })
     function get_promotion_card(){
         $.ajax({
@@ -283,6 +284,27 @@
         } else {
             return text;
         }
+    }
+
+    function loadBannerImage() {
+        $.ajax({
+            url: "<?= base_url() ?>get/single/banner", // URL to fetch the banner image
+            type: "GET",
+            success: function (response) {
+                console.log('banner',response)
+                imageUrl= `<?= base_url()?>public/uploads/banner_images/${response.data.img}`
+                if (response.status && imageUrl) {
+                    // Assuming response.imageUrl contains the URL of the banner image
+                    $('.elementor-9 .elementor-element.elementor-element-5983312')
+                        .css('background-image', `url('${imageUrl}')`);
+                } else {
+                    console.error('Failed to retrieve banner image:', response.message);
+                }
+            },
+            error: function (error) {
+                console.error('Error fetching banner image:', error);
+            }
+        });
     }
 
 

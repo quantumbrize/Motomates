@@ -1,3 +1,11 @@
+<style>
+    .table-responsive {
+    width: 100%;
+    overflow-x: auto; /* Adds horizontal scrolling */
+    -webkit-overflow-scrolling: touch; /* Ensures smooth scrolling on mobile devices */
+}
+
+</style>
 <div class="page-content">
     <div class="container-fluid">
 
@@ -84,22 +92,26 @@
                             <div class="tab-content text-muted">
                                 <div class="tab-pane active" id="productnav-all" role="tabpanel">
 
+                                <div class="table-responsive">
                                     <table id="table-banner-list-all" class="table nowrap align-middle table-hover" style="width:100%">
                                         <thead>
                                             <tr>
                                                 <th>Sl No.</th>
-                                                <th>Name</th>
+                                                <th>First Name</th>
+                                                <th>Last Name</th>
                                                 <th>Phone</th>
                                                 <th>Email</th>
-                                                <th>Subject</th>
+                                                <!-- <th>Subject</th> -->
                                                 <th>Message</th>
                                                 <th>Date</th>
                                             </tr>
                                         </thead>
                                         <tbody id="table-banner-list-all-body">
-                                            
+                                            <!-- Table rows will go here -->
                                         </tbody>
                                     </table>
+                                </div>
+
 
                                 </div>
                                 <!-- end tab pane -->
