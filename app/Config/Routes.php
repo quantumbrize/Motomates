@@ -292,6 +292,17 @@ $routes->post('/submit/message',                    'Api\User_Controller::POST_s
 
 $routes->get('get/single/banner',                   'Api\Banner_Controller::GET_single_banner');
 
+$routes->get('/single-service',                       'Frontend\Frontend_Controller::single_service_post');
+
+$routes->get('api/get/service_post',                   'Api\User_Controller::GET_service_single');
+
+$routes->get('/get/all/tags',                   'Api\User_Controller::GET_service_tags');
+$routes->get('/get/all/cards',                   'Api\User_Controller::GET_service_cards');
+
+
+
+
+
 
 
 

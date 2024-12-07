@@ -1392,5 +1392,25 @@ class Frontend_Controller extends Main_Controller
         ];
         $this->load_page('/frontend/single_blog_post', $data);
     }
+    public function single_service_post(): void
+    {
+        $data = PAGE_DATA_FRONTEND;
+        $data = [
+            'data_page' => [],
+            'data_header' => [
+                'header_link' => [],
+                'title' => 'Service',
+                'header' => ['single_service_post'=>true],
+                'sidebar' => [],
+                'site' => 'frontend'
+            ],
+            'data_footer' => [
+                'footer_link' => ['service_js.php'],
+                'footer' => [],
+                'site' => 'frontend'
+            ]
+        ];
+        $this->load_page('/frontend/service', $data);
+    }
     
 }

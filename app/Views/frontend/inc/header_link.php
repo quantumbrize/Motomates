@@ -639,6 +639,7 @@
 				$('#about_description_footer').html(truncatedDescription)
 				$('#mission').html(resp.data.mission)
 				$('#vision').html(resp.data.vision)
+				$('#service_contact1').html(resp.data.phone1)
 
 
 				}else{

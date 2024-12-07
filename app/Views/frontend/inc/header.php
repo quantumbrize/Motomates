@@ -85,27 +85,8 @@
 												class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-7722 nav-item elementskit-dropdown-has relative_position elementskit-dropdown-menu-default_width elementskit-mobile-builder-content"
 												data-vertical-menu="750px"><a href="<?= base_url()?>service"
 													class="ekit-menu-nav-link ekit-menu-dropdown-toggle">Service</a>
-												<ul class="elementskit-dropdown elementskit-submenu-panel">
-													<li id="menu-item-6732"
-														class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6732 nav-item elementskit-mobile-builder-content"
-														data-vertical-menu="750px"><a
-															href="<?= base_url()?>car-rental-driver"
-															class=" dropdown-item">Car Rental With Driver</a>
-													<li id="menu-item-6731"
-														class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6731 nav-item elementskit-mobile-builder-content"
-														data-vertical-menu="750px"><a
-															href="../service/business-car-rental/index.htm"
-															class=" dropdown-item">Business Car Rental</a>
-													<li id="menu-item-6730"
-														class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6730 nav-item elementskit-mobile-builder-content"
-														data-vertical-menu="750px"><a
-															href="../service/airport-transfer/index.htm"
-															class=" dropdown-item">Airport Transfer</a>
-													<li id="menu-item-6733"
-														class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6733 nav-item elementskit-mobile-builder-content"
-														data-vertical-menu="750px"><a
-															href="../service/chauffeur-services/index.htm"
-															class=" dropdown-item">Chauffeur Services</a></li>
+												<ul id="service_pages" class="elementskit-dropdown elementskit-submenu-panel">
+													
 												</ul>
 											</li>
 											<li id="menu-item-6727"
@@ -546,8 +527,61 @@
         })
     }
 
+	function load_all_service_details() {
+    $.ajax({
+        url: "<?= base_url('/api/all/service') ?>",
+        type: "GET",
+        beforeSend: function () {
+            $('#table-banner-list-all-body').html(`
+                <tr>
+                    <td colspan="8" style="text-align:center;">
+                        <div class="spinner-border" role="status"></div>
+                    </td>
+                </tr>
+            `);
+        },
+        success: function (resp) {
+            // Check if response status is true
+            if (resp.status) {
+                // Clear previous list items first
+                let html = '';
+                $.each(resp.data, function (index, service) {
+                    console.log('linksd', service);
+                    if (service) {
+                        // Append each new list item instead of overwriting
+                        html += `
+                            <li id="menu-item-6732"
+                                class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6732 nav-item elementskit-mobile-builder-content"
+                                data-vertical-menu="750px">
+                                <a href="<?= base_url()?>single-service?service_uid=${service.uid}"
+                                   class=" dropdown-item">${service.page_name}</a>
+                            </li>`;
+                    }
+                });
+                // After all items are appended, insert them into the DOM
+                $('#service_pages').html(html);
+            } else {
+                $('#service_pages').html(`
+                    <p>${resp.message}</p>
+                `);
+            }
+        },
+        error: function (err) {
+            console.log(err);
+            $('#service_pages').html(`
+                <p>Error loading data.</p>
+            `);
+        },
+        complete: function () {
+            // Optional: Any additional steps after the request is complete.
+        }
+    });
+}
+
+
     $(document).ready(function () {
     
     get_notice_text();
+	load_all_service_details();
 });
   </script>

@@ -22,6 +22,7 @@ use App\Models\ProductModel;
 use App\Models\BlogModel;
 use App\Models\ServicetagModel;
 use App\Models\ServiceModel;
+use App\Models\ServicecardModel;
 
 
 class User_Controller extends Api_Controller
@@ -1812,21 +1813,29 @@ class User_Controller extends Api_Controller
             'message' => 'No service found',
             'data' => []
         ];
+    
         try {
             $ServiceModel = new ServiceModel();
             $ServicetagModel = new ServicetagModel();
+            $ServicecardModel = new ServicecardModel();
             
             // Fetch all services
             $services = $ServiceModel->findAll();
-
+    
             if (count($services) > 0) {
                 foreach ($services as &$service) {
                     // Fetch tags for each service
                     $tags = $ServicetagModel->where('service_uid', $service['uid'])->findAll();
-                    $tagNames = array_column($tags, 'tag_name');
-                    $service['tags'] = $tagNames; // Add tag names to the service array
+                    $service['tags'] = $tags; // Store the full tag data (name, description, etc.)
+    
+                    // Fetch service cards for each service
+                    // Use 'service_card_uid' as the foreign key in the servicecards table
+                    $cards = $ServicecardModel->where('service_card_uid', $service['uid'])->findAll();
+                    
+                    // Store the full card data (title, description, image, etc.)
+                    $service['cards'] = $cards; 
                 }
-
+    
                 $resp = [
                     'status' => true,
                     'message' => 'Services found',
@@ -1836,8 +1845,12 @@ class User_Controller extends Api_Controller
         } catch (\Exception $e) {
             $resp['message'] = $e->getMessage();
         }
+    
         return $resp;
     }
+    
+
+    
 
     private function submit_message($data)
     {
@@ -1887,7 +1900,86 @@ class User_Controller extends Api_Controller
         }
         return $resp;
     }
+    private function service_single($data)
+    {
+        $resp = [
+            'status' => false,
+            'message' => 'No service found',
+            'data' => []
+        ];
     
+        try {
+            $ServiceModel = new ServiceModel();
+            $services = $ServiceModel->where('uid',$data['serviceId'])->first();
+            // $this->prd($services);
+            if (count($services) > 0) {
+                $resp = [
+                    'status' => true,
+                    'message' => 'Services found',
+                    'data' => $services
+                ];
+            }
+        } catch (\Exception $e) {
+            $resp['message'] = $e->getMessage();
+        }
+    
+        return $resp;
+        
+    }
+
+    private function service_tags($data)
+    {
+        $resp = [
+            'status' => false,
+            'message' => 'No service found',
+            'data' => []
+        ];
+    
+        try {
+            $ServicetagModel = new ServicetagModel();
+            $servicestags = $ServicetagModel->where('service_uid',$data['serviceId'])->findAll();
+            // $this->prd($services);
+            if (count($servicestags) > 0) {
+                $resp = [
+                    'status' => true,
+                    'message' => 'Services found',
+                    'data' => $servicestags
+                ];
+            }
+        } catch (\Exception $e) {
+            $resp['message'] = $e->getMessage();
+        }
+    
+        return $resp;
+        
+    }
+
+    private function service_cards($data)
+    {
+        $resp = [
+            'status' => false,
+            'message' => 'No service found',
+            'data' => []
+        ];
+    
+        try {
+            $ServicecardModel = new ServicecardModel();
+            $servicescards = $ServicecardModel->where('service_card_uid',$data['serviceId'])->findAll();
+            // $this->prd($services);
+            if (count($servicescards) > 0) {
+                $resp = [
+                    'status' => true,
+                    'message' => 'Services found',
+                    'data' => $servicescards
+                ];
+            }
+        } catch (\Exception $e) {
+            $resp['message'] = $e->getMessage();
+        }
+    
+        return $resp;
+        
+    }
 
 
 
@@ -2191,6 +2283,29 @@ class User_Controller extends Api_Controller
     {
         $data = $this->request->getGet();
         $resp = $this->banner($data);
+        return $this->response->setJSON($resp);
+
+    }
+
+    public function GET_service_single()
+    {
+        $data = $this->request->getGet();
+        $resp = $this->service_single($data);
+        return $this->response->setJSON($resp);
+
+    }
+    public function GET_service_tags()
+    {
+        $data = $this->request->getGet();
+        $resp = $this->service_tags($data);
+        return $this->response->setJSON($resp);
+
+    }
+
+    public function GET_service_cards()
+    {
+        $data = $this->request->getGet();
+        $resp = $this->service_cards($data);
         return $this->response->setJSON($resp);
 
     }
