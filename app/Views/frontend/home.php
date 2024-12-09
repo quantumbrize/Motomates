@@ -23,8 +23,7 @@
 						data-settings="{&quot;ekit_we_effect_on&quot;:&quot;none&quot;}"
 						data-widget_type="heading.default">
 						<div class="elementor-widget-container">
-							<h1 class="elementor-heading-title elementor-size-default">Looking to save more on your
-								rental car?</h1>
+							<h1 id="banner_heading" class="elementor-heading-title elementor-size-default"></h1>
 						</div>
 					</div>
 					<div class="elementor-element elementor-element-a4b72c0 elementor-widget__width-initial elementor-widget-tablet__width-inherit elementor-invisible elementor-widget elementor-widget-text-editor"
@@ -32,8 +31,7 @@
 						data-settings="{&quot;_animation&quot;:&quot;fadeInUp&quot;,&quot;_animation_delay&quot;:100,&quot;ekit_we_effect_on&quot;:&quot;none&quot;}"
 						data-widget_type="text-editor.default">
 						<div class="elementor-widget-container">
-							<p>Whether you&#8217;re planning a weekend getaway, a business trip, or just need a reliable
-								ride for the day, we offers a wide range of vehicles to suit your needs.</p>
+							<p id="banner_description"></p>
 						</div>
 					</div>
 					<div class="elementor-element elementor-element-e0ea783 e-con-full e-flex elementor-invisible e-con e-child"
@@ -45,10 +43,10 @@
 							data-widget_type="button.default">
 							<div class="elementor-widget-container">
 								<div class="elementor-button-wrapper">
-									<a class="elementor-button elementor-button-link elementor-size-sm"
-										href="<?=base_url() ?>book-a-rental/">
+									<a id="banner_link" class="elementor-button elementor-button-link elementor-size-sm"
+										href="">
 										<span class="elementor-button-content-wrapper">
-											<span class="elementor-button-text">book a rental</span>
+											<span class="elementor-button-text">Learn More</span>
 										</span>
 									</a>
 								</div>

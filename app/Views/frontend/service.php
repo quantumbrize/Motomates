@@ -328,15 +328,16 @@
 							<div class="popup-content">
 								<span class="close" onclick="closePopup('popup1')">&times;</span>
 								<p>Owner Contact: <span id="service_contact1"></span></p>
-							</div>
-						</div>
-
-						<div id="popup2" class="popup">
-							<div class="popup-content">
-								<span class="close" onclick="closePopup('popup2')">&times;</span>
 								<p>Service Contact: <span id="service_contact2"></span></p>
 							</div>
 						</div>
+
+						<!-- <div id="popup2" class="popup">
+							<div class="popup-content">
+								<span class="close" onclick="closePopup('popup2')">&times;</span>
+								
+							</div>
+						</div> -->
 						<!-- <div id="enquiryPopup" class="popup">
 							<div class="popup-content">
 								<span class="close" onclick="closePopup('enquiryPopup')">&times;</span>

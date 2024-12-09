@@ -302,6 +302,14 @@
                 } else {
                     console.error('Failed to retrieve banner image:', response.message);
                 }
+                htmlt=`${response.data.title}`
+                htmld=`${response.data.description}`
+                htmll=`${response.data.link}`
+
+                $("#banner_heading").html(htmlt);
+                $("#banner_description").html(htmld);
+                $("#banner_description").html(htmld);
+                $("#banner_link").attr('href', htmll);
             },
             error: function (error) {
                 console.error('Error fetching banner image:', error);
@@ -381,7 +389,8 @@
                 console.error('Error during booking:', error);
             }
         });
-    });
+    }); 
+})
 
 
 function load_all_services() {

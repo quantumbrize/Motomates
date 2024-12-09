@@ -24,7 +24,7 @@
 
                 html3=`${resp.data.service_description}`
                 html4=`${resp.data.service_contact}`
-                whatsapp_number=html4
+                
 
                 
 
@@ -33,7 +33,7 @@
                 $("#service_description").html(html3)
                 $("#service_contact2").html(html4)
                 
-                
+                whatsapp_number=resp.data.service_contact
             } else {
                 console.log(resp)
             }
@@ -43,7 +43,7 @@
         }
     })
         
-    });
+});
 function load_all_tags() {
     const urlParams = new URLSearchParams(window.location.search);
     const serviceId = urlParams.get('service_uid'); // Get the service_uid from the URL

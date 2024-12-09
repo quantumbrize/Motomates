@@ -1,3 +1,34 @@
+<style>
+    .rent-details-box {
+    box-shadow: 10px 10px 10px lightgrey;
+    padding: 20px;
+    position: relative; /* Ensure the box establishes a local positioning context */
+}
+
+.rent-details-item {
+    margin-bottom: 15px; /* Add spacing between form elements */
+}
+
+.rent-details-search {
+    text-align: center; /* Center the button */
+    margin-top: 20px; /* Add spacing above the button */
+}
+
+.wpcf7-submit {
+    padding: 10px 20px; /* Increase padding for better appearance */
+    background-color: #007bff; /* Set a consistent button background */
+    color: white; /* Make text readable */
+    border: none; /* Remove border */
+    border-radius: 5px; /* Add rounded corners */
+    cursor: pointer; /* Change cursor to pointer */
+    box-shadow: 2px 2px 5px lightgrey; /* Add a shadow to the button */
+}
+
+.wpcf7-submit:hover {
+    background-color: #0056b3; /* Darken the button on hover */
+}
+
+</style>
 <div class="container">
     <div class="elementor-element elementor-element-ccc7b81 rent-details bg-section e-con-full e-flex e-con e-child"
          data-id="ccc7b81" data-element_type="container"
