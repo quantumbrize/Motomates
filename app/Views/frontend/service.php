@@ -194,7 +194,8 @@
 																	<div class="box-footer disable_hover_button">
 																		<div class="btn-wraper">
 																			<button 
-																			id="enquiryButton" 
+																			id="enquiryButton-1"
+																			data-bs-toggle="modal" data-bs-target="#exampleModal" 
 																			style="padding: 10px 20px; background-color: #ff3600; color: white; border: none; border-radius: 5px; cursor: pointer;"
 																		>
 																			Send Enquiry
@@ -309,13 +310,13 @@
 								id="messageIcon"
 							>
 							<img 
-								
 								src="<?=base_url()?>public/uploads/icon_images/whatsapp.png" 
 								alt="WhatsApp Icon" 
 								id="whatsappIcon"
 							>
 							<button 
-								id="enquiryButton" 
+								id="enquiryButton-1"
+								data-bs-toggle="modal" data-bs-target="#exampleModal" 
 								style="padding: 10px 20px; background-color: #ff3600; color: white; border: none; border-radius: 5px; cursor: pointer;"
 							>
 								Send Enquiry
@@ -336,7 +337,7 @@
 								<p>Service Contact: <span id="service_contact2"></span></p>
 							</div>
 						</div>
-						<div id="enquiryPopup" class="popup">
+						<!-- <div id="enquiryPopup" class="popup">
 							<div class="popup-content">
 								<span class="close" onclick="closePopup('enquiryPopup')">&times;</span>
 								<h3>Send Enquiry</h3>
@@ -359,7 +360,49 @@
 									<button type="submit" id="submit_enquiry" style="background-color: #ff3600; color: white; border: none; padding: 10px; cursor: pointer; border-radius: 5px;">Submit</button>
 								</form>
 							</div>
+						</div> -->
+
+						<!-- Button trigger modal -->
+						<!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+						Launch demo modal
+						</button> -->
+
+						<!-- Modal -->
+						<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+						<div class="modal-dialog">
+							<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title" id="exampleModalLabel">Send Enquiry</h5>
+								<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+							</div>
+							<div class="modal-body">
+								<div id="enquiryForm">
+									<label for="name">Name:</label>
+									<input type="text" class="form-control" id="enquiry_name" name="enquiry_name" required>
+									
+									<label for="email">Email:</label>
+									<input type="email" class="form-control" id="enquiry_email" name="enquiry_email" required>
+									
+									<label for="phone">Phone Number:</label>
+									<input type="text" class="form-control" id="enquiry_phone" name="enquiry_phone" required>
+									
+									<label for="subject">Subject:</label>
+									<input type="text" class="form-control" id="enquiry_subject" name="enquiry_subject" required>
+									
+									<label for="enquiry">Enquiry:</label>
+									<textarea id="enquiry_details" class="form-control" name="enquiry_details" rows="4" required></textarea>
+									<!-- <button type="submit" id="submit_enquiry" style="background-color: #ff3600; color: white; border: none; padding: 10px; cursor: pointer; border-radius: 5px;">Submit</button> -->
+									
+								</div>
+							</div>
+							<div class="modal-footer">
+							
+								<!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
+								<button type="button" onclick="submit_enquiry()" class="btn btn-primary">Submit</button>
+							</div>
+							</div>
 						</div>
+						</div>																			
 											
 
 				</div>

@@ -324,7 +324,7 @@
     });
 
     // Handle form submission on rental-submit button click
-    $('#rental_submit').click(function () {
+    $('#rental_submit').click(function (event) {
         event.preventDefault(); // Prevent default form submission
 
         // Gather all form values
@@ -356,19 +356,33 @@
             url: '<?=base_url()?>send-booking', // The URL to send the data to
             type: 'POST', // POST method
             data: formData, // The data to send
-            success: function(response) {
-                // Handle the success response here
+            success: function (response) {
+                // Success Toastify Notification
+                Toastify({
+                    text: "Your booking has been successfully submitted!",
+                    duration: 3000,
+                    gravity: "top", // Display at the top
+                    position: "right", // Align to right
+                    backgroundColor: "green", // Success notification color
+                    close: true
+                }).showToast();
                 console.log('Booking successful:', response);
-                alert('Your booking has been successfully submitted!');
             },
-            error: function(xhr, status, error) {
-                // Handle errors here
+            error: function (xhr, status, error) {
+                // Error Toastify Notification
+                Toastify({
+                    text: "There was an error submitting your booking. Please try again later.",
+                    duration: 3000,
+                    gravity: "top",
+                    position: "right",
+                    backgroundColor: "red", // Error notification color
+                    close: true
+                }).showToast();
                 console.error('Error during booking:', error);
-                alert('There was an error submitting your booking. Please try again later.');
             }
         });
     });
-});
+
 
 function load_all_services() {
         $.ajax({

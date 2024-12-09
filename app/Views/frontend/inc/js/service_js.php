@@ -1,10 +1,11 @@
 <script>
+    const whatsapp_number=''
    $(document).ready(function () {
     load_all_tags();
     load_all_cards();
     load_all_service_pages();
     const urlParams = new URLSearchParams(window.location.search);
-    const serviceId = urlParams.get('service_uid')
+    const serviceId = urlParams.get('service_uid');
     $.ajax({
         url: "<?= base_url('api/get/service_post') ?>",
         type: "GET",
@@ -23,7 +24,7 @@
 
                 html3=`${resp.data.service_description}`
                 html4=`${resp.data.service_contact}`
-                
+                whatsapp_number=html4
 
                 
 
@@ -243,13 +244,16 @@ function load_all_service_pages() {
     });
 
     document.getElementById('whatsappIcon').addEventListener('click', function() {
-        openPopup('popup2');
+        window.open(`https://wa.me/${whatsapp_number}?text=Hello%20there!`, "_blank");
     });
 
     document.getElementById('enquiryButton').addEventListener('click', function() {
         openPopup('enquiryPopup');
     });
-    $('#submit_enquiry').click(function () {
+    document.getElementById('enquiryButton1').addEventListener('click', function() {
+        openPopup('enquiryPopup');
+    });
+    function submit_enquiry() {
         const urlParams = new URLSearchParams(window.location.search);
         const serviceId = urlParams.get('service_uid');
         let formData = new FormData();
@@ -258,9 +262,9 @@ function load_all_service_pages() {
         formData.append('enquiry_phone', $('#enquiry_phone').val());
         formData.append('enquiry_subject', $('#enquiry_subject').val());
         formData.append('enquiry_details', $('#enquiry_details').val());
-        // formData.append('service_title', $('#service_title').val());
         formData.append('service_id', serviceId);
-            $.ajax({
+
+        $.ajax({
             url: "<?= base_url('/api/add/enquiry') ?>",
             type: "POST",
             data: formData,
@@ -270,24 +274,48 @@ function load_all_service_pages() {
                 $('#submit_enquiry').text("Submitting...").attr('disabled', true);
             },
             success: function (response) {
-                console.log('enquiry',response);
+                console.log('enquiry', response);
                 if (response.status) {
-                    alert(response.message);
-                    location.reload();
+                    Toastify({
+                        text: response.message,
+                        duration: 3000,
+                        gravity: "top", // Position on top
+                        position: "center", // Align to right
+                        backgroundColor: "green", // Success notification color
+                        close: true
+                    }).showToast();
+
+                    const modalElement = document.getElementById("exampleModal");
+                    const modalInstance = bootstrap.Modal.getInstance(modalElement) || new bootstrap.Modal(modalElement);
+                    modalInstance.hide();
                 } else {
-                    alert(`Error: ${response.message}`);
+                    Toastify({
+                        text: `Error: ${response.message}`,
+                        duration: 3000,
+                        gravity: "top",
+                        position: "center",
+                        backgroundColor: "red", // Error notification color
+                        close: true
+                    }).showToast();
                 }
             },
             error: function (err) {
                 console.error("Error:", err);
+                Toastify({
+                    text: "An unexpected error occurred. Please try again later.",
+                    duration: 3000,
+                    gravity: "top",
+                    position: "center",
+                    backgroundColor: "orange", // Error notification color
+                    close: true
+                }).showToast();
             },
             complete: function () {
                 $('#submit_enquiry').text("Submit").attr('disabled', false);
             }
         });
+    }
 
-        // Append tags and icons
-       
-    });
+
     
 </script>
