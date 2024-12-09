@@ -386,6 +386,7 @@ $('#service_update_btn').click(function () {
 
 
     load_all_services();
+    load_all_service_enquiry();
 });
 
 
@@ -422,7 +423,7 @@ function load_all_services() {
                         }
 
                         // Construct image URL using the image name from the database
-                        let imageUrl = `<?= base_url() ?>public/uploads/service_images/${service.service_card_image}`;
+                        let imageUrl = `<?= base_url() ?>public/uploads/service_images/${service.service_img}`;
 
                         // Start the row for each service
                         html += `<tr>
@@ -447,7 +448,7 @@ function load_all_services() {
                                 // Add each card's details
                                 cardsHtml += `
                                     <div class="card-item mb-2" style="display: flex; align-items: center; margin-bottom: 10px;">
-                                        <img src="${cardImageUrl}" alt="Card Image" style="width: 30px; height: auto; margin-right: 5px;">
+                                        <img src="${cardImageUrl}" alt="Card Image" style="width: 30px; height: auto; margin-right: 5px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                         <div class="card-details">
                                             <span class="badge bg-secondary">${card.service_card_title}</span>
                                             <p class="card-description ms-2">${card.service_card_description || 'No description available'}</p>
@@ -505,6 +506,74 @@ function load_all_services() {
     });
 }
 
+function load_all_service_enquiry() {
+    $.ajax({
+        url: "<?= base_url('/api/all/service_enquiry') ?>",
+        type: "GET",
+        beforeSend: function () {
+            $('#table-banner-list-all-body').html(`<tr>
+                    <td colspan="8" style="text-align:center;">
+                        <div class="spinner-border" role="status"></div>
+                    </td>
+                </tr>`);
+        },
+        success: function (resp) {
+            if (resp.status) {
+                if (resp.data.length > 0) {
+                    let html = ``;
+
+                    $.each(resp.data, function (index, enquiry) {
+                        console.log('serviceenquiry', enquiry);
+
+                        html += `<tr>
+                                    <td>${index + 1}</td>
+                                    <td>${enquiry.enquiry_name}</td>
+                                    <td>${enquiry.enquiry_email}</td>
+                                    <td>${enquiry.enquiry_subject}</td>
+                                    <td>${enquiry.enquiry_phone}</td>
+                                    <td>${enquiry.enquiry_details}</td>
+                                    <td>${enquiry.service_title}</td>
+                                    <td>${enquiry.service_id}</td>
+                                    `;
+                        
+                    });
+
+                    // Append the rows to the table
+                    $('#service_enquiry_data_table_body').html(html);
+
+                    // Reinitialize DataTable if needed
+                    if ($.fn.DataTable.isDataTable('#service_page_data_table')) {
+                        $('#service_page_data_table').DataTable().clear().destroy();
+                    }
+                    $('#service_page_data_table').DataTable();
+                } else {
+                    $('#service_enquiry_data_table').html(`<tr>
+                        <td colspan="8" style="text-align:center;">
+                            No Data Found
+                        </td>
+                    </tr>`);
+                }
+            } else {
+                $('#service_enquiry_data_table').html(`<tr>
+                    <td colspan="8" style="text-align:center;">
+                        ${resp.message}
+                    </td>
+                </tr>`);
+            }
+        },
+        error: function (err) {
+            console.log(err);
+            $('#table-banner-list-all-body').html(`<tr>
+                <td colspan="8" style="text-align:center;">
+                    Error loading data.
+                </td>
+            </tr>`);
+        },
+        complete: function () {
+            // Optional: Any additional steps after the request is complete.
+        }
+    });
+}
 
 
 

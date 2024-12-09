@@ -23,6 +23,8 @@ use App\Models\BlogModel;
 use App\Models\ServicetagModel;
 use App\Models\ServiceModel;
 use App\Models\ServicecardModel;
+use App\Models\EnquiryModel;
+use App\Models\RentalModel;
 
 
 class User_Controller extends Api_Controller
@@ -1981,6 +1983,93 @@ class User_Controller extends Api_Controller
         
     }
 
+    private function service_enquiry_all()
+    {
+        $resp = [
+            'status' => false,
+            'message' => 'No service found',
+            'data' => []
+        ];
+    
+        try {
+            $EnquiryModel = new EnquiryModel();
+            
+            
+            // Fetch all services
+            $enquiries = $EnquiryModel->findAll();
+    
+            if (count($enquiries) > 0) {   
+                $resp = [
+                    'status' => true,
+                    'message' => 'Services found',
+                    'data' => $enquiries
+                ];
+            }
+        } catch (\Exception $e) {
+            $resp['message'] = $e->getMessage();
+        }
+    
+        return $resp;
+    }
+    private function submit_booking($data)
+    {
+
+        $resp = [
+            'status' => false,
+            'message' => 'Faild!',
+            'data' => null
+        ];
+
+        if (empty($data['fname'])) {
+            $resp['message'] = 'Please Enter Name';
+        }   else if (empty($data['phone'])) {
+            $resp['message'] = 'Please Enter phone';
+        } else if (empty($data['pickup_location'])) {
+            $resp['message'] = 'Please Enter pickup location';
+        } else if (empty($data['pickup_time'])) {
+            $resp['message'] = 'Please Enter pickup time.';
+        } else if (empty($data['pickup_date'])) {
+            $resp['message'] = 'Please Enter pickup date';
+        }  else if (empty($data['return_time'])) {
+            $resp['message'] = 'Please Enter return time';
+        } else if (empty($data['return_date'])) {
+            $resp['message'] = 'Please Enter return date';
+        } else if (empty($data['service_type'])) {
+            $resp['message'] = 'Please Enter Service Type';
+        } else {
+            $rental_data = [
+                'uid' => $this->generate_uid('BOKREN'),
+                'fname' => $data['fname'],
+                'phone' => $data['phone'],
+                'pickup_location' => $data['pickup_location'],
+                'pickup_time' => $data['pickup_time'],
+                // 'subject' => $data['subject'],
+                'pickup_date' => $data['pickup_date'],
+                'return_time' => $data['return_time'],
+                'return_date' => $data['return_date'],
+                'service_type' => $data['service_type'],
+                'cab_type' => $data['cab_type'],
+            ];
+            $RentalModel = new RentalModel();
+            $RentalModel->transStart();
+            try {
+                $data = $RentalModel->insert($rental_data);
+                $RentalModel->transCommit();
+            } catch (\Exception $e) {
+                $RentalModel->transRollback();
+                throw $e;
+            }
+
+            if ($data) {
+                $resp['status'] = true;
+                $resp['message'] = 'Booking Submit Successful';
+                $resp['data'] = "";
+            }
+
+        }
+        return $resp;
+    }
+
 
 
 
@@ -2279,13 +2368,13 @@ class User_Controller extends Api_Controller
         return $this->response->setJSON($resp);
 
     }
-    public function GET_banner()
-    {
-        $data = $this->request->getGet();
-        $resp = $this->banner($data);
-        return $this->response->setJSON($resp);
+    // public function GET_banner()
+    // {
+    //     $data = $this->request->getGet();
+    //     $resp = $this->banner($data);
+    //     return $this->response->setJSON($resp);
 
-    }
+    // }
 
     public function GET_service_single()
     {
@@ -2306,6 +2395,20 @@ class User_Controller extends Api_Controller
     {
         $data = $this->request->getGet();
         $resp = $this->service_cards($data);
+        return $this->response->setJSON($resp);
+
+    }
+    public function GET_service_enquiry_all()
+    {
+        $data = $this->request->getGet();
+        $resp = $this->service_enquiry_all($data);
+        return $this->response->setJSON($resp);
+
+    }
+    public function POST_submit_booking()
+    {
+        $data = $this->request->getPost();
+        $resp = $this->submit_booking($data);
         return $this->response->setJSON($resp);
 
     }

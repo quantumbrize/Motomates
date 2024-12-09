@@ -83,7 +83,7 @@
 													class="ekit-menu-nav-link">About Us</a></li>
 											<li id="menu-item-7722"
 												class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-7722 nav-item elementskit-dropdown-has relative_position elementskit-dropdown-menu-default_width elementskit-mobile-builder-content"
-												data-vertical-menu="750px"><a href="<?= base_url()?>service"
+												data-vertical-menu="750px"><a href="<?= base_url()?>all/service"
 													class="ekit-menu-nav-link ekit-menu-dropdown-toggle">Service</a>
 												<ul id="service_pages" class="elementskit-dropdown elementskit-submenu-panel">
 													
@@ -259,7 +259,7 @@
 							data-widget_type="button.default">
 							<div class="elementor-widget-container">
 								<div class="elementor-button-wrapper">
-									<a class="elementor-button elementor-button-link elementor-size-sm" href="#">
+									<a class="elementor-button elementor-button-link elementor-size-sm" href="<?=base_url() ?>book-a-rental/">
 										<span class="elementor-button-content-wrapper">
 											<span class="elementor-button-icon">
 												<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14"

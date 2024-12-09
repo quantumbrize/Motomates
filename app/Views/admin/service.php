@@ -1,30 +1,58 @@
 <style>
-    /* Make the table responsive */
+/* General Table Styles */
 #service_page_data_table {
     width: 100%;
-    table-layout: fixed; /* Ensure columns don't stretch beyond a certain width */
+    border-collapse: collapse;
+    text-align: left;
+    table-layout: auto; /* Adjust column widths based on content */
 }
 
+#service_page_data_table th,
+#service_page_data_table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    word-wrap: break-word; /* Ensure long text wraps within the cell */
+}
+
+/* Adjust Specific Column Widths */
+#service_page_data_table th:nth-child(8), /* Card Data */
+#service_page_data_table td:nth-child(8) {
+    width: 20%; /* Increase the width of the Card Data column */
+}
+
+#service_page_data_table th:nth-child(1), /* Sl No. */
+#service_page_data_table td:nth-child(1) {
+    width: 5%; /* Sl No. column width */
+    text-align: center;
+}
+
+#service_page_data_table th:nth-child(6), /* Service Image */
+#service_page_data_table td:nth-child(6) {
+    width: 15%; /* Adjust image column width */
+}
+
+#service_page_data_table th, /* Other columns auto-adjust */
+#service_page_data_table td {
+    width: auto;
+}
+
+/* Scrollable Table */
 #service_page_data_table_wrapper {
-    max-height: 500px; /* Adjust this to control the height of the table body */
+    max-height: 500px;
     overflow-y: auto; /* Enable vertical scrolling */
-    overflow-x: hidden; /* Hide horizontal overflow */
-    display: block; /* Make the wrapper block-level to apply overflow styles */
+    overflow-x: auto; /* Enable horizontal scrolling */
 }
 
-#service_page_data_table thead,
-#service_page_data_table tbody {
-    display: table; /* Ensure header and body are treated as a table */
-    width: 100%;
-    table-layout: fixed;
-}
-
-#service_page_data_table thead {
-    position: sticky;
+#service_page_data_table thead th {
+    position: sticky; /* Sticky header */
     top: 0;
-    background-color: white; /* Optional: Add a background color for the sticky header */
-    z-index: 2; /* Ensure the header stays above the table body when scrolling */
+    background-color: #f8f9fa; /* Sticky header background */
+    z-index: 2; /* Ensures header stays on top */
 }
+</style>
+
+
+
 
 </style>
 <div class="page-content">
@@ -147,21 +175,54 @@
                 <div class="card">
                     <div class="card-body">
                     <div id="service_page_data_table_wrapper">
-                        <table id="service_page_data_table" class="table nowrap align-middle table-hover" style="width:100%">
+                    <table id="service_page_data_table" class="table nowrap align-middle table-hover" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th>Sl No.</th>
+                                <th>Service Page</th>
+                                <th>Service Title</th>
+                                <th>Service Description</th>
+                                <th>Service Tags</th>
+                                <th>Service Image</th>
+                                <th>Service Owner Contact</th>
+                                <th>Card Data</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="table-banner-list-all-body">
+                            
+                                
+                            
+                           
+                        </tbody>
+                    </table>
+
+                    </div>
+
+                    </div>
+                </div>
+        </div>
+        <div class="row">
+            <div class="col-xl-12 col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div><h2>Enquiry</h2></div>
+                    <div id="service_page_data_table_wrapper">
+                        <table id="service_enquiry_data_table" class="table nowrap align-middle table-hover" style="width:100%">
                             <thead>
                                 <tr>
                                     <th>Sl No.</th>
-                                    <th>Service Page</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Subject</th>
+                                    <th>Phone</th>
+                                    <th>Enquiry Details</th>
                                     <th>Service Title</th>
-                                    <th>Service Description</th>
-                                    <th>Service Tags</th>
-                                    <th>Service Image</th>
-                                    <th>Service Owner Contact</th>
-                                    <th>Card Data</th>
-                                    <th>Action</th>
+                                    <th>Service UID</th>
+                                    
                                 </tr>
                             </thead>
-                            <tbody id="table-banner-list-all-body">
+                            <tbody id="service_enquiry_data_table_body">
                                 <!-- Rows will be dynamically populated here by JavaScript -->
                             </tbody>
                         </table>
@@ -169,7 +230,7 @@
 
                     </div>
                 </div>
-            </div>
+        </div>
 
 
     </div>

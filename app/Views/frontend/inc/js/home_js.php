@@ -2,7 +2,9 @@
     $(document).ready(function () {
         get_promotion_card();
         load_all_blog();
-        loadBannerImage()
+        loadBannerImage();
+        load_all_services();
+        
     })
     function get_promotion_card(){
         $.ajax({
@@ -306,6 +308,170 @@
             }
         });
     }
+    document.addEventListener('DOMContentLoaded', function() {
+    const serviceDropdown = document.getElementById('service');
+    const cabOptions = document.getElementById('cab-options');
+    const rentalSubmitButton = document.getElementById('rental-submit');
+    const form = document.querySelector('form');
 
+    // Show or hide Cab options based on Service type selection
+    serviceDropdown.addEventListener('change', function() {
+        if (this.value === 'only-cab') {
+            cabOptions.style.display = 'block';  // Show the cab options dropdown
+        } else {
+            cabOptions.style.display = 'none';   // Hide the cab options dropdown
+        }
+    });
+
+    // Handle form submission on rental-submit button click
+    $('#rental_submit').click(function () {
+        event.preventDefault(); // Prevent default form submission
+
+        // Gather all form values
+        const fullName = document.getElementById('fname').value;
+        const phone = document.getElementById('phone').value;
+        const pickupLocation = document.getElementById('pickuplocation').value;
+        const pickupTime = document.getElementById('departuretime').value;
+        const pickupDate = document.getElementById('date').value;
+        const returnTime = document.getElementById('returntime').value;
+        const returnDate = document.getElementById('returndate').value;
+        const serviceType = document.getElementById('service').value;
+        const cabType = document.getElementById('cab-type') ? document.getElementById('cab-type').value : ''; // Only if visible
+
+        // Prepare the data to send
+        const formData = {
+            fname: fullName,
+            phone: phone,
+            pickup_location: pickupLocation,
+            pickup_time: pickupTime,
+            pickup_date: pickupDate,
+            return_time: returnTime,
+            return_date: returnDate,
+            service_type: serviceType,
+            cab_type: cabType
+        };
+
+        // Send the data using AJAX
+        $.ajax({
+            url: '<?=base_url()?>send-booking', // The URL to send the data to
+            type: 'POST', // POST method
+            data: formData, // The data to send
+            success: function(response) {
+                // Handle the success response here
+                console.log('Booking successful:', response);
+                alert('Your booking has been successfully submitted!');
+            },
+            error: function(xhr, status, error) {
+                // Handle errors here
+                console.error('Error during booking:', error);
+                alert('There was an error submitting your booking. Please try again later.');
+            }
+        });
+    });
+});
+
+function load_all_services() {
+        $.ajax({
+            url: "<?= base_url('/api/all/service') ?>",
+            type: "GET",
+            beforeSend: function () {
+                $('#table-banner-list-all-body').html(`<tr>
+                        <td colspan="8" style="text-align:center;">
+                            <div class="spinner-border" role="status"></div>
+                        </td>
+                    </tr>`);
+            },
+            success: function (resp) {
+                if (resp.status) {
+                    if (resp.data.length > 0) {
+                        let html = ``;
+
+                        $.each(resp.data, function (index, service) {
+                            console.log('serviceall', service);
+                            html+=`
+                            <div class="elementor-element elementor-element-921e616 e-con-full service-item e-flex  e-con e-child"
+							data-id="921e616" data-element_type="container"
+							data-settings="{&quot;background_background&quot;:&quot;classic&quot;,&quot;animation&quot;:&quot;fadeInUp&quot;}">
+							<div class="elementor-element elementor-element-e2a720b ekit-equal-height-disable elementor-widget elementor-widget-elementskit-icon-box"
+								data-id="e2a720b" data-element_type="widget"
+								data-settings="{&quot;ekit_we_effect_on&quot;:&quot;none&quot;}"
+								data-widget_type="elementskit-icon-box.default">
+								<div class="elementor-widget-container">
+									<div class="ekit-wid-con"> <!-- link opening -->
+										<!-- end link opening -->
+
+										<div
+											class="elementskit-infobox text-left text-left icon-top-align elementor-animation-   ">
+											<div class="elementskit-box-header elementor-animation-">
+												<div class="">
+													<img style="width:30%" src="<?=base_url()?>public/uploads/service_images/${service.service_img}">
+												</div>
+											</div>
+											<div class="box-body">
+												<h3 class="elementskit-info-box-title">
+                                                    ${service.service_title} </h3>
+												<p> ${service.service_description}</p>
+												<div class="box-footer disable_hover_button">
+													<div class="btn-wraper">
+														<a href="<?= base_url()?>single-service?service_uid=${service.uid}"
+															target="_self" rel=""
+															class="elementskit-btn whitespace--normal elementor-animation-">
+															<svg xmlns="http://www.w3.org/2000/svg" width="14"
+																height="14" viewbox="0 0 14 14" fill="none">
+																<path
+																	d="M11.6654 3.97592L1.64141 13.9999L-0.00537109 12.3531L10.0174 2.32914H1.18372V-0.00012207H13.9946V12.8108H11.6654V3.97592Z"
+																	fill="white"></path>
+															</svg> </a>
+													</div>
+												</div>
+											</div>
+
+
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+                        `
+
+                        
+
+                            // Add cards data if it exists
+                        
+                        });
+
+                        // Append the rows to the table
+                        $('#all_services').html(html);
+
+                        // Reinitialize DataTable if needed
+                    
+                    } else {
+                        $('#all_services').html(`
+                            <P>
+                                No Data Found
+                            </p>
+                        `);
+                    }
+                } else {
+                    $('#all_services').html(`
+                        <p>
+                            ${resp.message}
+                        </p>
+                    `);
+                }
+            },
+            error: function (err) {
+                console.log(err);
+                $('#all_services').html(`
+                    <p>
+                        Error loading data.
+                    </p>
+                `);
+            },
+            complete: function () {
+                // Optional: Any additional steps after the request is complete.
+            }
+        });
+    }
 
 </script>

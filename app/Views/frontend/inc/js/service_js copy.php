@@ -2,47 +2,48 @@
    $(document).ready(function () {
     load_all_tags();
     load_all_cards();
-    load_all_service_pages();
     const urlParams = new URLSearchParams(window.location.search);
     const serviceId = urlParams.get('service_uid')
     $.ajax({
-        url: "<?= base_url('api/get/service_post') ?>",
-        type: "GET",
-        data: {serviceId:serviceId},
-        success: function (resp) {
-            console.log('servicem', resp)
-            // console.log('uid', serviceId)
-            // resp = JSON.parse(resp)
-            // console.log(resp.user_data.number)
-            if (resp.status) {
-                html1=`<img fetchpriority="high" decoding="async" width="1200" height="800"
-                                src="<?=base_url()?>public/uploads/service_images/${resp.data.service_img}"
-                                class="attachment-full size-full wp-image-3063" alt="">`
+            url: "<?= base_url('api/get/service_post') ?>",
+            type: "GET",
+            data: {serviceId:serviceId},
+            success: function (resp) {
+                console.log('servicem', resp)
+                // console.log('uid', serviceId)
+                // resp = JSON.parse(resp)
+                // console.log(resp.user_data.number)
+                if (resp.status) {
+                    html1=`<img fetchpriority="high" decoding="async" width="1200" height="800"
+									src="<?=base_url()?>public/uploads/service_images/${resp.data.service_img}"
+									class="attachment-full size-full wp-image-3063" alt="">`
 
-                html2=`${resp.data.service_title}`
+                    html2=`${resp.data.service_title}`
 
-                html3=`${resp.data.service_description}`
-                html4=`${resp.data.service_contact}`
-                
+                    html3=`${resp.data.service_description}`
+                    html4=`${resp.data.service_contact}`
+                   
 
-                
+                    
 
-                $("#service_image").html(html1)
-                $("#service_title").html(html2)
-                $("#service_description").html(html3)
-                $("#service_contact2").html(html4)
-                
-                
-            } else {
-                console.log(resp)
+                    $("#service_image").html(html1)
+                    $("#service_title").html(html2)
+                    $("#service_description").html(html3)
+                    $("#service_contact2").html(html4)
+                   
+                    
+                } else {
+                    console.log(resp)
+                }
+            },
+            error: function (err) {
+                console.log(err)
             }
-        },
-        error: function (err) {
-            console.log(err)
-        }
-    })
+        })
         
-    });
+    }
+    
+);
 function load_all_tags() {
     const urlParams = new URLSearchParams(window.location.search);
     const serviceId = urlParams.get('service_uid'); // Get the service_uid from the URL
@@ -169,125 +170,7 @@ function load_all_cards() {
         }
     });
 }
-function load_all_service_pages() {
-    $.ajax({
-        url: "<?= base_url('/api/all/service') ?>",
-        type: "GET",
-        beforeSend: function () {
-            $('#table-banner-list-all-body').html(`
-                <tr>
-                    <td colspan="8" style="text-align:center;">
-                        <div class="spinner-border" role="status"></div>
-                    </td>
-                </tr>
-            `);
-        },
-        success: function (resp) {
-            // Check if response status is true
-            if (resp.status) {
-                // Clear previous list items first
-                let html = '';
-                $.each(resp.data, function (index, service) {
-                    
-                    if (service) {
-                        // Append each new list item instead of overwriting
-                        // console.log('pages', service);
-                        html += `
-                            <li class="elementor-icon-list-item">
-																<a href="<?= base_url()?>single-service?service_uid=${service.uid}">
 
-																	<span class="elementor-icon-list-icon">
-																		<svg xmlns="http://www.w3.org/2000/svg"
-																			width="14" height="14" viewbox="0 0 14 14"
-																			fill="none">
-																			<path
-																				d="M11.6654 3.97592L1.64141 13.9999L-0.00537109 12.3531L10.0174 2.32914H1.18372V-0.00012207H13.9946V12.8108H11.6654V3.97592Z"
-																				fill="white"></path>
-																		</svg> </span>
-																	<span class="elementor-icon-list-text">${service.page_name}</span>
-																</a>
-															</li>`;
-                    }
-                });
-                // After all items are appended, insert them into the DOM
-                $('#service_pages_list').html(html);
-            } else {
-                $('#service_pages_list').html(`
-                    <p>${resp.message}</p>
-                `);
-            }
-        },
-        error: function (err) {
-            console.log(err);
-            $('#service_pages_list').html(`
-                <p>Error loading data.</p>
-            `);
-        },
-        complete: function () {
-            // Optional: Any additional steps after the request is complete.
-        }
-    });
-}
-    function openPopup(popupId) {
-        document.getElementById(popupId).style.display = 'block';
-    }
 
-    // Function to close a popup
-    function closePopup(popupId) {
-        document.getElementById(popupId).style.display = 'none';
-    }
-
-    // Add event listeners
-    document.getElementById('messageIcon').addEventListener('click', function() {
-        openPopup('popup1');
-    });
-
-    document.getElementById('whatsappIcon').addEventListener('click', function() {
-        openPopup('popup2');
-    });
-
-    document.getElementById('enquiryButton').addEventListener('click', function() {
-        openPopup('enquiryPopup');
-    });
-    $('#submit_enquiry').click(function () {
-        const urlParams = new URLSearchParams(window.location.search);
-        const serviceId = urlParams.get('service_uid');
-        let formData = new FormData();
-        formData.append('enquiry_name', $('#enquiry_name').val());
-        formData.append('enquiry_email', $('#enquiry_email').val());
-        formData.append('enquiry_phone', $('#enquiry_phone').val());
-        formData.append('enquiry_subject', $('#enquiry_subject').val());
-        formData.append('enquiry_details', $('#enquiry_details').val());
-        // formData.append('service_title', $('#service_title').val());
-        formData.append('service_id', serviceId);
-            $.ajax({
-            url: "<?= base_url('/api/add/enquiry') ?>",
-            type: "POST",
-            data: formData,
-            contentType: false,
-            processData: false,
-            beforeSend: function () {
-                $('#submit_enquiry').text("Submitting...").attr('disabled', true);
-            },
-            success: function (response) {
-                console.log('enquiry',response);
-                if (response.status) {
-                    alert(response.message);
-                    location.reload();
-                } else {
-                    alert(`Error: ${response.message}`);
-                }
-            },
-            error: function (err) {
-                console.error("Error:", err);
-            },
-            complete: function () {
-                $('#submit_enquiry').text("Submit").attr('disabled', false);
-            }
-        });
-
-        // Append tags and icons
-       
-    });
     
 </script>

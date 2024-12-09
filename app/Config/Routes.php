@@ -298,7 +298,14 @@ $routes->get('api/get/service_post',                   'Api\User_Controller::GET
 
 $routes->get('/get/all/tags',                   'Api\User_Controller::GET_service_tags');
 $routes->get('/get/all/cards',                   'Api\User_Controller::GET_service_cards');
+$routes->post('/api/add/enquiry',                'Api\Product_Controller::POST_enquiry_add');
 
+$routes->get('/api/all/service_enquiry',                   'Api\User_Controller::GET_service_enquiry_all');
+$routes->get('/book-a-rental',                          'Frontend\Frontend_Controller::book_a_rental');
+
+$routes->post('/send-booking',                           'Api\User_Controller::POST_submit_booking');
+
+$routes->get('/all/service',                          'Frontend\Frontend_Controller::service_all');
 
 
 

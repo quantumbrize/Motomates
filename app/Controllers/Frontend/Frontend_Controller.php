@@ -1412,5 +1412,45 @@ class Frontend_Controller extends Main_Controller
         ];
         $this->load_page('/frontend/service', $data);
     }
+    public function book_a_rental(): void
+    {
+        $data = PAGE_DATA_FRONTEND;
+        $data = [
+            'data_page' => [],
+            'data_header' => [
+                'header_link' => [],
+                'title' => 'Book a rental',
+                'header' => ['book_a_rental'=>true],
+                'sidebar' => [],
+                'site' => 'frontend'
+            ],
+            'data_footer' => [
+                'footer_link' => ['book_a_rental_js.php'],
+                'footer' => [],
+                'site' => 'frontend'
+            ]
+        ];
+        $this->load_page('/frontend/book_a_rental', $data);
+    }
+    public function service_all(): void
+    {
+        $data = PAGE_DATA_FRONTEND;
+        $data = [
+            'data_page' => [],
+            'data_header' => [
+                'header_link' => [],
+                'title' => 'All Services',
+                'header' => ['service_all'=>true],
+                'sidebar' => [],
+                'site' => 'frontend'
+            ],
+            'data_footer' => [
+                'footer_link' => ['service_all_js.php'],
+                'footer' => [],
+                'site' => 'frontend'
+            ]
+        ];
+        $this->load_page('/frontend/service_all', $data);
+    }
     
 }

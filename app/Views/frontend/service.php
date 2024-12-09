@@ -1,3 +1,55 @@
+<style>
+	.popup {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    .popup-content {
+        background-color: white;
+        padding: 20px;
+        border-radius: 10px;
+        margin: 10% auto;
+        width: 80%;
+        max-width: 400px;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+        position: relative;
+    }
+
+    .popup-content h3 {
+        margin-top: 0;
+        color: #ff3600;
+    }
+
+    .popup-content label {
+        display: block;
+        margin: 10px 0 5px;
+    }
+
+    .popup-content input,
+    .popup-content textarea {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    .close {
+        position: absolute;
+        top: 10px;
+        right: 15px;
+        color: #333;
+        font-size: 20px;
+        cursor: pointer;
+    }
+
+</style>
 <div data-elementor-type="wp-page" data-elementor-id="2788" class="elementor elementor-2788">
 		
 		<div class="elementor-element elementor-element-585283d e-flex e-con-boxed e-con e-parent" data-id="585283d"
@@ -34,8 +86,8 @@
 													data-settings="{&quot;ekit_we_effect_on&quot;:&quot;none&quot;}"
 													data-widget_type="icon-list.default">
 													<div class="elementor-widget-container">
-														<ul class="elementor-icon-list-items">
-															<li class="elementor-icon-list-item">
+														<ul id="service_pages_list" class="elementor-icon-list-items">
+															<!-- <li class="elementor-icon-list-item">
 																<a href="index.htm">
 
 																	<span class="elementor-icon-list-icon">
@@ -49,8 +101,8 @@
 																	<span class="elementor-icon-list-text">Car Rental
 																		With Driver</span>
 																</a>
-															</li>
-															<li class="elementor-icon-list-item">
+															</li> -->
+															<!-- <li class="elementor-icon-list-item">
 																<a href="../business-car-rental/index.htm">
 
 																	<span class="elementor-icon-list-icon">
@@ -94,7 +146,7 @@
 																	<span class="elementor-icon-list-text">Chauffeur
 																		Services</span>
 																</a>
-															</li>
+															</li> -->
 														</ul>
 													</div>
 												</div>
@@ -141,12 +193,12 @@
 																	
 																	<div class="box-footer disable_hover_button">
 																		<div class="btn-wraper">
-																			<a href="../../contact-us/index.htm"
-																				target="_self" rel=""
-																				class="elementskit-btn whitespace--normal elementor-animation-">
-																				contact now
-
-																			</a>
+																			<button 
+																			id="enquiryButton" 
+																			style="padding: 10px 20px; background-color: #ff3600; color: white; border: none; border-radius: 5px; cursor: pointer;"
+																		>
+																			Send Enquiry
+																		</button>
 																		</div>
 																	</div>
 																</div>
@@ -248,12 +300,67 @@
 								
 							</div>
 						</div>
-
-						<div style="color:black;background-color:#ff3600;border-radius:50px; padding:20px;box-shadow:10px 10px 10px lightgrey" class="service-contact-us">
-							<p>Owner Contact : <span id="service_contact1"></span></p>
-							<p>Service Contact : <span  id="service_contact2"></span></p>
+						
+						<div>
+							<img 
+								 
+								src="<?=base_url()?>public/uploads/icon_images/messages.png" 
+								alt="Message Icon" 
+								id="messageIcon"
+							>
+							<img 
+								
+								src="<?=base_url()?>public/uploads/icon_images/whatsapp.png" 
+								alt="WhatsApp Icon" 
+								id="whatsappIcon"
+							>
+							<button 
+								id="enquiryButton" 
+								style="padding: 10px 20px; background-color: #ff3600; color: white; border: none; border-radius: 5px; cursor: pointer;"
+							>
+								Send Enquiry
+							</button>
 						</div>
-					
+
+						<!-- Popups -->
+						<div id="popup1" class="popup">
+							<div class="popup-content">
+								<span class="close" onclick="closePopup('popup1')">&times;</span>
+								<p>Owner Contact: <span id="service_contact1"></span></p>
+							</div>
+						</div>
+
+						<div id="popup2" class="popup">
+							<div class="popup-content">
+								<span class="close" onclick="closePopup('popup2')">&times;</span>
+								<p>Service Contact: <span id="service_contact2"></span></p>
+							</div>
+						</div>
+						<div id="enquiryPopup" class="popup">
+							<div class="popup-content">
+								<span class="close" onclick="closePopup('enquiryPopup')">&times;</span>
+								<h3>Send Enquiry</h3>
+								<form id="enquiryForm" onsubmit="submitEnquiry(event)">
+									<label for="name">Name:</label>
+									<input type="text" id="enquiry_name" name="enquiry_name" required>
+									
+									<label for="email">Email:</label>
+									<input type="email" id="enquiry_email" name="enquiry_email" required>
+									
+									<label for="phone">Phone Number:</label>
+									<input type="text" id="enquiry_phone" name="enquiry_phone" required>
+									
+									<label for="subject">Subject:</label>
+									<input type="text" id="enquiry_subject" name="enquiry_subject" required>
+									
+									<label for="enquiry">Enquiry:</label>
+									<textarea id="enquiry_details" name="enquiry_details" rows="4" required></textarea>
+									
+									<button type="submit" id="submit_enquiry" style="background-color: #ff3600; color: white; border: none; padding: 10px; cursor: pointer; border-radius: 5px;">Submit</button>
+								</form>
+							</div>
+						</div>
+											
 
 				</div>
 				</div>

@@ -23,6 +23,7 @@ use App\Models\ProductPricesModel;
 use App\Models\ServiceModel;
 use App\Models\ServicetagModel;
 use App\Models\ServicecardModel;
+use App\Models\EnquiryModel;
 
 
 class Product_Controller extends Api_Controller
@@ -2538,6 +2539,74 @@ private function service_update($data)
             ];
         }
     }
+
+    public function enquiry_add($data)
+    {
+        $resp = [
+            'status' => false,
+            'message' => 'Enquiry not added',
+            'data' => null
+        ];
+    
+        if (empty($data['enquiry_name'])) {
+            $resp['message'] = 'Please Add Name';
+        } else if (empty($data['enquiry_email'])) {
+            $resp['message'] = 'Please Add an email';
+        } else if (empty($data['enquiry_phone'])) {
+            $resp['message'] = 'Please Add phone';
+        } else if (empty($data['enquiry_subject'])) {
+            $resp['message'] = 'Please Add subject';
+        } else if (empty($data['enquiry_details'])) {
+            $resp['message'] = 'Please Add enquiry_details';
+        } else if (empty($data['service_id'])) {
+            $resp['message'] = 'No Service service_id';
+        } else {
+            $enquiry_uid = $this->generate_uid('ENQUSR');
+    
+            $ServiceModel = new ServiceModel();
+            $service = $ServiceModel->where('uid', $data['service_id'])->first();
+    
+            if (!$service) {
+                $resp['message'] = 'Service not found.';
+            }
+    
+            $service_title = $service['service_title'];
+    
+            $enquiry_data = [
+                'uid' => $enquiry_uid,
+                'enquiry_name' => $data['enquiry_name'],
+                'enquiry_email' => $data['enquiry_email'],
+                'enquiry_subject' => $data['enquiry_subject'],
+                'enquiry_phone' => $data['enquiry_phone'],
+                'enquiry_details' => $data['enquiry_details'],
+                'service_title' => $service_title,
+                'service_id' => $data['service_id'],
+            ];
+    
+            $EnquiryModel = new EnquiryModel();
+    
+            $EnquiryModel->transStart();
+            try {
+                $EnquiryModel->insert($enquiry_data);
+                $EnquiryModel->transComplete();
+    
+                if ($EnquiryModel->transStatus() === false) {
+                    throw new \Exception("Transaction failed.");
+                }
+    
+                $resp['status'] = true;
+                $resp['message'] = 'Enquiry added successfully';
+                $resp['data'] = $enquiry_data;
+    
+            } catch (\Exception $e) {
+                $EnquiryModel->transRollback();
+                $resp['message'] = $e->getMessage();
+            }
+        }
+    
+        return $resp;
+    }
+    
     
 
 
@@ -2845,6 +2914,12 @@ private function service_update($data)
         return $this->response->setJSON($resp);
 
     }
-    
+    public function POST_enquiry_add()
+    {
+        $data = $this->request->getPost();
+        $resp = $this->enquiry_add($data);
+        return $this->response->setJSON($resp);
+
+    }
 
 }
