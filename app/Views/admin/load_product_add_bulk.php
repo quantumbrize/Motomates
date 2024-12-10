@@ -79,15 +79,18 @@
             <table id="product-table" class="table nowrap align-middle table-hover" style="width:100%">
                 <thead>
                 <tr>
-                    <th class="product-column">Product</th>
+                    <th class="product-column">Car Name</th>
                     <th class="store-name-column">Store Name</th>
-                    <th class="barcode-column">Barcode</th>
+                    <th class="barcode-column">Make</th>
+                    <th class="barcode-column">Model</th>
                     <th class="category-column">Category</th>
-                    <th class="size-column">Size</th>
-                    <th class="tags-column">Tags</th>
+                    <th class="size-column">Year</th>
+                    <th class="tags-column">Mileage</th>
+                    <th class="tags-column">Location</th>
+                    <th class="tags-column">Doors</th>
+                    <th class="delivery-charge-column">Badges </th>
                     <th class="tax-column">Tax</th>
                     <th class="discount-column">Discount</th>
-                    <th class="delivery-charge-column">Delivery Charge</th>
                     <th class="price-column">Price</th>
                     <th class="details-column">Details</th>
                     <th class="images-column">Images</th>
@@ -101,7 +104,8 @@
                         <!-- <td><input type="number" placeholder="Enter Price"></td>
                         <td><input type="number" placeholder="Enter Discount"></td> -->
                         <td><input type="text" placeholder="Enter Store Name"></td>
-                        <td><input type="text" placeholder="Enter Barcode"></td>
+                        <td><input type="text" placeholder="Enter Make"></td>
+                        <td><input type="text" placeholder="Enter Model"></td>
                         <td>
                             <select class="product-category-list" id="product-category-0"
                                 onChange="get_sub_category('0')"></select>
@@ -111,11 +115,20 @@
                                 <i class="fas fa-redo" onclick="reset_category('0')"></i>
                             </p>
                         </td>
-                        <td>
-                            <select class="product-size-list-input"></select>
-                        </td>
+                        <td><input type="text" placeholder="Enter Year"></td>
+                        <td><input type="text" placeholder="Enter Mileage"></td>
+                        <td><input type="text" placeholder="Enter Location"></td>
                         <!-- <td><input type="number" placeholder="Enter Quantity"></td> -->
-                        <td><input type="text" placeholder="Enter Tags"></td>
+                        <!-- <td><input type="text" placeholder="Enter Tags"></td> -->
+                        <td><input type="text" placeholder="Enter Doors"></td>
+                        <td>
+                            <select class="form-control">
+                                <option value="">Select-Badge</option>
+                                <option value="New">New</option>
+                                <option value="Used">Used</option>
+                                <option value="Certified Pre-Owned">Certified Pre-Owned</option>
+                            </select>
+                        </td>
                         <td>
                             <select class="product-tax-list" id="product-tax-0">
                                 <option value="0">00.00% IGST - (00.00% CGST & 00.00% SGST)</option>
@@ -133,7 +146,6 @@
                             </select>
                         </td>
                         <td><input type="text" placeholder="Discount"></td>
-                        <td><input type="text" placeholder="Delivery Charge"></td>
                         <!-- <td>
                             <button type="button" class="btn btn-md btn-secondary" onclick="openPriceModal(this)">
                                 <i class="ri-money-dollar-circle-fill"></i>

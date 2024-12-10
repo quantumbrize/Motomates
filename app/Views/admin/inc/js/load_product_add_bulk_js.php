@@ -309,20 +309,29 @@
         const tableBody = document.getElementById('product-table-body');
         const newRow = document.createElement('tr');
         category_id += 1;
-        newRow.innerHTML = `<td>
-            <input type="text" placeholder="Enter Product Name" required>
-        </td>
+        newRow.innerHTML = `<td><input type="text" placeholder="Enter Product Name" required></td>
         <td><input type="text" placeholder="Enter Store Name"></td>
-        <td><input type="text" placeholder="Enter Barcode"></td>
+        <td><input type="text" placeholder="Enter Make"></td>
+        <td><input type="text" placeholder="Enter Model"></td>
         <td>
             <select class="product-category-list" id="product-category-${category_id}" onChange="get_sub_category('${category_id}')"></select>
             <input type="hidden" id="selected-cat-name-${category_id}">
             <p>Selected Category:- <b id="selected-cat-${category_id}"></b><i class="fas fa-redo" onclick="reset_category('${category_id}')"></i></p>
         </td>
+        <td><input type="text" placeholder="Enter Year"></td>
+        <td><input type="text" placeholder="Enter Mileage"></td>
+        <td><input type="text" placeholder="Enter Location"></td>
+        <!-- <td><input type="number" placeholder="Enter Quantity"></td> -->
+        <!-- <td><input type="text" placeholder="Enter Tags"></td> -->
+        <td><input type="text" placeholder="Enter Doors"></td>
         <td>
-            <select class="product-size-list-input"></select>
+            <select class="form-control">
+                <option value="">Select-Badge</option>
+                <option value="New">New</option>
+                <option value="Used">Used</option>
+                <option value="Certified Pre-Owned">Certified Pre-Owned</option>
+            </select>
         </td>
-        <td><input type="text" placeholder="Enter Tags"></td> 
         <td>
             <select class="product-tax-list" id="product-tax-${category_id}">
                 <option value="0">00.00% IGST - (00.00% CGST & 00.00% SGST)</option>
@@ -340,7 +349,6 @@
             </select>
         </td>
         <td><input type="text" placeholder="Discount"></td>
-        <td><input type="text" placeholder="Delivery Charge"></td>
         <td><input type="text" id="price" placeholder="Enter Price"></td>
         <td>
             <button type="button" class="btn btn-md btn-primary" onclick="openDescriptionModal(this)">
