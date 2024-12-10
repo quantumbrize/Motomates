@@ -86,7 +86,9 @@
                     <div class="card">
                         <div class="card-body">
                             <label class="form-label" for="file-input-service">Service Image</label>
-                            <input type="file" id="file-input-service" multiple>
+                            <!-- File input remains hidden -->
+                            <input type="file" id="file-input-service" multiple style="display: none;">
+                            <!-- Styled button for file upload -->
                             <label for="file-input-service" id="btn_upload" class="btn btn-success">
                                 <i class="fas fa-upload"></i> &nbsp; Select Service Image
                             </label>
@@ -94,6 +96,18 @@
                             <div id="images"></div>
                         </div>
                     </div>
+
+                    <div class="card">
+                        <div class="card-body">
+                            <label class="form-label" for="file-input-service-icon">Service Icon</label>
+                            <!-- File input remains hidden -->
+                            <input type="file" id="file-input-service-icon" multiple>
+                            <!-- Styled button for file upload -->
+                            <p id="num-of-icons"></p>
+                            <div id="icons"></div>
+                        </div>
+                    </div>
+
 
                     <!-- Service Title -->
                     <div class="card">

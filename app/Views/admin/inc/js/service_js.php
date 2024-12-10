@@ -9,6 +9,10 @@
     let $imageContainer = $("#images");
     let $numOfFiles = $("#num-of-files");
 
+    let $iconInput = $("#file-input-service-icon");
+    let $iconContainer = $("#icons");
+    let $numOfIcons = $("#num-of-icons");
+
     $fileInput.change(function () {
         $imageContainer.html("");
         $numOfFiles.text(`${$fileInput[0].files.length} Files Selected`);
@@ -22,6 +26,22 @@
                 $figure.prepend($img);
             }
             $imageContainer.append($figure);
+            reader.readAsDataURL(file);
+        });
+    });
+    $iconInput.change(function () {
+        $iconContainer.html("");
+        $numOfIcons.text(`${$iconInput[0].files.length} Files Selected`);
+        $.each($iconInput[0].files, function (index, file) {
+            let reader = new FileReader();
+            let $figure = $("<figure>");
+            let $figCap = $("<figcaption>").text(file.name);
+            $figure.append($figCap);
+            reader.onload = function () {
+                let $img = $("<img>").attr("src", reader.result);
+                $figure.prepend($img);
+            }
+            $iconContainer.append($figure);
             reader.readAsDataURL(file);
         });
     });
@@ -134,6 +154,10 @@ $('#selected-service-cards').on('click', '.remove-tag', function () {
     // Append service images
     $.each($('#file-input-service')[0].files, function (index, file) {
         formData.append('images[]', file);
+    });
+
+    $.each($('#file-input-service-icon')[0].files, function (index, file) {
+        formData.append('icons[]', file);
     });
 
     // Send AJAX request
@@ -443,7 +467,7 @@ function load_all_services() {
                             let cardsHtml = `<div class="card-data-wrapper" style="max-height: 200px; overflow-y: auto;">`;
                             $.each(service.cards, function (cardIndex, card) {
                                 // Construct the card image URL
-                                let cardImageUrl = `<?= base_url('') ?>public/uploads/service_card_images/${card.service_card_image}`;
+                                let cardImageUrl = `<?= base_url('') ?>public/uploads/service_images/${card.service_card_image}`;
 
                                 // Add each card's details
                                 cardsHtml += `
@@ -542,10 +566,7 @@ function load_all_service_enquiry() {
                     $('#service_enquiry_data_table_body').html(html);
 
                     // Reinitialize DataTable if needed
-                    if ($.fn.DataTable.isDataTable('#service_page_data_table')) {
-                        $('#service_page_data_table').DataTable().clear().destroy();
-                    }
-                    $('#service_page_data_table').DataTable();
+                    
                 } else {
                     $('#service_enquiry_data_table').html(`<tr>
                         <td colspan="8" style="text-align:center;">
