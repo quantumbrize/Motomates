@@ -526,7 +526,7 @@
                             console.log('productall', product);
                             html+=`<div class="swiper-slide">
 											<div class="perfect-fleet-item">
-												<div class="image-box"><a href="cars/voyager-hybrid/index.htm"><img
+												<div class="image-box"><a href="<?=base_url()?>single-car?product_uid=${product.product_id}"><img
 															decoding="async" width="410" height="234"
 															src="<?= base_url()?>public/uploads/product_images/${product.src}"
 															class="attachment-novaride-thumb size-novaride-thumb wp-post-image"
@@ -535,7 +535,7 @@
 													<div class="perfect-fleet-title">
 														<h3><a href="car-type/electric-car/index.htm">${product.manufacturer_name}</a>
 														</h3>
-														<h2><a href="cars/voyager-hybrid/index.htm">${product.name}</a>
+														<h2><a href="<?=base_url()?>single-car?product_uid=${product.product_id}">${product.name}</a>
 														</h2>
 													</div>
 
@@ -555,7 +555,7 @@
 															<h2>${product.base_price}<span>/Per Day</span></h2>
 														</div>
 														<div class="perfect-fleet-btn">
-															<a href="#"
+															<a href="<?=base_url()?>single-car?product_uid=${product.product_id}"
 																class="section-icon-btn"><img decoding="async"
 																	src="<?= base_url()?>public/assets/motomates/wp-content/themes/novaride/assets/images/arrow-white.svg"
 																	alt=""></a>

@@ -20,11 +20,11 @@ function load_all_products() {
                             console.log('productall', product);
                             html+=`<div class="col-lg-4 col-md-6">
 							<div class="perfect-fleet-item fleets-collection-item">
-                                    <div class="image-box"><a href="#"><img fetchpriority="high" width="410" height="234" src="<?=base_url()?>public/uploads/product_images/${product.src}" class="attachment-novaride-thumb size-novaride-thumb wp-post-image" alt="" decoding="async"></a></div>    
+                                    <div class="image-box"><a href="<?=base_url()?>single-car?product_uid=${product.product_id}"><img fetchpriority="high" width="410" height="234" src="<?=base_url()?>public/uploads/product_images/${product.src}" class="attachment-novaride-thumb size-novaride-thumb wp-post-image" alt="" decoding="async"></a></div>    
                                     <div class="perfect-fleet-content">
 										<div class="perfect-fleet-title">
-																								<h3><a href="#">${product.manufacturer_name}r</a></h3>
-																								<h2><a href="#">${product.name}</a></h2>                                        </div>
+																								<h3><a href="<?=base_url()?>single-car?product_uid=${product.product_id}>${product.manufacturer_name}r</a></h3>
+																								<h2><a href="<?=base_url()?>single-car?product_uid=${product.product_id}">${product.name}</a></h2>                                        </div>
                                         
                                         <div class="perfect-fleet-body">
                                           <ul><li><label><img src="../wp-content/uploads/2024/09/icon-door.svg"> <span class="feature-label">Doors</span></label><span class="feature-value"> ${product.doors}</span></li><li><label><img src="../wp-content/uploads/2024/09/icon-passengers.svg"> <span class="feature-label">Passengers</span></label><span class="feature-value"> 2</span></li></ul>                                        </div>
