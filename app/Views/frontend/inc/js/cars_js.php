@@ -33,7 +33,7 @@ function load_all_products() {
                                             <div class="perfect-fleet-pricing">
                                                <h2>${product.base_price}<span>/Per Day</span></h2>                                            </div>
                                             <div class="perfect-fleet-btn">
-                                                <a href="voyager-hybrid/index.htm" class="section-icon-btn"><img src="../wp-content/themes/novaride/assets/images/arrow-white.svg" alt=""></a>
+                                                <a href="<?=base_url()?>single-car?product_uid=${product.product_id}" class="section-icon-btn"><img src="<?=base_url()?>public/assets/motomates/wp-content/themes/novaride/assets/images/arrow-white.svg" alt=""></a>
                                             </div>
                                         </div>
                                     </div>

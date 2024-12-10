@@ -96,6 +96,7 @@ $routes->get('/admin/add/expart-review',            'Admin\User_Controller::load
 $routes->get('/admin/exparts-reviews',              'Admin\User_Controller::load_expart_review'); // Admin Expart Review page
 $routes->get('/admin/reviews',                      'Admin\User_Controller::load_review'); // Admin Expart Review page
 $routes->get('/admin/service',                      'Admin\Admin_Controller::load_service');
+$routes->get('/admin/add/service',                      'Admin\Orders_Controller::load_service_enquiry');
 
 
 
@@ -310,6 +311,10 @@ $routes->get('/all/service',                          'Frontend\Frontend_Control
 $routes->get('/api/all/booking',                   'Api\Order_Controller::GET_booking_all');
 
 $routes->get('/load-bookings',                       'Admin\Orders_Controller::load_bookings');
+
+$routes->get('single-car',                          'Frontend\Frontend_Controller::single_car');
+
+$routes->get('api/get/single_product',                   'Api\User_Controller::GET_product_single');
 
 
 

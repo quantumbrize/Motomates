@@ -1452,5 +1452,26 @@ class Frontend_Controller extends Main_Controller
         ];
         $this->load_page('/frontend/service_all', $data);
     }
+
+    public function single_car(): void
+    {
+        $data = PAGE_DATA_FRONTEND;
+        $data = [
+            'data_page' => [],
+            'data_header' => [
+                'header_link' => [],
+                'title' => 'Car',
+                'header' => ['single_car'=>true],
+                'sidebar' => [],
+                'site' => 'frontend'
+            ],
+            'data_footer' => [
+                'footer_link' => ['single_car_js.php'],
+                'footer' => [],
+                'site' => 'frontend'
+            ]
+        ];
+        $this->load_page('/frontend/single_car', $data);
+    }
     
 }

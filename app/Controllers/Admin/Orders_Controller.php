@@ -127,6 +127,30 @@ class Orders_Controller extends Admin_Controller
 
 
     }
+    public function load_service_enquiry()
+    {
+
+        $data = PAGE_DATA_ADMIN;
+        $data = [
+            'data_page' => [],
+            'data_header' => [
+                'header_link' => ['service_enquiry_css.php'],
+                'title' => 'Service Enquiry',
+                'header' => [],
+                'sidebar' => ['service_enquiry' => true],
+                'site' => 'admin'
+            ],
+            'data_footer' => [
+                'footer_link' => ['service_enquiry_js.php'],
+                'footer' => [],
+                'site' => 'admin'
+            ]
+        ];
+
+        $this->isAuth('/admin/service_enquiry', $data);
+
+
+    }
 
 }
 

@@ -19,6 +19,10 @@ use App\Models\AboutModel;
 use App\Models\AdmintagModel;
 use App\Models\FrontendtagModel;
 use App\Models\ProductModel;
+use App\Models\CarSpecificationModel;
+use App\Models\ProductConfigModel;
+use App\Models\ProductImagesModel;
+use App\Models\ProductPricesModel;
 use App\Models\BlogModel;
 use App\Models\ServicetagModel;
 use App\Models\ServiceModel;
@@ -2069,6 +2073,39 @@ class User_Controller extends Api_Controller
         }
         return $resp;
     }
+    // private function product_single($data)
+    // {
+    //     $resp = [
+    //         'status' => false,
+    //         'message' => 'No service found',
+    //         'data' => []
+    //     ];
+    
+    //     try {
+    //         $ProductModel = new ProductModel();
+    //         $CarSpecificationModel = new CarSpecificationModel();
+    //         $ProductImagesModel = new ProductImagesModel();
+    //         // $ProductImagesModel = new ProductImagesModel();
+    //         // $ProductPricesModel = new ProductPricesModel();
+    //         $products['main'] = $ProductModel->where('uid',$data['productId'])->first();
+    //         $products['specs'] = $CarSpecificationModel->where('product_id',$data['productId'])->first();
+    //         $products['images'] = $ProductImagesModel->where('product_id',$data['productId'])->first();
+    //         // $products['prices'] = $ProductPricesModel->where('uid',$data['productId'])->first();
+    //         // $this->prd($services);
+    //         if (count($products) > 0) {
+    //             $resp = [
+    //                 'status' => true,
+    //                 'message' => 'Services found',
+    //                 'data' => $products
+    //             ];
+    //         }
+    //     } catch (\Exception $e) {
+    //         $resp['message'] = $e->getMessage();
+    //     }
+    
+    //     return $resp;
+        
+    // }
 
 
 
@@ -2409,6 +2446,13 @@ class User_Controller extends Api_Controller
     {
         $data = $this->request->getPost();
         $resp = $this->submit_booking($data);
+        return $this->response->setJSON($resp);
+
+    }
+    public function GET_product_single()
+    {
+        $data = $this->request->getGet();
+        $resp = $this->product_single($data);
         return $this->response->setJSON($resp);
 
     }

@@ -57,20 +57,7 @@
                                                     class="badge bg-danger-subtle text-danger align-middle rounded-pill ms-1"></span>
                                             </a>
                                         </li>
-                                        <!-- <li class="nav-item">
-                                            <a class="nav-link fw-semibold" data-bs-toggle="tab"
-                                                href="#productnav-published" role="tab">
-                                                Published <span 
-                                                    class="badge bg-danger-subtle text-danger align-middle rounded-pill ms-1">0</span>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link fw-semibold" data-bs-toggle="tab"
-                                                href="#productnav-draft" role="tab">
-                                                Draft<span 
-                                                    class="badge bg-danger-subtle text-danger align-middle rounded-pill ms-1">0</span>
-                                            </a>
-                                        </li> -->
+                                       
                                     </ul>
                                 </div>
                                 <div class="col-auto">
