@@ -24,6 +24,7 @@ use App\Models\ServiceModel;
 use App\Models\ServicetagModel;
 use App\Models\ServicecardModel;
 use App\Models\EnquiryModel;
+use App\Models\CarSpecificationModel;
 
 
 class Product_Controller extends Api_Controller
@@ -186,29 +187,29 @@ class Product_Controller extends Api_Controller
 
         foreach($data['products'] as $index => $product) {
             // Handle size chart file if provided, or assign default image
-            $sizeChartFileName = 'demo_img.jpg'; // Default image name
+            // $sizeChartFileName = 'demo_img.jpg'; // Default image name
 
-            if (isset($uploadedFiles['size_chart']) && $uploadedFiles['size_chart']->isValid()) {
-                $sizeChartFile = $uploadedFiles['size_chart'];
+            // if (isset($uploadedFiles['size_chart']) && $uploadedFiles['size_chart']->isValid()) {
+            //     $sizeChartFile = $uploadedFiles['size_chart'];
                 
-                // Define the target directory
-                $targetDirectory = FCPATH . 'public/uploads/size_charts/';
+            //     // Define the target directory
+            //     $targetDirectory = FCPATH . 'public/uploads/size_charts/';
                 
-                // Ensure the directory exists, create it if not
-                if (!is_dir($targetDirectory)) {
-                    mkdir($targetDirectory, 0777, true);
-                }
+            //     // Ensure the directory exists, create it if not
+            //     if (!is_dir($targetDirectory)) {
+            //         mkdir($targetDirectory, 0777, true);
+            //     }
 
-                // Generate a unique name for the size chart file to avoid overwriting
-                $sizeChartFileName = uniqid('size_chart_') . '.' . $sizeChartFile->getExtension();
+            //     // Generate a unique name for the size chart file to avoid overwriting
+            //     $sizeChartFileName = uniqid('size_chart_') . '.' . $sizeChartFile->getExtension();
 
-                // Move the file to the target directory
-                $sizeChartFile->move($targetDirectory, $sizeChartFileName);
-            }
+            //     // Move the file to the target directory
+            //     $sizeChartFile->move($targetDirectory, $sizeChartFileName);
+            // }
             
             // Get size data from the ProductSizeListModel
-            $stocks_list = $ProductSizeListModel->where('uid', $product['size'])->first();
-            $listOfSizes = json_decode($stocks_list['size_list'], true);
+            // $stocks_list = $ProductSizeListModel->where('uid', $product['size'])->first();
+            // $listOfSizes = json_decode($stocks_list['size_list'], true);
 
             // Prepare the product data
             $product_data[] = array(
@@ -217,22 +218,22 @@ class Product_Controller extends Api_Controller
                 'category_id' => $product['category'],
                 'name' => $product['productName'],
                 'description' => $product['description'],
-                'size_id' => $product['size'],
+                // 'size_id' => $product['size'],
                 'status' => $data['status'],
-                'size_chart' => $sizeChartFileName, // Save the name of the size chart file (or default image)
+                // 'size_chart' => $sizeChartFileName, // Save the name of the size chart file (or default image)
             );
 
             // Prepare the stock data
-            foreach ($listOfSizes as $i => $size_list_data) {
-                $item_stock_data[] = [
-                    'uid' => $this->generate_uid('ITSKU'),
-                    'product_id' => $product_data[$index]['uid'],
-                    'varient_id' => '',
-                    'size_id' => $product['size'],
-                    'sizes' => $size_list_data,
-                    'stocks' => 0,
-                ];
-            }
+            
+            $item_stock_data[] = [
+                'uid' => $this->generate_uid('ITSKU'),
+                'product_id' => $product_data[$index]['uid'],
+                'varient_id' => '',
+                // 'size_id' => $product['size'],
+                // 'sizes' => $size_list_data,
+                'stocks' => 0,
+            ];
+            
 
             // Prepare the product item data
             $product_item_data[] = array(
@@ -241,14 +242,27 @@ class Product_Controller extends Api_Controller
                 'price' => $product['price'],
                 'discount' => $product['discount'],
                 'tax' => $product['tax'],
-                'delivery_charge' => $product['del_charge'],
-                'product_tags' => $product['tags'],
+                // 'delivery_charge' => $product['del_charge'],
+                // 'product_tags' => $product['tags'],
                 'publish_date' => "",
                 'status' => "",
                 'visibility' => "visible",
                 'quantity' => '0',
-                'manufacturer_brand' => $product['barCode'],
+                // 'manufacturer_brand' => $product['barCode'],
                 'manufacturer_name' => $product['storeName']
+            );
+
+            $car_specification_data[] = array(
+                'uid' => $this->generate_uid("CARSPEC"),
+                'product_id' => $product_data[$index]['uid'],
+                'make ' => $product['make'],
+                'model' => $product['model'],
+                'year' => $product['year'],
+                'mileage ' => $product['mileage'],
+                'location' => $product['location'],
+                'doors' => $product['doors'],
+                'badges' => $product['badges'],
+                
             );
 
             // Handle product images upload
@@ -271,6 +285,7 @@ class Product_Controller extends Api_Controller
         $ProductModel = new ProductModel();
         $ProductItemModel = new ProductItemModel();
         $ItemStocksModel = new ItemStocksModel();
+        $CarSpecificationModel = new CarSpecificationModel();
 
         // Transaction Start
         $ProductModel->transStart();
@@ -279,6 +294,7 @@ class Product_Controller extends Api_Controller
             $ProductModel->insertBatch($product_data);
             $ItemStocksModel->insertBatch($item_stock_data);
             $ProductItemModel->insertBatch($product_item_data);
+            $CarSpecificationModel->insertBatch($car_specification_data);
             $ProductModel->transCommit();
         } catch (\Exception $e) {
             // Rollback the transaction if an error occurs
@@ -296,56 +312,65 @@ class Product_Controller extends Api_Controller
     
     
 
-    private function product_bulk_update($data)
-    {
-        $resp = [
-            'status' => false,
-            'message' => 'Product not added',
-            'data' => null
+   private function product_bulk_update($data)
+{
+    $resp = [
+        'status' => false,
+        'message' => 'Products not updated',
+        'data' => null
+    ];
+
+    if (empty($data['products'])) {
+        $resp['message'] = 'No products to update';
+        return $resp;
+    }
+
+    $ProductModel = new ProductModel();
+    $ProductItemModel = new ProductItemModel();
+    $CarSpecificationModel = new CarSpecificationModel();
+
+    foreach ($data['products'] as $product) {
+        $product_update_data = [
+            'name' => $product['productName'],
+            'category_id' => $product['category'],
         ];
 
-        // $this->prd($data);
-        if (empty($data['products'])) {
-            $resp['message'] = 'No products to update';
-        } else {
-            $ProductModel = new ProductModel();
-            $ProductItemModel = new ProductItemModel();
-            foreach($data['products'] as $index => $product){
-                $ptoduct_update_data = [
-                    'name' => $product['productName'],
-                    'category_id' => $product['category'],
-                    'size_id' => $product['size']
-                ];
+        $product_item_update_data = [
+            'manufacturer_name' => $product['storeName'],
+            'tax' => $product['tax'],
+            'discount' => $product['discount'],
+            'price' => $product['price'],
+        ];
 
-                $ptoduct_item_update_data = [
-                    // 'price' => $product['price'],
-                    // 'discount' => $product['discount'],
-                    // 'quantity' => $product['qty'],
-                    'product_tags' => $product['tags'],
-                    'manufacturer_name' => $product['storeName'],
-                    'manufacturer_brand' => $product['barCode'],
-                    'tax'=>$product['tax'],
-                    'discount'=>$product['discount'],
-                    'delivery_charge'=>$product['delivery_charge'],
-                    'price'=>$product['price']
-                ];
+        $car_specification_data = [
+            'make' => $product['make'],
+            'model' => $product['model'],
+            'year' => $product['year'],
+            'mileage' => $product['mileage'],
+            'location' => $product['location'],
+            'doors' => $product['doors'],
+            'badges' => $product['badges'],
+        ];
 
-                $ProductModel->set($ptoduct_update_data)
-                    ->where('uid', $product['productId'])
-                    ->update();
-                $ProductItemModel->set($ptoduct_item_update_data)
-                    ->where('product_id', $product['productId'])
-                    ->update();
-            }
-            $resp['status'] = true;
-            $resp['message'] = 'Product Updated';
-            $resp['data'] = [];
-        }
-        return $resp;
+        // Update queries
+        $ProductModel->set($product_update_data)
+            ->where('uid', $product['productId'])
+            ->update();
 
+        $ProductItemModel->set($product_item_update_data)
+            ->where('product_id', $product['productId'])
+            ->update();
 
-
+        $CarSpecificationModel->set($car_specification_data)
+            ->where('product_id', $product['productId'])
+            ->update();
     }
+
+    $resp['status'] = true;
+    $resp['message'] = 'Products updated successfully';
+    return $resp;
+}
+
 
     private function update_product($data)
     {
@@ -581,6 +606,14 @@ class Product_Controller extends Api_Controller
             product.status AS product_status,
             product.created_at AS created_at,
             product.uid,
+            car_specification.make, 
+            car_specification.model, 
+            car_specification.year, 
+            car_specification.mileage, 
+            car_specification.location, 
+            car_specification.doors, 
+            car_specification.badges,
+            product_images.src,
             
             categories.name AS category,
             categories.uid AS category_id,
@@ -612,6 +645,8 @@ class Product_Controller extends Api_Controller
         LEFT JOIN
             product_item ON product.uid = product_item.product_id
         LEFT JOIN
+            car_specification  ON product.uid = car_specification.product_id
+        LEFT JOIN
             product_meta_detalis ON product.uid = product_meta_detalis.product_id
         LEFT JOIN 
             categories ON product.category_id = categories.uid
@@ -620,7 +655,9 @@ class Product_Controller extends Api_Controller
         LEFT JOIN
             users ON vendor.user_id = users.uid
         LEFT JOIN
-            product_size_list ON product.size_id = product_size_list.uid";
+            product_size_list ON product.size_id = product_size_list.uid
+        LEFT JOIN
+            product_images ON product.uid = product_images.product_id";
 
         if (!empty($data['p_id'])) {
             $p_id = $data['p_id'];
@@ -2283,6 +2320,14 @@ public function service_add($data)
                 }
             }
         }
+        if (isset($uploadedFiles['icons'])) {
+            foreach ($uploadedFiles['icons'] as $file) {
+                $file_src = $this->single_upload($file, PATH_SERVICE);
+                if ($file_src) {
+                    $service_data['service_icon'] = $file_src;
+                }
+            }
+        }
 
         $ServiceModel = new ServiceModel();
         $ServicetagModel = new ServicetagModel();
@@ -2397,6 +2442,14 @@ private function service_update($data)
                 $service_data['service_img'] = $file_src;
             }
         }
+
+        if (isset($uploadedFiles['icons'])) {
+            foreach ($uploadedFiles['icons'] as $file) {
+                $file_src = $this->single_upload($file, PATH_SERVICE); // Upload file for service image
+                $service_data['service_icon'] = $file_src;
+            }
+        }
+        
 
         // Check if the service exists
         $ServiceModel = new ServiceModel();

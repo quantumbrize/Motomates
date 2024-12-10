@@ -35,31 +35,11 @@
 </ul><input type="hidden" name="ofcar-types_operator" value="or"></li><li><input type="hidden" name="ofsubmitted" value="1"><input type="submit" value="Search"></li></ul></div></form></div></aside>					</div>
 	</div>
 </div>					<div class="col-lg-9 col-md-12">
-						<div class="row">
+						<div id="cars" class="row">
 					
-						<div class="col-lg-4 col-md-6">
-							<div class="perfect-fleet-item fleets-collection-item">
-                                    <div class="image-box"><a href="voyager-hybrid/index.htm"><img fetchpriority="high" width="410" height="234" src="../wp-content/uploads/2024/08/Voyager-Hybrid.png" class="attachment-novaride-thumb size-novaride-thumb wp-post-image" alt="" decoding="async"></a></div>    
-                                    <div class="perfect-fleet-content">
-										<div class="perfect-fleet-title">
-																								<h3><a href="../car-type/electric-car/index.htm">Electric Car</a></h3>
-																								<h2><a href="voyager-hybrid/index.htm">Voyager Hybrid</a></h2>                                        </div>
-                                        
-                                        <div class="perfect-fleet-body">
-                                          <ul><li><label><img src="../wp-content/uploads/2024/09/icon-door.svg"> <span class="feature-label">Doors</span></label><span class="feature-value"> 4</span></li><li><label><img src="../wp-content/uploads/2024/09/icon-passengers.svg"> <span class="feature-label">Passengers</span></label><span class="feature-value"> 2</span></li></ul>                                        </div>
-    
-                                        <div class="perfect-fleet-footer">
-                                            <div class="perfect-fleet-pricing">
-                                               <h2>$248<span>/Per Day</span></h2>                                            </div>
-                                            <div class="perfect-fleet-btn">
-                                                <a href="voyager-hybrid/index.htm" class="section-icon-btn"><img src="../wp-content/themes/novaride/assets/images/arrow-white.svg" alt=""></a>
-                                            </div>
-                                        </div>
-                                    </div>
-							</div>
-                          </div>
 						
-						<div class="col-lg-4 col-md-6">
+						
+						<!-- <div class="col-lg-4 col-md-6">
 							<div class="perfect-fleet-item fleets-collection-item">
                                     <div class="image-box"><a href="sapphire-convertible/index.htm"><img width="410" height="234" src="../wp-content/uploads/2024/08/Sapphire-Convertible.png" class="attachment-novaride-thumb size-novaride-thumb wp-post-image" alt="" decoding="async"></a></div>    
                                     <div class="perfect-fleet-content">
@@ -147,7 +127,7 @@
 							</div>
                           </div>
 						
-						<div class="col-lg-4 col-md-6">
+						<div class="col-lg-4 col-md-6"> -->
 							<div class="perfect-fleet-item fleets-collection-item">
                                     <div class="image-box"><a href="voyager-gt/index.htm"><img loading="lazy" width="410" height="234" src="../wp-content/uploads/2024/08/Voyager-GT.png" class="attachment-novaride-thumb size-novaride-thumb wp-post-image" alt="" decoding="async"></a></div>    
                                     <div class="perfect-fleet-content">

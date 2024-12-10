@@ -307,6 +307,10 @@ $routes->post('/send-booking',                           'Api\User_Controller::P
 
 $routes->get('/all/service',                          'Frontend\Frontend_Controller::service_all');
 
+$routes->get('/api/all/booking',                   'Api\Order_Controller::GET_booking_all');
+
+$routes->get('/load-bookings',                       'Admin\Orders_Controller::load_bookings');
+
 
 
 

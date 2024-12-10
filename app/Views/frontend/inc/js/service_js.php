@@ -23,7 +23,8 @@
                 html2=`${resp.data.service_title}`
 
                 html3=`${resp.data.service_description}`
-                html4=`${resp.data.service_contact}`
+                // html4=`${resp.data.service_contact}`
+                html4=`<a href="https://wa.me/${resp.data.service_contact}?text=Hello%20there!" target="_blank">${resp.data.service_contact}</a>`
                 
 
                 
@@ -33,7 +34,7 @@
                 $("#service_description").html(html3)
                 $("#service_contact2").html(html4)
                 
-                whatsapp_number=resp.data.service_contact
+                // whatsapp_number=resp.data.service_contact
             } else {
                 console.log(resp)
             }
@@ -239,12 +240,13 @@ function load_all_service_pages() {
     }
 
     // Add event listeners
-    document.getElementById('messageIcon').addEventListener('click', function() {
-        openPopup('popup1');
-    });
+    // document.getElementById('messageIcon').addEventListener('click', function() {
+    //     openPopup('popup1');
+    // });
 
     document.getElementById('whatsappIcon').addEventListener('click', function() {
-        window.open(`https://wa.me/${whatsapp_number}?text=Hello%20there!`, "_blank");
+        openPopup('popup1');
+        // window.open(`https://wa.me/${whatsapp_number}?text=Hello%20there!`, "_blank");
     });
 
     document.getElementById('enquiryButton').addEventListener('click', function() {

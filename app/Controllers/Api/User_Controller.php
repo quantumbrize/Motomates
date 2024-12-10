@@ -2024,8 +2024,8 @@ class User_Controller extends Api_Controller
             $resp['message'] = 'Please Enter Name';
         }   else if (empty($data['phone'])) {
             $resp['message'] = 'Please Enter phone';
-        } else if (empty($data['pickup_location'])) {
-            $resp['message'] = 'Please Enter pickup location';
+        } else if (empty($data['society'])) {
+            $resp['message'] = 'Please Enter society';
         } else if (empty($data['pickup_time'])) {
             $resp['message'] = 'Please Enter pickup time.';
         } else if (empty($data['pickup_date'])) {
@@ -2041,7 +2041,7 @@ class User_Controller extends Api_Controller
                 'uid' => $this->generate_uid('BOKREN'),
                 'fname' => $data['fname'],
                 'phone' => $data['phone'],
-                'pickup_location' => $data['pickup_location'],
+                'society' => $data['society'],
                 'pickup_time' => $data['pickup_time'],
                 // 'subject' => $data['subject'],
                 'pickup_date' => $data['pickup_date'],

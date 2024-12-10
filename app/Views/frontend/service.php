@@ -303,17 +303,27 @@
 						</div>
 						
 						<div>
-							<img 
+							<!-- <img 
 								 
 								src="<?=base_url()?>public/uploads/icon_images/messages.png" 
 								alt="Message Icon" 
 								id="messageIcon"
-							>
-							<img 
+							> -->
+							<!-- <img 
 								src="<?=base_url()?>public/uploads/icon_images/whatsapp.png" 
 								alt="WhatsApp Icon" 
 								id="whatsappIcon"
+							> -->
+
+							<button 
+							id="whatsappIcon" style="padding: 10px 20px; background-color: #ff3600; color: white; border: none; border-radius: 5px; cursor: pointer;font-size:10px;"
 							>
+							<img style="width:10%"
+								src="<?=base_url()?>public/uploads/icon_images/whatsapp.png" 
+								alt="WhatsApp Icon" 
+								
+							>Send whatsapp message
+							</button>
 							<button 
 								id="enquiryButton-1"
 								data-bs-toggle="modal" data-bs-target="#exampleModal" 

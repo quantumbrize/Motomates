@@ -18,6 +18,7 @@ use App\Models\ProductSizeListModel;
 use App\Models\ItemStocksModel;
 use App\Models\ProductItemModel;
 use App\Models\PrescriptionModel;
+use App\Models\RentalModel;
 
 class Order_Controller extends Main_Controller
 {
@@ -1296,6 +1297,35 @@ class Order_Controller extends Main_Controller
         return $resp;
     }
 
+    private function booking_all()
+    {
+        $resp = [
+            'status' => false,
+            'message' => 'Prescription not found',
+            'data' => null
+        ];
+        // $this->prd();
+        try {
+            $RentalModel = new RentalModel();
+            $rental = $RentalModel->findAll();
+            
+            
+            if (!empty($rental)) {
+                $resp = [
+                    'status' => true,
+                    'message' => 'rental found',
+                    'data' => $rental
+                ];
+            }
+
+        } catch (\Exception $e) {
+            // Handle Any Error
+            $resp['message'] = $e->getMessage();
+        }
+
+        return $resp;
+    }
+
 
 
 
@@ -1453,6 +1483,12 @@ class Order_Controller extends Main_Controller
     public function GET_seller_earning()
     {
         $resp = $this->seller_earning();
+        return $this->response->setJSON($resp);
+    }
+
+    public function GET_booking_all()
+    {
+        $resp = $this->booking_all();
         return $this->response->setJSON($resp);
     }
 

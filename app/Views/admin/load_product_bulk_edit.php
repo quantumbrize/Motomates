@@ -29,14 +29,22 @@
                         <!-- <th>Price</th>
                         <th>Discount</th> -->
                         <th>Store Name</th>
-                        <th>Barcode</th>
+                        <!-- <th>Barcode</th> -->
+                        
+                        <th>Make</th>
+                        <th>Model</th>
+                        <th>Year</th>
+                        <th>Mileage</th>
+                        <th>Location</th>
+                        <th>Doors</th>
+                        <th>Badges</th>
                         <th>Category</th>
-                        <th>Size</th>
+                        <!-- <th>Size</th> -->
                         <!-- <th>Quantity</th> -->
-                        <th>Tags</th>
+                        <!-- <th>Tags</th> -->
                         <th>Tax</th>
                         <th>Discount</th>
-                        <th>Delivery Charge</th>
+                        <!-- <th>Delivery Charge</th> -->
                         <th>Price</th>
                         <th>Details</th>
                         <th>Images</th>

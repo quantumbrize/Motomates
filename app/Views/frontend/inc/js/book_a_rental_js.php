@@ -37,7 +37,7 @@
     // Gather all form values
     const fullName = document.getElementById('fname').value;
     const phone = document.getElementById('phone').value;
-    const pickupLocation = document.getElementById('pickuplocation').value;
+    const society = document.getElementById('society').value;
     const pickupTime = document.getElementById('departuretime').value;
     const pickupDate = document.getElementById('date').value;
     const returnTime = document.getElementById('returntime').value;
@@ -49,7 +49,7 @@
     const formData = {
         fname: fullName,
         phone: phone,
-        pickup_location: pickupLocation,
+        society: society,
         pickup_time: pickupTime,
         pickup_date: pickupDate,
         return_time: returnTime,

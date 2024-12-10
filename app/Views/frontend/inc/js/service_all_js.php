@@ -37,7 +37,7 @@
                                             class="elementskit-infobox text-left text-left icon-top-align elementor-animation-   ">
                                             <div class="elementskit-box-header elementor-animation-">
                                                 <div class="">
-                                                    <img style="width:30%" src="<?=base_url()?>public/uploads/service_images/${service.service_img}">
+                                                    <img style="width:30%" src="<?=base_url()?>public/uploads/service_images/${service.service_icon}">
                                                 </div>
                                             </div>
                                             <div class="box-body">

@@ -49,6 +49,15 @@
     background-color: #f8f9fa; /* Sticky header background */
     z-index: 2; /* Ensures header stays on top */
 }
+.preview-image {
+    width: 100px; /* Set the desired width */
+    height: auto; /* Maintain aspect ratio */
+    object-fit: cover; /* Ensure proper image fitting */
+    border: 1px solid #ddd; /* Optional: Add a border for aesthetics */
+    border-radius: 4px; /* Optional: Rounded corners */
+    margin: 5px; /* Spacing between images */
+}
+
 </style>
 
 
@@ -101,10 +110,13 @@
                         <div class="card-body">
                             <label class="form-label" for="file-input-service-icon">Service Icon</label>
                             <!-- File input remains hidden -->
-                            <input type="file" id="file-input-service-icon" multiple>
+                            <input type="file" id="file-input-service-icon" multiple style="display: none;">
                             <!-- Styled button for file upload -->
+                            <label for="file-input-service-icon" id="btn_upload" class="btn btn-success">
+                                <i class="fas fa-upload"></i> &nbsp; Select Service Icon
+                            </label>
                             <p id="num-of-icons"></p>
-                            <div id="icons"></div>
+                            <div id="icons" ></div>
                         </div>
                     </div>
 
@@ -199,6 +211,7 @@
                                 <th>Service Tags</th>
                                 <th>Service Image</th>
                                 <th>Service Owner Contact</th>
+                                <th>Service Icon</th>
                                 <th>Card Data</th>
                                 <th>Action</th>
                             </tr>
@@ -232,7 +245,7 @@
                                     <th>Phone</th>
                                     <th>Enquiry Details</th>
                                     <th>Service Title</th>
-                                    <th>Service UID</th>
+                                    <!-- <th>Service UID</th> -->
                                     
                                 </tr>
                             </thead>

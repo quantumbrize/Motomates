@@ -465,6 +465,28 @@
                 }
                 ?>
 
+<?php
+                if (isset($_SESSION[SES_STAFF_USER_ID]) && in_array('bookings', $_SESSION[SES_STAFF_ACCESS])) {
+                    ?>
+                    <li class="nav-item ">
+                        <a class="nav-link menu-link <?= isset($sidebar['bookings']) ? 'active' : '' ?>"
+                            href="<?= base_url('load-bookings') ?>">
+                            <i class="ri-message-2-line"></i> <span data-key="t-widgets">Bookings</span>
+                        </a>
+                    </li>
+                    <?php
+                } else if (isset($_SESSION[SES_ADMIN_USER_ID])) {
+                    ?>
+                        <li class="nav-item ">
+                            <a class="nav-link menu-link <?= isset($sidebar['bookings']) ? 'active' : '' ?>"
+                                href="<?= base_url('load-bookings') ?>">
+                                <i class="ri-message-2-line"></i> <span data-key="t-widgets">Bookings</span>
+                            </a>
+                        </li>
+                    <?php
+                }
+                ?>
+
 
                 <?php
                 if (isset($_SESSION[SES_STAFF_USER_ID]) && in_array('users', $_SESSION[SES_STAFF_ACCESS])) {

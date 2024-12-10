@@ -133,17 +133,41 @@
 																	</div>
 																	<!-- Departure Location Field -->
 																	<div class="rent-details-item">
-																		<p><label> Departure Location </label><br>
-																			<span class="wpcf7-form-control-wrap" data-name="pickup-location">
+																		<p><label> Location/Society </label><br>
+																			<span class="wpcf7-form-control-wrap" data-name="society">
 																				<input size="40" maxlength="400"
 																					class="wpcf7-form-control wpcf7-text form-control"
-																					id="pickuplocation" aria-invalid="false"
+																					id="society" aria-invalid="false"
 																					placeholder="Enter Location" value=""
-																					type="text" name="pickup-location">
+																					type="text" name="society">
 																			</span>
 																		</p>
 																	</div>
 																	<!-- Departure Time Field -->
+																	<!-- Pickup Date Field -->
+																	<div class="rent-details-item">
+																		<p><label> Departure Date </label><br>
+																			<span class="wpcf7-form-control-wrap" data-name="date">
+																				<input class="wpcf7-form-control wpcf7-date wpcf7-validates-as-date form-control"
+																					id="date" aria-invalid="false"
+																					placeholder="Date" value=""
+																					type="date" name="date">
+																			</span>
+																		</p>
+																	</div>
+
+																	<!-- Return Date Field -->
+																	<div class="rent-details-item">
+																		<p><label> Return Date </label><br>
+																			<span class="wpcf7-form-control-wrap" data-name="return-date">
+																				<input class="wpcf7-form-control wpcf7-date wpcf7-validates-as-date form-control"
+																					id="returndate" aria-invalid="false"
+																					placeholder="Return Date" value=""
+																					type="date" name="return-date">
+																			</span>
+																		</p>
+																	</div>
+																	
 																	<div class="rent-details-item">
 																		<p><label> Departure Time </label><br>
 																			<span class="wpcf7-form-control-wrap" data-name="departure-time">
@@ -152,17 +176,6 @@
 																					id="departuretime" aria-invalid="false"
 																					placeholder="Enter Departure Time" value=""
 																					type="time" name="departure-time">
-																			</span>
-																		</p>
-																	</div>
-																	<!-- Pickup Date Field -->
-																	<div class="rent-details-item">
-																		<p><label> Pickup Date </label><br>
-																			<span class="wpcf7-form-control-wrap" data-name="date">
-																				<input class="wpcf7-form-control wpcf7-date wpcf7-validates-as-date form-control"
-																					id="date" aria-invalid="false"
-																					placeholder="Date" value=""
-																					type="date" name="date">
 																			</span>
 																		</p>
 																	</div>
@@ -178,17 +191,7 @@
 																			</span>
 																		</p>
 																	</div>
-																	<!-- Return Date Field -->
-																	<div class="rent-details-item">
-																		<p><label> Return Date </label><br>
-																			<span class="wpcf7-form-control-wrap" data-name="return-date">
-																				<input class="wpcf7-form-control wpcf7-date wpcf7-validates-as-date form-control"
-																					id="returndate" aria-invalid="false"
-																					placeholder="Return Date" value=""
-																					type="date" name="return-date">
-																			</span>
-																		</p>
-																	</div>
+																	
 																	<!-- Service Type Dropdown -->
 																	<div class="rent-details-item">
 																		<p><label> Type of Service </label><br>
@@ -463,7 +466,7 @@
 						<div class="elementor-widget-container">
 							<div class="elementor-button-wrapper">
 								<a class="elementor-button elementor-button-link elementor-size-sm"
-									href="service/index.htm">
+									href="<?= base_url()?>all/service">
 									<span class="elementor-button-content-wrapper">
 										<span class="elementor-button-icon">
 											<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14"
@@ -514,8 +517,8 @@
 							<div class="novaride-car-slider arrow_inside"
 								data-config="{&quot;rtl&quot;:false,&quot;arrows&quot;:true,&quot;dots&quot;:false,&quot;pauseOnHover&quot;:true,&quot;autoplay&quot;:true,&quot;speed&quot;:1000,&quot;slidesPerGroup&quot;:1,&quot;slidesPerView&quot;:1,&quot;loop&quot;:true,&quot;spaceBetween&quot;:30,&quot;breakpoints&quot;:{&quot;320&quot;:{&quot;slidesPerView&quot;:1},&quot;768&quot;:{&quot;slidesPerView&quot;:2},&quot;991&quot;:{&quot;slidesPerView&quot;:3},&quot;1300&quot;:{&quot;slidesPerView&quot;:4},&quot;1600&quot;:{&quot;slidesPerView&quot;:5}}}">
 								<div class="novaride-main-swiper swiper">
-									<div class="swiper-wrapper">
-										<div class="swiper-slide">
+									<div id="products_home" class="swiper-wrapper">
+										<!-- <div class="swiper-slide">
 											<div class="perfect-fleet-item">
 												<div class="image-box"><a href="cars/voyager-hybrid/index.htm"><img
 															decoding="async" width="410" height="234"
@@ -558,8 +561,8 @@
 													</div>
 												</div>
 											</div>
-										</div>
-										<div class="swiper-slide">
+										</div> -->
+										<!-- <div class="swiper-slide">
 											<div class="perfect-fleet-item">
 												<div class="image-box"><a
 														href="cars/sapphire-convertible/index.htm"><img loading="lazy"
@@ -816,7 +819,7 @@
 													</div>
 												</div>
 											</div>
-										</div>
+										</div> -->
 									</div>
 									<div class="car-slider-btn">
 										<div class="swiper-navigation-button swiper-button-prev ata-swiper-button-prev">

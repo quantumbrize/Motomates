@@ -103,6 +103,31 @@ class Orders_Controller extends Admin_Controller
 
     }
 
+    public function load_bookings()
+    {
+
+        $data = PAGE_DATA_ADMIN;
+        $data = [
+            'data_page' => [],
+            'data_header' => [
+                'header_link' => ['bookings_css.php'],
+                'title' => 'Rental Bookings',
+                'header' => [],
+                'sidebar' => ['bookings' => true],
+                'site' => 'admin'
+            ],
+            'data_footer' => [
+                'footer_link' => ['bookings_js.php'],
+                'footer' => [],
+                'site' => 'admin'
+            ]
+        ];
+
+        $this->isAuth('/admin/bookings', $data);
+
+
+    }
+
 }
 
 ?>

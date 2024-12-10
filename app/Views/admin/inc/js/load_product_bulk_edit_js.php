@@ -462,15 +462,22 @@
                 // const discount = row.cells[3].children[0].value;
                 // const visibility = row.cells[3].children[0].value;
                 const storeName = row.cells[2].children[0].value;
-                const barCode = row.cells[3].children[0].value;
-                const category = row.cells[4].children[1].value;
-                const size = row.cells[5].children[0].value;
+                const make = row.cells[3].children[0].value;
+                const model = row.cells[4].children[0].value;
+                const year = row.cells[5].children[0].value;
+                const mileage = row.cells[6].children[0].value;
+                const location = row.cells[7].children[0].value;
+                const doors = row.cells[8].children[0].value;
+                const badges = row.cells[9].children[0].value;
+                // const barCode = row.cells[3].children[0].value;
+                const category = row.cells[10].children[1].value;
+                // const size = row.cells[5].children[0].value;
                 // const qty = row.cells[8].children[0].value;
-                const tags = row.cells[6].children[0].value;
-                const tax= row.cells[7].children[0].value;
-                const discount=row.cells[8].children[0].value;
-                const delivery_charge=row.cells[9].children[0].value;  
-                const price=row.cells[10].children[0].value;  
+                // const tags = row.cells[6].children[0].value;
+                const tax= row.cells[11].children[0].value;
+                const discount=row.cells[12].children[0].value;
+                // const delivery_charge=row.cells[9].children[0].value;  
+                const price=row.cells[13].children[0].value;  
                  
 
 
@@ -480,14 +487,21 @@
                     // price,
                     // discount,
                     storeName,
-                    barCode,
+                    make,
+                    model,
+                    year,
+                    mileage,
+                    location,
+                    doors,
+                    badges,
+                    // barCode,
                     category,
-                    size,
+                    // size,
                     // qty,
-                    tags,
+                    // tags,
                     tax,
                     discount,
-                    delivery_charge,
+                    // delivery_charge,
                     price
                     
                 });
@@ -503,14 +517,21 @@
                 // const price = product.price; 
                 // const discount = product.discount; 
                 const storeName = product.storeName; 
-                const barCode = product.barCode;
-                const size = product.size;
+                const make = product.make; 
+                const model = product.model; 
+                const year = product.year; 
+                const mileage = product.mileage; 
+                const location = product.location; 
+                const doors = product.doors; 
+                const badges = product.badges; 
+                // const barCode = product.barCode;
+                // const size = product.size;
                 const category = product.category;
                 // const qty = product.qty;
-                const tags = product.tags;
+                // const tags = product.tags;
                 const tax=product.tax;
                 const discount= product.discount;  
-                const delivery_charge= product.delivery_charge;
+                // const delivery_charge= product.delivery_charge;
                 const price= product.price;
                 
 
@@ -551,13 +572,13 @@
                 }
 
                 // Validate barcode
-                if (!barCode) {
-                    html += `<div class="alert alert-warning alert-dismissible alert-label-icon label-arrow fade show material-shadow" role="alert">
-                                <i class="ri-alert-line label-icon"></i><strong>Warning</strong> - Barcode is required for Product Update
-                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                            </div>`;
-                    isValid = false;
-                }
+                // if (!barCode) {
+                //     html += `<div class="alert alert-warning alert-dismissible alert-label-icon label-arrow fade show material-shadow" role="alert">
+                //                 <i class="ri-alert-line label-icon"></i><strong>Warning</strong> - Barcode is required for Product Update
+                //                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                //             </div>`;
+                //     isValid = false;
+                // }
 
                 // Validate category
                 if (!category || category == 'null') {
@@ -596,13 +617,20 @@
                     // formData.append(`products[${index}][price]`, product.price);
                     // formData.append(`products[${index}][discount]`, product.discount);
                     formData.append(`products[${index}][storeName]`, product.storeName);
-                    formData.append(`products[${index}][barCode]`, product.barCode);
+                    formData.append(`products[${index}][make]`, product.make);
+                    formData.append(`products[${index}][model]`, product.model);
+                    formData.append(`products[${index}][year]`, product.year);
+                    formData.append(`products[${index}][mileage]`, product.mileage);
+                    formData.append(`products[${index}][location]`, product.location);
+                    formData.append(`products[${index}][doors]`, product.doors);
+                    formData.append(`products[${index}][badges]`, product.badges);
+                    // formData.append(`products[${index}][barCode]`, product.barCode);
                     formData.append(`products[${index}][category]`, product.category);
-                    formData.append(`products[${index}][size]`, product.size);
-                    formData.append(`products[${index}][tags]`, product.tags);
+                    // formData.append(`products[${index}][size]`, product.size);
+                    // formData.append(`products[${index}][tags]`, product.tags);
                     formData.append(`products[${index}][tax]`, product.tax);
                     formData.append(`products[${index}][discount]`, product.discount);
-                    formData.append(`products[${index}][delivery_charge]`, product.delivery_charge);
+                    // formData.append(`products[${index}][delivery_charge]`, product.delivery_charge);
                     formData.append(`products[${index}][price]`, product.price);
                     
 
@@ -838,7 +866,21 @@
                                 <input type="text" value="${product.name}" required>
                             </td>
                             <td><input type="text" value="${product.manufacturer_name}"></td>
-                            <td><input type="text" value="${product.manufacturer_brand}"></td>
+                            
+                            <td><input type="text" value="${product.make}"></td>
+                            <td><input type="text" value="${product.model}"></td>
+                            <td><input type="text" value="${product.year}"></td>
+                            <td><input type="text" value="${product.mileage}"></td>
+                            <td><input type="text" value="${product.location}"></td>
+                            <td><input type="text" value="${product.doors}"></td>
+                            <td>
+                                <select class="form-control">
+                                    <option value="">Select-Badge</option>
+                                    <option value="New" ${product.badges == 'New' ? 'selected' : ''}>New</option>
+                                    <option value="Used"  ${product.badges == 'Used' ? 'selected' : ''}>Used</option>
+                                    <option value="Certified Pre-Owned" ${product.badges == 'Certified Pre-Owned' ? 'selected' : ''}>Certified Pre-Owned</option>
+                                </select>
+                            </td>
                             <td>
                                 <select class="product-category-list" id="product-category-${category_id}" onChange="get_sub_category('${category_id}')">
                                     <option selected value="${product.category_id}">${product.category}</option>
@@ -846,12 +888,8 @@
                                 <input type="hidden" id="selected-cat-name-${category_id}" value="${product.category_id}">
                                 <p>Selected Category:- <b id="selected-cat-${category_id}">${product.category}</b><i class="fas fa-redo" onclick="reset_category('${category_id}')"></i></p>
                             </td>
-                            <td>
-                                <select class="product-size-list-input">
-                                    <option value="${product.size_list_id}">${product.size_list_name}</option>
-                                </select>
-                            </td>
-                            <td><input type="text" value="${product.tags}"></td>
+                           
+                            
                              <td>
                                 <select class="product-tax-list" id="product-tax-0">
                                     <option value="0" ${product.tax == 0 ? 'selected' : ''}>00.00% IGST - (00.00% CGST & 00.00% SGST)</option>
@@ -869,7 +907,7 @@
                                 </select>
                             </td>
                             <td><input type="text" value="${product.base_discount}" placeholder="Discount"></td>
-                            <td><input type="text" value="${product.delivery_charge}" placeholder="Delivery Charge"></td>
+                           
                             <td><input type="text" id="price" placeholder="Enter Price" value="${product.base_price}"></td>
                             <td>
                                 <button type="button" class="btn btn-md btn-primary" onclick="openDescriptionModal('${product.product_id}')">

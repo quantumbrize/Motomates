@@ -94,7 +94,7 @@
                     <th class="price-column">Price</th>
                     <th class="details-column">Details</th>
                     <th class="images-column">Images</th>
-                    <th class="size-chart-column">Size Chart</th>
+                    <!-- <th class="size-chart-column">Size Chart</th> -->
                     <th class="delete-column">Delete</th>
                 </tr>
                 </thead>
@@ -165,7 +165,7 @@
                             <!-- Modal for uploading images specific to this row -->
 
                         </td>
-                        <td><input type="file" id="size_chart" name="size_chart"></td>
+                        <!-- <td><input type="file" id="size_chart" name="size_chart"></td> -->
 
                         <td>
                             <button class="btn btn-md btn-danger" type="button" onclick="removeRow(this)">

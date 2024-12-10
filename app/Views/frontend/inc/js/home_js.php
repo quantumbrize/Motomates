@@ -4,6 +4,7 @@
         load_all_blog();
         loadBannerImage();
         load_all_services();
+        load_all_products();
         
     })
     function get_promotion_card(){
@@ -338,7 +339,7 @@
         // Gather all form values
         const fullName = document.getElementById('fname').value;
         const phone = document.getElementById('phone').value;
-        const pickupLocation = document.getElementById('pickuplocation').value;
+        const society = document.getElementById('society').value;
         const pickupTime = document.getElementById('departuretime').value;
         const pickupDate = document.getElementById('date').value;
         const returnTime = document.getElementById('returntime').value;
@@ -350,7 +351,7 @@
         const formData = {
             fname: fullName,
             phone: phone,
-            pickup_location: pickupLocation,
+            society: society,
             pickup_time: pickupTime,
             pickup_date: pickupDate,
             return_time: returnTime,
@@ -375,6 +376,14 @@
                     close: true
                 }).showToast();
                 console.log('Booking successful:', response);
+                $("#fname").val('');
+                $("#society").val('');
+                $("#departuretime").val('');
+                $("#date").val('');
+                $("#returntime").val('');
+                $("#returndate").val('');
+                $("#service").val('');
+                $("#cab-type").val('');
             },
             error: function (xhr, status, error) {
                 // Error Toastify Notification
@@ -393,7 +402,7 @@
 })
 
 
-function load_all_services() {
+    function load_all_services() {
         $.ajax({
             url: "<?= base_url('/api/all/service') ?>",
             type: "GET",
@@ -427,7 +436,7 @@ function load_all_services() {
 											class="elementskit-infobox text-left text-left icon-top-align elementor-animation-   ">
 											<div class="elementskit-box-header elementor-animation-">
 												<div class="">
-													<img style="width:30%" src="<?=base_url()?>public/uploads/service_images/${service.service_img}">
+													<img style="width:30%" src="<?=base_url()?>public/uploads/service_images/${service.service_icon}">
 												</div>
 											</div>
 											<div class="box-body">
@@ -486,6 +495,106 @@ function load_all_services() {
             error: function (err) {
                 console.log(err);
                 $('#all_services').html(`
+                    <p>
+                        Error loading data.
+                    </p>
+                `);
+            },
+            complete: function () {
+                // Optional: Any additional steps after the request is complete.
+            }
+        });
+    }
+
+    function load_all_products() {
+        $.ajax({
+            url: "<?= base_url('/api/product') ?>",
+            type: "GET",
+            beforeSend: function () {
+                $('#table-banner-list-all-body').html(`<tr>
+                        <td colspan="8" style="text-align:center;">
+                            <div class="spinner-border" role="status"></div>
+                        </td>
+                    </tr>`);
+            },
+            success: function (resp) {
+                if (resp.status) {
+                    if (resp.data.length > 0) {
+                        let html = ``;
+
+                        $.each(resp.data, function (index, product) {
+                            console.log('productall', product);
+                            html+=`<div class="swiper-slide">
+											<div class="perfect-fleet-item">
+												<div class="image-box"><a href="cars/voyager-hybrid/index.htm"><img
+															decoding="async" width="410" height="234"
+															src="<?= base_url()?>public/uploads/product_images/${product.src}"
+															class="attachment-novaride-thumb size-novaride-thumb wp-post-image"
+															alt=""></a></div>
+												<div class="perfect-fleet-content">
+													<div class="perfect-fleet-title">
+														<h3><a href="car-type/electric-car/index.htm">${product.manufacturer_name}</a>
+														</h3>
+														<h2><a href="cars/voyager-hybrid/index.htm">${product.name}</a>
+														</h2>
+													</div>
+
+													<div class="perfect-fleet-body">
+														<ul>
+															<li><label><img decoding="async"
+																		src="<?= base_url()?>public/assets/motomates/wp-content/uploads/2024/09/icon-door.svg">
+																	<span
+																		class="feature-label">Doors</span></label><span
+																	class="feature-value"> ${product.doors}</span></li>
+															
+														</ul>
+													</div>
+
+													<div class="perfect-fleet-footer">
+														<div class="perfect-fleet-pricing">
+															<h2>${product.base_price}<span>/Per Day</span></h2>
+														</div>
+														<div class="perfect-fleet-btn">
+															<a href="#"
+																class="section-icon-btn"><img decoding="async"
+																	src="<?= base_url()?>public/assets/motomates/wp-content/themes/novaride/assets/images/arrow-white.svg"
+																	alt=""></a>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+                        `
+
+                        
+
+                            // Add cards data if it exists
+                        
+                        });
+
+                        // Append the rows to the table
+                        $('#products_home').html(html);
+
+                        // Reinitialize DataTable if needed
+                    
+                    } else {
+                        $('#products_home').html(`
+                            <P>
+                                No Data Found
+                            </p>
+                        `);
+                    }
+                } else {
+                    $('#products_home').html(`
+                        <p>
+                            ${resp.message}
+                        </p>
+                    `);
+                }
+            },
+            error: function (err) {
+                console.log(err);
+                $('#products_home').html(`
                     <p>
                         Error loading data.
                     </p>

@@ -220,7 +220,7 @@
         document.getElementById('currentRowIndex').value = currentRowIndex;
 
         // Get existing description if any
-        const descriptionCell = row.cells[10]; // Get the description cell
+        const descriptionCell = row.cells[13]; // Get the description cell
         const existingDescription = descriptionCell.querySelector('span') ? descriptionCell.querySelector('span').innerHTML : '';
 
         // Set existing description in CKEditor
@@ -284,7 +284,7 @@
         const row = document.querySelectorAll('#product-table-body tr')[currentRowIndex];
 
         // Update the description cell (you can also add a hidden input if needed)
-        row.cells[10].innerHTML = `<span class="truncate">${description}</span><button class="btn btn-sm btn-success" type="button" onclick="openDescriptionModal(this)">Edit Description</button>`;
+        row.cells[13].innerHTML = `<span class="truncate">${description}</span><button class="btn btn-sm btn-success" type="button" onclick="openDescriptionModal(this)">Edit Description</button>`;
 
         // Close modal
         closeModal();
@@ -480,15 +480,19 @@
         rows.forEach(row => {
             const productName = row.cells[0].children[0].value;
             const storeName = row.cells[1].children[0].value;
-            const barCode = row.cells[2].children[0].value;
-            const category = row.cells[3].children[1].value;
-            const size = row.cells[4].children[0].value;
-            const tags = row.cells[5].children[0].value;
-            const tax = row.cells[6].children[0].value;
-            const discount = row.cells[7].children[0].value;
-            const del_charge = row.cells[8].children[0].value;
-            const price = row.cells[9].children[0].value;
-            const description = row.cells[10].querySelector('span') ? row.cells[10].querySelector('span').innerHTML : '';
+            const make = row.cells[2].children[0].value;
+            const model = row.cells[3].children[0].value;
+            const category = row.cells[4].children[1].value;
+            const year = row.cells[5].children[0].value;
+            const mileage = row.cells[6].children[0].value;
+            const location = row.cells[7].children[0].value;
+            const doors = row.cells[8].children[0].value;
+            const badges = row.cells[9].children[0].value;
+            const tax = row.cells[10].children[0].value;
+            const discount = row.cells[11].children[0].value;
+            // const del_charge = row.cells[8].children[0].value;
+            const price = row.cells[12].children[0].value;
+            const description = row.cells[13].querySelector('span') ? row.cells[13].querySelector('span').innerHTML : '';
             const imagesFiles = rowImages[row.rowIndex] || [];
             let isValid = true;
             let html;
@@ -533,12 +537,15 @@
                 productName,
                 tax,
                 discount,
-                del_charge,
+                make,
                 storeName,
-                barCode,
+                model,
                 category,
-                size,
-                tags,
+                year,
+                location,
+                mileage,
+                doors,
+                badges,
                 description,
                 price,
                 images: imagesFiles // Add the images linked to this row
@@ -568,13 +575,16 @@
                 formData.append(`products[${index}][productName]`, product.productName);
                 formData.append(`products[${index}][description]`, product.description);
                 formData.append(`products[${index}][tax]`, product.tax);
-                formData.append(`products[${index}][del_charge]`, product.del_charge);
+                formData.append(`products[${index}][year]`, product.year);
                 formData.append(`products[${index}][discount]`, product.discount);
                 formData.append(`products[${index}][storeName]`, product.storeName);
-                formData.append(`products[${index}][barCode]`, product.barCode);
+                formData.append(`products[${index}][make]`, product.make);
                 formData.append(`products[${index}][category]`, product.category);
-                formData.append(`products[${index}][size]`, product.size);
-                formData.append(`products[${index}][tags]`, product.tags);
+                formData.append(`products[${index}][mileage]`, product.mileage);
+                formData.append(`products[${index}][badges]`, product.badges);
+                formData.append(`products[${index}][doors]`, product.doors);
+                formData.append(`products[${index}][location]`, product.location);
+                formData.append(`products[${index}][model]`, product.model);
                 formData.append(`products[${index}][price]`, product.price);
 
                 // Append images for the product
@@ -584,10 +594,10 @@
             });
 
             // Get the file input (size_chart)
-            const sizeChartFile = document.querySelector('#size_chart').files[0];
-            if (sizeChartFile) {
-                formData.append('size_chart', sizeChartFile);
-            }
+            // const sizeChartFile = document.querySelector('#size_chart').files[0];
+            // if (sizeChartFile) {
+            //     formData.append('size_chart', sizeChartFile);
+            // }
 
             // Make AJAX request to submit the data
             $.ajax({
