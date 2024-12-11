@@ -164,151 +164,291 @@ class Product_Controller extends Api_Controller
         return $resp;
     }
 
+    // private function add_bulk_product($data)
+    // {   
+    //     $resp = [
+    //         'status' => false,
+    //         'message' => 'Product not added',
+    //         'data' => null
+    //     ];
+
+    //     $uploadedFiles = $this->request->getFiles();
+
+    //     if (empty($data['products'])) {
+    //         $resp['message'] = 'Your Product Is Empty';
+    //     } else if (empty($data['vendorId'])) {
+    //         $resp['message'] = 'Please add Vendor';
+    //     } else {
+    //         $product_data = [];
+    //         $product_item_data = [];
+    //         $item_stock_data = [];
+    //         $item_prices = [];
+    //         $ProductSizeListModel = new ProductSizeListModel();
+
+    //         foreach($data['products'] as $index => $product) {
+    //             // Prepare the product data
+    //             $product_data[] = array(
+    //                 'uid' => $this->generate_uid(UID_PRODUCT),
+    //                 'vendor_id' => $data['vendorId'],
+    //                 'category_id' => $product['category'],
+    //                 'name' => $product['productName'],
+    //                 'description' => $product['description'],
+    //                 'status' => $data['status'],
+    //             );
+
+    //             // Prepare the stock data
+    //             $item_stock_data[] = [
+    //                 'uid' => $this->generate_uid('ITSKU'),
+    //                 'product_id' => $product_data[$index]['uid'],
+    //                 'varient_id' => '',
+    //                 'stocks' => 0,
+    //             ];
+
+    //             // Prepare the product item data
+    //             $product_item_data[] = array(
+    //                 'uid' => $this->generate_uid(UID_PRODUCT_ITEM),
+    //                 'product_id' => $product_data[$index]['uid'],
+    //                 'price' => $product['price'],
+    //                 'discount' => $product['discount'],
+    //                 'tax' => $product['tax'],
+    //                 'publish_date' => "",
+    //                 'status' => "",
+    //                 'visibility' => "visible",
+    //                 'quantity' => '0',
+    //                 'manufacturer_name' => $product['storeName']
+    //             );
+
+    //             $car_specification_data[] = array(
+    //                 'uid' => $this->generate_uid("CARSPEC"),
+    //                 'product_id' => $product_data[$index]['uid'],
+    //                 'make' => $product['make'],
+    //                 'model' => $product['model'],
+    //                 'year' => $product['year'],
+    //                 'mileage' => $product['mileage'],
+    //                 'location' => $product['location'],
+    //                 'doors' => $product['doors'],
+    //                 'badges' => $product['badges'],
+    //             );
+
+    //             // Upload icon files if they exist
+    //             if (!empty($uploadedFiles['products'][$index]['make_icon'])) {
+    //                 $file = $uploadedFiles['products'][$index]['make_icon'];
+    //                 // $this->prd($file);
+    //                 if ($file->isValid()) {
+    //                     $file_src = $this->single_upload($file, 'public/uploads/product_images');
+    //                     $car_specification_data[$index]['make_icon'] = $file_src;
+    //                 }
+    //             }
+    //             if (!empty($uploadedFiles['products'][$index]['model_icon'])) {
+    //                 $file = $uploadedFiles['products'][$index]['model_icon'];
+    //                 if ($file->isValid()) {
+    //                     $file_src = $this->single_upload($file, 'public/uploads/product_images');
+    //                     $car_specification_data[$index]['model_icon'] = $file_src;
+    //                 }
+    //             }
+    //             if (!empty($uploadedFiles['products'][$index]['year_icon'])) {
+    //                 $file = $uploadedFiles['products'][$index]['year_icon'];
+    //                 if ($file->isValid()) {
+    //                     $file_src = $this->single_upload($file, 'public/uploads/product_images');
+    //                     $car_specification_data[$index]['year_icon'] = $file_src;
+    //                 }
+    //             }
+    //             if (!empty($uploadedFiles['products'][$index]['mileage_icon'])) {
+    //                 $file = $uploadedFiles['products'][$index]['mileage_icon'];
+    //                 if ($file->isValid()) {
+    //                     $file_src = $this->single_upload($file, 'public/uploads/product_images');
+    //                     $car_specification_data[$index]['mileage_icon'] = $file_src;
+    //                 }
+    //             }
+    //             if (!empty($uploadedFiles['products'][$index]['location_icon'])) {
+    //                 $file = $uploadedFiles['products'][$index]['location_icon'];
+    //                 if ($file->isValid()) {
+    //                     $file_src = $this->single_upload($file, 'public/uploads/product_images');
+    //                     $car_specification_data[$index]['location_icon'] = $file_src;
+    //                 }
+    //             }
+    //             if (!empty($uploadedFiles['products'][$index]['doors_icon'])) {
+    //                 $file = $uploadedFiles['products'][$index]['doors_icon'];
+    //                 if ($file->isValid()) {
+    //                     $file_src = $this->single_upload($file, 'public/uploads/product_images');
+    //                     $car_specification_data[$index]['doors_icon'] = $file_src;
+    //                 }
+    //             }
+    //             if (!empty($uploadedFiles['products'][$index]['badge_icon'])) {
+    //                 $file = $uploadedFiles['products'][$index]['badge_icon'];
+    //                 if ($file->isValid()) {
+    //                     $file_src = $this->single_upload($file, 'public/uploads/product_images');
+    //                     $car_specification_data[$index]['badge_icon'] = $file_src;
+    //                 }
+    //             }
+
+    //             // Handle product images upload
+    //             $ProductImagesModel = new ProductImagesModel();
+    //             if (!empty($uploadedFiles['products'][$index]['image'])) {
+    //                 foreach ($uploadedFiles['products'][$index]['image'] as $file) {
+    //                     $file_src = $this->single_upload($file, PATH_PRODUCT_IMG);
+    //                     $product_image_data = [
+    //                         'uid' => $this->generate_uid(UID_PRODUCT_IMG),
+    //                         'product_id' => $product_data[$index]['uid'],
+    //                         'type' => 'path',
+    //                         'src' => $file_src
+    //                     ];
+    //                     $ProductImagesModel->insert($product_image_data);
+    //                 }
+    //             }
+    //         }
+
+    //         // Models for database insertions
+    //         $ProductModel = new ProductModel();
+    //         $ProductItemModel = new ProductItemModel();
+    //         $ItemStocksModel = new ItemStocksModel();
+    //         $CarSpecificationModel = new CarSpecificationModel();
+
+    //         // Transaction Start
+    //         $ProductModel->transStart();
+    //         try {
+    //             // Insert data into the product tables
+    //             $ProductModel->insertBatch($product_data);
+    //             $ItemStocksModel->insertBatch($item_stock_data);
+    //             $ProductItemModel->insertBatch($product_item_data);
+    //             $CarSpecificationModel->insertBatch($car_specification_data);
+    //             $ProductModel->transCommit();
+    //         } catch (\Exception $e) {
+    //             // Rollback the transaction if an error occurs
+    //             $ProductModel->transRollback();
+    //             $resp['message'] = $e->getMessage();
+    //         }
+
+    //         $resp['status'] = true;
+    //         $resp['message'] = 'Product added';
+    //         $resp['data'] = [];
+    //     }
+    //     return $resp;
+    // }
+
     private function add_bulk_product($data)
-{   
-    $resp = [
-        'status' => false,
-        'message' => 'Product not added',
-        'data' => null
-    ];
-
-    $uploadedFiles = $this->request->getFiles();
-
-    if (empty($data['products'])) {
-        $resp['message'] = 'Your Product Is Empty';
-    } else if (empty($data['vendorId'])) {
-        $resp['message'] = 'Please add Vendor';
-    } else {
-        $product_data = [];
-        $product_item_data = [];
-        $item_stock_data = [];
-        $item_prices = [];
-        $ProductSizeListModel = new ProductSizeListModel();
-
-        foreach($data['products'] as $index => $product) {
-            // Handle size chart file if provided, or assign default image
-            // $sizeChartFileName = 'demo_img.jpg'; // Default image name
-
-            // if (isset($uploadedFiles['size_chart']) && $uploadedFiles['size_chart']->isValid()) {
-            //     $sizeChartFile = $uploadedFiles['size_chart'];
-                
-            //     // Define the target directory
-            //     $targetDirectory = FCPATH . 'public/uploads/size_charts/';
-                
-            //     // Ensure the directory exists, create it if not
-            //     if (!is_dir($targetDirectory)) {
-            //         mkdir($targetDirectory, 0777, true);
-            //     }
-
-            //     // Generate a unique name for the size chart file to avoid overwriting
-            //     $sizeChartFileName = uniqid('size_chart_') . '.' . $sizeChartFile->getExtension();
-
-            //     // Move the file to the target directory
-            //     $sizeChartFile->move($targetDirectory, $sizeChartFileName);
-            // }
-            
-            // Get size data from the ProductSizeListModel
-            // $stocks_list = $ProductSizeListModel->where('uid', $product['size'])->first();
-            // $listOfSizes = json_decode($stocks_list['size_list'], true);
-
-            // Prepare the product data
-            $product_data[] = array(
-                'uid' => $this->generate_uid(UID_PRODUCT),
-                'vendor_id' => $data['vendorId'],
-                'category_id' => $product['category'],
-                'name' => $product['productName'],
-                'description' => $product['description'],
-                // 'size_id' => $product['size'],
-                'status' => $data['status'],
-                // 'size_chart' => $sizeChartFileName, // Save the name of the size chart file (or default image)
-            );
-
-            // Prepare the stock data
-            
-            $item_stock_data[] = [
-                'uid' => $this->generate_uid('ITSKU'),
-                'product_id' => $product_data[$index]['uid'],
-                'varient_id' => '',
-                // 'size_id' => $product['size'],
-                // 'sizes' => $size_list_data,
-                'stocks' => 0,
-            ];
-            
-
-            // Prepare the product item data
-            $product_item_data[] = array(
-                'uid' => $this->generate_uid(UID_PRODUCT_ITEM),
-                'product_id' => $product_data[$index]['uid'],
-                'price' => $product['price'],
-                'discount' => $product['discount'],
-                'tax' => $product['tax'],
-                // 'delivery_charge' => $product['del_charge'],
-                // 'product_tags' => $product['tags'],
-                'publish_date' => "",
-                'status' => "",
-                'visibility' => "visible",
-                'quantity' => '0',
-                // 'manufacturer_brand' => $product['barCode'],
-                'manufacturer_name' => $product['storeName']
-            );
-
-            $car_specification_data[] = array(
-                'uid' => $this->generate_uid("CARSPEC"),
-                'product_id' => $product_data[$index]['uid'],
-                'make ' => $product['make'],
-                'model' => $product['model'],
-                'year' => $product['year'],
-                'mileage ' => $product['mileage'],
-                'location' => $product['location'],
-                'doors' => $product['doors'],
-                'badges' => $product['badges'],
-                
-            );
-
-            // Handle product images upload
+    {   
+        $resp = [
+            'status' => false,
+            'message' => 'Product not added',
+            'data' => null
+        ];
+    
+        $uploadedFiles = $this->request->getFiles();
+    
+        if (empty($data['products'])) {
+            $resp['message'] = 'Your Product Is Empty';
+        } else if (empty($data['vendorId'])) {
+            $resp['message'] = 'Please add Vendor';
+        } else {
+            $product_data = [];
+            $product_item_data = [];
+            $item_stock_data = [];
+            $CarSpecificationModel = new CarSpecificationModel();
             $ProductImagesModel = new ProductImagesModel();
-            if (!empty($uploadedFiles['products'][$index]['image'])) {
-                foreach ($uploadedFiles['products'][$index]['image'] as $file) {
-                    $file_src = $this->single_upload($file, PATH_PRODUCT_IMG);
-                    $product_image_data = [
-                        'uid' => $this->generate_uid(UID_PRODUCT_IMG),
-                        'product_id' => $product_data[$index]['uid'],
-                        'type' => 'path',
-                        'src' => $file_src
-                    ];
-                    $ProductImagesModel->insert($product_image_data);
+    
+            foreach($data['products'] as $index => $product) {
+                // Prepare the product data
+                $product_data[] = [
+                    'uid' => $this->generate_uid(UID_PRODUCT),
+                    'vendor_id' => $data['vendorId'],
+                    'category_id' => $product['category'],
+                    'name' => $product['productName'],
+                    'description' => $product['description'],
+                    'status' => $data['status'],
+                ];
+    
+                // Prepare the stock data
+                $item_stock_data[] = [
+                    'uid' => $this->generate_uid('ITSKU'),
+                    'product_id' => $product_data[$index]['uid'],
+                    'varient_id' => '',
+                    'stocks' => 0,
+                ];
+    
+                // Prepare the product item data
+                $product_item_data[] = [
+                    'uid' => $this->generate_uid(UID_PRODUCT_ITEM),
+                    'product_id' => $product_data[$index]['uid'],
+                    'price' => $product['price'],
+                    'discount' => $product['discount'],
+                    'tax' => $product['tax'],
+                    'publish_date' => "",
+                    'status' => "",
+                    'visibility' => "visible",
+                    'quantity' => '0',
+                    'manufacturer_name' => $product['storeName']
+                ];
+    
+                // Prepare car specification data
+                $car_specification_data = [
+                    'uid' => $this->generate_uid("CARSPEC"),
+                    'product_id' => $product_data[$index]['uid'],
+                    'make' => $product['make'],
+                    'model' => $product['model'],
+                    'year' => $product['year'],
+                    'mileage' => $product['mileage'],
+                    'location' => $product['location'],
+                    'doors' => $product['doors'],
+                    'badges' => $product['badges'],
+                ];
+    
+                // Upload icon files if they exist and add them to car specification
+                foreach (['make', 'model', 'year', 'mileage', 'location', 'doors', 'badge'] as $field) {
+                    if (!empty($uploadedFiles['products'][$index]["{$field}_icon"])) {
+                        $file = $uploadedFiles['products'][$index]["{$field}_icon"];
+                        if ($file->isValid()) {
+                            $file_src = $this->single_upload($file, 'public/uploads/product_images');
+                            $car_specification_data["{$field}_icon"] = $file_src;
+                        }
+                    }
+                }
+    
+                // Insert car specification individually
+                $CarSpecificationModel->insert($car_specification_data);
+    
+                // Handle product images upload
+                if (!empty($uploadedFiles['products'][$index]['image'])) {
+                    foreach ($uploadedFiles['products'][$index]['image'] as $file) {
+                        $file_src = $this->single_upload($file, PATH_PRODUCT_IMG);
+                        $product_image_data = [
+                            'uid' => $this->generate_uid(UID_PRODUCT_IMG),
+                            'product_id' => $product_data[$index]['uid'],
+                            'type' => 'path',
+                            'src' => $file_src
+                        ];
+                        $ProductImagesModel->insert($product_image_data);
+                    }
                 }
             }
+    
+            // Models for database insertions
+            $ProductModel = new ProductModel();
+            $ProductItemModel = new ProductItemModel();
+            $ItemStocksModel = new ItemStocksModel();
+    
+            // Transaction Start
+            $ProductModel->transStart();
+            try {
+                // Insert data into the product tables
+                $ProductModel->insertBatch($product_data);
+                $ItemStocksModel->insertBatch($item_stock_data);
+                $ProductItemModel->insertBatch($product_item_data);
+                $ProductModel->transCommit();
+            } catch (\Exception $e) {
+                // Rollback the transaction if an error occurs
+                $ProductModel->transRollback();
+                $resp['message'] = $e->getMessage();
+            }
+    
+            $resp['status'] = true;
+            $resp['message'] = 'Product added';
+            $resp['data'] = [];
         }
-
-        // Models for database insertions
-        $ProductModel = new ProductModel();
-        $ProductItemModel = new ProductItemModel();
-        $ItemStocksModel = new ItemStocksModel();
-        $CarSpecificationModel = new CarSpecificationModel();
-
-        // Transaction Start
-        $ProductModel->transStart();
-        try {
-            // Insert data into the product tables
-            $ProductModel->insertBatch($product_data);
-            $ItemStocksModel->insertBatch($item_stock_data);
-            $ProductItemModel->insertBatch($product_item_data);
-            $CarSpecificationModel->insertBatch($car_specification_data);
-            $ProductModel->transCommit();
-        } catch (\Exception $e) {
-            // Rollback the transaction if an error occurs
-            $ProductModel->transRollback();
-            $resp['message'] = $e->getMessage();
-        }
-
-        $resp['status'] = true;
-        $resp['message'] = 'Product added';
-        $resp['data'] = [];
+    
+        return $resp;
     }
-    return $resp;
-}
-
+    
     
     
 
@@ -320,16 +460,13 @@ class Product_Controller extends Api_Controller
         'data' => null
     ];
 
-    if (empty($data['products'])) {
-        $resp['message'] = 'No products to update';
-        return $resp;
-    }
+    $uploadedFiles = $this->request->getFiles();
 
     $ProductModel = new ProductModel();
     $ProductItemModel = new ProductItemModel();
     $CarSpecificationModel = new CarSpecificationModel();
 
-    foreach ($data['products'] as $product) {
+    foreach ($data['products'] as $index => $product) {
         $product_update_data = [
             'name' => $product['productName'],
             'category_id' => $product['category'],
@@ -351,6 +488,15 @@ class Product_Controller extends Api_Controller
             'doors' => $product['doors'],
             'badges' => $product['badges'],
         ];
+        foreach (['make', 'model', 'year', 'mileage', 'location', 'doors', 'badge'] as $field) {
+            if (!empty($uploadedFiles['products'][$index]["{$field}_icon"])) {
+                $file = $uploadedFiles['products'][$index]["{$field}_icon"];
+                if ($file->isValid()) {
+                    $file_src = $this->single_upload($file, 'public/uploads/product_images');
+                    $car_specification_data["{$field}_icon"] = $file_src;
+                }
+            }
+        }
 
         // Update queries
         $ProductModel->set($product_update_data)
@@ -614,6 +760,14 @@ class Product_Controller extends Api_Controller
             car_specification.doors, 
             car_specification.badges,
             product_images.src,
+            car_specification.make_icon, 
+            car_specification.model_icon, 
+            car_specification.year_icon, 
+            car_specification.mileage_icon, 
+            car_specification.location_icon, 
+            car_specification.doors_icon, 
+            car_specification.badge_icon,
+           
             
             categories.name AS category,
             categories.uid AS category_id,

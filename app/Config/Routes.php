@@ -315,6 +315,7 @@ $routes->get('/load-bookings',                       'Admin\Orders_Controller::l
 $routes->get('single-car',                          'Frontend\Frontend_Controller::single_car');
 
 $routes->get('api/get/single_product',                   'Api\User_Controller::GET_product_single');
+$routes->get('all-categories',                          'Frontend\Frontend_Controller::all_categories');
 
 
 

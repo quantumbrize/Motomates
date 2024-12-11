@@ -87,66 +87,7 @@
 													data-widget_type="icon-list.default">
 													<div class="elementor-widget-container">
 														<ul id="service_pages_list" class="elementor-icon-list-items">
-															<!-- <li class="elementor-icon-list-item">
-																<a href="index.htm">
-
-																	<span class="elementor-icon-list-icon">
-																		<svg xmlns="http://www.w3.org/2000/svg"
-																			width="14" height="14" viewbox="0 0 14 14"
-																			fill="none">
-																			<path
-																				d="M11.6654 3.97592L1.64141 13.9999L-0.00537109 12.3531L10.0174 2.32914H1.18372V-0.00012207H13.9946V12.8108H11.6654V3.97592Z"
-																				fill="white"></path>
-																		</svg> </span>
-																	<span class="elementor-icon-list-text">Car Rental
-																		With Driver</span>
-																</a>
-															</li> -->
-															<!-- <li class="elementor-icon-list-item">
-																<a href="../business-car-rental/index.htm">
-
-																	<span class="elementor-icon-list-icon">
-																		<svg xmlns="http://www.w3.org/2000/svg"
-																			width="14" height="14" viewbox="0 0 14 14"
-																			fill="none">
-																			<path
-																				d="M11.6654 3.97592L1.64141 13.9999L-0.00537109 12.3531L10.0174 2.32914H1.18372V-0.00012207H13.9946V12.8108H11.6654V3.97592Z"
-																				fill="white"></path>
-																		</svg> </span>
-																	<span class="elementor-icon-list-text">Business Car
-																		Rental</span>
-																</a>
-															</li>
-															<li class="elementor-icon-list-item">
-																<a href="../airport-transfer/index.htm">
-
-																	<span class="elementor-icon-list-icon">
-																		<svg xmlns="http://www.w3.org/2000/svg"
-																			width="14" height="14" viewbox="0 0 14 14"
-																			fill="none">
-																			<path
-																				d="M11.6654 3.97592L1.64141 13.9999L-0.00537109 12.3531L10.0174 2.32914H1.18372V-0.00012207H13.9946V12.8108H11.6654V3.97592Z"
-																				fill="white"></path>
-																		</svg> </span>
-																	<span class="elementor-icon-list-text">Airport
-																		Transfer</span>
-																</a>
-															</li>
-															<li class="elementor-icon-list-item">
-																<a href="../chauffeur-services/index.htm">
-
-																	<span class="elementor-icon-list-icon">
-																		<svg xmlns="http://www.w3.org/2000/svg"
-																			width="14" height="14" viewbox="0 0 14 14"
-																			fill="none">
-																			<path
-																				d="M11.6654 3.97592L1.64141 13.9999L-0.00537109 12.3531L10.0174 2.32914H1.18372V-0.00012207H13.9946V12.8108H11.6654V3.97592Z"
-																				fill="white"></path>
-																		</svg> </span>
-																	<span class="elementor-icon-list-text">Chauffeur
-																		Services</span>
-																</a>
-															</li> -->
+															
 														</ul>
 													</div>
 												</div>

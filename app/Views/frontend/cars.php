@@ -19,20 +19,13 @@
 	<div class="fleets-sidebar">
 		<div class="sidebar-widget">
 							<aside id="custom_html-2" class="widget_text widget widget_custom_html"><div class="textwidget custom-html-widget">
-				<form action="" method="post" class="searchandfilter">
-					<div><input type="hidden" name="ofpost_types[]" value="cars"><ul><li><input type="text" name="ofsearch" placeholder="Search &hellip;" value=""></li><li><h4>Car Types</h4><ul>	<li class="cat-item cat-item-12"><label><input type='checkbox' name='ofcar-types[]' value='12'> Convertible Car</label>
-</li>
-	<li class="cat-item cat-item-16"><label><input type='checkbox' name='ofcar-types[]' value='16'> Coupe Car</label>
-</li>
-	<li class="cat-item cat-item-15"><label><input type='checkbox' name='ofcar-types[]' value='15'> Electric Car</label>
-</li>
-	<li class="cat-item cat-item-14"><label><input type='checkbox' name='ofcar-types[]' value='14'> Luxury Car</label>
-</li>
-	<li class="cat-item cat-item-13"><label><input type='checkbox' name='ofcar-types[]' value='13'> Sedan Car</label>
-</li>
-	<li class="cat-item cat-item-11"><label><input type='checkbox' name='ofcar-types[]' value='11'> Sport Car</label>
-</li>
-</ul><input type="hidden" name="ofcar-types_operator" value="or"></li><li><input type="hidden" name="ofsubmitted" value="1"><input type="submit" value="Search"></li></ul></div></form></div></aside>					</div>
+				<h3>Categories</h3>
+				<div class="elementor-widget-container">
+								<ul id="categories_list" class="elementor-icon-list-items">
+									
+								</ul>
+							</div>
+					<div></div></form></div></aside>					</div>
 	</div>
 </div>					<div class="col-lg-9 col-md-12">
 						<div id="cars" class="row">

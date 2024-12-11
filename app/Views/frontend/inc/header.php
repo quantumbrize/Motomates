@@ -90,25 +90,15 @@
 												</ul>
 											</li>
 											<li id="menu-item-6727"
-												class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-6727 nav-item elementskit-dropdown-has relative_position elementskit-dropdown-menu-default_width elementskit-mobile-builder-content"
-												data-vertical-menu="750px"><a href="<?= base_url()?>cars"
-													class="ekit-menu-nav-link ekit-menu-dropdown-toggle">Cars</a>
-												<ul class="elementskit-dropdown elementskit-submenu-panel">
-													<li id="menu-item-7747"
-														class="menu-item menu-item-type-post_type_archive menu-item-object-cars menu-item-7747 nav-item elementskit-mobile-builder-content"
-														data-vertical-menu="750px"><a href="<?= base_url()?>cars-list"
-															class=" dropdown-item">Car Lists</a>
-													<li id="menu-item-6729"
-														class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6729 nav-item elementskit-mobile-builder-content"
-														data-vertical-menu="750px"><a href="<?= base_url()?>car-types"
-															class=" dropdown-item">Car Type</a>
-													<li id="menu-item-8956"
-														class="menu-item menu-item-type-post_type menu-item-object-cars menu-item-8956 nav-item elementskit-mobile-builder-content"
-														data-vertical-menu="750px"><a
-															href="<?= base_url()?>car-single"
-															class=" dropdown-item">Car Single</a></li>
+												class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children nav-item elementskit-dropdown-has relative_position elementskit-dropdown-menu-default_width elementskit-mobile-builder-content"
+												data-vertical-menu="750px">
+												<a href="<?= base_url()?>cars" class="ekit-menu-nav-link ekit-menu-dropdown-toggle">Cars</a>
+												<ul id="categories_list_header" class="elementskit-dropdown elementskit-submenu-panel">
+													<!-- Categories will be dynamically appended here -->
+													 
 												</ul>
 											</li>
+
 											<!-- <li id="menu-item-4597"
 												class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-4597 nav-item elementskit-dropdown-has relative_position elementskit-dropdown-menu-default_width elementskit-mobile-builder-content"
 												data-vertical-menu="750px"><a href="#"
@@ -282,6 +272,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
   <script>
+	
     let user_id = '<?= isset($_COOKIE['USER_user_id']) ? $_COOKIE['USER_user_id'] : '' ?>'
     // $.ajax({
     //   url: "<?= base_url('/api/about') ?>",
@@ -486,6 +477,9 @@
 
   </script>
   <script>
+	get_parent_categories();
+get_notice_text();
+load_all_service_details();
     function get_notice_text(){
         $.ajax({
             url: "<?= base_url('api/get/notice') ?>",
@@ -578,10 +572,94 @@
     });
 }
 
+function get_parent_categories() {
+	// alert(1)
+    $.ajax({
+        url: '<?= base_url('/api/categories') ?>',
+        type: "GET",
+        success: function (resp) {
+            let html = '';
+            if (resp.status && resp.data.length > 0) {
+                $.each(resp.data, (index, category) => {
+                    console.log('categories', category);
+                    html += `
+					<li id="menu-item-${category.id}"
+                            class="menu-item menu-item-type-post_type_archive menu-item-object-cars nav-item elementskit-mobile-builder-content">
+                            <a href="<?= base_url()?>all-categories" class="dropdown-item">
+                                ${category.name}
+                            </a>
+                        </li>`;
+                });
+            } else {
+                // Display a message if no categories are found
+                html = '<li class="no-categories">No categories available</li>';
+            }
 
-    $(document).ready(function () {
-    
-    get_notice_text();
-	load_all_service_details();
+			// document.getElementById('categories_list_header').innerHTML = '<p>hi</p>'
+
+            // Append categories to the categories list header
+            // $('#categories_list_header').html('<p>hi</p>');
+            $('#categories_list_header').html(html);
+
+        },
+        error: function (err) {
+            console.error('Error fetching categories:', err);
+        }
+    });
+}
+
+function getSubCategory(category_id, parent_element_id) {
+    $.ajax({
+        url: '<?= base_url('/api/categories') ?>',
+        data: { parent_id: category_id },
+        type: "GET",
+        beforeSend: function () {
+            $(`#${parent_element_id}`).append(`<center><div class="spinner-border text-primary" role="status"></div></center>`);
+        },
+        success: function (resp) {
+            console.log(resp);
+            let html = '';
+
+            if (resp.status) {
+                if (resp.data.length > 0) {
+                    html += `<ul style="padding-left: 20px;">`; // Add indentation for subcategories
+                    $.each(resp.data, (index, category) => {
+                        html += `
+                            <li id="sub-item-${category.id}" class="subcategory-item">
+                                <a href="<?= base_url()?>all-categories">
+                                    ${category.name}
+                                </a>
+                            </li>`;
+
+                        // Add a placeholder for potential child subcategories
+                        if (category.has_subcategories && category.has_subcategories > 0) {
+                            html += `<ul id="subcategories_${category.id}" style="padding-left: 20px;"></ul>`;
+                        }
+                    });
+                    html += `</ul>`;
+                }
+            }
+
+            $(`#${parent_element_id}`).find('.spinner-border').remove(); // Remove loading spinner
+            $(`#${parent_element_id}`).append(html);
+
+            // Fetch child subcategories if they exist
+            if (resp.data.length > 0) {
+                $.each(resp.data, (index, category) => {
+                    if (category.has_subcategories && category.has_subcategories > 0) {
+                        getSubCategory(category.id, `subcategories_${category.id}`);
+                    }
+                });
+            }
+        },
+        error: function (err) {
+            console.log(err);
+        }
+    });
+}
+
+
+$(document).ready(function () {
+	
 });
   </script>

@@ -32,12 +32,19 @@
                         <!-- <th>Barcode</th> -->
                         
                         <th>Make</th>
+                        <th>Make Icon</th>
                         <th>Model</th>
+                        <th>Model Icon</th>
                         <th>Year</th>
+                        <th>Year Icon</th>
                         <th>Mileage</th>
+                        <th>Mileage Icon</th>
                         <th>Location</th>
+                        <th>Location Icon</th>
                         <th>Doors</th>
+                        <th>Doors Icon</th>
                         <th>Badges</th>
+                        <th>Badges Icon</th>
                         <th>Category</th>
                         <!-- <th>Size</th> -->
                         <!-- <th>Quantity</th> -->

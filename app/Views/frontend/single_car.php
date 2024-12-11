@@ -7,7 +7,7 @@
 			<div class="row align-items-center">
 				<div class="col-md-12">
 					<div class="page-header-box">
-						<h1 id="product_title" class="at-animation-heading-style-3"></h1>						<div role="navigation" aria-label="Breadcrumbs" class="breadcrumb-trail breadcrumbs"><ol class="trail-items"><li class="trail-item trail-begin"><a href="../../index.htm" rel="home"><span>Home</span></a></li><li class="trail-item"><a href="../index.htm"><span>Cars</span></a></li><li class="trail-item trail-end"><span id="product_title_2"><span></span></span></li></ol></div>					</div>
+						<h1 id="product_title" class="at-animation-heading-style-3"></h1>										</div>
 				</div>
 			</div>
 		</div>
@@ -21,9 +21,12 @@
 		<div class="fleets-single-sidebar">
 			<div class="fleets-single-sidebar-box">
 						<div class="fleets-single-sidebar-pricing">
-		<h2>Rs <span style="color:black;font-size:40px;" id="product_price"></span><span>/Per Day</span></h2>		</div>
-		<div class="fleets-single-sidebar-list">
-		<ul><li><label><img src="../../wp-content/uploads/2024/09/icon-door.svg"> <span class="feature-label">Doors</span></label><span class="feature-value" id="product_doors"> </span></li><li><label><img src="../../wp-content/uploads/2024/09/icon-passengers.svg"> <span class="feature-label">Passengers</span></label><span class="feature-value"> 2</span></li><li><label><img src="../../wp-content/uploads/2024/09/icon-transmission.svg"> <span class="feature-label">Transmission</span></label><span class="feature-value"> Auto</span></li><li><label><img src="../../wp-content/uploads/2024/09/icon-age.svg"> <span class="feature-label">Age</span></label><span class="feature-value"> 5</span></li><li><label><img src="../../wp-content/uploads/2024/09/icon-bags.svg"> <span class="feature-label">Luggage</span></label><span class="feature-value"> 2</span></li><li><label><img src="../../wp-content/uploads/2024/09/icon-aircondition.svg"> <span class="feature-label"> Air Condition</span></label><span class="feature-value"> Yes</span></li></ul>		</div>
+							<div class="elementor-widget-container">
+								<ul id="categories_list" class="elementor-icon-list-items">
+									
+								</ul>
+							</div>
+					</div>
 				<div class="fleets-single-sidebar-btn">
 					<div data-elementor-type="section" data-elementor-id="8438" class="elementor elementor-8438">
 				<div class="elementor-element elementor-element-6983617 e-flex e-con-boxed e-con e-parent" data-id="6983617" data-element_type="container">
@@ -167,11 +170,11 @@
 
 									<h3 class="elementor-icon-box-title">
 						<span>
-							Unlimited KMs						</span>
+							Car Make						</span>
 					</h3>
 				
-									<p class="elementor-icon-box-description">
-						Endless Km with no extra charge 					</p>
+									<p id="car_make" class="elementor-icon-box-description">
+						 					</p>
 				
 			</div>
 			
@@ -191,11 +194,11 @@
 
 									<h3 class="elementor-icon-box-title">
 						<span>
-							Unlimited KMs						</span>
+							Car Model						</span>
 					</h3>
 				
-									<p class="elementor-icon-box-description">
-						Endless Km with no extra charge 					</p>
+									<p id="car_model" class="elementor-icon-box-description">
+											</p>
 				
 			</div>
 			
@@ -203,55 +206,19 @@
 				</div>
 				</div>
 				</div>
-		<div class="elementor-element elementor-element-7d917cf e-con-full e-flex e-con e-child" data-id="7d917cf" data-element_type="container">
-				<div class="elementor-element elementor-element-ba5a30b section-title at-heading-animation at-animation-heading-none elementor-invisible elementor-widget elementor-widget-heading" data-id="ba5a30b" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeInUp&quot;,&quot;ekit_we_effect_on&quot;:&quot;none&quot;}" data-widget_type="heading.default">
+		
+		<div class="elementor-element elementor-element-e301591 e-con-full e-flex e-con e-child" data-id="e301591" data-element_type="container">
+				<div class="elementor-element elementor-element-f38a25d section-title at-heading-animation at-animation-heading-none elementor-invisible elementor-widget elementor-widget-heading" data-id="f38a25d" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeInUp&quot;,&quot;ekit_we_effect_on&quot;:&quot;none&quot;}" data-widget_type="heading.default">
 				<div class="elementor-widget-container">
-			<h3 class="elementor-heading-title elementor-size-default">General Information</h3>		</div>
 				</div>
-				<div class="elementor-element elementor-element-50e1d52 at-heading-animation at-animation-heading-style-3 elementor-widget elementor-widget-heading" data-id="50e1d52" data-element_type="widget" data-settings="{&quot;ekit_we_effect_on&quot;:&quot;none&quot;}" data-widget_type="heading.default">
+				</div>
+				<div class="elementor-element elementor-element-89954d3 at-heading-animation at-animation-heading-style-2 elementor-widget elementor-widget-heading" data-id="89954d3" data-element_type="widget" data-settings="{&quot;ekit_we_effect_on&quot;:&quot;none&quot;}" data-widget_type="heading.default">
 				<div class="elementor-widget-container">
-			<h2 class="elementor-heading-title elementor-size-default">Know about our car service</h2>		</div>
+			<h2 class="elementor-heading-title elementor-size-default" id="product_title_big"></h2>		</div>
 				</div>
 				<div class="elementor-element elementor-element-9639cef elementor-invisible elementor-widget elementor-widget-text-editor" data-id="9639cef" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeInUp&quot;,&quot;_animation_delay&quot;:100,&quot;ekit_we_effect_on&quot;:&quot;none&quot;}" data-widget_type="text-editor.default">
 				<div class="elementor-widget-container">
 							<p id="product_description"></p>						</div>
-				</div>
-				<div class="elementor-element elementor-element-fbbcc27 fleets-information-list elementor-icon-list--layout-traditional elementor-list-item-link-full_width elementor-invisible elementor-widget elementor-widget-icon-list" data-id="fbbcc27" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeInUp&quot;,&quot;_animation_delay&quot;:200,&quot;ekit_we_effect_on&quot;:&quot;none&quot;}" data-widget_type="icon-list.default">
-				<div class="elementor-widget-container">
-					<ul class="elementor-icon-list-items">
-							<li class="elementor-icon-list-item">
-											<a href="#">
-
-												<span class="elementor-icon-list-icon">
-							<i aria-hidden="true" class="fas fa-check-circle"></i>						</span>
-										<span class="elementor-icon-list-text">24/7 Roadside Assistance</span>
-											</a>
-									</li>
-								<li class="elementor-icon-list-item">
-											<a href="#">
-
-												<span class="elementor-icon-list-icon">
-							<i aria-hidden="true" class="fas fa-check-circle"></i>						</span>
-										<span class="elementor-icon-list-text">Free Cancellation & Return</span>
-											</a>
-									</li>
-								<li class="elementor-icon-list-item">
-											<span class="elementor-icon-list-icon">
-							<i aria-hidden="true" class="fas fa-check-circle"></i>						</span>
-										<span class="elementor-icon-list-text">Rent Now Pay When You Arrive</span>
-									</li>
-						</ul>
-				</div>
-				</div>
-				</div>
-		<div class="elementor-element elementor-element-e301591 e-con-full e-flex e-con e-child" data-id="e301591" data-element_type="container">
-				<div class="elementor-element elementor-element-f38a25d section-title at-heading-animation at-animation-heading-none elementor-invisible elementor-widget elementor-widget-heading" data-id="f38a25d" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeInUp&quot;,&quot;ekit_we_effect_on&quot;:&quot;none&quot;}" data-widget_type="heading.default">
-				<div class="elementor-widget-container">
-			<h3 class="elementor-heading-title elementor-size-default">Amenities</h3>		</div>
-				</div>
-				<div class="elementor-element elementor-element-89954d3 at-heading-animation at-animation-heading-style-2 elementor-widget elementor-widget-heading" data-id="89954d3" data-element_type="widget" data-settings="{&quot;ekit_we_effect_on&quot;:&quot;none&quot;}" data-widget_type="heading.default">
-				<div class="elementor-widget-container">
-			<h2 class="elementor-heading-title elementor-size-default">Premium amenities and features</h2>		</div>
 				</div>
 				<div class="elementor-element elementor-element-d5b5c55 fleets-amenities-list  elementor-icon-list--layout-traditional elementor-list-item-link-full_width elementor-invisible elementor-widget elementor-widget-icon-list" data-id="d5b5c55" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeInUp&quot;,&quot;_animation_delay&quot;:100,&quot;ekit_we_effect_on&quot;:&quot;none&quot;}" data-widget_type="icon-list.default">
 				<div class="elementor-widget-container">
@@ -259,44 +226,45 @@
 							<li class="elementor-icon-list-item">
 											<a href="#">
 
-												<span class="elementor-icon-list-icon">
-							<i aria-hidden="true" class="fas fa-check-circle"></i>						</span>
-										<span class="elementor-icon-list-text">Music System</span>
+												<span id="year_span" class="elementor-icon-list-icon">
+							<!-- <i aria-hidden="true" class="fas fa-check-circle"></i>						</span>
+										<span class="elementor-icon-list-text">Music System</span> -->
+												</span>
 											</a>
 									</li>
 								<li class="elementor-icon-list-item">
 											<a href="#">
 
-												<span class="elementor-icon-list-icon">
-							<i aria-hidden="true" class="fas fa-check-circle"></i>						</span>
-										<span class="elementor-icon-list-text">Toolkit</span>
+												<span id="mileage_span" class="elementor-icon-list-icon">
+							<!-- <i aria-hidden="true" class="fas fa-check-circle"></i>						</span>
+										<span class="elementor-icon-list-text">Toolkit</span> -->
 											</a>
 									</li>
 								<li class="elementor-icon-list-item">
 											<a href="#">
 
-												<span class="elementor-icon-list-icon">
-							<i aria-hidden="true" class="fas fa-check-circle"></i>						</span>
-										<span class="elementor-icon-list-text">Abs System</span>
+												<span id="location_span" class="elementor-icon-list-icon">
+							<!-- <i aria-hidden="true" class="fas fa-check-circle"></i>						</span>
+										<span class="elementor-icon-list-text">Abs System</span> -->
 											</a>
 									</li>
 								<li class="elementor-icon-list-item">
 											<a href="#">
 
-												<span class="elementor-icon-list-icon">
-							<i aria-hidden="true" class="fas fa-check-circle"></i>						</span>
-										<span class="elementor-icon-list-text">Bluetooth</span>
+												<span id="badge_span" class="elementor-icon-list-icon">
+							<!-- <i aria-hidden="true" class="fas fa-check-circle"></i>						</span>
+										<span class="elementor-icon-list-text">Bluetooth</span> -->
 											</a>
 									</li>
-								<li class="elementor-icon-list-item">
+								<!-- <li class="elementor-icon-list-item">
 											<a href="#">
 
 												<span class="elementor-icon-list-icon">
 							<i aria-hidden="true" class="fas fa-check-circle"></i>						</span>
 										<span class="elementor-icon-list-text">Full Boot Space</span>
 											</a>
-									</li>
-								<li class="elementor-icon-list-item">
+									</li> -->
+								<!-- <li class="elementor-icon-list-item">
 											<a href="#">
 
 												<span class="elementor-icon-list-icon">
@@ -335,215 +303,14 @@
 							<i aria-hidden="true" class="fas fa-check-circle"></i>						</span>
 										<span class="elementor-icon-list-text">Power Windows</span>
 											</a>
-									</li>
+									</li> -->
 						</ul>
 				</div>
 				</div>
 				</div>
 		<div class="elementor-element elementor-element-ac7be5e e-con-full e-flex e-con e-child" data-id="ac7be5e" data-element_type="container">
-				<div class="elementor-element elementor-element-ff442f0 section-title at-heading-animation at-animation-heading-none elementor-invisible elementor-widget elementor-widget-heading" data-id="ff442f0" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeInUp&quot;,&quot;ekit_we_effect_on&quot;:&quot;none&quot;}" data-widget_type="heading.default">
-				<div class="elementor-widget-container">
-			<h3 class="elementor-heading-title elementor-size-default">Rental Conditions</h3>		</div>
-				</div>
-				<div class="elementor-element elementor-element-de65451 at-heading-animation at-animation-heading-style-3 elementor-widget elementor-widget-heading" data-id="de65451" data-element_type="widget" data-settings="{&quot;ekit_we_effect_on&quot;:&quot;none&quot;}" data-widget_type="heading.default">
-				<div class="elementor-widget-container">
-			<h2 class="elementor-heading-title elementor-size-default">Policies and agreement</h2>		</div>
-				</div>
-				<div class="elementor-element elementor-element-ac84eb1 faq-accordion elementor-invisible elementor-widget elementor-widget-elementskit-accordion" data-id="ac84eb1" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeInUp&quot;,&quot;_animation_delay&quot;:100,&quot;ekit_we_effect_on&quot;:&quot;none&quot;}" data-widget_type="elementskit-accordion.default">
-				<div class="elementor-widget-container">
-			<div class="ekit-wid-con">
-        <div class="elementskit-accordion accoedion-primary" id="accordion-674ab39eb1438">
-
-            
-                <div class="elementskit-card active">
-                    <div class="elementskit-card-header" id="primaryHeading-0-ac84eb1">
-                        <a href="#collapse-41520fb674ab39eb1438" class="ekit-accordion--toggler elementskit-btn-link collapsed" data-ekit-toggle="collapse" data-target="#Collapse-41520fb674ab39eb1438" aria-expanded="true" aria-controls="Collapse-41520fb674ab39eb1438">
-                            
-                            <span class="ekit-accordion-title">Driver&#039;s License Requirements</span>
-
-                            
-                                <div class="ekit_accordion_icon_group">
-                                    <div class="ekit_accordion_normal_icon">
-                                        <!-- Normal Icon -->
-                                        <i aria-hidden="true" class="icon-open icon-right fas fa-plus"></i>                                    </div>
-
-                                    <div class="ekit_accordion_active_icon">
-                                        <!-- Active Icon -->
-                                        <i aria-hidden="true" class="icon-closed icon-right fas fa-minus"></i>                                    </div>
-
-                                </div>
-
-                            
-                                                    </a>
-                    </div>
-
-                    <div id="Collapse-41520fb674ab39eb1438" class=" show collapse" aria-labelledby="primaryHeading-0-ac84eb1" data-parent="#accordion-674ab39eb1438">
-
-                        <div class="elementskit-card-body ekit-accordion--content">
-                            <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal</p>                        </div>
-
-                    </div>
-
-                </div><!-- .elementskit-card END -->
-
-                
-                <div class="elementskit-card ">
-                    <div class="elementskit-card-header" id="primaryHeading-1-ac84eb1">
-                        <a href="#collapse-8813a6d674ab39eb1438" class="ekit-accordion--toggler elementskit-btn-link collapsed" data-ekit-toggle="collapse" data-target="#Collapse-8813a6d674ab39eb1438" aria-expanded="false" aria-controls="Collapse-8813a6d674ab39eb1438">
-                            
-                            <span class="ekit-accordion-title">Insurance and Coverage policy</span>
-
-                            
-                                <div class="ekit_accordion_icon_group">
-                                    <div class="ekit_accordion_normal_icon">
-                                        <!-- Normal Icon -->
-                                        <i aria-hidden="true" class="icon-open icon-right fas fa-plus"></i>                                    </div>
-
-                                    <div class="ekit_accordion_active_icon">
-                                        <!-- Active Icon -->
-                                        <i aria-hidden="true" class="icon-closed icon-right fas fa-minus"></i>                                    </div>
-
-                                </div>
-
-                            
-                                                    </a>
-                    </div>
-
-                    <div id="Collapse-8813a6d674ab39eb1438" class=" collapse" aria-labelledby="primaryHeading-1-ac84eb1" data-parent="#accordion-674ab39eb1438">
-
-                        <div class="elementskit-card-body ekit-accordion--content">
-                            <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal</p>                        </div>
-
-                    </div>
-
-                </div><!-- .elementskit-card END -->
-
-                
-                <div class="elementskit-card ">
-                    <div class="elementskit-card-header" id="primaryHeading-2-ac84eb1">
-                        <a href="#collapse-81f0585674ab39eb1438" class="ekit-accordion--toggler elementskit-btn-link collapsed" data-ekit-toggle="collapse" data-target="#Collapse-81f0585674ab39eb1438" aria-expanded="false" aria-controls="Collapse-81f0585674ab39eb1438">
-                            
-                            <span class="ekit-accordion-title">Available payment Methods</span>
-
-                            
-                                <div class="ekit_accordion_icon_group">
-                                    <div class="ekit_accordion_normal_icon">
-                                        <!-- Normal Icon -->
-                                        <i aria-hidden="true" class="icon-open icon-right fas fa-plus"></i>                                    </div>
-
-                                    <div class="ekit_accordion_active_icon">
-                                        <!-- Active Icon -->
-                                        <i aria-hidden="true" class="icon-closed icon-right fas fa-minus"></i>                                    </div>
-
-                                </div>
-
-                            
-                                                    </a>
-                    </div>
-
-                    <div id="Collapse-81f0585674ab39eb1438" class=" collapse" aria-labelledby="primaryHeading-2-ac84eb1" data-parent="#accordion-674ab39eb1438">
-
-                        <div class="elementskit-card-body ekit-accordion--content">
-                            <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal</p>                        </div>
-
-                    </div>
-
-                </div><!-- .elementskit-card END -->
-
-                
-                <div class="elementskit-card ">
-                    <div class="elementskit-card-header" id="primaryHeading-3-ac84eb1">
-                        <a href="#collapse-d8ca07a674ab39eb1438" class="ekit-accordion--toggler elementskit-btn-link collapsed" data-ekit-toggle="collapse" data-target="#Collapse-d8ca07a674ab39eb1438" aria-expanded="false" aria-controls="Collapse-d8ca07a674ab39eb1438">
-                            
-                            <span class="ekit-accordion-title">Cancellation and Modification policy</span>
-
-                            
-                                <div class="ekit_accordion_icon_group">
-                                    <div class="ekit_accordion_normal_icon">
-                                        <!-- Normal Icon -->
-                                        <i aria-hidden="true" class="icon-open icon-right fas fa-plus"></i>                                    </div>
-
-                                    <div class="ekit_accordion_active_icon">
-                                        <!-- Active Icon -->
-                                        <i aria-hidden="true" class="icon-closed icon-right fas fa-minus"></i>                                    </div>
-
-                                </div>
-
-                            
-                                                    </a>
-                    </div>
-
-                    <div id="Collapse-d8ca07a674ab39eb1438" class=" collapse" aria-labelledby="primaryHeading-3-ac84eb1" data-parent="#accordion-674ab39eb1438">
-
-                        <div class="elementskit-card-body ekit-accordion--content">
-                            <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal</p>                        </div>
-
-                    </div>
-
-                </div><!-- .elementskit-card END -->
-
-                
-                <div class="elementskit-card ">
-                    <div class="elementskit-card-header" id="primaryHeading-4-ac84eb1">
-                        <a href="#collapse-24ad5cf674ab39eb1438" class="ekit-accordion--toggler elementskit-btn-link collapsed" data-ekit-toggle="collapse" data-target="#Collapse-24ad5cf674ab39eb1438" aria-expanded="false" aria-controls="Collapse-24ad5cf674ab39eb1438">
-                            
-                            <span class="ekit-accordion-title">Smoking and Pet Policies</span>
-
-                            
-                                <div class="ekit_accordion_icon_group">
-                                    <div class="ekit_accordion_normal_icon">
-                                        <!-- Normal Icon -->
-                                        <i aria-hidden="true" class="icon-open icon-right fas fa-plus"></i>                                    </div>
-
-                                    <div class="ekit_accordion_active_icon">
-                                        <!-- Active Icon -->
-                                        <i aria-hidden="true" class="icon-closed icon-right fas fa-minus"></i>                                    </div>
-
-                                </div>
-
-                            
-                                                    </a>
-                    </div>
-
-                    <div id="Collapse-24ad5cf674ab39eb1438" class=" collapse" aria-labelledby="primaryHeading-4-ac84eb1" data-parent="#accordion-674ab39eb1438">
-
-                        <div class="elementskit-card-body ekit-accordion--content">
-                            <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal</p>                        </div>
-
-                    </div>
-
-                </div><!-- .elementskit-card END -->
-
-                
-                <div class="elementskit-card ">
-                    <div class="elementskit-card-header" id="primaryHeading-5-ac84eb1">
-                        <a href="#collapse-d58f845674ab39eb1438" class="ekit-accordion--toggler elementskit-btn-link collapsed" data-ekit-toggle="collapse" data-target="#Collapse-d58f845674ab39eb1438" aria-expanded="false" aria-controls="Collapse-d58f845674ab39eb1438">
-                            
-                            <span class="ekit-accordion-title">The minimum age Requirements</span>
-
-                            
-                                <div class="ekit_accordion_icon_group">
-                                    <div class="ekit_accordion_normal_icon">
-                                        <!-- Normal Icon -->
-                                        <i aria-hidden="true" class="icon-open icon-right fas fa-plus"></i>                                    </div>
-
-                                    <div class="ekit_accordion_active_icon">
-                                        <!-- Active Icon -->
-                                        <i aria-hidden="true" class="icon-closed icon-right fas fa-minus"></i>                                    </div>
-
-                                </div>
-
-                            
-                                                    </a>
-                    </div>
-
-                    <div id="Collapse-d58f845674ab39eb1438" class=" collapse" aria-labelledby="primaryHeading-5-ac84eb1" data-parent="#accordion-674ab39eb1438">
-
-                        <div class="elementskit-card-body ekit-accordion--content">
-                            <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal</p>                        </div>
-
-                    </div>
-
+				
+			<div id="product_price"></div>
                 </div><!-- .elementskit-card END -->
 
                                         </div>

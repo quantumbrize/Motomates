@@ -220,7 +220,7 @@
         document.getElementById('currentRowIndex').value = currentRowIndex;
 
         // Get existing description if any
-        const descriptionCell = row.cells[13]; // Get the description cell
+        const descriptionCell = row.cells[20]; // Get the description cell
         const existingDescription = descriptionCell.querySelector('span') ? descriptionCell.querySelector('span').innerHTML : '';
 
         // Set existing description in CKEditor
@@ -284,7 +284,7 @@
         const row = document.querySelectorAll('#product-table-body tr')[currentRowIndex];
 
         // Update the description cell (you can also add a hidden input if needed)
-        row.cells[13].innerHTML = `<span class="truncate">${description}</span><button class="btn btn-sm btn-success" type="button" onclick="openDescriptionModal(this)">Edit Description</button>`;
+        row.cells[20].innerHTML = `<span class="truncate">${description}</span><button class="btn btn-sm btn-success" type="button" onclick="openDescriptionModal(this)">Edit Description</button>`;
 
         // Close modal
         closeModal();
@@ -312,18 +312,24 @@
         newRow.innerHTML = `<td><input type="text" placeholder="Enter Product Name" required></td>
         <td><input type="text" placeholder="Enter Store Name"></td>
         <td><input type="text" placeholder="Enter Make"></td>
+        <td><input type="file" id="make_icon" placeholder="Enter Make Icon"></td>
         <td><input type="text" placeholder="Enter Model"></td>
+        <td><input type="file" id="model_icon" placeholder="Enter Model Icon"></td>
         <td>
             <select class="product-category-list" id="product-category-${category_id}" onChange="get_sub_category('${category_id}')"></select>
             <input type="hidden" id="selected-cat-name-${category_id}">
             <p>Selected Category:- <b id="selected-cat-${category_id}"></b><i class="fas fa-redo" onclick="reset_category('${category_id}')"></i></p>
         </td>
         <td><input type="text" placeholder="Enter Year"></td>
+        <td><input type="file" id="year_icon" placeholder="Enter Year Icon"></td>
         <td><input type="text" placeholder="Enter Mileage"></td>
+        <td><input type="file" id="mileage_icon" placeholder="Enter Mileage Icon"></td>
         <td><input type="text" placeholder="Enter Location"></td>
+        <td><input type="file" id="location_icon" placeholder="Enter Location Icon"></td>
         <!-- <td><input type="number" placeholder="Enter Quantity"></td> -->
         <!-- <td><input type="text" placeholder="Enter Tags"></td> -->
         <td><input type="text" placeholder="Enter Doors"></td>
+        <td><input type="file" id="doors_icon" placeholder="Enter Doors Icon"></td>
         <td>
             <select class="form-control">
                 <option value="">Select-Badge</option>
@@ -332,6 +338,7 @@
                 <option value="Certified Pre-Owned">Certified Pre-Owned</option>
             </select>
         </td>
+        <td><input type="file" id="badge_icon" placeholder="Enter Badge Icon"></td>
         <td>
             <select class="product-tax-list" id="product-tax-${category_id}">
                 <option value="0">00.00% IGST - (00.00% CGST & 00.00% SGST)</option>
@@ -363,7 +370,6 @@
             <!-- Modal for uploading images specific to this row -->
 
         </td>
-        <td><input type="file" id="size_chart" name="size_chart"></td>
 
         <td>
             <button class="btn btn-md btn-danger" type="button" onclick="removeRow(this)">
@@ -477,27 +483,33 @@
         const rows = document.querySelectorAll('#product-table-body tr');
         const products = [];
 
-        rows.forEach(row => {
+        rows.forEach((row, index) => {
             const productName = row.cells[0].children[0].value;
             const storeName = row.cells[1].children[0].value;
             const make = row.cells[2].children[0].value;
-            const model = row.cells[3].children[0].value;
-            const category = row.cells[4].children[1].value;
-            const year = row.cells[5].children[0].value;
-            const mileage = row.cells[6].children[0].value;
-            const location = row.cells[7].children[0].value;
-            const doors = row.cells[8].children[0].value;
-            const badges = row.cells[9].children[0].value;
-            const tax = row.cells[10].children[0].value;
-            const discount = row.cells[11].children[0].value;
-            // const del_charge = row.cells[8].children[0].value;
-            const price = row.cells[12].children[0].value;
-            const description = row.cells[13].querySelector('span') ? row.cells[13].querySelector('span').innerHTML : '';
+            const model = row.cells[4].children[0].value;
+            const category = row.cells[6].children[1].value;
+            const year = row.cells[7].children[0].value;
+            const mileage = row.cells[9].children[0].value;
+            const location = row.cells[11].children[0].value;
+            const doors = row.cells[13].children[0].value;
+            const badges = row.cells[15].children[0].value;
+            const tax = row.cells[17].children[0].value;
+            const discount = row.cells[18].children[0].value;
+            const price = row.cells[19].children[0].value;
+            const description = row.cells[20].querySelector('span') ? row.cells[20].querySelector('span').innerHTML : '';
+            const makeIcon = row.querySelector("#make_icon").files[0]; // Make icon
+            const modelIcon = row.querySelector("#model_icon").files[0]; // Model icon
+            const yearIcon = row.querySelector("#year_icon").files[0]; // Year icon
+            const mileageIcon = row.querySelector("#mileage_icon").files[0]; // Mileage icon
+            const locationIcon = row.querySelector("#location_icon").files[0]; // Location icon
+            const doorsIcon = row.querySelector("#doors_icon").files[0]; // Doors icon
+            const badgeIcon = row.querySelector("#badge_icon").files[0]; 
             const imagesFiles = rowImages[row.rowIndex] || [];
             let isValid = true;
             let html;
 
-            // Validate the product name
+            // Validate product name
             if (!productName) {
                 html = `<div class="alert alert-warning alert-dismissible alert-label-icon label-arrow fade show material-shadow" role="alert">
                             <i class="ri-alert-line label-icon"></i><strong>Warning</strong> - Product Name is required.
@@ -521,7 +533,7 @@
 
                 if (imageFile.size > maxSizeMB * 1024 * 1024 && imagesFiles.length > 0) { // Convert MB to bytes
                     html = `<div class="alert alert-warning alert-dismissible alert-label-icon label-arrow fade show material-shadow" role="alert">
-                                <i class="ri-alert-line label-icon"></i><strong>Warning</strong> - Image ${imgIndex + 1} exceeds the maximum size of ${maxSizeMB} MB
+                                <i class="ri-alert-line label-icon"></i><strong>Warning</strong> - Image ${imgIndex + 1} exceeds the maximum size of ${maxSizeMB} MB.
                                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                             </div>`;
                     isValid = false;
@@ -533,31 +545,37 @@
                 return;
             }
 
+            // Add product data
             products.push({
                 productName,
-                tax,
-                discount,
-                make,
                 storeName,
+                make,
                 model,
                 category,
                 year,
-                location,
                 mileage,
+                location,
                 doors,
                 badges,
-                description,
                 price,
-                images: imagesFiles // Add the images linked to this row
+                discount,
+                make_icon: makeIcon,
+                model_icon: modelIcon,
+                year_icon: yearIcon,
+                mileage_icon: mileageIcon,
+                location_icon: locationIcon,
+                doors_icon: doorsIcon,
+                badge_icon: badgeIcon,
+                images: imagesFiles,
             });
         });
 
         // Handle vendor drop-down validation
-        if ($('#vendor_drop_down').val() == '') {
-            html = `<div class="alert alert-warning alert-dismissible alert-label-icon label-arrow fade show material-shadow" role="alert">
-                        <i class="ri-alert-line label-icon"></i><strong>Warning</strong> - Please Select a Vendor.
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>`;
+        if ($('#vendor_drop_down').val() === '') {
+            const html = `<div class="alert alert-warning alert-dismissible alert-label-icon label-arrow fade show material-shadow" role="alert">
+                            <i class="ri-alert-line label-icon"></i><strong>Warning</strong> - Please Select a Vendor.
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>`;
             $('#alert').html(html);
             return;
         }
@@ -589,15 +607,18 @@
 
                 // Append images for the product
                 product.images.forEach((imageFile, imgIndex) => {
-                    formData.append(`products[${index}][image][${imgIndex}]`, imageFile);
+                    formData.append(`products[${index}][images][${imgIndex}]`, imageFile);
                 });
-            });
 
-            // Get the file input (size_chart)
-            // const sizeChartFile = document.querySelector('#size_chart').files[0];
-            // if (sizeChartFile) {
-            //     formData.append('size_chart', sizeChartFile);
-            // }
+                // Append icon images for the product
+                if (product.make_icon) formData.append(`products[${index}][make_icon]`, product.make_icon);
+                if (product.model_icon) formData.append(`products[${index}][model_icon]`, product.model_icon);
+                if (product.year_icon) formData.append(`products[${index}][year_icon]`, product.year_icon);
+                if (product.mileage_icon) formData.append(`products[${index}][mileage_icon]`, product.mileage_icon);
+                if (product.location_icon) formData.append(`products[${index}][location_icon]`, product.location_icon);
+                if (product.doors_icon) formData.append(`products[${index}][doors_icon]`, product.doors_icon);
+                if (product.badge_icon) formData.append(`products[${index}][badge_icon]`, product.badge_icon);
+            });
 
             // Make AJAX request to submit the data
             $.ajax({
@@ -616,7 +637,7 @@
                         load_vendors();
                         getSizeList();
                         $('#alert').html(`<div class="alert alert-success alert-dismissible alert-label-icon label-arrow fade show material-shadow" role="alert">
-                                            <i class="ri-check-line label-icon"></i><strong>Success</strong> - All Products Added
+                                            <i class="ri-check-line label-icon"></i><strong>Success</strong> - All Products Added.
                                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                         </div>`);
                     }
@@ -630,9 +651,10 @@
                 }
             });
         } catch (e) {
-            console.log(e);
+            console.error(e);
         }
     }
+
 
 
 </script>

@@ -1473,5 +1473,24 @@ class Frontend_Controller extends Main_Controller
         ];
         $this->load_page('/frontend/single_car', $data);
     }
-    
+    public function all_categories(): void
+    {
+        $data = PAGE_DATA_FRONTEND;
+        $data = [
+            'data_page' => [],
+            'data_header' => [
+                'header_link' => [],
+                'title' => 'all categories',
+                'header' => ['all_categories'=>true],
+                'sidebar' => [],
+                'site' => 'frontend'
+            ],
+            'data_footer' => [
+                'footer_link' => ['all_categories_js.php'],
+                'footer' => [],
+                'site' => 'frontend'
+            ]
+        ];
+        $this->load_page('/frontend/all_categories', $data);
+    }
 }

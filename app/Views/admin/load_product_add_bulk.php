@@ -82,13 +82,20 @@
                     <th class="product-column">Car Name</th>
                     <th class="store-name-column">Store Name</th>
                     <th class="barcode-column">Make</th>
+                    <th class="barcode-column">Make Icon</th>
                     <th class="barcode-column">Model</th>
+                    <th class="barcode-column">Model Icon</th>
                     <th class="category-column">Category</th>
                     <th class="size-column">Year</th>
+                    <th class="size-column">Year Icon</th>
                     <th class="tags-column">Mileage</th>
+                    <th class="tags-column">Mileage Icon</th>
                     <th class="tags-column">Location</th>
+                    <th class="tags-column">Location Icon</th>
                     <th class="tags-column">Doors</th>
+                    <th class="tags-column">Doors Icon</th>
                     <th class="delivery-charge-column">Badges </th>
+                    <th class="delivery-charge-column">Badges Icon</th>
                     <th class="tax-column">Tax</th>
                     <th class="discount-column">Discount</th>
                     <th class="price-column">Price</th>
@@ -105,7 +112,9 @@
                         <td><input type="number" placeholder="Enter Discount"></td> -->
                         <td><input type="text" placeholder="Enter Store Name"></td>
                         <td><input type="text" placeholder="Enter Make"></td>
+                        <td><input type="file" id="make_icon" placeholder="Enter Make Icon"></td>
                         <td><input type="text" placeholder="Enter Model"></td>
+                        <td><input type="file" id="model_icon" placeholder="Enter Model Icon"></td>
                         <td>
                             <select class="product-category-list" id="product-category-0"
                                 onChange="get_sub_category('0')"></select>
@@ -116,11 +125,15 @@
                             </p>
                         </td>
                         <td><input type="text" placeholder="Enter Year"></td>
+                        <td><input type="file" id="year_icon" placeholder="Enter Year Icon"></td>
                         <td><input type="text" placeholder="Enter Mileage"></td>
+                        <td><input type="file" id="mileage_icon" placeholder="Enter Mileage Icon"></td>
                         <td><input type="text" placeholder="Enter Location"></td>
+                        <td><input type="file" id="location_icon" placeholder="Enter Location Icon"></td>
                         <!-- <td><input type="number" placeholder="Enter Quantity"></td> -->
                         <!-- <td><input type="text" placeholder="Enter Tags"></td> -->
                         <td><input type="text" placeholder="Enter Doors"></td>
+                        <td><input type="file" id="doors_icon" placeholder="Enter Doors Icon"></td>
                         <td>
                             <select class="form-control">
                                 <option value="">Select-Badge</option>
@@ -129,6 +142,7 @@
                                 <option value="Certified Pre-Owned">Certified Pre-Owned</option>
                             </select>
                         </td>
+                        <td><input type="file" id="badge_icon" placeholder="Enter Badge Icon"></td>
                         <td>
                             <select class="product-tax-list" id="product-tax-0">
                                 <option value="0">00.00% IGST - (00.00% CGST & 00.00% SGST)</option>
