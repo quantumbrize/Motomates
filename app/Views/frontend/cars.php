@@ -152,14 +152,7 @@
                           </div>
 													<div class="col-md-12">
 								
-	<nav class="navigation pagination" aria-label="Posts pagination">
-		<h2 class="screen-reader-text">Posts pagination</h2>
-		<div class="nav-links"><span aria-current="page" class="page-numbers current">1</span>
-<a class="page-numbers" href="page/2/index.htm">2</a>
-<a class="page-numbers" href="page/3/index.htm">3</a>
-<a class="page-numbers" href="page/4/index.htm">4</a>
-<a class="next page-numbers" href="page/2/index.htm"><i class="fa-solid fa-arrow-right-long"></i></a></div>
-	</nav>							</div>
+							</div>
 						</div>
 					</div>
 					

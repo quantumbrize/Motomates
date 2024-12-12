@@ -1307,7 +1307,8 @@ class Order_Controller extends Main_Controller
         // $this->prd();
         try {
             $RentalModel = new RentalModel();
-            $rental = $RentalModel->findAll();
+            $rental = $RentalModel->orderBy('id', 'DESC')->findAll();
+
             
             
             if (!empty($rental)) {

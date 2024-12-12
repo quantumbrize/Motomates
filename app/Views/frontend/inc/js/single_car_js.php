@@ -36,17 +36,18 @@
                htmlmileage=`<img src="${mileageIconsrc}" width="30"> &nbsp; <span class="elementor-icon-list-text">${resp.data.mileage}</span>`
                htmllocation=`<img src="${locationIconsrc}" width="30"> &nbsp; <span class="elementor-icon-list-text">${resp.data.location}</span>`
                htmlDoors=`<img src="${doorIconsrc}" width="30"> &nbsp; <span class="elementor-icon-list-text">${resp.data.doors}</span>`
+               
               
                htmlbadge=`<img src="${badgeIconsrc}" width="30"> &nbsp; <span class="elementor-icon-list-text">${resp.data.badges}</span>`
                 if((resp.data.base_price)!=null && (resp.data.base_discount)!=null && (resp.data.tax)!=null){
-                    totalPrice= resp.data.base_price - resp.data.base_discount-(resp.data.tax*resp.data.base_price/100);
+                    totalPrice= resp.data.base_price - (resp.data.base_discount*resp.data.base_price/100)-(resp.data.tax*resp.data.base_price/100);
                     htmlPrice=`<div style="background-color:#FF3600;padding:20px;color:white;font-size:25px">
                                     <div style="display: flex; justify-content: flex-start; gap: 10px;">
-                                        <span>Base Price:<b>Rs ${resp.data.base_price}</b></span>
+                                        <span>Base Price:<b>₹ ${resp.data.base_price}</b></span>
                                         <span>Discount: <b>${resp.data.base_discount}%</b></span>
                                         <span>Tax: <b>${resp.data.tax}%</b></span>
                                     </div>
-                                    <div style="margin-top: 10px;">Total Price: <b>Rs ${totalPrice}</b></div>
+                                    <div style="margin-top: 10px;">Total Price: <b>₹ ${totalPrice}</b></div>
                                 </div>
 
                                 `
@@ -66,6 +67,9 @@
                 $('#product_price').html(htmlPrice)
                 $('#product_title_big').html(htmlTitle)
                 $('#doors_span').html(htmlDoors)
+                $('#make_icon').attr('src',makeIconsrc)
+                $('#make_icon').attr('src',makeIconsrc)
+                $('#model_icon').attr('src',modelIconsrc)
             } else {
                 console.log(resp)
             }
@@ -223,7 +227,7 @@
                     if (resp.data.length > 0) {
                         $.each(resp.data, (index, category) => {
                             console.log('categories',category)
-                            html += `<li class="cat-item cat-item-12"><label><input type='checkbox'  onchange="get_product_by_category()" name='ofcar-types[]' value='${category.uid}'> ${category.name}</label></li>`
+                            html += `<li class="cat-item cat-item-12"><a style="color:black" href="<?=base_url()?>all-categories"><label value="${category.uid}"> ${category.name}</label></a></li>`
                         })
 
                     }
@@ -381,7 +385,90 @@
                 $('#product_list').html(`<p>Error fetching products. Please try again later.</p>`);
             }
         });
+    } 
+    function submit_enquiry() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const serviceId = urlParams.get('service_uid');
+        let formData = new FormData();
+        formData.append('enquiry_name', $('#enquiry_name').val());
+        formData.append('enquiry_email', $('#enquiry_email').val());
+        formData.append('enquiry_phone', $('#enquiry_phone').val());
+        formData.append('enquiry_subject', $('#enquiry_subject').val());
+        formData.append('enquiry_details', $('#enquiry_details').val());
+        formData.append('service_id', serviceId);
+
+        $.ajax({
+            url: "<?= base_url('/api/add/enquiry') ?>",
+            type: "POST",
+            data: formData,
+            contentType: false,
+            processData: false,
+            beforeSend: function () {
+                $('#submit_enquiry').text("Submitting...").attr('disabled', true);
+            },
+            success: function (response) {
+                console.log('enquiry', response);
+                if (response.status) {
+                    Toastify({
+                        text: response.message,
+                        duration: 3000,
+                        gravity: "top", // Position on top
+                        position: "center", // Align to right
+                        backgroundColor: "green", // Success notification color
+                        close: true
+                    }).showToast();
+
+                    const modalElement = document.getElementById("exampleModal");
+                    const modalInstance = bootstrap.Modal.getInstance(modalElement) || new bootstrap.Modal(modalElement);
+                    modalInstance.hide();
+                } else {
+                    Toastify({
+                        text: `Error: ${response.message}`,
+                        duration: 3000,
+                        gravity: "top",
+                        position: "center",
+                        backgroundColor: "red", // Error notification color
+                        close: true
+                    }).showToast();
+                }
+            },
+            error: function (err) {
+                console.error("Error:", err);
+                Toastify({
+                    text: "An unexpected error occurred. Please try again later.",
+                    duration: 3000,
+                    gravity: "top",
+                    position: "center",
+                    backgroundColor: "orange", // Error notification color
+                    close: true
+                }).showToast();
+            },
+            complete: function () {
+                $('#submit_enquiry').text("Submit").attr('disabled', false);
+            }
+        });
     }
+    document.getElementById('whatsappIcon').addEventListener('click', function() {
+        openPopup('popup1');
+        // window.open(`https://wa.me/${whatsapp_number}?text=Hello%20there!`, "_blank");
+    });
+
+    document.getElementById('enquiryButton').addEventListener('click', function() {
+        openPopup('enquiryPopup');
+    });
+    document.getElementById('enquiryButton1').addEventListener('click', function() {
+        openPopup('enquiryPopup');
+    });
+
+    function openPopup(popupId) {
+        document.getElementById(popupId).style.display = 'block';
+    }
+
+    // Function to close a popup
+    function closePopup(popupId) {
+        document.getElementById(popupId).style.display = 'none';
+    }
+
 
 
 </script>

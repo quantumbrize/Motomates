@@ -15,29 +15,42 @@
                 if (resp.status) {
                     if (resp.data.length > 0) {
                         let html = ``;
+                        let totalPrice = ``;
+                        let truncatedDescription = ``;
 
                         $.each(resp.data, function (index, product) {
                             console.log('productall', product);
+                            truncatedDescription=truncateText(product.description,50)
+                            totalPrice= product.base_price - (product.base_discount*product.base_price/100)-(product.tax*product.base_price/100);
                             html+=`<div class="col-lg-4 col-md-6">
+                            <a href="<?=base_url()?>single-car?product_uid=${product.product_id}">
                             <div class="perfect-fleet-item fleets-collection-item">
                                     <div class="image-box"><a href="<?=base_url()?>single-car?product_uid=${product.product_id}"><img fetchpriority="high" width="410" height="234" src="<?=base_url()?>public/uploads/product_images/${product.src}" class="attachment-novaride-thumb size-novaride-thumb wp-post-image" alt="" decoding="async"></a></div>    
                                     <div class="perfect-fleet-content">
                                         <div class="perfect-fleet-title">
-                                                                                                <h3><a href="<?=base_url()?>single-car?product_uid=${product.product_id}>${product.manufacturer_name}r</a></h3>
-                                                                                                <h2><a href="<?=base_url()?>single-car?product_uid=${product.product_id}">${product.name}</a></h2>                                        </div>
+                                                                                                <h3>${product.manufacturer_name}</h3>
+                                                                                                <h2>${product.name}</h2>                                        </div>
+                                         <div class="perfect-fleet-title">
+                                            <p>
+                                                
+                                                    ${truncatedDescription}
+                                                
+                                            </p>
                                         
+                                        </div>
                                         <div class="perfect-fleet-body">
-                                            <ul><li><label><img src="../wp-content/uploads/2024/09/icon-door.svg"> <span class="feature-label">Doors</span></label><span class="feature-value"> ${product.doors}</span></li><li><label><img src="../wp-content/uploads/2024/09/icon-passengers.svg"> <span class="feature-label">Passengers</span></label><span class="feature-value"> 2</span></li></ul>                                        </div>
+                                            <ul><li><label><img src="../wp-content/uploads/2024/09/icon-door.svg"> <span class="feature-label">Doors</span></label><span class="feature-value"> ${product.doors}</span></li></ul>                                        </div>
 
                                         <div class="perfect-fleet-footer">
                                             <div class="perfect-fleet-pricing">
-                                                <h2>${product.base_price}<span>/Per Day</span></h2>                                            </div>
+                                                <h2>₹ ${totalPrice}</h2>                                            </div>
                                             <div class="perfect-fleet-btn">
                                                 <a href="<?=base_url()?>single-car?product_uid=${product.product_id}" class="section-icon-btn"><img src="<?=base_url()?>public/assets/motomates/wp-content/themes/novaride/assets/images/arrow-white.svg" alt=""></a>
                                             </div>
                                         </div>
                                     </div>
                             </div>
+                            </a>
                             </div>
                         `
 
@@ -181,61 +194,69 @@
                 if (resp.status && resp.data.length > 0) {
                     // Generate product list HTML
                     $.each(resp.data, (index, product) => {
+                        truncatedDescription=truncateText(product.description,50)
+                        totalPrice= product.base_price - (product.base_discount*product.base_price/100)-(product.tax*product.base_price/100);
                         html += `
                             <div class="col-lg-4 col-md-6">
-                                <div class="perfect-fleet-item fleets-collection-item">
-                                    <div class="image-box">
-                                        <a href="<?=base_url()?>single-car?product_uid=${product.product_id}">
-                                            <img fetchpriority="high" width="410" height="234" 
-                                                src="<?=base_url()?>public/uploads/product_images/${product.src}" 
-                                                class="attachment-novaride-thumb size-novaride-thumb wp-post-image" 
-                                                alt="" decoding="async">
-                                        </a>
-                                    </div>    
-                                    <div class="perfect-fleet-content">
-                                        <div class="perfect-fleet-title">
-                                            <h3>
-                                                <a href="<?=base_url()?>single-car?product_uid=${product.product_id}">
-                                                    ${product.manufacturer_name}
-                                                </a>
-                                            </h3>
-                                            <h2>
-                                                <a href="<?=base_url()?>single-car?product_uid=${product.product_id}">
-                                                    ${product.name}
-                                                </a>
-                                            </h2>
-                                        </div>
-                                        <div class="perfect-fleet-body">
-                                            <ul>
-                                                <li>
-                                                    <label>
-                                                        <img src="../wp-content/uploads/2024/09/icon-door.svg"> 
-                                                        <span class="feature-label">Doors</span>
-                                                    </label>
-                                                    <span class="feature-value">${product.doors}</span>
-                                                </li>
-                                                <li>
-                                                    <label>
-                                                        <img src="../wp-content/uploads/2024/09/icon-passengers.svg"> 
-                                                        <span class="feature-label">Passengers</span>
-                                                    </label>
-                                                    <span class="feature-value">2</span>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="perfect-fleet-footer">
-                                            <div class="perfect-fleet-pricing">
-                                                <h2>${product.base_price}<span>/Per Day</span></h2>
+                                <a href="<?=base_url()?>single-car?product_uid=${product.product_id}">
+                                    <div class="perfect-fleet-item fleets-collection-item">
+                                        <div class="image-box">
+                                            <a href="<?=base_url()?>single-car?product_uid=${product.product_id}">
+                                                <img fetchpriority="high" width="410" height="234" 
+                                                    src="<?=base_url()?>public/uploads/product_images/${product.src}" 
+                                                    class="attachment-novaride-thumb size-novaride-thumb wp-post-image" 
+                                                    alt="" decoding="async">
+                                            </a>
+                                        </div>    
+                                        <div class="perfect-fleet-content">
+                                            <div class="perfect-fleet-title">
+                                                <h3>
+                                                   
+                                                        ${product.manufacturer_name}
+                                                    
+                                                </h3>
+                                                <h2>
+                                                    
+                                                        ${product.name}
+                                                    
+                                                </h2>
                                             </div>
-                                            <div class="perfect-fleet-btn">
-                                                <a href="<?=base_url()?>single-car?product_uid=${product.product_id}" 
-                                                class="section-icon-btn">
-                                                    <img src="<?=base_url()?>public/assets/motomates/wp-content/themes/novaride/assets/images/arrow-white.svg" alt="">
-                                                </a>
+                                             <div class="perfect-fleet-title">
+                                                    <p>
+                                                      
+                                                            ${truncatedDescription}
+                                                        
+                                                    </p>
+                                                
+                                                </div>
+                                            
+                                            
+                                            <div class="perfect-fleet-body">
+                                                <ul>
+                                                    <li>
+                                                        <label>
+                                                            <img src="../wp-content/uploads/2024/09/icon-door.svg"> 
+                                                            <span class="feature-label">Doors</span>
+                                                        </label>
+                                                        <span class="feature-value">${product.doors}</span>
+                                                    </li>
+                                                
+                                                </ul>
+                                            </div>
+                                            <div class="perfect-fleet-footer">
+                                                <div class="perfect-fleet-pricing">
+                                                    <h2>₹${totalPrice}</h2>
+                                                </div>
+                                                <div class="perfect-fleet-btn">
+                                                    <a href="<?=base_url()?>single-car?product_uid=${product.product_id}" 
+                                                    class="section-icon-btn">
+                                                        <img src="<?=base_url()?>public/assets/motomates/wp-content/themes/novaride/assets/images/arrow-white.svg" alt="">
+                                                    </a>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </a>
                             </div>`;
                     });
                 } else {
@@ -251,7 +272,13 @@
         });
     }
 
-
+    function truncateText(text, maxLength) {
+        if (text.length > maxLength) {
+            return text.substring(0, maxLength) + '...';
+        } else {
+            return text;
+        }
+    }
 
         
 load_all_products();

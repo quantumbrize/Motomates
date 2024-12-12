@@ -151,7 +151,7 @@
 																				<input class="wpcf7-form-control wpcf7-date wpcf7-validates-as-date form-control"
 																					id="date" aria-invalid="false"
 																					placeholder="Date" value=""
-																					type="date" name="date">
+																					type="date" name="date" min="">
 																			</span>
 																		</p>
 																	</div>
@@ -163,7 +163,7 @@
 																				<input class="wpcf7-form-control wpcf7-date wpcf7-validates-as-date form-control"
 																					id="returndate" aria-invalid="false"
 																					placeholder="Return Date" value=""
-																					type="date" name="return-date">
+																					type="date" name="return-date" min="">
 																			</span>
 																		</p>
 																	</div>

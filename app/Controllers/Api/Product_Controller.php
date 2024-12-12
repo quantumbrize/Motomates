@@ -327,89 +327,90 @@ class Product_Controller extends Api_Controller
     // }
 
     private function add_bulk_product($data)
-    {   
-        $resp = [
-            'status' => false,
-            'message' => 'Product not added',
-            'data' => null
-        ];
-    
-        $uploadedFiles = $this->request->getFiles();
-    
-        if (empty($data['products'])) {
-            $resp['message'] = 'Your Product Is Empty';
-        } else if (empty($data['vendorId'])) {
-            $resp['message'] = 'Please add Vendor';
-        } else {
-            $product_data = [];
-            $product_item_data = [];
-            $item_stock_data = [];
-            $CarSpecificationModel = new CarSpecificationModel();
-            $ProductImagesModel = new ProductImagesModel();
-    
-            foreach($data['products'] as $index => $product) {
-                // Prepare the product data
-                $product_data[] = [
-                    'uid' => $this->generate_uid(UID_PRODUCT),
-                    'vendor_id' => $data['vendorId'],
-                    'category_id' => $product['category'],
-                    'name' => $product['productName'],
-                    'description' => $product['description'],
-                    'status' => $data['status'],
-                ];
-    
-                // Prepare the stock data
-                $item_stock_data[] = [
-                    'uid' => $this->generate_uid('ITSKU'),
-                    'product_id' => $product_data[$index]['uid'],
-                    'varient_id' => '',
-                    'stocks' => 0,
-                ];
-    
-                // Prepare the product item data
-                $product_item_data[] = [
-                    'uid' => $this->generate_uid(UID_PRODUCT_ITEM),
-                    'product_id' => $product_data[$index]['uid'],
-                    'price' => $product['price'],
-                    'discount' => $product['discount'],
-                    'tax' => $product['tax'],
-                    'publish_date' => "",
-                    'status' => "",
-                    'visibility' => "visible",
-                    'quantity' => '0',
-                    'manufacturer_name' => $product['storeName']
-                ];
-    
-                // Prepare car specification data
-                $car_specification_data = [
-                    'uid' => $this->generate_uid("CARSPEC"),
-                    'product_id' => $product_data[$index]['uid'],
-                    'make' => $product['make'],
-                    'model' => $product['model'],
-                    'year' => $product['year'],
-                    'mileage' => $product['mileage'],
-                    'location' => $product['location'],
-                    'doors' => $product['doors'],
-                    'badges' => $product['badges'],
-                ];
-    
-                // Upload icon files if they exist and add them to car specification
-                foreach (['make', 'model', 'year', 'mileage', 'location', 'doors', 'badge'] as $field) {
-                    if (!empty($uploadedFiles['products'][$index]["{$field}_icon"])) {
-                        $file = $uploadedFiles['products'][$index]["{$field}_icon"];
-                        if ($file->isValid()) {
-                            $file_src = $this->single_upload($file, 'public/uploads/product_images');
-                            $car_specification_data["{$field}_icon"] = $file_src;
-                        }
+{
+    $resp = [
+        'status' => false,
+        'message' => 'Product not added',
+        'data' => null
+    ];
+
+    $uploadedFiles = $this->request->getFiles();
+
+    if (empty($data['products'])) {
+        $resp['message'] = 'Your Product Is Empty';
+    } else if (empty($data['vendorId'])) {
+        $resp['message'] = 'Please add Vendor';
+    } else {
+        $product_data = [];
+        $product_item_data = [];
+        $item_stock_data = [];
+        $CarSpecificationModel = new CarSpecificationModel();
+        $ProductImagesModel = new ProductImagesModel();
+
+        foreach ($data['products'] as $index => $product) {
+            // Prepare the product data
+            $product_data[] = [
+                'uid' => $this->generate_uid(UID_PRODUCT),
+                'vendor_id' => $data['vendorId'],
+                'category_id' => $product['category'],
+                'name' => $product['productName'],
+                'description' => $product['description'],
+                'status' => $data['status'],
+            ];
+
+            // Prepare the stock data
+            $item_stock_data[] = [
+                'uid' => $this->generate_uid('ITSKU'),
+                'product_id' => $product_data[$index]['uid'],
+                'varient_id' => '',
+                'stocks' => 0,
+            ];
+
+            // Prepare the product item data
+            $product_item_data[] = [
+                'uid' => $this->generate_uid(UID_PRODUCT_ITEM),
+                'product_id' => $product_data[$index]['uid'],
+                'price' => $product['price'],
+                'discount' => $product['discount'],
+                'tax' => $product['tax'],
+                'publish_date' => "",
+                'status' => "",
+                'visibility' => "visible",
+                'quantity' => '0',
+                'manufacturer_name' => $product['storeName']
+            ];
+
+            // Prepare car specification data
+            $car_specification_data = [
+                'uid' => $this->generate_uid("CARSPEC"),
+                'product_id' => $product_data[$index]['uid'],
+                'make' => $product['make'],
+                'model' => $product['model'],
+                'year' => $product['year'],
+                'mileage' => $product['mileage'],
+                'location' => $product['location'],
+                'doors' => $product['doors'],
+                'badges' => $product['badges'],
+            ];
+
+            // Upload icon files if they exist and add them to car specification
+            foreach (['make', 'model', 'year', 'mileage', 'location', 'doors', 'badge'] as $field) {
+                if (!empty($uploadedFiles['products'][$index]["{$field}_icon"])) {
+                    $file = $uploadedFiles['products'][$index]["{$field}_icon"];
+                    if ($file->isValid()) {
+                        $file_src = $this->single_upload($file, 'public/uploads/product_images');
+                        $car_specification_data["{$field}_icon"] = $file_src;
                     }
                 }
-    
-                // Insert car specification individually
-                $CarSpecificationModel->insert($car_specification_data);
-    
-                // Handle product images upload
-                if (!empty($uploadedFiles['products'][$index]['image'])) {
-                    foreach ($uploadedFiles['products'][$index]['image'] as $file) {
+            }
+
+            // Insert car specification individually
+            $CarSpecificationModel->insert($car_specification_data);
+
+            // Handle product images upload
+            if (!empty($uploadedFiles['products'][$index]['images'])) {
+                foreach ($uploadedFiles['products'][$index]['images'] as $file) {
+                    if ($file->isValid()) {
                         $file_src = $this->single_upload($file, PATH_PRODUCT_IMG);
                         $product_image_data = [
                             'uid' => $this->generate_uid(UID_PRODUCT_IMG),
@@ -421,34 +422,35 @@ class Product_Controller extends Api_Controller
                     }
                 }
             }
-    
-            // Models for database insertions
-            $ProductModel = new ProductModel();
-            $ProductItemModel = new ProductItemModel();
-            $ItemStocksModel = new ItemStocksModel();
-    
-            // Transaction Start
-            $ProductModel->transStart();
-            try {
-                // Insert data into the product tables
-                $ProductModel->insertBatch($product_data);
-                $ItemStocksModel->insertBatch($item_stock_data);
-                $ProductItemModel->insertBatch($product_item_data);
-                $ProductModel->transCommit();
-            } catch (\Exception $e) {
-                // Rollback the transaction if an error occurs
-                $ProductModel->transRollback();
-                $resp['message'] = $e->getMessage();
-            }
-    
-            $resp['status'] = true;
-            $resp['message'] = 'Product added';
-            $resp['data'] = [];
         }
-    
-        return $resp;
+
+        // Models for database insertions
+        $ProductModel = new ProductModel();
+        $ProductItemModel = new ProductItemModel();
+        $ItemStocksModel = new ItemStocksModel();
+
+        // Transaction Start
+        $ProductModel->transStart();
+        try {
+            // Insert data into the product tables
+            $ProductModel->insertBatch($product_data);
+            $ItemStocksModel->insertBatch($item_stock_data);
+            $ProductItemModel->insertBatch($product_item_data);
+            $ProductModel->transCommit();
+        } catch (\Exception $e) {
+            // Rollback the transaction if an error occurs
+            $ProductModel->transRollback();
+            $resp['message'] = $e->getMessage();
+        }
+
+        $resp['status'] = true;
+        $resp['message'] = 'Product added';
+        $resp['data'] = [];
     }
-    
+
+    return $resp;
+}
+
     
     
 

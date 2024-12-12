@@ -371,7 +371,7 @@
                     text: "Your booking has been successfully submitted!",
                     duration: 3000,
                     gravity: "top", // Display at the top
-                    position: "right", // Align to right
+                    position: "center", // Align to right
                     backgroundColor: "green", // Success notification color
                     close: true
                 }).showToast();
@@ -391,7 +391,7 @@
                     text: "There was an error submitting your booking. Please try again later.",
                     duration: 3000,
                     gravity: "top",
-                    position: "right",
+                    position: "center",
                     backgroundColor: "red", // Error notification color
                     close: true
                 }).showToast();
@@ -524,7 +524,10 @@
 
                         $.each(resp.data, function (index, product) {
                             console.log('productall', product);
+                            truncatedDescription=truncateText(product.description,50)
+                            totalPrice= product.base_price - (product.base_discount*product.base_price/100)-(product.tax*product.base_price/100);
                             html+=`<div class="swiper-slide">
+                            <a href="<?=base_url()?>single-car?product_uid=${product.product_id}">
 											<div class="perfect-fleet-item">
 												<div class="image-box"><a href="<?=base_url()?>single-car?product_uid=${product.product_id}"><img
 															decoding="async" width="410" height="234"
@@ -533,11 +536,19 @@
 															alt=""></a></div>
 												<div class="perfect-fleet-content">
 													<div class="perfect-fleet-title">
-														<h3><a href="car-type/electric-car/index.htm">${product.manufacturer_name}</a>
+														<h3>${product.manufacturer_name}
 														</h3>
-														<h2><a href="<?=base_url()?>single-car?product_uid=${product.product_id}">${product.name}</a>
+														<h2>${product.name}
 														</h2>
 													</div>
+                                                    <div class="perfect-fleet-title">
+                                                        <p>
+                                                           
+                                                                ${truncatedDescription}
+                                                            
+                                                        </p>
+                                                    
+                                                    </div>
 
 													<div class="perfect-fleet-body">
 														<ul>
@@ -552,7 +563,7 @@
 
 													<div class="perfect-fleet-footer">
 														<div class="perfect-fleet-pricing">
-															<h2>${product.base_price}<span>/Per Day</span></h2>
+															<h2>₹ ${totalPrice}</h2>
 														</div>
 														<div class="perfect-fleet-btn">
 															<a href="<?=base_url()?>single-car?product_uid=${product.product_id}"
@@ -563,6 +574,7 @@
 													</div>
 												</div>
 											</div>
+                                            </a>
 										</div>
                         `
 
@@ -605,5 +617,9 @@
             }
         });
     }
+    const today = new Date().toISOString().split('T')[0];
 
+// Set the min attribute for the date inputs
+document.getElementById('date').setAttribute('min', today);
+document.getElementById('returndate').setAttribute('min', today);
 </script>

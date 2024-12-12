@@ -69,7 +69,7 @@
                 text: "Your booking has been successfully submitted!",
                 duration: 3000,
                 gravity: "top", // Display at the top
-                position: "right", // Align to right
+                position: "center", // Align to right
                 backgroundColor: "green", // Success notification color
                 close: true
             }).showToast();
@@ -81,7 +81,7 @@
                 text: "There was an error submitting your booking. Please try again later.",
                 duration: 3000,
                 gravity: "top",
-                position: "right",
+                position: "center",
                 backgroundColor: "red", // Error notification color
                 close: true
             }).showToast();
@@ -91,5 +91,10 @@
 });
 
 });
+const today = new Date().toISOString().split('T')[0];
+
+    // Set the min attribute for the date inputs
+    document.getElementById('date').setAttribute('min', today);
+    document.getElementById('returndate').setAttribute('min', today);
 
 </script>

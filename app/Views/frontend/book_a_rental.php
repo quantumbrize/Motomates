@@ -27,6 +27,22 @@
 .wpcf7-submit:hover {
     background-color: #0056b3; /* Darken the button on hover */
 }
+#rental_submit{
+    width: auto;  /* Adjusts the width to fit content */
+    max-width: 200px;  /* Optional: Restricts the button width */
+    background-color: #ff3600;  /* Sets the background color to orange */
+    color: white;  /* Sets the text color to white */
+    border: none;  /* Removes the default border */
+    padding: 10px 20px;  /* Adds padding inside the button */
+    font-size: 16px;  /* Sets a font size for the button */
+    cursor: pointer;  /* Adds a pointer cursor on hover */
+    transition: background-color 0.3s ease;  /* Adds a smooth transition for background color */
+    border-radius: 50px;
+}
+
+#rental_submit:hover {
+    background-color: black;  /* Changes the background color to dark orange on hover */
+}
 
 </style>
 <div class="container">
@@ -125,7 +141,7 @@
                                                                         <input class="wpcf7-form-control wpcf7-date wpcf7-validates-as-date form-control"
                                                                             id="date" aria-invalid="false"
                                                                             placeholder="Date" value=""
-                                                                            type="date" name="date">
+                                                                            type="date" name="date" min="">
                                                                     </span>
                                                                 </p>
                                                             </div>
@@ -137,7 +153,7 @@
                                                                         <input class="wpcf7-form-control wpcf7-date wpcf7-validates-as-date form-control"
                                                                             id="returndate" aria-invalid="false"
                                                                             placeholder="Return Date" value=""
-                                                                            type="date" name="return-date">
+                                                                            type="date" name="return-date" min="">
                                                                     </span>
                                                                 </p>
                                                             </div>
@@ -192,11 +208,12 @@
                                                             </div>
                                                             <!-- Submit Button -->
                                                             <div class="rent-details-item rent-details-search">
-                                                                <p><input class="wpcf7-form-control wpcf7-submit has-spinner form-btn"
+                                                                <p><input class="wpcf7-form-control wpcf7-submit has-spinner form-btn custom-submit"
                                                                         id="rental_submit" type="submit"
                                                                         value="Send">
                                                                 </p>
                                                             </div>
+
                                                         </div>
                                                     </div>
                                                 </div>
