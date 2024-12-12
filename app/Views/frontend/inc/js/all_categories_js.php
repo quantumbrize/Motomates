@@ -7,6 +7,7 @@
             success: function (resp) {
 
                 let html = ''
+                let sidebar = ''
                 if (resp.status) {
                     if (resp.data.length > 0) {
                         $.each(resp.data, (index, category) => {
@@ -26,6 +27,7 @@
                                             </div>
                                                     
                                     </div>`
+                            sidebar+=`<li class="cat-item cat-item-12"><label><input type='checkbox'  onchange="get_category_by_category_id()" name='ofcar-types[]' value='${category.uid}'> ${category.name}</label></li>`
                         })
 
                     }
@@ -33,6 +35,7 @@
                 }
                 
                 $('#categories_list_page').html(html)
+                $('#categories_list').html(sidebar)
 
 
             },
@@ -90,5 +93,62 @@
             }
         });
         }
+        function get_category_by_category_id() {
+    const categoryId = $('input[name="ofcar-types[]"]:checked').val();
+
+    // If no category is selected, stop execution
+    if (!categoryId) {
+        console.log("No category selected.");
+        return;
+    }
+
+    // Send the selected category ID to the API
+    $.ajax({
+        url: '<?= base_url('/api/category/by/id') ?>',
+        type: "GET",
+        data: { c_id: categoryId }, // Send the category UID
+        beforeSend: function () {
+            console.log("Fetching category details for category ID:", categoryId);
+            $('#categories_list_page').html(`<center><div class="spinner-border text-primary" role="status"></div></center>`);
+        },
+        success: function (resp) {
+            console.log("Category_Details", resp);
+            let html = '';
+
+            if (resp.status && resp.data) {
+                const category = resp.data; // Directly access the category object
+
+                // Generate category details HTML
+                html = `
+                    <div class="col-lg-4 col-md-6">
+                        <div class="perfect-fleet-item fleets-collection-item">
+                            <div class="image-box">
+                                <a href="#">
+                                    <img fetchpriority="high" width="410" height="234" src="<?=base_url()?>public/uploads/categpry_images/${category.img_path}" class="attachment-novaride-thumb size-novaride-thumb wp-post-image" alt="${category.name}" decoding="async">
+                                </a>
+                            </div>    
+                            <div class="perfect-fleet-content">
+                                <div class="perfect-fleet-title">
+                                    <h2><a href="#">${category.name}</a></h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>`;
+            } else {
+                html = `<p>No details found for the selected category.</p>`;
+            }
+
+            // Display category details in the designated container
+            $('#categories_list_page').html(html);
+        },
+        error: function (err) {
+            console.log("Error fetching category details:", err);
+            $('#categories_list_page').html(`<p>Error fetching category details. Please try again later.</p>`);
+        }
+    });
+}
+
+
         get_parent_categories();
+        
 </script>

@@ -257,13 +257,13 @@
 							> -->
 
 							<button 
-							id="whatsappIcon" style="padding: 10px 20px; background-color: #ff3600; color: white; border: none; border-radius: 5px; cursor: pointer;font-size:10px;"
+							id="whatsappIcon" style="padding: 10px; background-color: #ff3600; color: white; border: none; border-radius: 5px; cursor: pointer;font-size:15px;"
 							>
-							<img style="width:10%"
+							<img style="width:20%"
 								src="<?=base_url()?>public/uploads/icon_images/whatsapp.png" 
 								alt="WhatsApp Icon" 
 								
-							>Send whatsapp message
+							>Connect
 							</button>
 							<button 
 								id="enquiryButton-1"

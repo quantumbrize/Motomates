@@ -29,23 +29,24 @@
                htmlTitle=`${resp.data.name}`
                
                htmlDesc=`${resp.data.description}`
-               htmlDoors=`${resp.data.doors}`
+            
                htmlmake=`${resp.data.make}`
                htmlmodel=`${resp.data.model}`
                htmlyear=`<img src="${yearIconsrc}" width="30"> &nbsp; <span class="elementor-icon-list-text">${resp.data.year}</span>`
                htmlmileage=`<img src="${mileageIconsrc}" width="30"> &nbsp; <span class="elementor-icon-list-text">${resp.data.mileage}</span>`
                htmllocation=`<img src="${locationIconsrc}" width="30"> &nbsp; <span class="elementor-icon-list-text">${resp.data.location}</span>`
+               htmlDoors=`<img src="${doorIconsrc}" width="30"> &nbsp; <span class="elementor-icon-list-text">${resp.data.doors}</span>`
               
                htmlbadge=`<img src="${badgeIconsrc}" width="30"> &nbsp; <span class="elementor-icon-list-text">${resp.data.badges}</span>`
                 if((resp.data.base_price)!=null && (resp.data.base_discount)!=null && (resp.data.tax)!=null){
                     totalPrice= resp.data.base_price - resp.data.base_discount-(resp.data.tax*resp.data.base_price/100);
                     htmlPrice=`<div style="background-color:#FF3600;padding:20px;color:white;font-size:25px">
                                     <div style="display: flex; justify-content: flex-start; gap: 10px;">
-                                        <span>Base Price:<b> ${resp.data.base_price}</b></span>
-                                        <span>Discount: <b>${resp.data.base_discount}</b></span>
-                                        <span>Tax: <b>${resp.data.tax}</b></span>
+                                        <span>Base Price:<b>Rs ${resp.data.base_price}</b></span>
+                                        <span>Discount: <b>${resp.data.base_discount}%</b></span>
+                                        <span>Tax: <b>${resp.data.tax}%</b></span>
                                     </div>
-                                    <div style="margin-top: 10px;">Total Price: <b>${totalPrice}</b></div>
+                                    <div style="margin-top: 10px;">Total Price: <b>Rs ${totalPrice}</b></div>
                                 </div>
 
                                 `
@@ -64,6 +65,7 @@
                 $('#badge_span').html(htmlbadge)
                 $('#product_price').html(htmlPrice)
                 $('#product_title_big').html(htmlTitle)
+                $('#doors_span').html(htmlDoors)
             } else {
                 console.log(resp)
             }
@@ -221,20 +223,7 @@
                     if (resp.data.length > 0) {
                         $.each(resp.data, (index, category) => {
                             console.log('categories',category)
-                            html += `<li class="elementor-icon-list-item">
-																<a href="<?= base_url()?>all-category">
-
-																	<span class="elementor-icon-list-icon">
-																		<svg xmlns="http://www.w3.org/2000/svg"
-																			width="14" height="14" viewbox="0 0 14 14"
-																			fill="none">
-																			<path
-																				d="M11.6654 3.97592L1.64141 13.9999L-0.00537109 12.3531L10.0174 2.32914H1.18372V-0.00012207H13.9946V12.8108H11.6654V3.97592Z"
-																				fill="white"></path>
-																		</svg> </span>
-																	<span class="elementor-icon-list-text">${category.name}</span>
-																</a>
-															</li>`
+                            html += `<li class="cat-item cat-item-12"><label><input type='checkbox'  onchange="get_product_by_category()" name='ofcar-types[]' value='${category.uid}'> ${category.name}</label></li>`
                         })
 
                     }
@@ -251,54 +240,148 @@
         });
     }
 
-    function getSubCategory(category_id, accordion_body_id) {
-
+    function getSubCategory(category_id, parent_element_id) {
         $.ajax({
             url: '<?= base_url('/api/categories') ?>',
-            data: {
-                parent_id: category_id
-            },
+            data: { parent_id: category_id },
             type: "GET",
             beforeSend: function () {
-                $(`#${accordion_body_id}`).html(`<center><div class="spinner-border text-primary" role="status"></div></center>`)
+                // Add a loading spinner to indicate the subcategories are being fetched
+                $(`#${parent_element_id}`).append(`<center><div class="spinner-border text-primary" role="status"></div></center>`);
             },
             success: function (resp) {
-                console.log(resp)
-                let html = ''
+                console.log(resp);
+                let html = '';
 
-                if (resp.status) {
-                    if (resp.data.length > 0) {
-                        $.each(resp.data, (index, category) => {
-                            // Add the category as a list item
-                            html += `
-                                <li class="subcategory-item" style="padding-left: 20px;">
-                                    <a href="<?= base_url()?>all-category?category_id=${category.id}">
-                                        <span class="elementor-icon-list-text">${category.name}</span>
-                                    </a>
-                                </li>`;
-
-                            // If the category has subcategories, recursively fetch them
-                            if (category.has_subcategories && category.has_subcategories > 0) {
-                                html += `
-                                <ul>
-                                    <li class="parent-subcategory">
-                                        <ul>`;
-                                getSubCategory(category.id, `subcategories_${category.id}`); // Call the function again for subcategories
-                                html += `</ul>
-                                </li>
-                                </ul>`;
-                            }
-                        })
-                    }
+                if (resp.status && resp.data.length > 0) {
+                    html += `<ul style="padding-left: 20px;">`; // Add indentation for subcategories
+                    $.each(resp.data, (index, category) => {
+                        html += `
+                            <li class="subcategory-item">
+                                <label>
+                                    <input type='checkbox' name='ofcar-types[]' value='${category.uid}'>
+                                    ${category.name}
+                                </label>
+                                <ul id="subcategories_${category.id}" style="padding-left: 20px;"></ul>
+                            </li>`;
+                    });
+                    html += `</ul>`;
                 }
 
-                $(`#${accordion_body_id}`).html(html)
+                // Remove the loading spinner and append the generated HTML
+                $(`#${parent_element_id}`).find('.spinner-border').remove();
+                $(`#${parent_element_id}`).append(html);
+
+                // Recursively fetch subcategories for each category with subcategories
+                if (resp.data.length > 0) {
+                    $.each(resp.data, (index, category) => {
+                        if (category.has_subcategories && category.has_subcategories > 0) {
+                            getSubCategory(category.id, `subcategories_${category.id}`);
+                        }
+                    });
+                }
             },
             error: function (err) {
                 console.log(err);
             }
         });
-        }
+    }
+    function get_product_by_category() {
+    // Get the selected checkbox value
+        const categoryId = $('input[name="ofcar-types[]"]:checked').val();
+
+        // Determine the API parameters based on whether a category is selected
+        const data = categoryId ? { c_id: categoryId } : {}; // Send no data if no category is selected
+
+        // Send the request to the API
+        $.ajax({
+            url: '<?= base_url() ?>api/product',
+            type: "GET",
+            data: data, // Send category_id if selected, otherwise send an empty object
+            beforeSend: function () {
+                console.log(
+                    categoryId
+                        ? `Fetching products for category: ${categoryId}`
+                        : "Fetching all products (no category selected)."
+                );
+                $('#product_list').html(`<center><div class="spinner-border text-primary" role="status"></div></center>`);
+            },
+            success: function (resp) {
+                console.log(resp);
+                let html = '';
+
+                if (resp.status && resp.data.length > 0) {
+                    // Generate product list HTML
+                    $.each(resp.data, (index, product) => {
+                        html += `
+                            <div class="col-lg-4 col-md-6">
+                                <div class="perfect-fleet-item fleets-collection-item">
+                                    <div class="image-box">
+                                        <a href="<?=base_url()?>single-car?product_uid=${product.product_id}">
+                                            <img fetchpriority="high" width="410" height="234" 
+                                                src="<?=base_url()?>public/uploads/product_images/${product.src}" 
+                                                class="attachment-novaride-thumb size-novaride-thumb wp-post-image" 
+                                                alt="" decoding="async">
+                                        </a>
+                                    </div>    
+                                    <div class="perfect-fleet-content">
+                                        <div class="perfect-fleet-title">
+                                            <h3>
+                                                <a href="<?=base_url()?>single-car?product_uid=${product.product_id}">
+                                                    ${product.manufacturer_name}
+                                                </a>
+                                            </h3>
+                                            <h2>
+                                                <a href="<?=base_url()?>single-car?product_uid=${product.product_id}">
+                                                    ${product.name}
+                                                </a>
+                                            </h2>
+                                        </div>
+                                        <div class="perfect-fleet-body">
+                                            <ul>
+                                                <li>
+                                                    <label>
+                                                        <img src="../wp-content/uploads/2024/09/icon-door.svg"> 
+                                                        <span class="feature-label">Doors</span>
+                                                    </label>
+                                                    <span class="feature-value">${product.doors}</span>
+                                                </li>
+                                                <li>
+                                                    <label>
+                                                        <img src="../wp-content/uploads/2024/09/icon-passengers.svg"> 
+                                                        <span class="feature-label">Passengers</span>
+                                                    </label>
+                                                    <span class="feature-value">2</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="perfect-fleet-footer">
+                                            <div class="perfect-fleet-pricing">
+                                                <h2>${product.base_price}<span>/Per Day</span></h2>
+                                            </div>
+                                            <div class="perfect-fleet-btn">
+                                                <a href="<?=base_url()?>single-car?product_uid=${product.product_id}" 
+                                                class="section-icon-btn">
+                                                    <img src="<?=base_url()?>public/assets/motomates/wp-content/themes/novaride/assets/images/arrow-white.svg" alt="">
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>`;
+                    });
+                } else {
+                    html = `<p>No products found.</p>`;
+                }
+
+                $('#cars').html(html); // Display products in the cars container
+            },
+            error: function (err) {
+                console.log(err);
+                $('#product_list').html(`<p>Error fetching products. Please try again later.</p>`);
+            }
+        });
+    }
 
 
 </script>

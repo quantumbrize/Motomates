@@ -1,3 +1,15 @@
+<style>
+	  #categories_list {
+        list-style: none; /* Remove bullets for the entire list */
+        padding: 0; /* Optional: Remove padding */
+        margin: 0; /* Optional: Remove margin */
+    }
+
+    #categories_list .cat-item {
+        margin: 0; /* Optional: Adjust spacing between list items */
+        padding: 0; /* Optional: Adjust padding for list items */
+    }
+</style>
 <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
 <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
@@ -20,13 +32,12 @@
 	<div class="car-single-sidebar">
 		<div class="fleets-single-sidebar">
 			<div class="fleets-single-sidebar-box">
-						<div class="fleets-single-sidebar-pricing">
-							<div class="elementor-widget-container">
-								<ul id="categories_list" class="elementor-icon-list-items">
-									
-								</ul>
-							</div>
+				<div class="fleets-single-sidebar-pricing">
+					<h3>Categories</h3>
+					<div class="elementor-widget-container">
+						<div id="categories_list"></div>
 					</div>
+				</div>
 				<div class="fleets-single-sidebar-btn">
 					<div data-elementor-type="section" data-elementor-id="8438" class="elementor elementor-8438">
 				<div class="elementor-element elementor-element-6983617 e-flex e-con-boxed e-con e-parent" data-id="6983617" data-element_type="container">
@@ -161,22 +172,20 @@
 				<div class="elementor-widget-container">
 					<div class="elementor-icon-box-wrapper">
 
-						<div class="elementor-icon-box-icon">
-				<span class="elementor-icon elementor-animation-">
-				<svg xmlns="http://www.w3.org/2000/svg" width="41" height="41" viewbox="0 0 41 41" fill="none"><g clip-path="url(#clip0_244_418)"><path d="M34.7712 6.51739C27.3121 -1.25669 13.8909 -1.25637 6.432 6.51739C-1.34207 13.9764 -1.34176 27.3977 6.432 34.8566C13.891 42.6306 27.3123 42.6303 34.7712 34.8566C42.5452 27.3974 42.5448 13.9762 34.7712 6.51739ZM20.6015 38.3683C10.852 38.3683 2.92016 30.4364 2.92016 20.6869C3.89138 -2.76982 37.3152 -2.76298 38.2829 20.6871C38.2829 30.4365 30.3511 38.3683 20.6015 38.3683Z" fill="#040401"></path><path d="M33.5676 20.6867H35.9251C35.0809 0.352486 6.11387 0.368201 5.27734 20.6867H7.63486C7.63486 19.2731 7.86307 17.912 8.28318 16.6373L10.5159 18.1303L11.8264 16.1706L9.24104 14.4417C10.1837 12.7339 11.4997 11.2599 13.079 10.1312L14.2061 12.8822L16.3876 11.9885L15.1348 8.93078C16.4587 8.3128 17.9031 7.91202 19.4226 7.7745V11.2566H21.7801V7.7745C23.5303 7.933 25.181 8.4405 26.6622 9.22705L25.4226 11.9464L27.5678 12.9242L28.6573 10.5341C30.0003 11.6019 31.1274 12.9301 31.9616 14.4416L29.3763 16.1705L30.6867 18.1302L32.9195 16.6372C33.3393 17.912 33.5676 19.2731 33.5676 20.6867Z" fill="#040401"></path><path d="M23.0541 14.3286L20.8311 19.5163C18.7695 19.3831 17.0649 21.027 17.0649 23.0443C17.0649 24.9942 18.6512 26.5806 20.6012 26.5806C23.8224 26.5721 25.3422 22.5999 22.9973 20.4464L25.2209 15.2573L23.0541 14.3286ZM20.6012 24.223C19.9512 24.223 19.4225 23.6942 19.4225 23.0442C19.4871 21.4804 21.7155 21.4809 21.78 23.0442C21.78 23.6943 21.2513 24.223 20.6012 24.223Z" fill="#FF3600"></path><path d="M6.45605 24.223H8.81357V26.5805H6.45605V24.223Z" fill="#040401"></path><path d="M11.1714 27.7593H13.5289V30.1168H11.1714V27.7593Z" fill="#040401"></path><path d="M32.3887 24.223H34.7462V26.5805H32.3887V24.223Z" fill="#040401"></path><path d="M27.6738 27.7593H30.0313V30.1168H27.6738V27.7593Z" fill="#040401"></path><path d="M15.8862 31.2955C16.146 37.5522 25.0589 37.5474 25.3163 31.2955V28.938H15.8862V31.2955ZM22.9588 31.2955C22.8289 34.4239 18.3725 34.4214 18.2437 31.2955H22.9588Z" fill="#040401"></path></g><defs><clippath id="clip0_244_418"><rect width="40" height="40" fill="white" transform="translate(0.601074 0.686707)"></rect></clippath></defs></svg>				</span>
-			</div>
+						
 			
-						<div class="elementor-icon-box-content">
+					<div class="elementor-icon-box-wrapper" style="display: flex; align-items: center;">
+    <!-- Image icon for Car Make -->
+    <img style="width: 10%; margin-right: 10px;" src="<?=base_url()?>public/uploads/icon_images/make.png" alt="Car Make Icon">
 
-									<h3 class="elementor-icon-box-title">
-						<span>
-							Car Make						</span>
-					</h3>
-				
-									<p id="car_make" class="elementor-icon-box-description">
-						 					</p>
-				
-			</div>
+    <!-- Car Make Text -->
+    <div class="elementor-icon-box-content">
+        <h3 class="elementor-icon-box-title">
+            <span>Car Make</span>
+        </h3>
+        <p id="car_make" class="elementor-icon-box-description"></p>
+    </div>
+</div>
 			
 		</div>
 				</div>
@@ -185,22 +194,21 @@
 				<div class="elementor-widget-container">
 					<div class="elementor-icon-box-wrapper">
 
-						<div class="elementor-icon-box-icon">
-				<span class="elementor-icon elementor-animation-">
-				<svg xmlns="http://www.w3.org/2000/svg" width="41" height="51" viewbox="0 0 41 51" fill="none"><g clip-path="url(#clip0_787_1022)"><path d="M33.7639 23.7105H11.8223V16.3318C11.8223 12.3168 15.1324 9.05027 19.2009 9.05027C23.216 9.05027 26.4825 12.3168 26.4825 16.3318V19.2444C26.4825 20.0487 27.1345 20.7008 27.9388 20.7008H33.764C34.5683 20.7008 35.2203 20.0487 35.2203 19.2444V16.3318C35.2203 7.49881 28.0341 0.3125 19.201 0.3125C10.3143 0.312597 3.0845 7.49881 3.0845 16.3319V23.961C1.38945 24.5621 0.171875 26.1808 0.171875 28.0794V45.6521C0.171875 48.0611 2.13178 50.021 4.54081 50.021H33.7639C36.1729 50.021 38.1328 48.0611 38.1328 45.6521V28.0794C38.1328 25.6704 36.1729 23.7105 33.7639 23.7105ZM5.99712 16.3319C5.99712 9.10483 11.9204 3.22522 19.2009 3.22522C26.428 3.22522 32.3076 9.10493 32.3076 16.3319V17.7882H29.395V16.3319C29.395 10.7108 24.8219 6.13784 19.2009 6.13784C13.5632 6.13784 8.90974 10.7126 8.90974 16.3319V23.7106H5.99712V16.3319ZM35.2202 45.6521C35.2202 46.4551 34.5669 47.1084 33.7639 47.1084H4.54081C3.7378 47.1084 3.0845 46.4551 3.0845 45.6521V28.0794C3.0845 27.2764 3.7378 26.6231 4.54081 26.6231C5.89887 26.6231 32.5877 26.6231 33.7639 26.6231C34.5669 26.6231 35.2202 27.2764 35.2202 28.0794V45.6521Z" fill="#040401"></path><path d="M19.1971 29.5391C16.788 29.5391 14.8281 31.499 14.8281 33.908C14.8281 35.8065 16.0457 37.4253 17.7407 38.0264V42.7429C17.7407 43.5472 18.3928 44.1993 19.1971 44.1993C20.0013 44.1993 20.6534 43.5472 20.6534 42.7429V38.0264C22.3484 37.4253 23.566 35.8065 23.566 33.908C23.566 31.499 21.6061 29.5391 19.1971 29.5391ZM19.1971 35.3642C18.394 35.3642 17.7407 34.7109 17.7407 33.9079C17.7407 33.1049 18.394 32.4516 19.1971 32.4516C20.0001 32.4516 20.6534 33.1049 20.6534 33.9079C20.6534 34.7109 20.0001 35.3642 19.1971 35.3642Z" fill="#FF3600"></path></g><defs><clippath id="clip0_787_1022"><rect width="40" height="49.7087" fill="white" transform="translate(0.171875 0.3125)"></rect></clippath></defs></svg>				</span>
-			</div>
+						
 			
-						<div class="elementor-icon-box-content">
+					<div class="elementor-icon-box-wrapper" style="display: flex; align-items: center;">
+    <!-- Image icon for Car Model -->
+    <img style="width: 10%; margin-right: 10px;" src="<?=base_url()?>public/uploads/icon_images/model.png" alt="Car Model Icon">
 
-									<h3 class="elementor-icon-box-title">
-						<span>
-							Car Model						</span>
-					</h3>
-				
-									<p id="car_model" class="elementor-icon-box-description">
-											</p>
-				
-			</div>
+    <!-- Car Model Text -->
+    <div class="elementor-icon-box-content">
+        <h3 class="elementor-icon-box-title">
+            <span>Car Model</span>
+        </h3>
+        <p id="car_model" class="elementor-icon-box-description"></p>
+    </div>
+</div>
+
 			
 		</div>
 				</div>
@@ -252,6 +260,14 @@
 											<a href="#">
 
 												<span id="badge_span" class="elementor-icon-list-icon">
+							<!-- <i aria-hidden="true" class="fas fa-check-circle"></i>						</span>
+										<span class="elementor-icon-list-text">Bluetooth</span> -->
+											</a>
+									</li>
+									<li class="elementor-icon-list-item">
+											<a href="#">
+
+												<span id="doors_span" class="elementor-icon-list-icon">
 							<!-- <i aria-hidden="true" class="fas fa-check-circle"></i>						</span>
 										<span class="elementor-icon-list-text">Bluetooth</span> -->
 											</a>
@@ -311,6 +327,8 @@
 		<div class="elementor-element elementor-element-ac7be5e e-con-full e-flex e-con e-child" data-id="ac7be5e" data-element_type="container">
 				
 			<div id="product_price"></div>
+
+			<div class="row" id="cars"></div>
                 </div><!-- .elementskit-card END -->
 
                                         </div>
