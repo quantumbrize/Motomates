@@ -1737,7 +1737,7 @@
 								<div class="elementor-widget-container">
 									<div class="elementor-button-wrapper">
 										<a class="elementor-button elementor-button-link elementor-size-sm"
-											href="contact-us/index.htm">
+											href="<?= base_url()?>contact-us">
 											<span class="elementor-button-content-wrapper">
 												<span class="elementor-button-icon">
 													<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14"

@@ -63,6 +63,42 @@
         font-size: 20px;
         cursor: pointer;
     }
+	.price-details {
+    background-color: #FF3600;
+    padding: 20px;
+    color: white;
+    font-size: 25px;
+    box-shadow: 10px 10px 10px grey;
+    border-radius: 50px;
+}
+
+.price-summary {
+    display: flex;
+    justify-content: flex-start;
+    gap: 10px;
+}
+
+.price-summary span {
+    text-align: center;
+}
+
+.total-price {
+    margin-top: 10px;
+    /* font-size: 15px; */
+    text-align: left; /* Align the text to the left */
+}
+
+@media (max-width: 750px) {
+    .price-summary span small,
+    .price-summary span b,
+    .total-price small,
+    .total-price b {
+        display: block;
+    }
+}
+#price_label{
+	font-size: 15px;
+}
 </style>
 <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
 <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
@@ -86,7 +122,7 @@
 				<div class="col-lg-4 col-md-12">
 					<div class="car-single-sidebar">
 						<div class="fleets-single-sidebar">
-							<div class="fleets-single-sidebar-box">
+							<!-- <div class="fleets-single-sidebar-box">
 								<div class="fleets-single-sidebar-pricing">
 									<h3>Categories</h3>
 									<div class="elementor-widget-container">
@@ -94,6 +130,20 @@
 									</div>
 								</div>
 
+							</div> -->
+							<div class="accordion" id="accordionExample">
+								<div class="accordion-item">
+									<h2 class="accordion-header" id="headingOne">
+									<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+									Categories
+									</button>
+									</h2>
+									<div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+										<div class="accordion-body">
+											<div id="categories_list"></div>
+										</div>
+									</div>
+								</div>
 							</div>
 						</div>
 
@@ -184,45 +234,45 @@
 												<div class="elementor-widget-container">
 													<ul class="elementor-icon-list-items">
 														<li class="elementor-icon-list-item">
-															<a href="#">
+															
 
 																<span id="year_span" class="elementor-icon-list-icon">
 																	<!-- <i aria-hidden="true" class="fas fa-check-circle"></i>						</span>
 										<span class="elementor-icon-list-text">Music System</span> -->
 																</span>
-															</a>
+															
 														</li>
 														<li class="elementor-icon-list-item">
-															<a href="#">
+															
 
 																<span id="mileage_span" class="elementor-icon-list-icon">
 																	<!-- <i aria-hidden="true" class="fas fa-check-circle"></i>						</span>
 										<span class="elementor-icon-list-text">Toolkit</span> -->
-															</a>
+															
 														</li>
 														<li class="elementor-icon-list-item">
-															<a href="#">
+															
 
 																<span id="location_span" class="elementor-icon-list-icon">
 																	<!-- <i aria-hidden="true" class="fas fa-check-circle"></i>						</span>
 										<span class="elementor-icon-list-text">Abs System</span> -->
-															</a>
+															
 														</li>
 														<li class="elementor-icon-list-item">
-															<a href="#">
+															
 
 																<span id="badge_span" class="elementor-icon-list-icon">
 																	<!-- <i aria-hidden="true" class="fas fa-check-circle"></i>						</span>
 										<span class="elementor-icon-list-text">Bluetooth</span> -->
-															</a>
+															
 														</li>
 														<li class="elementor-icon-list-item">
-															<a href="#">
+															
 
 																<span id="doors_span" class="elementor-icon-list-icon">
 																	<!-- <i aria-hidden="true" class="fas fa-check-circle"></i>						</span>
 										<span class="elementor-icon-list-text">Bluetooth</span> -->
-															</a>
+															
 														</li>
 														<!-- <li class="elementor-icon-list-item">
 											<a href="#">

@@ -95,7 +95,7 @@
 														class="ekit-vertical-navbar-nav submenu-click-on-icon">
 														<li id="menu-item-7634"
 															class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-7634 nav-item elementskit-mobile-builder-content"
-															data-vertical-menu="750px"><a href="../index.htm"
+															data-vertical-menu="750px"><a href="<?= base_url()?>"
 																class="ekit-menu-nav-link">Home</a></li>
 														<li id="menu-item-7635"
 															class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-776 current_page_item menu-item-7635 nav-item elementskit-mobile-builder-content active"

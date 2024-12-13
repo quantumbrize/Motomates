@@ -32,23 +32,73 @@
             
                htmlmake=`${resp.data.make}`
                htmlmodel=`${resp.data.model}`
-               htmlyear=`<img src="${yearIconsrc}" width="30"> &nbsp; <span class="elementor-icon-list-text">${resp.data.year}</span>`
-               htmlmileage=`<img src="${mileageIconsrc}" width="30"> &nbsp; <span class="elementor-icon-list-text">${resp.data.mileage}</span>`
-               htmllocation=`<img src="${locationIconsrc}" width="30"> &nbsp; <span class="elementor-icon-list-text">${resp.data.location}</span>`
-               htmlDoors=`<img src="${doorIconsrc}" width="30"> &nbsp; <span class="elementor-icon-list-text">${resp.data.doors}</span>`
-               
-              
-               htmlbadge=`<img src="${badgeIconsrc}" width="30"> &nbsp; <span class="elementor-icon-list-text">${resp.data.badges}</span>`
+               htmlyear=`<div style="display: flex; flex-direction: column; align-items: flex-start; gap: 2px;">
+                            <div style="display: flex; align-items: center; gap: 5px;">
+                                <img src="${yearIconsrc}" width="30" alt="Year Icon">
+                                <small style="font-size: 12px;margin-top:-10px;">Year</small>
+                            </div>
+                            <span class="elementor-icon-list-text" style="font-size: 14px;margin-left:35px;margin-top:-20px;">${resp.data.year}</span>
+                        </div>
+                        `
+                        htmlmileage = `
+                            <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 2px;">
+                                <div style="display: flex; align-items: center; gap: 5px;">
+                                    <img src="${mileageIconsrc}" width="30" alt="Mileage Icon">
+                                    <small style="font-size: 12px;margin-top:-10px;">Mileage</small>
+                                </div>
+                                <span class="elementor-icon-list-text" style="font-size: 14px;margin-left:35px;margin-top:-20px;">${resp.data.mileage}</span>
+                            </div>`;
+
+                        htmllocation = `
+                            <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 2px;">
+                                <div style="display: flex; align-items: center; gap: 5px;">
+                                    <img src="${locationIconsrc}" width="30" alt="Location Icon">
+                                    <small style="font-size: 12px;margin-top:-10px;">Location</small>
+                                </div>
+                                <span class="elementor-icon-list-text" style="font-size: 14px;margin-left:35px;margin-top:-20px;">${resp.data.location}</span>
+                            </div>`;
+
+                        htmlDoors = `
+                            <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 2px;">
+                                <div style="display: flex; align-items: center; gap: 5px;">
+                                    <img src="${doorIconsrc}" width="30" alt="Doors Icon">
+                                    <small style="font-size: 12px;margin-top:-10px;">Doors</small>
+                                </div>
+                                <span class="elementor-icon-list-text" style="font-size: 14px;margin-left:35px;margin-top:-20px;">${resp.data.doors}</span>
+                            </div>`;
+
+                        htmlbadge = `
+                            <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 2px;">
+                                <div style="display: flex; align-items: center; gap: 5px;">
+                                    <img src="${badgeIconsrc}" width="30" alt="Badge Icon">
+                                    <small style="font-size: 12px;margin-top:-10px;">Badge</small>
+                                </div>
+                                <span class="elementor-icon-list-text" style="font-size: 14px;margin-left:35px;margin-top:-20px;">${resp.data.badges}</span>
+                            </div>`;
+
                 if((resp.data.base_price)!=null && (resp.data.base_discount)!=null && (resp.data.tax)!=null){
                     totalPrice= resp.data.base_price - (resp.data.base_discount*resp.data.base_price/100)-(resp.data.tax*resp.data.base_price/100);
-                    htmlPrice=`<div style="background-color:#FF3600;padding:20px;color:white;font-size:25px;box-shadow:10px 10px 10px grey;border-radius:50px">
-                                    <div style="display: flex; justify-content: flex-start; gap: 10px;">
-                                        <span><small style="font-size:15px">Base Price</small><b>&nbsp;₹ ${resp.data.base_price}</b></span>
-                                        <span><small style="font-size:15px">Discount</small> &nbsp;<b>${resp.data.base_discount}%</b></span>
-                                        <span><small style="font-size:15px">Tax</small>&nbsp;<b>${resp.data.tax}%</b></span>
-                                    </div>
-                                    <div style="margin-top: 10px;font-size:15px;"><small>Total Price</small>&nbsp;<b>₹ ${totalPrice}</b></div>
-                                </div>
+                    htmlPrice=`<div class="price-details">
+    <div class="price-summary">
+        <span>
+            <small id="price_label">Base Price</small>
+            <b>₹ ${resp.data.base_price}</b>
+        </span>
+        <span>
+            <small id="price_label">Discount</small>
+            <b>${resp.data.base_discount}%</b>
+        </span>
+        <span>
+            <small id="price_label">Tax</small>
+            <b>${resp.data.tax}%</b>
+        </span>
+    </div>
+    <div class="total-price">
+        <small id="price_label">Total Price</small>
+        <b>₹ ${totalPrice}</b>
+    </div>
+</div>
+
 
                                 `
                 }

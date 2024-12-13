@@ -220,7 +220,7 @@
 													class="ekit-menu-nav-link">Contact Us</a></li>
 											<li id="menu-item-6883"
 												class="mobile-menu menu-item menu-item-type-custom menu-item-object-custom menu-item-6883 nav-item elementskit-mobile-builder-content"
-												data-vertical-menu="750px"><a href="#" class="ekit-menu-nav-link">Book A
+												data-vertical-menu="750px"><a href="<?= base_url()?>book-a-rental" class="ekit-menu-nav-link">Book A
 													Rental</a></li>
 										</ul>
 										<div class="elementskit-nav-identity-panel">

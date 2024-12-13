@@ -72,7 +72,7 @@
 											<div class="elementor-element elementor-element-ea8c693 e-con-full e-flex elementor-invisible e-con e-child"
 												data-id="ea8c693" data-element_type="container"
 												data-settings="{&quot;background_background&quot;:&quot;classic&quot;,&quot;animation&quot;:&quot;fadeInUp&quot;}">
-												<div class="elementor-element elementor-element-6476ba6 at-heading-animation at-animation-heading-none elementor-widget elementor-widget-heading"
+												<!-- <div class="elementor-element elementor-element-6476ba6 at-heading-animation at-animation-heading-none elementor-widget elementor-widget-heading"
 													data-id="6476ba6" data-element_type="widget"
 													data-settings="{&quot;ekit_we_effect_on&quot;:&quot;none&quot;}"
 													data-widget_type="heading.default">
@@ -89,6 +89,22 @@
 														<ul id="service_pages_list" class="elementor-icon-list-items">
 															
 														</ul>
+													</div>
+												</div> -->
+												<div class="accordion" id="accordionExample">
+													<div class="accordion-item">
+														<h2 class="accordion-header" id="headingOne">
+														<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+															Our Services
+														</button>
+														</h2>
+														<div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+														<div class="accordion-body">
+															<ul id="service_pages_list" class="elementor-icon-list-items">
+																												
+															</ul>
+														</div>
+														</div>
 													</div>
 												</div>
 											</div>

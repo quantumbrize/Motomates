@@ -43,6 +43,7 @@
             console.log(err)
         }
     })
+    
         
 });
 function load_all_tags() {
@@ -176,57 +177,34 @@ function load_all_service_pages() {
         url: "<?= base_url('/api/all/service') ?>",
         type: "GET",
         beforeSend: function () {
-            $('#table-banner-list-all-body').html(`
-                <tr>
-                    <td colspan="8" style="text-align:center;">
-                        <div class="spinner-border" role="status"></div>
-                    </td>
-                </tr>
-            `);
+            $('#service_pages_list').html('<p>Loading...</p>');
         },
         success: function (resp) {
-            // Check if response status is true
             if (resp.status) {
-                // Clear previous list items first
                 let html = '';
                 $.each(resp.data, function (index, service) {
-                    
                     if (service) {
-                        // Append each new list item instead of overwriting
-                        // console.log('pages', service);
                         html += `
                             <li class="elementor-icon-list-item">
-																<a href="<?= base_url()?>single-service?service_uid=${service.uid}">
-
-																	<span class="elementor-icon-list-icon">
-																		<svg xmlns="http://www.w3.org/2000/svg"
-																			width="14" height="14" viewbox="0 0 14 14"
-																			fill="none">
-																			<path
-																				d="M11.6654 3.97592L1.64141 13.9999L-0.00537109 12.3531L10.0174 2.32914H1.18372V-0.00012207H13.9946V12.8108H11.6654V3.97592Z"
-																				fill="white"></path>
-																		</svg> </span>
-																	<span class="elementor-icon-list-text">${service.page_name}</span>
-																</a>
-															</li>`;
+                                <a href="<?= base_url()?>single-service?service_uid=${service.uid}">
+                                    <span class="elementor-icon-list-icon">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
+                                            <path d="M11.6654 3.97592L1.64141 13.9999L-0.00537109 12.3531L10.0174 2.32914H1.18372V-0.00012207H13.9946V12.8108H11.6654V3.97592Z" fill="white"></path>
+                                        </svg>
+                                    </span>
+                                    <span class="elementor-icon-list-text">${service.page_name}</span>
+                                </a>
+                            </li>`;
                     }
                 });
-                // After all items are appended, insert them into the DOM
-                $('#service_pages_list').html(html);
+                $('#service_pages_list').html(`<ul class="elementor-icon-list-items">${html}</ul>`);
             } else {
-                $('#service_pages_list').html(`
-                    <p>${resp.message}</p>
-                `);
+                $('#service_pages_list').html(`<p>${resp.message}</p>`);
             }
         },
         error: function (err) {
-            console.log(err);
-            $('#service_pages_list').html(`
-                <p>Error loading data.</p>
-            `);
-        },
-        complete: function () {
-            // Optional: Any additional steps after the request is complete.
+            console.error(err);
+            $('#service_pages_list').html('<p>Error loading data.</p>');
         }
     });
 }
@@ -317,6 +295,9 @@ function load_all_service_pages() {
             }
         });
     }
+
+    
+
 
 
     
