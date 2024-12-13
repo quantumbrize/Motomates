@@ -54,6 +54,7 @@
 
         $('#about_update_btn').on('click', function () {
             var formData = new FormData();
+            console.log("Vision Data:", editor2.getData());
 
             formData.append('companyName', $('#companyName').val());
             formData.append('address', $('#address').val());

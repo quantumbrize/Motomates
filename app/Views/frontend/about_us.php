@@ -273,7 +273,7 @@
 															Quality is at the heart of everything we do. We maintain a
 															diverse fleet of well-maintained vehicles that meet the
 															highest standards of safety and comfort.</p> -->
-															<p id="about_mission_text"></p>
+															<p id="about_vision_text"></p>
 													</div>
 												</div>
 												
@@ -330,7 +330,7 @@
 																do. We maintain a diverse fleet of well-maintained
 																vehicles that meet the highest standards of safety and
 																comfort.</p> -->
-																<p id="about_vision_text"></p>
+																<p id="about_mission_text"></p>
 														</div>
 													</div>
 													

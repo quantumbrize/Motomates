@@ -363,6 +363,7 @@ class Banner_Controller extends Api_Controller
                 'map' => $data['map'],
                 'email' => $data['email'],
                 'mission' => $data['mission'],
+                'vision' => $data['vision'],
                 'frontend_meta_description	' => $data['frontend-meta-description'],
                 'frontend_meta_author' => $data['frontend-meta-author'],
                 'frontend_copyright' => $data['frontend-copyright'],
