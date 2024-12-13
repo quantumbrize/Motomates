@@ -137,7 +137,7 @@
 																			<button 
 																			id="enquiryButton-1"
 																			data-bs-toggle="modal" data-bs-target="#exampleModal" 
-																			style="padding: 10px 20px; background-color: #ff3600; color: white; border: none; border-radius: 5px; cursor: pointer;"
+																			style="padding: 10px 20px; background-color: #ff3600; color: white; border: none; border-radius: 50px; cursor: pointer;"
 																		>
 																			Send Enquiry
 																		</button>
@@ -256,22 +256,24 @@
 								id="whatsappIcon"
 							> -->
 
-							<button 
-							id="whatsappIcon" style="padding: 7.5px; background-color: #ff3600; color: white; border: none; border-radius: 5px; cursor: pointer;font-size:15px;"
-							>
-							<img style="width:20%"
-								src="<?=base_url()?>public/uploads/icon_images/whatsapp.png" 
-								alt="WhatsApp Icon" 
-								
-							>Connect
-							</button>
-							<button 
-								id="enquiryButton-1"
-								data-bs-toggle="modal" data-bs-target="#exampleModal" 
-								style="padding: 10px 20px; background-color: #ff3600; color: white; border: none; border-radius: 5px; cursor: pointer;"
-							>
-								Send Enquiry
-							</button>
+							<div style="display: flex; align-items: center; gap: 10px;">
+								<button 
+									id="whatsappIcon" 
+									style="padding: 12px; background-color: #ff3600; color: white; border: none; border-radius: 50px; cursor: pointer; font-size: 15px; display: flex; align-items: center; justify-content: center;">
+									<img style="width: 20%; margin-right: 8px;"
+										src="<?=base_url()?>public/uploads/icon_images/whatsapp.png" 
+										alt="WhatsApp Icon"> 
+									Connect
+								</button>
+
+								<button 
+									id="enquiryButton-1"
+									data-bs-toggle="modal" data-bs-target="#exampleModal" 
+									style="padding: 17px; background-color: #ff3600; color: white; border: none; border-radius: 50px; cursor: pointer; font-size: 15px; display: flex; align-items: center; justify-content: center;">
+									Send Enquiry
+								</button>
+							</div>
+
 						</div>
 
 						<!-- Popups -->

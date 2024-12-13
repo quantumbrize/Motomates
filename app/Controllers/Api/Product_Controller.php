@@ -737,128 +737,262 @@ class Product_Controller extends Api_Controller
 
     }
 
-    public function products($data)
-    {
-        $resp = [
-            'status' => false,
-            'message' => 'Product not Found',
-            'data' => null
-        ];
+    // public function products($data)
+    // {
+    //     $resp = [
+    //         'status' => false,
+    //         'message' => 'Product not Found',
+    //         'data' => null
+    //     ];
 
-        $CommonModel = new CommonModel();
+    //     $CommonModel = new CommonModel();
 
-        $sql = "SELECT
-            product.uid AS product_id,
-            product.name AS name,
-            product.description AS description,
-            product.status AS product_status,
-            product.created_at AS created_at,
-            product.uid,
-            car_specification.make, 
-            car_specification.model, 
-            car_specification.year, 
-            car_specification.mileage, 
-            car_specification.location, 
-            car_specification.doors, 
-            car_specification.badges,
-            product_images.src,
-            car_specification.make_icon, 
-            car_specification.model_icon, 
-            car_specification.year_icon, 
-            car_specification.mileage_icon, 
-            car_specification.location_icon, 
-            car_specification.doors_icon, 
-            car_specification.badge_icon,
+    //     $sql = "SELECT
+    //         product.uid AS product_id,
+    //         product.name AS name,
+    //         product.description AS description,
+    //         product.status AS product_status,
+    //         product.created_at AS created_at,
+    //         product.uid,
+    //         car_specification.make, 
+    //         car_specification.model, 
+    //         car_specification.year, 
+    //         car_specification.mileage, 
+    //         car_specification.location, 
+    //         car_specification.doors, 
+    //         car_specification.badges,
+    //         product_images.src,
+    //         car_specification.make_icon, 
+    //         car_specification.model_icon, 
+    //         car_specification.year_icon, 
+    //         car_specification.mileage_icon, 
+    //         car_specification.location_icon, 
+    //         car_specification.doors_icon, 
+    //         car_specification.badge_icon,
            
             
-            categories.name AS category,
-            categories.uid AS category_id,
-            product_item.uid AS product_item_id,
-            product_item.price AS base_price,
-            product_item.sku AS product_stock,
-            product_item.discount AS base_discount,
-            product_item.product_tags AS tags,
-            product_item.publish_date AS publish_date,
-            product_item.status AS status,
-            product_item.visibility AS visibility,
-            product_item.quantity,
-            product_item.size_chart,
-            product_item.tax,
-            product_item.delivery_charge,
-            product_item.manufacturer_brand AS manufacturer_brand,
-            product_item.manufacturer_name AS manufacturer_name,
-            product_meta_detalis.uid AS meta_id,
-            product_meta_detalis.meta_title,
-            product_meta_detalis.meta_description,
-            product_meta_detalis.meta_keywords,
-            users.user_name AS vendor,
-            vendor.uid AS vendor_id,
-            GROUP_CONCAT(product_size_list.uid) AS size_list_id,
-            GROUP_CONCAT(product_size_list.name) AS size_list_name,
-            GROUP_CONCAT(product_size_list.size_list) AS size_list
-        FROM
-            product
-        LEFT JOIN
-            product_item ON product.uid = product_item.product_id
-        LEFT JOIN
-            car_specification  ON product.uid = car_specification.product_id
-        LEFT JOIN
-            product_meta_detalis ON product.uid = product_meta_detalis.product_id
-        LEFT JOIN 
-            categories ON product.category_id = categories.uid
-        LEFT JOIN
-            vendor ON product.vendor_id = vendor.uid
-        LEFT JOIN
-            users ON vendor.user_id = users.uid
-        LEFT JOIN
-            product_size_list ON product.size_id = product_size_list.uid
-        LEFT JOIN
-            product_images ON product.uid = product_images.product_id";
+    //         categories.name AS category,
+    //         categories.uid AS category_id,
+    //         product_item.uid AS product_item_id,
+    //         product_item.price AS base_price,
+    //         product_item.sku AS product_stock,
+    //         product_item.discount AS base_discount,
+    //         product_item.product_tags AS tags,
+    //         product_item.publish_date AS publish_date,
+    //         product_item.status AS status,
+    //         product_item.visibility AS visibility,
+    //         product_item.quantity,
+    //         product_item.size_chart,
+    //         product_item.tax,
+    //         product_item.delivery_charge,
+    //         product_item.manufacturer_brand AS manufacturer_brand,
+    //         product_item.manufacturer_name AS manufacturer_name,
+    //         product_meta_detalis.uid AS meta_id,
+    //         product_meta_detalis.meta_title,
+    //         product_meta_detalis.meta_description,
+    //         product_meta_detalis.meta_keywords,
+    //         users.user_name AS vendor,
+    //         vendor.uid AS vendor_id,
+    //         GROUP_CONCAT(product_size_list.uid) AS size_list_id,
+    //         GROUP_CONCAT(product_size_list.name) AS size_list_name,
+    //         GROUP_CONCAT(product_size_list.size_list) AS size_list
+    //     FROM
+    //         product
+    //     LEFT JOIN
+    //         product_item ON product.uid = product_item.product_id
+    //     LEFT JOIN
+    //         car_specification  ON product.uid = car_specification.product_id
+    //     LEFT JOIN
+    //         product_meta_detalis ON product.uid = product_meta_detalis.product_id
+    //     LEFT JOIN 
+    //         categories ON product.category_id = categories.uid
+    //     LEFT JOIN
+    //         vendor ON product.vendor_id = vendor.uid
+    //     LEFT JOIN
+    //         users ON vendor.user_id = users.uid
+    //     LEFT JOIN
+    //         product_size_list ON product.size_id = product_size_list.uid
+    //     LEFT JOIN
+    //         product_images ON product.uid = product_images.product_id";
 
-        if (!empty($data['p_id'])) {
-            $p_id = $data['p_id'];
-            $sql .= " WHERE product.uid = '{$p_id}'";
+    //     if (!empty($data['p_id'])) {
+    //         $p_id = $data['p_id'];
+    //         $sql .= " WHERE product.uid = '{$p_id}'";
 
-        } else if (!empty($data['c_id']) && empty($data['vendor_id'])) {
-            $c_id = $data['c_id'];
-            $sql .= " WHERE product.category_id = '{$c_id}'";
+    //     } else if (!empty($data['c_id']) && empty($data['vendor_id'])) {
+    //         $c_id = $data['c_id'];
+    //         $sql .= " WHERE product.category_id = '{$c_id}'";
 
-        } else if (!empty($data['c_id']) && !empty($data['vendor_id'])) {
-            $c_id = $data['c_id'];
-            $vendor_id = $data['vendor_id'];
-            $sql .= " WHERE product.category_id = '{$c_id}' AND product.vendor_id = '{$vendor_id}'";
+    //     } else if (!empty($data['c_id']) && !empty($data['vendor_id'])) {
+    //         $c_id = $data['c_id'];
+    //         $vendor_id = $data['vendor_id'];
+    //         $sql .= " WHERE product.category_id = '{$c_id}' AND product.vendor_id = '{$vendor_id}'";
 
-        } else if (!empty($data['v_id'])) {
-            $v_id = $data['v_id'];
-            $sql .= " WHERE vendor.user_id = '{$v_id}'";
-        }
+    //     } else if (!empty($data['v_id'])) {
+    //         $v_id = $data['v_id'];
+    //         $sql .= " WHERE vendor.user_id = '{$v_id}'";
+    //     }
 
-        $sql .= " GROUP BY product.uid;"; // Group by the unique product ID
+    //     $sql .= " GROUP BY product.uid;"; // Group by the unique product ID
 
-        $products = $CommonModel->customQuery($sql);
+    //     $products = $CommonModel->customQuery($sql);
 
-        if (count($products) > 0) {
-            $ProductImagesModel = new ProductImagesModel();
-            foreach ($products as $key => $product) {
-                $products[$key]->product_img = $ProductImagesModel->where('product_id', $product->product_id)->findAll();
-            }
-            $ItemStocksModel = new ItemStocksModel();
-            foreach ($products as $key => $product) {
-                $products[$key]->product_sizes = $ItemStocksModel->where('product_id', $product->product_id)->where('varient_id', '')->findAll();
-            }
+    //     if (count($products) > 0) {
+    //         $ProductImagesModel = new ProductImagesModel();
+    //         foreach ($products as $key => $product) {
+    //             $products[$key]->product_img = $ProductImagesModel->where('product_id', $product->product_id)->findAll();
+    //         }
+    //         $ItemStocksModel = new ItemStocksModel();
+    //         foreach ($products as $key => $product) {
+    //             $products[$key]->product_sizes = $ItemStocksModel->where('product_id', $product->product_id)->where('varient_id', '')->findAll();
+    //         }
 
-            $ReviewModel = new ReviewModel();
-            foreach ($products as $key => $product) {
-                $products[$key]->product_reviews = $ReviewModel->where('product_id', $product->product_id)->where('status', 'approved')->findAll();
-            }
+    //         $ReviewModel = new ReviewModel();
+    //         foreach ($products as $key => $product) {
+    //             $products[$key]->product_reviews = $ReviewModel->where('product_id', $product->product_id)->where('status', 'approved')->findAll();
+    //         }
 
-            $resp["status"] = true;
-            $resp["data"] = !empty($data['p_id']) ? $products[0] : $products;
-            $resp["message"] = 'Products Found';
-        }
-        // $this->prd($resp);
-        return $resp;
+    //         $resp["status"] = true;
+    //         $resp["data"] = !empty($data['p_id']) ? $products[0] : $products;
+    //         $resp["message"] = 'Products Found';
+    //     }
+    //     // $this->prd($resp);
+    //     return $resp;
+    // }
+
+    public function products($data)
+{
+    $resp = [
+        'status' => false,
+        'message' => 'Product not Found',
+        'data' => null
+    ];
+
+    $CommonModel = new CommonModel();
+
+    $sql = "SELECT
+        product.uid AS product_id,
+        product.name AS name,
+        product.description AS description,
+        product.status AS product_status,
+        product.created_at AS created_at,
+        product.uid,
+        car_specification.make, 
+        car_specification.model, 
+        car_specification.year, 
+        car_specification.mileage, 
+        car_specification.location, 
+        car_specification.doors, 
+        car_specification.badges,
+        product_images.src,
+        car_specification.make_icon, 
+        car_specification.model_icon, 
+        car_specification.year_icon, 
+        car_specification.mileage_icon, 
+        car_specification.location_icon, 
+        car_specification.doors_icon, 
+        car_specification.badge_icon,
+        categories.name AS category,
+        categories.uid AS category_id,
+        product_item.uid AS product_item_id,
+        product_item.price AS base_price,
+        product_item.sku AS product_stock,
+        product_item.discount AS base_discount,
+        product_item.product_tags AS tags,
+        product_item.publish_date AS publish_date,
+        product_item.status AS status,
+        product_item.visibility AS visibility,
+        product_item.quantity,
+        product_item.size_chart,
+        product_item.tax,
+        product_item.delivery_charge,
+        product_item.manufacturer_brand AS manufacturer_brand,
+        product_item.manufacturer_name AS manufacturer_name,
+        product_meta_detalis.uid AS meta_id,
+        product_meta_detalis.meta_title,
+        product_meta_detalis.meta_description,
+        product_meta_detalis.meta_keywords,
+        users.user_name AS vendor,
+        vendor.uid AS vendor_id,
+        GROUP_CONCAT(DISTINCT product_size_list.uid) AS size_list_id,
+        GROUP_CONCAT(DISTINCT product_size_list.name) AS size_list_name,
+        GROUP_CONCAT(DISTINCT product_size_list.size_list) AS size_list
+    FROM
+        product
+    LEFT JOIN
+        product_item ON product.uid = product_item.product_id
+    LEFT JOIN
+        car_specification ON product.uid = car_specification.product_id
+    LEFT JOIN
+        product_meta_detalis ON product.uid = product_meta_detalis.product_id
+    LEFT JOIN 
+        categories ON product.category_id = categories.uid
+    LEFT JOIN
+        vendor ON product.vendor_id = vendor.uid
+    LEFT JOIN
+        users ON vendor.user_id = users.uid
+    LEFT JOIN
+        product_size_list ON product.size_id = product_size_list.uid
+    LEFT JOIN
+        product_images ON product.uid = product_images.product_id";
+
+    // Handle filtering
+    if (!empty($data['p_id'])) {
+        $p_id = $data['p_id'];
+        $sql .= " WHERE product.uid = '{$p_id}'";
+    }else if (!empty($data['c_id']) && empty($data['vendor_id'])) {
+        $c_id = $data['c_id'];
+        $sql .= " WHERE product.category_id = '{$c_id}'";
+    } else if (!empty($data['c_id']) && !empty($data['vendor_id'])) {
+        $c_id = $data['c_id'];
+        $vendor_id = $data['vendor_id'];
+        $sql .= " WHERE product.category_id = '{$c_id}' AND product.vendor_id = '{$vendor_id}'";
+    } else if (!empty($data['v_id'])) {
+        $v_id = $data['v_id'];
+        $sql .= " WHERE vendor.user_id = '{$v_id}'";
     }
+
+    $sql .= " GROUP BY product.uid"; // Group by unique product ID
+
+    // Fetch results
+    $products = $CommonModel->customQuery($sql);
+
+    if (count($products) > 0) {
+        // Process additional details
+        $ProductImagesModel = new ProductImagesModel();
+        foreach ($products as $key => $product) {
+            $products[$key]->product_img = $ProductImagesModel->where('product_id', $product->product_id)->findAll();
+        }
+
+        $ItemStocksModel = new ItemStocksModel();
+        foreach ($products as $key => $product) {
+            $products[$key]->product_sizes = $ItemStocksModel->where('product_id', $product->product_id)->where('varient_id', '')->findAll();
+        }
+
+        // Fetch reviews for all products
+        $ReviewModel = new ReviewModel();
+        foreach ($products as $key => $product) {
+            $products[$key]->product_reviews = $ReviewModel->where('product_id', $product->product_id)->where('status', 'approved')->findAll();
+        }
+
+        // Now we check if the product's category_id is in data['c_ids']
+        $ProductModel = new ProductModel();
+        foreach ($products as $key => $product) {
+            // Check if category_id is in the selected category IDs array (data['c_ids'])
+            if (!empty($data['c_ids']) && !in_array($product->category_id, $data['c_ids'])) {
+                // If the category is not in the selected categories, remove the product from the results
+                unset($products[$key]);
+            }
+        }
+
+        $resp["status"] = true;
+        $resp["data"] = !empty($data['p_id']) ? reset($products) : array_values($products); // Reset indexes if needed
+        $resp["message"] = 'Products Found';
+    }
+
+    return $resp;
+}
+
 
     // public function products($data)
     // {

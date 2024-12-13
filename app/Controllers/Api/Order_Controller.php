@@ -19,6 +19,7 @@ use App\Models\ItemStocksModel;
 use App\Models\ProductItemModel;
 use App\Models\PrescriptionModel;
 use App\Models\RentalModel;
+use App\Models\MessageModel;
 
 class Order_Controller extends Main_Controller
 {
@@ -1326,6 +1327,37 @@ class Order_Controller extends Main_Controller
 
         return $resp;
     }
+    public function booking_count($data)
+    {
+        // Assuming 'rentalModel' is loaded
+        $rentalModel = new RentalModel();
+
+        // Count all entries in the 'rental' table
+        $count = $rentalModel->countAll(); // This will count all rows in the rental table
+
+        // Return the count as part of the response
+        return [
+            'status' => true,
+            'message' => 'Count retrieved successfully.',
+            'data' => ['count' => $count]
+        ];
+    }
+    public function message_count($data)
+    {
+        // Assuming 'rentalModel' is loaded
+        $messageModel = new MessageModel();
+
+        // Count all entries in the 'rental' table
+        $count = $messageModel->countAll(); // This will count all rows in the rental table
+
+        // Return the count as part of the response
+        return [
+            'status' => true,
+            'message' => 'Count retrieved successfully.',
+            'data' => ['count' => $count]
+        ];
+    }
+
 
 
 
@@ -1490,6 +1522,21 @@ class Order_Controller extends Main_Controller
     public function GET_booking_all()
     {
         $resp = $this->booking_all();
+        return $this->response->setJSON($resp);
+    }
+
+    public function GET_message_count()
+    {
+        $data = $this->request->getGet();
+
+        $resp = $this->message_count($data);
+        return $this->response->setJSON($resp);
+    }
+    public function GET_booking_count()
+    {
+        $data = $this->request->getGet();
+
+        $resp = $this->booking_count($data);
         return $this->response->setJSON($resp);
     }
 

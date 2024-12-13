@@ -99,7 +99,7 @@
 																class="ekit-menu-nav-link">Home</a></li>
 														<li id="menu-item-7635"
 															class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-776 current_page_item menu-item-7635 nav-item elementskit-mobile-builder-content active"
-															data-vertical-menu="750px"><a href="index.htm"
+															data-vertical-menu="750px"><a href="<?= base_url()?>about-us"
 																class="ekit-menu-nav-link active">About Us</a></li>
 														<!-- <li id="menu-item-7636"
 															class="menu-item menu-item-type-post_type menu-item-object-page menu-item-7636 nav-item elementskit-mobile-builder-content"
@@ -107,7 +107,7 @@
 																class="ekit-menu-nav-link">Car Type</a></li> -->
 														<li id="menu-item-7637"
 															class="menu-item menu-item-type-post_type menu-item-object-page menu-item-7637 nav-item elementskit-mobile-builder-content"
-															data-vertical-menu="750px"><a href="../service/index.htm"
+															data-vertical-menu="750px"><a href="<?= base_url()?>all/service"
 																class="ekit-menu-nav-link">Service</a></li>
 													</ul>
 												</div>
@@ -276,7 +276,7 @@
 													<li class="elementor-repeater-item-fbd035f">
 														<a href="${resp.user_data.twitter}" aria-label="Twitter" class="twitter">
 
-															<i aria-hidden="true" class="fab fa-x-twitter"></i>
+															<i aria-hidden="true" class="fa-solid fa-x"></i>
 														</a>
 													</li>
 													<li class="elementor-repeater-item-66d4b5c">

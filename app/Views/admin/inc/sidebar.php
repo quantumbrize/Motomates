@@ -1,3 +1,11 @@
+<style>
+    .notification{
+        padding:5px;
+        border-radius: 50px;
+        background-color: darkblue;
+        color:white;
+    }
+</style>
 <?php
 
 //echo "<pre>";
@@ -433,7 +441,7 @@
                     <li class="nav-item ">
                         <a class="nav-link menu-link <?= isset($sidebar['messages']) ? 'active' : '' ?>"
                             href="<?= base_url('admin/messages') ?>">
-                            <i class="ri-message-2-line"></i> <span data-key="t-widgets">Messages</span>
+                            <i class="ri-message-2-line"></i> <span data-key="t-widgets">Messages &nbsp;<small class='notification' id="messageLength"></small></span>
                         </a>
                     </li>
                     <?php
@@ -442,7 +450,7 @@
                         <li class="nav-item ">
                             <a class="nav-link menu-link <?= isset($sidebar['messages']) ? 'active' : '' ?>"
                                 href="<?= base_url('admin/messages') ?>">
-                                <i class="ri-message-2-line"></i> <span data-key="t-widgets">Messages</span>
+                                <i class="ri-message-2-line"></i> <span data-key="t-widgets">Messages &nbsp;<small class='notification' id="messageLength"></small></span>
                             </a>
                         </li>
                     <?php
@@ -455,7 +463,7 @@
                     <li class="nav-item ">
                         <a class="nav-link menu-link <?= isset($sidebar['bookings']) ? 'active' : '' ?>"
                             href="<?= base_url('load-bookings') ?>">
-                            <i class="ri-message-2-line"></i> <span data-key="t-widgets">Bookings</span>
+                            <i class="ri-message-2-line"></i> <span data-key="t-widgets">Bookings &nbsp; <small class='notification' id="bookingLength"></small></span>
                         </a>
                     </li>
                     <?php
@@ -464,7 +472,7 @@
                         <li class="nav-item ">
                             <a class="nav-link menu-link <?= isset($sidebar['bookings']) ? 'active' : '' ?>"
                                 href="<?= base_url('load-bookings') ?>">
-                                <i class="ri-message-2-line"></i> <span data-key="t-widgets">Bookings</span>
+                                <i class="ri-message-2-line"></i> <span data-key="t-widgets">Bookings&nbsp;<small class='notification' id="bookingLength"></small></span>
                             </a>
                         </li>
                     <?php
@@ -562,3 +570,43 @@
 <!-- Start right Content here -->
 <!-- ============================================================== -->
 <div class="main-content">
+
+<script>
+    function getBookingLength() {
+    $.ajax({
+        url: '<?=base_url()?>get/length/bookings',  // The URL to which the request is sent
+        type: 'GET',  // HTTP method for the request
+        success: function(response) {
+			console.log('msgl',response)
+            // Handle success (response will contain the data returned by the server)
+            messageCount=response.data.count  // Log the response data
+
+            $("#bookingLength").html(messageCount);
+        },
+        error: function(xhr, status, error) {
+            // Handle error
+            console.error('Error:', status, error);
+        }
+    });
+}
+function getmessagesLength() {
+    $.ajax({
+        url: '<?=base_url()?>get/length/messages',  // The URL to which the request is sent
+        type: 'GET',  // HTTP method for the request
+        success: function(response) {
+			console.log('msgl',response)
+            // Handle success (response will contain the data returned by the server)
+            messageCount=response.data.count  // Log the response data
+
+            $("#messageLength").html(messageCount);
+        },
+        error: function(xhr, status, error) {
+            // Handle error
+            console.error('Error:', status, error);
+        }
+    });
+}
+
+getBookingLength();
+getmessagesLength()
+</script>

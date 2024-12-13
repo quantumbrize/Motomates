@@ -93,10 +93,10 @@
 												class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children nav-item elementskit-dropdown-has relative_position elementskit-dropdown-menu-default_width elementskit-mobile-builder-content"
 												data-vertical-menu="750px">
 												<a href="<?= base_url()?>cars" class="ekit-menu-nav-link ekit-menu-dropdown-toggle">Cars</a>
-												<ul id="categories_list_header" class="elementskit-dropdown elementskit-submenu-panel">
-													<!-- Categories will be dynamically appended here -->
+												<!-- <ul id="categories_list_header" class="elementskit-dropdown elementskit-submenu-panel">
+													
 													 
-												</ul>
+												</ul> -->
 											</li>
 
 											<!-- <li id="menu-item-4597"
@@ -657,7 +657,6 @@ function getSubCategory(category_id, parent_element_id) {
         }
     });
 }
-
 
 $(document).ready(function () {
 	

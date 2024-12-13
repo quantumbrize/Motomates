@@ -5,7 +5,7 @@
 				<div class="col-md-12">
 					<div class="page-header-box">
 						<h1 class="entry-title">Cars</h1>
-														<div role="navigation" aria-label="Breadcrumbs" class="breadcrumb-trail breadcrumbs"><ol class="trail-items"><li class="trail-item trail-begin"><a href="../index.htm" rel="home"><span>Home</span></a></li><li class="trail-item trail-end"><span><span>Cars</span></span></li></ol></div>					</div>
+																		</div>
 				</div>
 			</div>
 		</div>

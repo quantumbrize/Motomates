@@ -316,6 +316,8 @@ $routes->get('single-car',                          'Frontend\Frontend_Controlle
 
 $routes->get('api/get/single_product',                   'Api\User_Controller::GET_product_single');
 $routes->get('all-categories',                          'Frontend\Frontend_Controller::all_categories');
+$routes->get('get/length/bookings',                          'Api\Order_Controller::GET_booking_count');
+$routes->get('get/length/messages',                          'Api\Order_Controller::GET_message_count');
 
 
 

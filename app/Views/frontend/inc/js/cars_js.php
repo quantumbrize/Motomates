@@ -104,7 +104,7 @@
                     if (resp.data.length > 0) {
                         $.each(resp.data, (index, category) => {
                             console.log('categories',category)
-                            html += `<li class="cat-item cat-item-12"><label><input type='checkbox'  onchange="get_product_by_category()" name='ofcar-types[]' value='${category.uid}'> ${category.name}</label></li>`
+                            html += `<li class="cat-item cat-item-12"><label><input type='checkbox'  name='ofcar-types[]' onchange="get_product_by_category()" value='${category.uid}'> ${category.name}</label></li>`
                         })
 
                     }
@@ -168,109 +168,101 @@
         });
     }
     function get_product_by_category() {
-    // Get the selected checkbox value
-        const categoryId = $('input[name="ofcar-types[]"]:checked').val();
+    // Get all selected category IDs
+    const categoryIds = $('input[name="ofcar-types[]"]:checked')
+        .map(function () {
+            return $(this).val();
+        })
+        .get(); // Convert selected values into an array
 
-        // Determine the API parameters based on whether a category is selected
-        const data = categoryId ? { c_id: categoryId } : {}; // Send no data if no category is selected
+    // Prepare API parameters
+    const data = categoryIds.length > 0 ? { c_ids: categoryIds } : null;
 
-        // Send the request to the API
-        $.ajax({
-            url: '<?= base_url() ?>api/product',
-            type: "GET",
-            data: data, // Send category_id if selected, otherwise send an empty object
-            beforeSend: function () {
-                console.log(
-                    categoryId
-                        ? `Fetching products for category: ${categoryId}`
-                        : "Fetching all products (no category selected)."
-                );
-                $('#product_list').html(`<center><div class="spinner-border text-primary" role="status"></div></center>`);
-            },
-            success: function (resp) {
-                console.log(resp);
-                let html = '';
+    // Send the request to the API
+    $.ajax({
+        url: '<?= base_url() ?>api/product',
+        type: "GET",
+        data: data, // Pass the selected category IDs as data
+        beforeSend: function () {
+            console.log(
+                categoryIds.length > 0
+                    ? `Fetching products for categories: ${categoryIds.join(', ')}`
+                    : "Fetching all products (no categories selected)."
+            );
+            $('#cars').html(`<center><div class="spinner-border text-primary" role="status"></div></center>`);
+        },
+        success: function (resp) {
+            console.log('=>>>>>',resp);
+            let html = '';
 
-                if (resp.status && resp.data.length > 0) {
-                    // Generate product list HTML
-                    $.each(resp.data, (index, product) => {
-                        truncatedDescription=truncateText(product.description,50)
-                        totalPrice= product.base_price - (product.base_discount*product.base_price/100)-(product.tax*product.base_price/100);
-                        html += `
-                            <div class="col-lg-4 col-md-6">
-                                <a href="<?=base_url()?>single-car?product_uid=${product.product_id}">
-                                    <div class="perfect-fleet-item fleets-collection-item">
-                                        <div class="image-box">
-                                            <a href="<?=base_url()?>single-car?product_uid=${product.product_id}">
-                                                <img fetchpriority="high" width="410" height="234" 
-                                                    src="<?=base_url()?>public/uploads/product_images/${product.src}" 
-                                                    class="attachment-novaride-thumb size-novaride-thumb wp-post-image" 
-                                                    alt="" decoding="async">
-                                            </a>
-                                        </div>    
-                                        <div class="perfect-fleet-content">
-                                            <div class="perfect-fleet-title">
-                                                <h3>
-                                                   
-                                                        ${product.manufacturer_name}
-                                                    
-                                                </h3>
-                                                <h2>
-                                                    
-                                                        ${product.name}
-                                                    
-                                                </h2>
+            if (resp.status && resp.data.length > 0) {
+                // Generate product list HTML for each product
+                $.each(resp.data, (index, product) => {
+                    const truncatedDescription = truncateText(product.description, 50);
+                    const totalPrice = product.base_price - 
+                        (product.base_discount * product.base_price / 100) - 
+                        (product.tax * product.base_price / 100);
+
+                    html += `
+                        <div class="col-lg-4 col-md-6">
+                            <a href="<?=base_url()?>single-car?product_uid=${product.product_id}">
+                                <div class="perfect-fleet-item fleets-collection-item">
+                                    <div class="image-box">
+                                        <a href="<?=base_url()?>single-car?product_uid=${product.product_id}">
+                                            <img fetchpriority="high" width="410" height="234" 
+                                                src="<?=base_url()?>public/uploads/product_images/${product.src}" 
+                                                class="attachment-novaride-thumb size-novaride-thumb wp-post-image" 
+                                                alt="" decoding="async">
+                                        </a>
+                                    </div>    
+                                    <div class="perfect-fleet-content">
+                                        <div class="perfect-fleet-title">
+                                            <h3>${product.manufacturer_name}</h3>
+                                            <h2>${product.name}</h2>
+                                        </div>
+                                        <div class="perfect-fleet-title">
+                                            <p>${truncatedDescription}</p>
+                                        </div>
+                                        <div class="perfect-fleet-body">
+                                            <ul>
+                                                <li>
+                                                    <label>
+                                                        <img src="../wp-content/uploads/2024/09/icon-door.svg"> 
+                                                        <span class="feature-label">Doors</span>
+                                                    </label>
+                                                    <span class="feature-value">${product.doors}</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="perfect-fleet-footer">
+                                            <div class="perfect-fleet-pricing">
+                                                <h2>₹${totalPrice}</h2>
                                             </div>
-                                             <div class="perfect-fleet-title">
-                                                    <p>
-                                                      
-                                                            ${truncatedDescription}
-                                                        
-                                                    </p>
-                                                
-                                                </div>
-                                            
-                                            
-                                            <div class="perfect-fleet-body">
-                                                <ul>
-                                                    <li>
-                                                        <label>
-                                                            <img src="../wp-content/uploads/2024/09/icon-door.svg"> 
-                                                            <span class="feature-label">Doors</span>
-                                                        </label>
-                                                        <span class="feature-value">${product.doors}</span>
-                                                    </li>
-                                                
-                                                </ul>
-                                            </div>
-                                            <div class="perfect-fleet-footer">
-                                                <div class="perfect-fleet-pricing">
-                                                    <h2>₹${totalPrice}</h2>
-                                                </div>
-                                                <div class="perfect-fleet-btn">
-                                                    <a href="<?=base_url()?>single-car?product_uid=${product.product_id}" 
-                                                    class="section-icon-btn">
-                                                        <img src="<?=base_url()?>public/assets/motomates/wp-content/themes/novaride/assets/images/arrow-white.svg" alt="">
-                                                    </a>
-                                                </div>
+                                            <div class="perfect-fleet-btn">
+                                                <a href="<?=base_url()?>single-car?product_uid=${product.product_id}" 
+                                                class="section-icon-btn">
+                                                    <img src="<?=base_url()?>public/assets/motomates/wp-content/themes/novaride/assets/images/arrow-white.svg" alt="">
+                                                </a>
                                             </div>
                                         </div>
                                     </div>
-                                </a>
-                            </div>`;
-                    });
-                } else {
-                    html = `<p>No products found.</p>`;
-                }
-
-                $('#cars').html(html); // Display products in the cars container
-            },
-            error: function (err) {
-                console.log(err);
-                $('#product_list').html(`<p>Error fetching products. Please try again later.</p>`);
+                                </div>
+                            </a>
+                        </div>`;
+                });
+            } else {
+                html = `<p>No products found for the selected categories.</p>`;
             }
-        });
-    }
+
+            // Update the products container
+            $('#cars').html(html);
+        },
+        error: function (err) {
+            console.error('Error fetching products:', err);
+            $('#cars').html(`<p>Error fetching products. Please try again later.</p>`);
+        }
+    });
+}
 
     function truncateText(text, maxLength) {
         if (text.length > maxLength) {
