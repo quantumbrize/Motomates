@@ -21,6 +21,7 @@
 
                         $.each(resp.data, function (index, service) {
                             console.log('serviceall', service);
+                            truncatedDescription=truncateText(service.service_description,50)
                             html+=`
                             <div class="elementor-element elementor-element-09ba840 e-con-full service-item e-flex e-con e-child"
                             data-id="09ba840" data-element_type="container"
@@ -43,7 +44,7 @@
                                             <div class="box-body">
                                                 <h3 class="elementskit-info-box-title">
                                                     ${service.service_title} </h3>
-                                                <p>${service.service_description}</p>
+                                                <p>${truncatedDescription}</p>
                                                 <div class="box-footer disable_hover_button">
                                                     <div class="btn-wraper">
                                                         <a href="<?= base_url()?>single-service?service_uid=${service.uid}" target="_self" rel=""
@@ -106,4 +107,11 @@
         });
     }
 
+    function truncateText(text, maxLength) {
+        if (text.length > maxLength) {
+            return text.substring(0, maxLength) + '...';
+        } else {
+            return text;
+        }
+    }
 </script>
