@@ -4,7 +4,50 @@
         let tagsArray = [];
         let serviceCardsArray = [];
         let editorInstance; // Declare the editor instance here
+        let $fileInput = $("#file-input-service");
+    let $imageContainer = $("#images");
+    let $numOfFiles = $("#num-of-files");
 
+    let $iconInput = $("#file-input-service-icon");
+    let $iconContainer = $("#icons");
+    let $numOfIcons = $("#num-of-icons");
+    $fileInput.change(function () {
+        $imageContainer.html("");
+        $numOfFiles.text(`${$fileInput[0].files.length} Files Selected`);
+        $.each($fileInput[0].files, function (index, file) {
+            let reader = new FileReader();
+            let $figure = $("<figure>");
+            let $figCap = $("<figcaption>").text(file.name);
+            $figure.append($figCap);
+            reader.onload = function () {
+                let $img = $("<img>")
+                    .attr("src", reader.result)
+                    .addClass("preview-image"); // Apply the CSS class for size control
+                $figure.prepend($img);
+            };
+            $imageContainer.append($figure);
+            reader.readAsDataURL(file);
+        });
+    });
+
+    $iconInput.change(function () {
+        $iconContainer.html("");
+        $numOfIcons.text(`${$iconInput[0].files.length} Files Selected`);
+        $.each($iconInput[0].files, function (index, file) {
+            let reader = new FileReader();
+            let $figure = $("<figure>");
+            let $figCap = $("<figcaption>").text(file.name);
+            $figure.append($figCap);
+            reader.onload = function () {
+                let $img = $("<img>")
+                    .attr("src", reader.result)
+                    .addClass("preview-image"); // Apply the CSS class for size control
+                $figure.prepend($img);
+            };
+            $iconContainer.append($figure);
+            reader.readAsDataURL(file);
+        });
+    });
         ClassicEditor
             .create(document.querySelector('#service_description'))
             .then(editor => {

@@ -1,5 +1,15 @@
 
 
+<style>
+    .preview-image {
+    width: 100px; /* Set the desired width */
+    height: auto; /* Maintain aspect ratio */
+    object-fit: cover; /* Ensure proper image fitting */
+    border: 1px solid #ddd; /* Optional: Add a border for aesthetics */
+    border-radius: 4px; /* Optional: Rounded corners */
+    margin: 5px; /* Spacing between images */
+}
+</style>
 <div class="container-fluid" style="margin-top:100px;">
 
         <!-- start page title -->

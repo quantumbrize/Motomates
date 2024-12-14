@@ -58,13 +58,13 @@
     margin: 5px; /* Spacing between images */
 }
 .truncate {
-    display: inline-block;    /* Necessary for text-overflow to work */
-    max-width: 150px;         /* Set a maximum width */
-    max-height: 100px;         /* Set a maximum width */
-    white-space: nowrap;      /* Prevent wrapping to a new line */
-    overflow: hidden;         /* Hide text that overflows the container */
-    text-overflow: ellipsis;  /* Show ellipsis (...) for overflowing text */
-    }
+    /* Use block-level display to ensure content takes full width of the cell */
+    max-width: 150px; /* Set a maximum width */
+    max-height: 100px; /* Set a maximum height */
+    white-space: nowrap; /* Prevent wrapping to a new line */
+    overflow: hidden; /* Hide text that overflows the container */
+    text-overflow: ellipsis; /* Show ellipsis (...) for overflowing text */
+}
     /*  */
 </style>
 

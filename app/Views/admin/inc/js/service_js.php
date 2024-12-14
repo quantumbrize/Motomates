@@ -347,15 +347,13 @@ function load_all_services() {
                         let tagsHtml = '';
                         if (service.tags.length > 0) {
                             $.each(service.tags, function (tagIndex, tag) {
-                                tagsHtml += `<div class="d-flex align-items-center mb-2">
+                                tagsHtml += `
                                                 <span class="badge bg-info">${tag.tag_name}</span>
-                                                
-                                            </div>`;
+                                            `;
                             });
                         } else {
                             tagsHtml = `<div>No tags available</div>`;
                         }
-
                         // Construct image URL using the image name from the database
                         let imageUrl = `<?= base_url() ?>public/uploads/service_images/${service.service_img}`;
                         let iconUrl = `<?= base_url() ?>public/uploads/service_images/${service.service_icon}`;
@@ -365,8 +363,9 @@ function load_all_services() {
                                     <td>${service.page_name}</td>
                                     <td>${service.service_title}</td>
                                     <td  class="truncate" data-full-description="${service.service_description}">${service.service_description}</td>
-                                    <td class="truncate1">${tagsHtml}
-                                        <input type='hidden' id="service_uid" value="${service.uid}"></td>
+                                    <td class="truncate">
+                                        ${tagsHtml}
+                                    
                                     <td>
                                         <img src="${imageUrl}" alt="Service Image" style="width: 50px; height: auto;">
                                     </td>
@@ -393,7 +392,7 @@ function load_all_services() {
                             });
                             cardsHtml += `</div>`; // Close the wrapper
 
-                            html += `<td class="truncate2">${cardsHtml}</td>`;  // Add cards inline in a new table cell
+                            html += `<td class="truncate">${cardsHtml}</td>`;  // Add cards inline in a new table cell
                         } else {
                             html += `<td>No cards available</td>`; // Handle case where no cards are present
                         }
