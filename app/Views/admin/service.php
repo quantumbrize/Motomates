@@ -1,42 +1,71 @@
 <style>
 /* General Table Styles */
-/* Limit table cell width and height */
-#service_page_data_table td {
-    max-width: 200px; /* Maximum width of a cell */
-    height: 200px; /* Set fixed height for the cell */
-    overflow: hidden; /* Hide overflowing content */
-    word-wrap: break-word; /* Allow text to wrap within the cell */
-    text-overflow: ellipsis; /* Add ellipsis (...) for overflowing text */
-    white-space: normal; /* Allow wrapping for multiline text */
-}
-
-/* Limit table header cell width */
-#service_page_data_table th {
-    max-width: 200px;
-    word-wrap: break-word;
-}
-
-/* Style images within table cells */
-#service_page_data_table td img {
-    max-width: 100%; /* Ensure images fit within the cell width */
-    max-height: 100%; /* Ensure images fit within the cell height */
-    display: block; /* Prevent inline issues */
-    margin: 0 auto; /* Center images */
-}
-
-/* Optional: Adjust table layout to prevent overlapping */
 #service_page_data_table {
-    table-layout: auto; /* Let column widths adjust dynamically */
-    width: 100%; /* Ensure the table takes full width */
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    table-layout: auto; /* Adjust column widths based on content */
 }
 
-/* Optional: Ensure the table fits within the container */
+#service_page_data_table th,
+#service_page_data_table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    word-wrap: break-word; /* Ensure long text wraps within the cell */
+}
+
+/* Adjust Specific Column Widths */
+#service_page_data_table th:nth-child(8), /* Card Data */
+#service_page_data_table td:nth-child(8) {
+    width: 20%; /* Increase the width of the Card Data column */
+}
+
+#service_page_data_table th:nth-child(1), /* Sl No. */
+#service_page_data_table td:nth-child(1) {
+    width: 5%; /* Sl No. column width */
+    text-align: center;
+}
+
+#service_page_data_table th:nth-child(6), /* Service Image */
+#service_page_data_table td:nth-child(6) {
+    width: 15%; /* Adjust image column width */
+}
+
+#service_page_data_table th, /* Other columns auto-adjust */
+#service_page_data_table td {
+    width: auto;
+}
+
+/* Scrollable Table */
 #service_page_data_table_wrapper {
-    overflow-x: auto; /* Allow horizontal scrolling if needed */
+    max-height: 500px;
+    overflow-y: auto; /* Enable vertical scrolling */
+    overflow-x: auto; /* Enable horizontal scrolling */
 }
 
-
-
+#service_page_data_table thead th {
+    position: sticky; /* Sticky header */
+    top: 0;
+    background-color: #f8f9fa; /* Sticky header background */
+    z-index: 2; /* Ensures header stays on top */
+}
+.preview-image {
+    width: 100px; /* Set the desired width */
+    height: auto; /* Maintain aspect ratio */
+    object-fit: cover; /* Ensure proper image fitting */
+    border: 1px solid #ddd; /* Optional: Add a border for aesthetics */
+    border-radius: 4px; /* Optional: Rounded corners */
+    margin: 5px; /* Spacing between images */
+}
+.truncate {
+    display: inline-block;    /* Necessary for text-overflow to work */
+    max-width: 150px;         /* Set a maximum width */
+    max-height: 100px;         /* Set a maximum width */
+    white-space: nowrap;      /* Prevent wrapping to a new line */
+    overflow: hidden;         /* Hide text that overflows the container */
+    text-overflow: ellipsis;  /* Show ellipsis (...) for overflowing text */
+    }
+    /*  */
 </style>
 
 
