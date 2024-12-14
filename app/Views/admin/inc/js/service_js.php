@@ -3,7 +3,6 @@
     let tagsArray = [];
     let serviceCardsArray = [];
 
-
     // Image Preview
     let $fileInput = $("#file-input-service");
     let $imageContainer = $("#images");
@@ -12,7 +11,6 @@
     let $iconInput = $("#file-input-service-icon");
     let $iconContainer = $("#icons");
     let $numOfIcons = $("#num-of-icons");
-
     $fileInput.change(function () {
         $imageContainer.html("");
         $numOfFiles.text(`${$fileInput[0].files.length} Files Selected`);
@@ -124,81 +122,20 @@ $('#selected-service-cards').on('click', '.remove-tag', function () {
 });
 
 
-    // Submit Service with Tags
-   // Function to handle adding a new service
-//    $('#service_add_btn').click(function () {
-//     let formData = new FormData();
-//     formData.append('page_name', $('#page_name').val());
-//     formData.append('service_title', $('#service_title').val());
-//     formData.append('service_description', $('#service_description').val());
-//     formData.append('service_owner_contact', $('#service_owner_contact').val());
-
-//     // Append tags and icons
-//     tagsArray.forEach((item, index) => {
-//         formData.append(`tags[${index}][tag]`, item.tag);
-//         formData.append(`tags[${index}][icon]`, item.icon);
-//     });
-//     console.log('cardarray',serviceCardsArray);
-
-//     // Append service cards
-//     serviceCardsArray.forEach((item, index) => {
-//         formData.append(`service_cards[${index}][title]`, item.card_title);
-//         formData.append(`service_cards[${index}][description]`, item.card_description);
-        
-//         // Handle image upload for each service card
-//         // if (item.image) {
-        
-//             formData.append(`service_cards[${index}][service_card_image]`, item.image);
-//         // }
-//     });
-//     for (let pair of formData.entries()) {
-//         console.log(pair[0] + ':', pair[1]);
-//     }
-//     // Append service images
-//     $.each($('#file-input-service')[0].files, function (index, file) {
-//         formData.append('images[]', file);
-//     });
-
-//     $.each($('#file-input-service-icon')[0].files, function (index, file) {
-//         formData.append('icons[]', file);
-//     });
-
-//     // Send AJAX request
-//     $.ajax({
-//         url: "<?= base_url('/api/add/service') ?>",
-//         type: "POST",
-//         data: formData,
-//         contentType: false,
-//         processData: false,
-//         beforeSend: function () {
-//             $('#service_add_btn').text("Submitting...").attr('disabled', true);
-//         },
-//         success: function (response) {
-//             console.log('services',response);
-//             if (response.status) {
-//                 alert(response.message);
-//                 location.reload();
-//             } else {
-//                 alert(`Error: ${response.message}`);
-//             }
-//         },
-//         error: function (err) {
-//             console.error("Error:", err);
-//         },
-//         complete: function () {
-//             $('#service_add_btn').text("Submit").attr('disabled', false);
-//         }
-//     });
-// });
 
 // Update function
 $('#service_update_btn').click(function () {
     let formData = new FormData();
 
+    // Get content from CKEditor and set it to the textarea
+    if (window.editorInstance) {
+        $('#service_description').val(window.editorInstance.getData());
+    }
+
     // Append basic service details
     formData.append('page_name', $('#page_name').val());
     formData.append('service_title', $('#service_title').val());
-    formData.append('service_description', $('#service_description').val());
+    formData.append('service_description', $('#service_description').val()); // Use updated content from CKEditor
     formData.append('service_owner_contact', $('#service_owner_contact').val());
     formData.append('service_uid', $('#service_uid').val()); // Ensure this is populated correctly
 
@@ -214,10 +151,7 @@ $('#service_update_btn').click(function () {
         formData.append(`service_cards[${index}][description]`, item.card_description);
         
         // Handle image upload for each service card
-        // if (item.image) {
-        
-            formData.append(`service_cards[${index}][service_card_image]`, item.image);
-        // }
+        formData.append(`service_cards[${index}][service_card_image]`, item.image);
     });
 
     // Append service images
@@ -383,53 +317,6 @@ $('#service_update_btn').click(function () {
             });
         }
     });
-    // document.getElementById('add-service-card').addEventListener('click', function () {
-    //     const cardImageInput = document.getElementById('service_card_image');
-    //     const cardTitleInput = document.getElementById('service_card_title');
-    //     const cardDescriptionInput = document.getElementById('service_card_description');
-    //     const selectedServiceCards = document.getElementById('selected-service-cards');
-
-    //     // Validate inputs
-    //     if (!cardTitleInput.value.trim() || !cardDescriptionInput.value.trim() || !cardImageInput.files.length) {
-    //         alert('Please fill out all fields and upload an image!');
-    //         return;
-    //     }
-
-    //     // Create a new service card element
-    //     const cardWrapper = document.createElement('div');
-    //     cardWrapper.classList.add('service-card', 'border', 'p-2', 'mb-2', 'position-relative');
-        
-    //     // Read the uploaded image file
-    //     const reader = new FileReader();
-    //     reader.onload = function (e) {
-    //         cardWrapper.innerHTML = `
-    //             <div class="d-flex align-items-center">
-    //                 <img src="${e.target.result}" alt="Service Card Image" class="img-thumbnail" style="width: 60px; height: 60px; object-fit: cover; margin-right: 15px;">
-    //                 <div>
-    //                     <h6 class="mb-1">${cardTitleInput.value}</h6>
-    //                     <p class="mb-1 text-muted">${cardDescriptionInput.value}</p>
-    //                 </div>
-    //             </div>
-    //             <button class="btn btn-danger btn-sm position-absolute" style="top: 5px; right: 5px;">Remove</button>
-    //         `;
-
-    //         // Add remove functionality
-    //         cardWrapper.querySelector('button').addEventListener('click', function () {
-    //             cardWrapper.remove();
-    //         });
-
-    //         // Append the card to the selected service cards section
-    //         selectedServiceCards.appendChild(cardWrapper);
-
-    //         // Clear input fields
-    //         cardImageInput.value = '';
-    //         cardTitleInput.value = '';
-    //         cardDescriptionInput.value = '';
-    //     };
-
-    //     // Read the file as a data URL
-    //     reader.readAsDataURL(cardImageInput.files[0]);
-    // });
 
 
 

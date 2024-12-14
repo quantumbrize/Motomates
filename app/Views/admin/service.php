@@ -3,7 +3,7 @@
 /* Limit table cell width and height */
 #service_page_data_table td {
     max-width: 200px; /* Maximum width of a cell */
-    max-height: 500px; /* Maximum height of a cell */
+    height: 200px; /* Set fixed height for the cell */
     overflow: hidden; /* Hide overflowing content */
     word-wrap: break-word; /* Allow text to wrap within the cell */
     text-overflow: ellipsis; /* Add ellipsis (...) for overflowing text */
@@ -24,9 +24,6 @@
     margin: 0 auto; /* Center images */
 }
 
-/* Style the card data (truncate within cell) */
-
-
 /* Optional: Adjust table layout to prevent overlapping */
 #service_page_data_table {
     table-layout: auto; /* Let column widths adjust dynamically */
@@ -37,6 +34,7 @@
 #service_page_data_table_wrapper {
     overflow-x: auto; /* Allow horizontal scrolling if needed */
 }
+
 
 
 </style>
