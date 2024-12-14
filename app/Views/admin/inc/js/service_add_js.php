@@ -140,4 +140,9 @@ $('#selected-service-cards').on('click', '.remove-tag', function () {
     });
 });
     })
+    ClassicEditor
+        .create(document.querySelector('#service_description'))
+        .catch(error => {
+            console.error(error);
+        });
 </script>

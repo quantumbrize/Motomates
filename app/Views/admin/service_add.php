@@ -1,3 +1,5 @@
+<script src="https://cdn.ckeditor.com/ckeditor5/39.0.1/classic/ckeditor.js"></script>
+
 <div class="container-fluid" style="margin-top:100px;">
 
         <!-- start page title -->
@@ -71,7 +73,7 @@
                         <div class="card-body">
                             <div class="mb-3">
                                 <label class="form-label" for="service_description">Service Description</label>
-                                <input type="text" class="form-control" id="service_description" placeholder="Enter service description" required>
+                                <textarea class="form-control" id="service_description" placeholder="Enter service description" required></textarea>
                                 <div class="invalid-feedback">Please Enter Service Description.</div>
                             </div>
                         </div>

@@ -1,76 +1,49 @@
 <style>
 /* General Table Styles */
+/* Limit table cell width and height */
+#service_page_data_table td {
+    max-width: 200px; /* Maximum width of a cell */
+    max-height: 500px; /* Maximum height of a cell */
+    overflow: hidden; /* Hide overflowing content */
+    word-wrap: break-word; /* Allow text to wrap within the cell */
+    text-overflow: ellipsis; /* Add ellipsis (...) for overflowing text */
+    white-space: normal; /* Allow wrapping for multiline text */
+}
+
+/* Limit table header cell width */
+#service_page_data_table th {
+    max-width: 200px;
+    word-wrap: break-word;
+}
+
+/* Style images within table cells */
+#service_page_data_table td img {
+    max-width: 100%; /* Ensure images fit within the cell width */
+    max-height: 100%; /* Ensure images fit within the cell height */
+    display: block; /* Prevent inline issues */
+    margin: 0 auto; /* Center images */
+}
+
+/* Style the card data (truncate within cell) */
+
+
+/* Optional: Adjust table layout to prevent overlapping */
 #service_page_data_table {
-    width: 100%;
-    border-collapse: collapse;
-    text-align: left;
-    table-layout: auto; /* Adjust column widths based on content */
+    table-layout: auto; /* Let column widths adjust dynamically */
+    width: 100%; /* Ensure the table takes full width */
 }
 
-#service_page_data_table th,
-#service_page_data_table td {
-    padding: 10px;
-    border: 1px solid #ddd;
-    word-wrap: break-word; /* Ensure long text wraps within the cell */
-}
-
-/* Adjust Specific Column Widths */
-#service_page_data_table th:nth-child(8), /* Card Data */
-#service_page_data_table td:nth-child(8) {
-    width: 20%; /* Increase the width of the Card Data column */
-}
-
-#service_page_data_table th:nth-child(1), /* Sl No. */
-#service_page_data_table td:nth-child(1) {
-    width: 5%; /* Sl No. column width */
-    text-align: center;
-}
-
-#service_page_data_table th:nth-child(6), /* Service Image */
-#service_page_data_table td:nth-child(6) {
-    width: 15%; /* Adjust image column width */
-}
-
-#service_page_data_table th, /* Other columns auto-adjust */
-#service_page_data_table td {
-    width: auto;
-}
-
-/* Scrollable Table */
+/* Optional: Ensure the table fits within the container */
 #service_page_data_table_wrapper {
-    max-height: 500px;
-    overflow-y: auto; /* Enable vertical scrolling */
-    overflow-x: auto; /* Enable horizontal scrolling */
+    overflow-x: auto; /* Allow horizontal scrolling if needed */
 }
 
-#service_page_data_table thead th {
-    position: sticky; /* Sticky header */
-    top: 0;
-    background-color: #f8f9fa; /* Sticky header background */
-    z-index: 2; /* Ensures header stays on top */
-}
-.preview-image {
-    width: 100px; /* Set the desired width */
-    height: auto; /* Maintain aspect ratio */
-    object-fit: cover; /* Ensure proper image fitting */
-    border: 1px solid #ddd; /* Optional: Add a border for aesthetics */
-    border-radius: 4px; /* Optional: Rounded corners */
-    margin: 5px; /* Spacing between images */
-}
-.truncate {
-    display: inline-block;    /* Necessary for text-overflow to work */
-    max-width: 150px;         /* Set a maximum width */
-    max-height: 100px;         /* Set a maximum width */
-    white-space: nowrap;      /* Prevent wrapping to a new line */
-    overflow: hidden;         /* Hide text that overflows the container */
-    text-overflow: ellipsis;  /* Show ellipsis (...) for overflowing text */
-    }
+
 </style>
 
 
 
-
-</style>
+<script src="https://cdn.ckeditor.com/ckeditor5/39.0.1/classic/ckeditor.js"></script>
 <div class="page-content">
     <div class="container-fluid">
 
@@ -242,7 +215,7 @@
                         <div class="card-body">
                             <div class="mb-3">
                                 <label class="form-label" for="service_description">Service Description</label>
-                                <input type="text" class="form-control" id="service_description" placeholder="Enter service description" required>
+                                <textarea class="form-control" id="service_description" placeholder="Enter service description" required></textarea>
                                 <div class="invalid-feedback">Please Enter Service Description.</div>
                             </div>
                         </div>

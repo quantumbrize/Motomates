@@ -262,92 +262,97 @@ $('#service_update_btn').click(function () {
 
     // Edit Service Data
     $('#table-banner-list-all-body').on('click', '.fa-edit', function () {
-        let serviceRow = $(this).closest('tr');
+    let serviceRow = $(this).closest('tr');
 
-        // Retrieve data from table cells
-        let serviceUid = serviceRow.find('td:eq(4) input#service_uid').val(); // Hidden UID input
-        let pageName = serviceRow.find('td:eq(1)').text().trim();
-        let serviceTitle = serviceRow.find('td:eq(2)').text().trim();
-        let serviceDescription = serviceRow.find('td:eq(3)').text().trim();
-        let serviceContact = serviceRow.find('td:eq(6)').text().trim();
-        let serviceImage = serviceRow.find('td:eq(5) img').attr('src');
-        let serviceIcon = serviceRow.find('td:eq(7) img').attr('src');
+    // Retrieve data from table cells
+    let serviceUid = serviceRow.find('td:eq(4) input#service_uid').val(); // Hidden UID input
+    let pageName = serviceRow.find('td:eq(1)').text().trim();
+    let serviceTitle = serviceRow.find('td:eq(2)').text().trim();
+    let serviceDescription = serviceRow.find('td:eq(3)').text().trim(); // Full description stored in `data-full-description`
+    let serviceContact = serviceRow.find('td:eq(6)').text().trim();
+    let serviceImage = serviceRow.find('td:eq(5) img').attr('src');
+    let serviceIcon = serviceRow.find('td:eq(7) img').attr('src');
 
-        // Handle service tags
-        let serviceTagsHtml = serviceRow.find('td:eq(4)').html();
-        let tagsArray = [];
-        $(serviceTagsHtml).find('.badge').each(function () {
-            let tagText = $(this).text().trim(); // Extract the tag text
-            // let iconText = $(this).next('span').text().trim(); // Extract the icon text
-            tagsArray.push({ tag: tagText });
-        });
-
-        // Populate form fields
-        $('#page_name').val(pageName);
-        $('#service_title').val(serviceTitle);
-        $('#service_description').val(serviceDescription);
-        $('#service_owner_contact').val(serviceContact);
-        $('#service_uid').val(serviceUid);
-
-        // Populate tags in the tag section
-        $('#selected-service-tags').html('');
-        tagsArray.forEach(item => {
-            $('#selected-service-tags').append(`
-                <span class="tag-item badge bg-primary me-2">
-                    ${item.tag}
-                    
-                    <button type="button" class="btn-close btn-sm remove-tag" data-tag="${item.tag}"></button>
-                </span>
-            `);
-        });
-
-        // Populate service image and icon
-        if (serviceImage) {
-            $('#images').html(`<img src="${serviceImage}" alt="Service Image" style="max-width: 200px; max-height: 200px;" />`);
-        } else {
-            $('#images').html('No image available');
-        }
-
-        if (serviceIcon) {
-            $('#icons').html(`<img src="${serviceIcon}" alt="Service Icon" style="max-width: 200px; max-height: 200px;" />`);
-        } else {
-            $('#icons').html('No icon available');
-        }
-
-        // Handle cards data
-        let cardsHtml = serviceRow.find('td:eq(8) .card-item'); // Update index to match card data cell
-        let cardsData = '';
-
-        if (cardsHtml.length > 0) {
-            cardsHtml.each(function () {
-                let cardTitle = $(this).find('.badge').text().trim();
-                let cardDescription = $(this).find('.card-description').text().trim();
-                let cardImage = $(this).find('img').attr('src');
-
-                cardsData += `
-                    <div class="card-item mb-2" style="display: flex; align-items: center; margin-bottom: 10px;">
-                        <img src="${cardImage}" alt="Card Image" style="width: 30px; height: auto; margin-right: 5px;">
-                        <span class="badge bg-secondary">${cardTitle}</span>
-                        <p class="card-description ms-2">${cardDescription}</p>
-                    </div>
-                `;
-            });
-        } else {
-            cardsData = 'No cards available';
-        }
-
-        $('#selected-service-cards').html(cardsData);
-
-        // Reset file input fields
-        $('#file-input-service').val(null);
-        $('#file-input-service-icon').val(null);
+    // Handle service tags
+    let serviceTagsHtml = serviceRow.find('td:eq(4)').html();
+    let tagsArray = [];
+    $(serviceTagsHtml).find('.badge').each(function () {
+        let tagText = $(this).text().trim(); // Extract the tag text
+        tagsArray.push({ tag: tagText });
     });
 
+    // Populate form fields
+    $('#page_name').val(pageName);
+    $('#service_title').val(serviceTitle);
+    $('#service_owner_contact').val(serviceContact);
+    $('#service_uid').val(serviceUid);
+
+    // Load service description into CKEditor
+    if (window.editorInstance) {
+        window.editorInstance.setData(serviceDescription); // Use CKEditor API to set the description
+    } else {
+        console.error("CKEditor instance not initialized");
+    }
+
+    // Populate tags in the tag section
+    $('#selected-service-tags').html('');
+    tagsArray.forEach(item => {
+        $('#selected-service-tags').append(`
+            <span class="tag-item badge bg-primary me-2">
+                ${item.tag}
+                <button type="button" class="btn-close btn-sm remove-tag" data-tag="${item.tag}"></button>
+            </span>
+        `);
+    });
+
+    // Populate service image and icon
+    if (serviceImage) {
+        $('#images').html(`<img src="${serviceImage}" alt="Service Image" style="max-width: 200px; max-height: 200px;" />`);
+    } else {
+        $('#images').html('No image available');
+    }
+
+    if (serviceIcon) {
+        $('#icons').html(`<img src="${serviceIcon}" alt="Service Icon" style="max-width: 200px; max-height: 200px;" />`);
+    } else {
+        $('#icons').html('No icon available');
+    }
+
+    // Handle cards data
+    let cardsHtml = serviceRow.find('td:eq(8) .card-item'); // Update index to match card data cell
+    let cardsData = '';
+
+    if (cardsHtml.length > 0) {
+        cardsHtml.each(function () {
+            let cardTitle = $(this).find('.badge').text().trim();
+            let cardDescription = $(this).find('.card-description').text().trim();
+            let cardImage = $(this).find('img').attr('src');
+
+            cardsData += `
+                <div class="card-item mb-2" style="display: flex; align-items: center; margin-bottom: 10px;">
+                    <img src="${cardImage}" alt="Card Image" style="width: 30px; height: auto; margin-right: 5px;">
+                    <span class="badge bg-secondary">${cardTitle}</span>
+                    <p class="card-description ms-2">${cardDescription}</p>
+                </div>
+            `;
+        });
+    } else {
+        cardsData = 'No cards available';
+    }
+
+    $('#selected-service-cards').html(cardsData);
+
+    // Reset file input fields
+    $('#file-input-service').val(null);
+    $('#file-input-service-icon').val(null);
+});
 
 
 
 
-    $(document).on('click', '.fa-close', function () {
+
+
+    $(document).on('click', '.fa-trash', function () {
     // Get the service row (tr) and extract the service UID
         var serviceRow = $(this).closest('tr');
         var serviceUid = serviceRow.find('#service_uid').val(); // Get the service UID from the hidden input
@@ -472,8 +477,8 @@ function load_all_services() {
                                     <td>${index + 1}</td>
                                     <td>${service.page_name}</td>
                                     <td>${service.service_title}</td>
-                                    <td class="truncate">${service.service_description}</td>
-                                    <td>${tagsHtml}
+                                    <td  class="truncate" data-full-description="${service.service_description}">${service.service_description}</td>
+                                    <td class="truncate1">${tagsHtml}
                                         <input type='hidden' id="service_uid" value="${service.uid}"></td>
                                     <td>
                                         <img src="${imageUrl}" alt="Service Image" style="width: 50px; height: auto;">
@@ -501,7 +506,7 @@ function load_all_services() {
                             });
                             cardsHtml += `</div>`; // Close the wrapper
 
-                            html += `<td>${cardsHtml}</td>`;  // Add cards inline in a new table cell
+                            html += `<td class="truncate2">${cardsHtml}</td>`;  // Add cards inline in a new table cell
                         } else {
                             html += `<td>No cards available</td>`; // Handle case where no cards are present
                         }
@@ -554,6 +559,14 @@ function load_all_services() {
         }
     });
 }
+ClassicEditor
+    .create(document.querySelector('#service_description'))
+    .then(editor => {
+        window.editorInstance = editor; // Save instance for reuse
+    })
+    .catch(error => {
+        console.error("Error initializing CKEditor", error);
+    });
 
 
 
