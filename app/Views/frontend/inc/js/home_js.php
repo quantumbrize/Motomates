@@ -526,7 +526,8 @@
                         $.each(resp.data, function (index, product) {
                             console.log('productall', product);
                             truncatedDescription=truncateText(product.description,50)
-                            totalPrice= product.base_price - (product.base_discount*product.base_price/100)-(product.tax*product.base_price/100);
+                            discountedPrice= product.base_price - (product.base_discount*product.base_price/100)
+                            totalPrice= discountedPrice+(product.tax*discountedPrice/100);
                             html+=`<div class="swiper-slide">
                             <a href="<?=base_url()?>single-car?product_uid=${product.product_id}">
 											<div class="perfect-fleet-item">
@@ -554,7 +555,7 @@
 													<div class="perfect-fleet-body">
 														<ul>
 															<li><label><img decoding="async"
-																		src="<?= base_url()?>public/assets/motomates/wp-content/uploads/2024/09/icon-door.svg">
+																		src="<?=base_url()?>public/uploads/product_images/Doors.png">
 																	<span
 																		class="feature-label">Doors</span></label><span
 																	class="feature-value"> ${product.doors}</span></li>

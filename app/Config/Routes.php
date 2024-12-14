@@ -305,6 +305,8 @@ $routes->get('/api/all/service_enquiry',                   'Api\User_Controller:
 $routes->get('/book-a-rental',                          'Frontend\Frontend_Controller::book_a_rental');
 
 $routes->post('/send-booking',                           'Api\User_Controller::POST_submit_booking');
+$routes->post('/delete-booking',                           'Api\User_Controller::POST_delete_booking');
+$routes->post('/delete-message',                           'Api\User_Controller::POST_delete_message');
 
 $routes->get('/all/service',                          'Frontend\Frontend_Controller::service_all');
 
@@ -318,7 +320,7 @@ $routes->get('api/get/single_product',                   'Api\User_Controller::G
 $routes->get('all-categories',                          'Frontend\Frontend_Controller::all_categories');
 $routes->get('get/length/bookings',                          'Api\Order_Controller::GET_booking_count');
 $routes->get('get/length/messages',                          'Api\Order_Controller::GET_message_count');
-
+$routes->get('/admin/service/add',                      'Admin\Admin_Controller::load_service_add');
 
 
 

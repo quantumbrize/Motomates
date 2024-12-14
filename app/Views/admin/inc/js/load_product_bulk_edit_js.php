@@ -463,28 +463,28 @@
                 // const visibility = row.cells[3].children[0].value;
                 const storeName = row.cells[2].children[0].value;
                 const make = row.cells[3].children[0].value;
-                const model = row.cells[5].children[0].value;
-                const year = row.cells[7].children[0].value;
-                const mileage = row.cells[9].children[0].value;
-                const location = row.cells[11].children[0].value;
-                const doors = row.cells[13].children[0].value;
-                const badges = row.cells[15].children[0].value;
+                const model = row.cells[4].children[0].value;
+                const year = row.cells[5].children[0].value;
+                const mileage = row.cells[6].children[0].value;
+                const location = row.cells[7].children[0].value;
+                const doors = row.cells[8].children[0].value;
+                const badges = row.cells[9].children[0].value;
                 // const barCode = row.cells[3].children[0].value;
-                const category = row.cells[17].children[1].value;
+                const category = row.cells[10].children[1].value;
                 // const size = row.cells[5].children[0].value;
                 // const qty = row.cells[8].children[0].value;
                 // const tags = row.cells[6].children[0].value;
-                const tax= row.cells[18].children[0].value;
-                const discount=row.cells[19].children[0].value;
+                const tax= row.cells[11].children[0].value;
+                const discount=row.cells[12].children[0].value;
                 // const delivery_charge=row.cells[9].children[0].value;  
-                const price=row.cells[20].children[0].value;  
-                const makeIcon = row.querySelector("#make_icon").files[0]; // Make icon
-                const modelIcon = row.querySelector("#model_icon").files[0]; // Model icon
-                const yearIcon = row.querySelector("#year_icon").files[0]; // Year icon
-                const mileageIcon = row.querySelector("#mileage_icon").files[0]; // Mileage icon
-                const locationIcon = row.querySelector("#location_icon").files[0]; // Location icon
-                const doorsIcon = row.querySelector("#doors_icon").files[0]; // Doors icon
-                const badgeIcon = row.querySelector("#badge_icon").files[0]; 
+                const price=row.cells[13].children[0].value;  
+                // const makeIcon = row.querySelector("#make_icon").files[0]; // Make icon
+                // const modelIcon = row.querySelector("#model_icon").files[0]; // Model icon
+                // const yearIcon = row.querySelector("#year_icon").files[0]; // Year icon
+                // const mileageIcon = row.querySelector("#mileage_icon").files[0]; // Mileage icon
+                // const locationIcon = row.querySelector("#location_icon").files[0]; // Location icon
+                // const doorsIcon = row.querySelector("#doors_icon").files[0]; // Doors icon
+                // const badgeIcon = row.querySelector("#badge_icon").files[0]; 
                  
 
 
@@ -510,13 +510,13 @@
                     discount,
                     // delivery_charge,
                     price,
-                    make_icon: makeIcon,
-                    model_icon: modelIcon,
-                    year_icon: yearIcon,
-                    mileage_icon: mileageIcon,
-                    location_icon: locationIcon,
-                    doors_icon: doorsIcon,
-                    badge_icon: badgeIcon,
+                    // make_icon: makeIcon,
+                    // model_icon: modelIcon,
+                    // year_icon: yearIcon,
+                    // mileage_icon: mileageIcon,
+                    // location_icon: locationIcon,
+                    // doors_icon: doorsIcon,
+                    // badge_icon: badgeIcon,
                     
                 });
 
@@ -547,13 +547,13 @@
                 const discount= product.discount;  
                 // const delivery_charge= product.delivery_charge;
                 const price= product.price;
-                const makeIcon = make_icon; // Make icon
-                const modelIcon = model_icon; // Model icon
-                const yearIcon = year_icon; // Year icon
-                const mileageIcon = mileage_icon; // Mileage icon
-                const locationIcon = location_icon; // Location icon
-                const doorsIcon = doors_icon; // Doors icon
-                const badgeIcon = badge_icon;
+                // const makeIcon = make_icon; // Make icon
+                // const modelIcon = model_icon; // Model icon
+                // const yearIcon = year_icon; // Year icon
+                // const mileageIcon = mileage_icon; // Mileage icon
+                // const locationIcon = location_icon; // Location icon
+                // const doorsIcon = doors_icon; // Doors icon
+                // const badgeIcon = badge_icon;
                 
 
                 // Validate product name
@@ -903,23 +903,17 @@
                             <td><input type="text" value="${product.manufacturer_name}"></td>
                             
                             <td><input type="text" value="${product.make}"></td>
-                            <td><input src=${makeIconsrc} type="file" id="make_icon" placeholder="Enter Make Icon">
-                            <img src="${makeIconsrc}" alt="Model Icon" width="50"></td>
+                            
                             <td><input type="text" value="${product.model}"></td>
-                            <td><input src=${modelIconsrc} type="file" id="model_icon" placeholder="Enter Model Icon">
-                            <img src="${modelIconsrc}" alt="Model Icon" width="50"></td>
+                            
                             <td><input type="text" value="${product.year}"></td>
-                            <td><input src=${yearIconsrc} type="file" id="year_icon" placeholder="Enter Year Icon">
-                            <img src="${yearIconsrc}" alt="Model Icon" width="50"></td>
+                            
                             <td><input type="text" value="${product.mileage}"></td>
-                            <td><input src=${mileageIconsrc} type="file" id="mileage_icon" placeholder="Enter Mileage Icon">
-                            <img src="${mileageIconsrc}" alt="Model Icon" width="50"></td>
+                            
                             <td><input type="text" value="${product.location}"></td>
-                            <td><input src=${locationIconsrc} type="file" id="location_icon" placeholder="Enter Location Icon">
-                            <img src="${locationIconsrc}" alt="Model Icon" width="50"></td>
+                            
                             <td><input type="text" value="${product.doors}"></td>
-                            <td><input src=${doorIconsrc} type="file" id="doors_icon" placeholder="Enter Doors Icon">
-                            <img src="${doorIconsrc}" alt="Model Icon" width="50"></td>
+                            
                             <td>
                                 <select class="form-control">
                                     <option value="">Select-Badge</option>
@@ -928,8 +922,7 @@
                                     <option value="Certified Pre-Owned" ${product.badges == 'Certified Pre-Owned' ? 'selected' : ''}>Certified Pre-Owned</option>
                                 </select>
                             </td>
-                            <td><input src=${badgeIconsrc} type="file" id="badge_icon" placeholder="Enter Badge Icon">
-                            <img src="${badgeIconsrc}" alt="Model Icon" width="50"></td>
+                            
                             <td>
                                 <select class="product-category-list" id="product-category-${category_id}" onChange="get_sub_category('${category_id}')">
                                     <option selected value="${product.category_id}">${product.category}</option>

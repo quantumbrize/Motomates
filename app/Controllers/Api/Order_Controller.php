@@ -20,6 +20,8 @@ use App\Models\ProductItemModel;
 use App\Models\PrescriptionModel;
 use App\Models\RentalModel;
 use App\Models\MessageModel;
+use App\Models\RentalNotificationModel;
+use App\Models\MessageNotificationModel;
 
 class Order_Controller extends Main_Controller
 {
@@ -1330,10 +1332,10 @@ class Order_Controller extends Main_Controller
     public function booking_count($data)
     {
         // Assuming 'rentalModel' is loaded
-        $rentalModel = new RentalModel();
+        $rentalnotificatonModel = new RentalNotificationModel();
 
         // Count all entries in the 'rental' table
-        $count = $rentalModel->countAll(); // This will count all rows in the rental table
+        $count = $rentalnotificatonModel->countAll(); // This will count all rows in the rental table
 
         // Return the count as part of the response
         return [
@@ -1345,10 +1347,10 @@ class Order_Controller extends Main_Controller
     public function message_count($data)
     {
         // Assuming 'rentalModel' is loaded
-        $messageModel = new MessageModel();
+        $MessageNotificationModel = new MessageNotificationModel();
 
         // Count all entries in the 'rental' table
-        $count = $messageModel->countAll(); // This will count all rows in the rental table
+        $count = $MessageNotificationModel->countAll(); // This will count all rows in the rental table
 
         // Return the count as part of the response
         return [

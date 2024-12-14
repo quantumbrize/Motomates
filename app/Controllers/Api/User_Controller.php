@@ -29,6 +29,8 @@ use App\Models\ServiceModel;
 use App\Models\ServicecardModel;
 use App\Models\EnquiryModel;
 use App\Models\RentalModel;
+use App\Models\RentalNotificationModel;
+use App\Models\MessageNotificationModel;
 
 
 class User_Controller extends Api_Controller
@@ -1878,8 +1880,9 @@ class User_Controller extends Api_Controller
         } else if (empty($data['message'])) {
             $resp['message'] = 'Please Enter Message';
         } else {
+            $messageId=$this->generate_uid('USRMSG');
             $insert_message = [
-                'uid' => $this->generate_uid('USRMSG'),
+                'uid' => $messageId,
                 'first_name' => $data['first_name'],
                 'last_name' => $data['last_name'],
                 'email' => $data['email'],
@@ -1887,10 +1890,16 @@ class User_Controller extends Api_Controller
                 // 'subject' => $data['subject'],
                 'message' => $data['message'],
             ];
+            $insert_notification=[
+                'message_id'=> $messageId
+            ];
+            
             $MessageModel = new MessageModel();
+            $MessageNotificationModel = new MessageNotificationModel();
             $MessageModel->transStart();
             try {
                 $messageData = $MessageModel->insert($insert_message);
+                $messagenotificationData = $MessageNotificationModel->insert($insert_notification);
                 $MessageModel->transCommit();
             } catch (\Exception $e) {
                 $MessageModel->transRollback();
@@ -2041,8 +2050,9 @@ class User_Controller extends Api_Controller
         } else if (empty($data['service_type'])) {
             $resp['message'] = 'Please Enter Service Type';
         } else {
+            $rental_uid= $this->generate_uid('BOKREN');
             $rental_data = [
-                'uid' => $this->generate_uid('BOKREN'),
+                'uid' => $rental_uid,
                 'fname' => $data['fname'],
                 'phone' => $data['phone'],
                 'society' => $data['society'],
@@ -2054,13 +2064,21 @@ class User_Controller extends Api_Controller
                 'service_type' => $data['service_type'],
                 'cab_type' => $data['cab_type'],
             ];
+            $rental_notificaiton=[
+                'message_id' => $rental_uid,
+            ];
             $RentalModel = new RentalModel();
+            $RentalNotificationModel = new RentalNotificationModel();
             $RentalModel->transStart();
+            
             try {
                 $data = $RentalModel->insert($rental_data);
+                $notification_data = $RentalNotificationModel->insert($rental_notificaiton);
+                
                 $RentalModel->transCommit();
             } catch (\Exception $e) {
                 $RentalModel->transRollback();
+                
                 throw $e;
             }
 
@@ -2106,7 +2124,68 @@ class User_Controller extends Api_Controller
     //     return $resp;
         
     // }
+    public function delete_all_rental_notifications($data)
+    {
+        // Load the model
+        $RentalNotificationModel= new RentalNotificationModel();
+    
+        // Fetch all records from the model
+        $notifications = $RentalNotificationModel->findAll();
+    
+        if (empty($notifications)) {
+            return $this->response->setJSON([
+                'status' => false,
+                'message' => 'No notifications found to delete.'
+            ]);
+        }
+    
+        // Delete all records
+        try {
+            $RentalNotificationModel->truncate(); // Deletes all data from the table
+            return $this->response->setJSON([
+                'status' => true,
+                'message' => 'All notifications have been successfully deleted.'
+            ]);
+        } catch (\Exception $e) {
+            return $this->response->setJSON([
+                'status' => false,
+                'message' => 'Failed to delete notifications.',
+                'error' => $e->getMessage()
+            ]);
+        }
+    }
 
+    public function delete_all_message_notifications($data)
+    {
+        // Load the model
+        $MessageNotificationModel= new MessageNotificationModel();
+    
+        // Fetch all records from the model
+        $notifications = $MessageNotificationModel->findAll();
+    
+        if (empty($notifications)) {
+            return $this->response->setJSON([
+                'status' => false,
+                'message' => 'No notifications found to delete.'
+            ]);
+        }
+    
+        // Delete all records
+        try {
+            $MessageNotificationModel->truncate(); // Deletes all data from the table
+            return $this->response->setJSON([
+                'status' => true,
+                'message' => 'All notifications have been successfully deleted.'
+            ]);
+        } catch (\Exception $e) {
+            return $this->response->setJSON([
+                'status' => false,
+                'message' => 'Failed to delete notifications.',
+                'error' => $e->getMessage()
+            ]);
+        }
+    }
+    
 
 
 
@@ -2453,6 +2532,21 @@ class User_Controller extends Api_Controller
     {
         $data = $this->request->getGet();
         $resp = $this->product_single($data);
+        return $this->response->setJSON($resp);
+
+    }
+    public function POST_delete_booking()
+    {
+        $data = $this->request->getPost();
+        $resp = $this->delete_all_rental_notifications($data);
+        return $this->response->setJSON($resp);
+
+    }
+
+    public function POST_delete_message()
+    {
+        $data = $this->request->getPost();
+        $resp = $this->delete_all_message_notifications($data);
         return $this->response->setJSON($resp);
 
     }

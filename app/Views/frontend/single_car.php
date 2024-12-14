@@ -99,6 +99,23 @@
 #price_label{
 	font-size: 15px;
 }
+/* Default state (Collapsed) */
+.accordion-button {
+    background-color: #ff3600; /* Orange background */
+    color: white; /* White text */
+}
+
+/* Expanded state */
+.accordion-button:not(.collapsed) {
+    background-color: #ff3600; /* Orange background */
+    color: white; /* White text */
+}
+
+/* Optional: Focus state for better accessibility */
+.accordion-button:focus {
+    box-shadow: none;
+}
+
 </style>
 <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
 <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
@@ -134,9 +151,9 @@
 							<div class="accordion" id="accordionExample">
 								<div class="accordion-item">
 									<h2 class="accordion-header" id="headingOne">
-									<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-									Categories
-									</button>
+										<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+											Cars
+										</button>
 									</h2>
 									<div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
 										<div class="accordion-body">
@@ -145,6 +162,7 @@
 									</div>
 								</div>
 							</div>
+
 						</div>
 
 						<div class="sidebar-widget">
@@ -176,7 +194,7 @@
 
 														<div class="elementor-icon-box-wrapper" style="display: flex; align-items: center;">
 															<!-- Image icon for Car Make -->
-															<img id="make_icon" style="width: 10%; margin-right: 10px;" src="<?= base_url() ?>public/uploads/icon_images/make.png" alt="Car Make Icon">
+															<img  style="width: 10%; margin-right: 10px;" src="<?=base_url()?>public/uploads/product_images/Make.png" alt="Car Make Icon">
 
 															<!-- Car Make Text -->
 															<div class="elementor-icon-box-content">
@@ -198,7 +216,7 @@
 
 														<div class="elementor-icon-box-wrapper" style="display: flex; align-items: center;">
 															<!-- Image icon for Car Model -->
-															<img id="model_icon" style="width: 10%; margin-right: 10px;" src="<?= base_url() ?>public/uploads/icon_images/model.png" alt="Car Model Icon">
+															<img  style="width: 10%; margin-right: 10px;" src="<?=base_url()?>public/uploads/product_images/Model.png" alt="Car Model Icon">
 
 															<!-- Car Model Text -->
 															<div class="elementor-icon-box-content">

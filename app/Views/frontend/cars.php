@@ -20,7 +20,7 @@
 		<div class="sidebar-widget">
 							<aside id="custom_html-2" class="widget_text widget widget_custom_html"><div class="textwidget custom-html-widget">
 				<form action="" method="post" class="searchandfilter">
-					<div><ul><li><h4>Categories</h4><ul>
+					<div><ul><li><h4>Cars</h4><ul>
 						<div id="categories_list"></div>	
 						<!-- <li class="cat-item cat-item-12"><label><input type='checkbox' name='ofcar-types[]' value='12'> Convertible Car</label>
 </li>

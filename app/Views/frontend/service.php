@@ -48,6 +48,23 @@
         font-size: 20px;
         cursor: pointer;
     }
+	/* Default state (Collapsed) */
+.accordion-button {
+    background-color: #ff3600; /* Orange background */
+    color: white; /* White text */
+}
+
+/* Expanded state */
+.accordion-button:not(.collapsed) {
+    background-color: #ff3600; /* Orange background */
+    color: white; /* White text */
+}
+
+/* Optional: Focus state for better accessibility */
+.accordion-button:focus {
+    box-shadow: none;
+}
+
 
 </style>
 <div data-elementor-type="wp-page" data-elementor-id="2788" class="elementor elementor-2788">
@@ -94,19 +111,20 @@
 												<div class="accordion" id="accordionExample">
 													<div class="accordion-item">
 														<h2 class="accordion-header" id="headingOne">
-														<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-															Our Services
-														</button>
+															<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+																Our Services
+															</button>
 														</h2>
 														<div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-														<div class="accordion-body">
-															<ul id="service_pages_list" class="elementor-icon-list-items">
-																												
-															</ul>
-														</div>
+															<div class="accordion-body">
+																<ul id="service_pages_list" class="elementor-icon-list-items">
+																	<!-- Service list items go here -->
+																</ul>
+															</div>
 														</div>
 													</div>
 												</div>
+
 											</div>
 											<div class="elementor-element elementor-element-8b0eb9c e-con-full e-flex elementor-invisible e-con e-child"
 												data-id="8b0eb9c" data-element_type="container"
@@ -296,8 +314,8 @@
 						<div id="popup1" class="popup">
 							<div class="popup-content">
 								<span class="close" onclick="closePopup('popup1')">&times;</span>
-								<p>Owner Contact: <span id="service_contact1"></span></p>
-								<p>Service Contact: <span id="service_contact2"></span></p>
+								<p><b>Owner Contact:</b> <span  id="service_contact1"></span></p>
+								<p><b>Service Contact:</b> <span id="service_contact2"></span></p>
 							</div>
 						</div>
 

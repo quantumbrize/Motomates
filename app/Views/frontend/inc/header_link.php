@@ -633,7 +633,7 @@
 				truncatedDescription=truncateText(resp.data.about_description,80)
 				if (resp.status) {
 				let newLogoSrc = `<?=base_url()?>public/uploads/logo/${resp.data.logo}`;
-				let owner_contact=`<a href="https://wa.me/${resp.data.phone1}?text=Hello%20there!" target="_blank">${resp.data.phone1}</a>`
+				let owner_contact=`<a href="https://wa.me/${resp.data.phone1}?text=Hello%20there!" target="_blank" style="color:#ff3600">${resp.data.phone1}</a>`
 				$('#daltonus_logo_meta').attr('href', newLogoSrc);
 				$('.company_name').text(resp.data.company_name)
 				$('.company_address').text(resp.data.address)

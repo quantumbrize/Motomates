@@ -24,7 +24,7 @@
 
                 html3=`${resp.data.service_description}`
                 // html4=`${resp.data.service_contact}`
-                html4=`<a href="https://wa.me/${resp.data.service_contact}?text=Hello%20there!" target="_blank">${resp.data.service_contact}</a>`
+                html4=`<a href="https://wa.me/${resp.data.service_contact}?text=Hello%20there!" target="_blank" style="color:#ff3600">${resp.data.service_contact}</a>`
                 
 
                 
@@ -73,7 +73,7 @@ function load_all_tags() {
                     htmltags += `
                         <li class="elementor-icon-list-item">
                             <span class="elementor-icon-list-icon">
-                                <i aria-hidden="true" class="${serviceTags.service_tag_icon}"></i>
+                                <i aria-hidden="true" class="fa fa-check"></i>
                             </span>
                             <span class="elementor-icon-list-text">${serviceTags.tag_name}</span>
                         </li>`;
@@ -192,7 +192,7 @@ function load_all_service_pages() {
                                             <path d="M11.6654 3.97592L1.64141 13.9999L-0.00537109 12.3531L10.0174 2.32914H1.18372V-0.00012207H13.9946V12.8108H11.6654V3.97592Z" fill="white"></path>
                                         </svg>
                                     </span>
-                                    <span class="elementor-icon-list-text">${service.page_name}</span>
+                                    <span class="elementor-icon-list-text" style="color:black">${service.page_name}</span>
                                 </a>
                             </li>`;
                     }

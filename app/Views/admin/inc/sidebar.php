@@ -251,7 +251,7 @@
                             <ul class="nav nav-sm flex-column">
                                 <li class="nav-item">
                                     <a href="<?= base_url('admin/service') ?>" class="nav-link">
-                                        Service Add
+                                        Service All
                                     </a>
                                 </li>
                                 <li class="nav-item">
@@ -439,7 +439,7 @@
                 if (isset($_SESSION[SES_STAFF_USER_ID]) && in_array('messages', $_SESSION[SES_STAFF_ACCESS])) {
                     ?>
                     <li class="nav-item ">
-                        <a class="nav-link menu-link <?= isset($sidebar['messages']) ? 'active' : '' ?>"
+                        <a  onclick="deleteMessageNotfication()" class="nav-link menu-link <?= isset($sidebar['messages']) ? 'active' : '' ?>"
                             href="<?= base_url('admin/messages') ?>">
                             <i class="ri-message-2-line"></i> <span data-key="t-widgets">Messages &nbsp;<small class='notification' id="messageLength"></small></span>
                         </a>
@@ -448,9 +448,9 @@
                 } else if (isset($_SESSION[SES_ADMIN_USER_ID])) {
                     ?>
                         <li class="nav-item ">
-                            <a class="nav-link menu-link <?= isset($sidebar['messages']) ? 'active' : '' ?>"
+                            <a onclick="deleteMessageNotfication()" class="nav-link menu-link <?= isset($sidebar['messages']) ? 'active' : '' ?>"
                                 href="<?= base_url('admin/messages') ?>">
-                                <i class="ri-message-2-line"></i> <span data-key="t-widgets">Messages &nbsp;<small class='notification' id="messageLength"></small></span>
+                                <i class="ri-message-2-line"></i> <span  data-key="t-widgets">Messages &nbsp;<small class='notification' id="messageLength"></small></span>
                             </a>
                         </li>
                     <?php
@@ -461,18 +461,18 @@
                 if (isset($_SESSION[SES_STAFF_USER_ID]) && in_array('bookings', $_SESSION[SES_STAFF_ACCESS])) {
                     ?>
                     <li class="nav-item ">
-                        <a class="nav-link menu-link <?= isset($sidebar['bookings']) ? 'active' : '' ?>"
+                        <a onclick="deleteBookingNotfication()" class="nav-link menu-link <?= isset($sidebar['bookings']) ? 'active' : '' ?>"
                             href="<?= base_url('load-bookings') ?>">
-                            <i class="ri-message-2-line"></i> <span data-key="t-widgets">Bookings &nbsp; <small class='notification' id="bookingLength"></small></span>
+                            <i class="ri-message-2-line"></i> <span  onclick="deleteBookingNotfication()" data-key="t-widgets">Bookings &nbsp; <small class='notification' id="bookingLength"></small></span>
                         </a>
                     </li>
                     <?php
                 } else if (isset($_SESSION[SES_ADMIN_USER_ID])) {
                     ?>
                         <li class="nav-item ">
-                            <a class="nav-link menu-link <?= isset($sidebar['bookings']) ? 'active' : '' ?>"
+                            <a onclick="deleteBookingNotfication()" class="nav-link menu-link <?= isset($sidebar['bookings']) ? 'active' : '' ?>"
                                 href="<?= base_url('load-bookings') ?>">
-                                <i class="ri-message-2-line"></i> <span data-key="t-widgets">Bookings&nbsp;<small class='notification' id="bookingLength"></small></span>
+                                <i class="ri-message-2-line"></i> <span onclick="deleteBookingNotfication()" data-key="t-widgets">Bookings&nbsp;<small class='notification' id="bookingLength"></small></span>
                             </a>
                         </li>
                     <?php
@@ -599,6 +599,40 @@ function getmessagesLength() {
             messageCount=response.data.count  // Log the response data
 
             $("#messageLength").html(messageCount);
+        },
+        error: function(xhr, status, error) {
+            // Handle error
+            console.error('Error:', status, error);
+        }
+    });
+}
+function deleteBookingNotfication() {
+    $.ajax({
+        url: '<?=base_url()?>delete-booking',  // The URL to which the request is sent
+        type: 'POST',  // HTTP method for the request
+        success: function(response) {
+			console.log('delete',response)
+            // Handle success (response will contain the data returned by the server)
+              // Log the response data
+
+           ;
+        },
+        error: function(xhr, status, error) {
+            // Handle error
+            console.error('Error:', status, error);
+        }
+    });
+}
+function deleteMessageNotfication() {
+    $.ajax({
+        url: '<?=base_url()?>delete-message',  // The URL to which the request is sent
+        type: 'POST',  // HTTP method for the request
+        success: function(response) {
+			console.log('delete',response)
+            // Handle success (response will contain the data returned by the server)
+              // Log the response data
+
+           ;
         },
         error: function(xhr, status, error) {
             // Handle error

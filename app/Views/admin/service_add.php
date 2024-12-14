@@ -1,78 +1,4 @@
-<style>
-/* General Table Styles */
-#service_page_data_table {
-    width: 100%;
-    border-collapse: collapse;
-    text-align: left;
-    table-layout: auto; /* Adjust column widths based on content */
-}
-
-#service_page_data_table th,
-#service_page_data_table td {
-    padding: 10px;
-    border: 1px solid #ddd;
-    word-wrap: break-word; /* Ensure long text wraps within the cell */
-}
-
-/* Adjust Specific Column Widths */
-#service_page_data_table th:nth-child(8), /* Card Data */
-#service_page_data_table td:nth-child(8) {
-    width: 20%; /* Increase the width of the Card Data column */
-}
-
-#service_page_data_table th:nth-child(1), /* Sl No. */
-#service_page_data_table td:nth-child(1) {
-    width: 5%; /* Sl No. column width */
-    text-align: center;
-}
-
-#service_page_data_table th:nth-child(6), /* Service Image */
-#service_page_data_table td:nth-child(6) {
-    width: 15%; /* Adjust image column width */
-}
-
-#service_page_data_table th, /* Other columns auto-adjust */
-#service_page_data_table td {
-    width: auto;
-}
-
-/* Scrollable Table */
-#service_page_data_table_wrapper {
-    max-height: 500px;
-    overflow-y: auto; /* Enable vertical scrolling */
-    overflow-x: auto; /* Enable horizontal scrolling */
-}
-
-#service_page_data_table thead th {
-    position: sticky; /* Sticky header */
-    top: 0;
-    background-color: #f8f9fa; /* Sticky header background */
-    z-index: 2; /* Ensures header stays on top */
-}
-.preview-image {
-    width: 100px; /* Set the desired width */
-    height: auto; /* Maintain aspect ratio */
-    object-fit: cover; /* Ensure proper image fitting */
-    border: 1px solid #ddd; /* Optional: Add a border for aesthetics */
-    border-radius: 4px; /* Optional: Rounded corners */
-    margin: 5px; /* Spacing between images */
-}
-.truncate {
-    display: inline-block;    /* Necessary for text-overflow to work */
-    max-width: 150px;         /* Set a maximum width */
-    max-height: 100px;         /* Set a maximum width */
-    white-space: nowrap;      /* Prevent wrapping to a new line */
-    overflow: hidden;         /* Hide text that overflows the container */
-    text-overflow: ellipsis;  /* Show ellipsis (...) for overflowing text */
-    }
-</style>
-
-
-
-
-</style>
-<div class="page-content">
-    <div class="container-fluid">
+<div class="container-fluid" style="margin-top:100px;">
 
         <!-- start page title -->
         <div class="row">
@@ -82,107 +8,10 @@
                 </div>
             </div>
         </div>
-
-        <div class="row">
-            <div class="col-sm-auto">
-                <div>
-                    <a href="<?= base_url('/admin/service/add') ?>" class="btn btn-success"
-                        id="addproduct-btn">
-                        <i class="ri-add-line align-bottom me-1"></i>
-                        Add Service
-                    </a>
-                </div>
-            </div>
-            <!-- <div class="col-sm-auto">
-                <div>
-                    <a href="<?= base_url('/admin/product/bulk/edit') ?>" class="btn btn-success"
-                        id="addproduct-btn">
-                        <i class="ri ri-edit-line"></i>
-                         Edit Service
-                    </a>
-                </div>
-            </div> -->
-         </div>
+         
         <!-- end page title -->
 
-        
-        <div class="container" style="margin-top:10px;">
-                <div class="card-header">
-                    <div class="row align-items-center">
-                        <div class="col">
-                            <ul class="nav nav-tabs-custom card-header-tabs border-bottom-0" role="tablist">
-                                <li class="nav-item">
-                                    <a class="nav-link active fw-semibold" data-bs-toggle="tab"
-                                        href="#productnav-all" role="tab">
-                                        All <span id="all_banner_count"
-                                            class="badge bg-danger-subtle text-danger align-middle rounded-pill ms-1"></span>
-                                    </a>
-                                </li>
-                                
-                            </ul>
-                        </div>
-                        <div class="col-auto">
-                            <div id="selection-element">
-                                <div class="my-n1 d-flex align-items-center text-muted">
-                                    Select <div id="select-content" class="text-body fw-semibold px-1"></div>
-                                    Result <button type="button"
-                                        class="btn btn-link link-danger p-0 ms-3 material-shadow-none"
-                                        data-bs-toggle="modal" data-bs-target="#removeItemModal">Remove</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-body">
-                    <div id="service_page_data_table_wrapper">
-                    <table id="service_page_data_table" class="table nowrap align-middle table-hover" style="width:100%">
-                        <thead>
-                            <tr>
-                                <th>Sl No.</th>
-                                <th>Service Page</th>
-                                <th>Service Title</th>
-                                <th>Service Description</th>
-                                <th>Service Tags</th>
-                                <th>Service Image</th>
-                                <th>Service Owner Contact</th>
-                                <th>Service Icon</th>
-                                <th>Card Data</th>
-                                <th>Edit</th>
-                                <th>Delete</th>
-                            </tr>
-                        </thead>
-                        <tbody id="table-banner-list-all-body">
-                            
-                                
-                            
-                           
-                        </tbody>
-                    </table>
-
-                    </div>
-
-                    </div>
-                </div>
-        </div>
-       
-
-
-    </div>
-    <!-- container-fluid -->
-</div>
-
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Edit Service</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-      <div id="createproduct-form">
+        <div id="createproduct-form">
             <div class="row">
                 <div class="col-lg-12">
                     <!-- Page Name -->
@@ -294,20 +123,37 @@
 
                     <!-- Submit Button -->
                     <div class="text-start mb-3">
-                        <!-- <button class="btn btn-success w-sm" id="service_add_btn">Submit</button> -->
-                        <button class="btn btn-success w-sm" id="service_update_btn">Update</button>
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button class="btn btn-success w-sm" id="service_add_btn">Submit</button>
+                        <!-- <button class="btn btn-success w-sm" id="service_update_btn">Update</button> -->
                         <input type="hidden" id="s_uid">
                     </div>
                 </div>
             </div>
         </div>
-
-      </div>
-      <div class="modal-footer">
-        
-        
-      </div>
-    </div>
-  </div>
-</div>
+        <div class="container" style="margin-top:80px;">
+                <div class="card-header">
+                    <div class="row align-items-center">
+                        <div class="col">
+                            <ul class="nav nav-tabs-custom card-header-tabs border-bottom-0" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active fw-semibold" data-bs-toggle="tab"
+                                        href="#productnav-all" role="tab">
+                                        All <span id="all_banner_count"
+                                            class="badge bg-danger-subtle text-danger align-middle rounded-pill ms-1"></span>
+                                    </a>
+                                </li>
+                                
+                            </ul>
+                        </div>
+                        <div class="col-auto">
+                            <div id="selection-element">
+                                <div class="my-n1 d-flex align-items-center text-muted">
+                                    Select <div id="select-content" class="text-body fw-semibold px-1"></div>
+                                    Result <button type="button"
+                                        class="btn btn-link link-danger p-0 ms-3 material-shadow-none"
+                                        data-bs-toggle="modal" data-bs-target="#removeItemModal">Remove</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>

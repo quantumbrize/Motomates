@@ -29,7 +29,7 @@ $(document).ready(function () {
 												<a href="${resp.user_data.twitter}" class="elementor-icon elementor-social-icon elementor-social-icon-x-twitter elementor-repeater-item-515a018"
 													target="_blank">
 													<span class="elementor-screen-only">X-twitter</span>
-													<i class="fab fa-x-twitter"></i> </a>
+													<i class="fa-solid fa-x"></i> </a>
 											</span>
 											<span class="elementor-grid-item">
 												<a href="${resp.user_data.youtube}" class="elementor-icon elementor-social-icon elementor-social-icon-linkedin-in elementor-repeater-item-e288018"

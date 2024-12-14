@@ -394,15 +394,15 @@ class Product_Controller extends Api_Controller
             ];
 
             // Upload icon files if they exist and add them to car specification
-            foreach (['make', 'model', 'year', 'mileage', 'location', 'doors', 'badge'] as $field) {
-                if (!empty($uploadedFiles['products'][$index]["{$field}_icon"])) {
-                    $file = $uploadedFiles['products'][$index]["{$field}_icon"];
-                    if ($file->isValid()) {
-                        $file_src = $this->single_upload($file, 'public/uploads/product_images');
-                        $car_specification_data["{$field}_icon"] = $file_src;
-                    }
-                }
-            }
+            // foreach (['make', 'model', 'year', 'mileage', 'location', 'doors', 'badge'] as $field) {
+            //     if (!empty($uploadedFiles['products'][$index]["{$field}_icon"])) {
+            //         $file = $uploadedFiles['products'][$index]["{$field}_icon"];
+            //         if ($file->isValid()) {
+            //             $file_src = $this->single_upload($file, 'public/uploads/product_images');
+            //             $car_specification_data["{$field}_icon"] = $file_src;
+            //         }
+            //     }
+            // }
 
             // Insert car specification individually
             $CarSpecificationModel->insert($car_specification_data);
@@ -2636,7 +2636,7 @@ public function service_add($data)
                     $tag_data[] = [
                         'service_uid' => $service_uid,
                         'tag_name' => $tag['tag'],
-                        'service_tag_icon' => $tag['icon']
+                        // 'service_tag_icon' => $tag['icon']
                     ];
                 }
                 $ServicetagModel->insertBatch($tag_data);
@@ -2762,12 +2762,12 @@ private function service_update($data)
             if (isset($data['tags']) && is_array($data['tags'])) {
                 // Delete existing tags and insert the new ones
                 $ServicetagModel = new ServicetagModel();
-                $ServicetagModel->where('service_uid', $service_uid)->delete(); // Delete existing tags
+                // $ServicetagModel->where('service_uid', $service_uid)->delete(); // Delete existing tags
                 foreach ($data['tags'] as $tag) {
                     $tag_data = [
                         'service_uid' => $service_uid,
                         'tag_name' => $tag['tag'], // Save the tag name
-                        'service_tag_icon' => $tag['icon'] // Save the tag icon
+                        // 'service_tag_icon' => $tag['icon'] // Save the tag icon
                     ];
                     $ServicetagModel->insert($tag_data); // Insert new tags
                 }

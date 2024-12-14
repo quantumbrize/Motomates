@@ -34,7 +34,7 @@
                htmlmodel=`${resp.data.model}`
                htmlyear=`<div style="display: flex; flex-direction: column; align-items: flex-start; gap: 2px;">
                             <div style="display: flex; align-items: center; gap: 5px;">
-                                <img src="${yearIconsrc}" width="30" alt="Year Icon">
+                                <img src="<?=base_url()?>public/uploads/product_images/Year.png" width="30" alt="Year Icon">
                                 <small style="font-size: 12px;margin-top:-10px;">Year</small>
                             </div>
                             <span class="elementor-icon-list-text" style="font-size: 14px;margin-left:35px;margin-top:-20px;">${resp.data.year}</span>
@@ -43,7 +43,7 @@
                         htmlmileage = `
                             <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 2px;">
                                 <div style="display: flex; align-items: center; gap: 5px;">
-                                    <img src="${mileageIconsrc}" width="30" alt="Mileage Icon">
+                                    <img src="<?=base_url()?>public/uploads/product_images/Mileage.png" width="30" alt="Mileage Icon">
                                     <small style="font-size: 12px;margin-top:-10px;">Mileage</small>
                                 </div>
                                 <span class="elementor-icon-list-text" style="font-size: 14px;margin-left:35px;margin-top:-20px;">${resp.data.mileage}</span>
@@ -52,7 +52,7 @@
                         htmllocation = `
                             <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 2px;">
                                 <div style="display: flex; align-items: center; gap: 5px;">
-                                    <img src="${locationIconsrc}" width="30" alt="Location Icon">
+                                    <img src="<?=base_url()?>public/uploads/product_images/Location.png" width="30" alt="Location Icon">
                                     <small style="font-size: 12px;margin-top:-10px;">Location</small>
                                 </div>
                                 <span class="elementor-icon-list-text" style="font-size: 14px;margin-left:35px;margin-top:-20px;">${resp.data.location}</span>
@@ -61,7 +61,7 @@
                         htmlDoors = `
                             <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 2px;">
                                 <div style="display: flex; align-items: center; gap: 5px;">
-                                    <img src="${doorIconsrc}" width="30" alt="Doors Icon">
+                                    <img src="<?=base_url()?>public/uploads/product_images/Doors.png" width="30" alt="Doors Icon">
                                     <small style="font-size: 12px;margin-top:-10px;">Doors</small>
                                 </div>
                                 <span class="elementor-icon-list-text" style="font-size: 14px;margin-left:35px;margin-top:-20px;">${resp.data.doors}</span>
@@ -70,14 +70,15 @@
                         htmlbadge = `
                             <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 2px;">
                                 <div style="display: flex; align-items: center; gap: 5px;">
-                                    <img src="${badgeIconsrc}" width="30" alt="Badge Icon">
+                                    <img src="<?=base_url()?>public/uploads/product_images/Badges.png" width="30" alt="Badge Icon">
                                     <small style="font-size: 12px;margin-top:-10px;">Badge</small>
                                 </div>
                                 <span class="elementor-icon-list-text" style="font-size: 14px;margin-left:35px;margin-top:-20px;">${resp.data.badges}</span>
                             </div>`;
 
                 if((resp.data.base_price)!=null && (resp.data.base_discount)!=null && (resp.data.tax)!=null){
-                    totalPrice= resp.data.base_price - (resp.data.base_discount*resp.data.base_price/100)-(resp.data.tax*resp.data.base_price/100);
+                    discountedPrice= resp.data.base_price - (resp.data.base_discount*resp.data.base_price/100)
+                    totalPrice= discountedPrice+(resp.data.tax*discountedPrice/100);
                     htmlPrice=`<div class="price-details">
     <div class="price-summary">
         <span>
@@ -469,9 +470,8 @@
                 // Generate product list HTML for each product
                 $.each(resp.data, (index, product) => {
                     const truncatedDescription = truncateText(product.description, 50);
-                    const totalPrice = product.base_price - 
-                        (product.base_discount * product.base_price / 100) - 
-                        (product.tax * product.base_price / 100);
+                    discountedPrice= product.base_price - (product.base_discount*product.base_price/100)
+                    totalPrice= discountedPrice+(product.tax*discountedPrice/100);
 
                     html += `
                         <div class="col-lg-4 col-md-6">

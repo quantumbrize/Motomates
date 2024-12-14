@@ -54,24 +54,21 @@
 
     // Add Tag
     $('#add-service-tag').click(function () {
-        let tagInput = $('#service_tags_input').val().trim();
-        let iconInput = $('#service_tags_icon_input').val().trim();
+            let tagInput = $('#service_tags_input').val().trim();
 
-        if (tagInput !== "" && iconInput !== "") {
-            tagsArray.push({ tag: tagInput, icon: iconInput });
-            $('#selected-service-tags').append(`
-                <span class="tag-item badge bg-primary me-2">
-                    ${tagInput} 
-                    <span class="icon-text ms-2">${iconInput}</span>
-                    <button type="button" class="btn-close btn-sm remove-tag" data-tag="${tagInput}"></button>
-                </span>
-            `);
-            $('#service_tags_input').val('');
-            $('#service_tags_icon_input').val('');
-        } else {
-            alert("Please enter both a tag and an icon.");
-        }
-    });
+            if (tagInput !== "") {
+                tagsArray.push({ tag: tagInput });
+                $('#selected-service-tags').append(`
+                    <span class="tag-item badge bg-primary me-2">
+                        ${tagInput}
+                        <button type="button" class="btn-close btn-sm remove-tag" data-tag="${tagInput}"></button>
+                    </span>
+                `);
+                $('#service_tags_input').val('');
+            } else {
+                alert("Please enter a tag.");
+            }
+        });
 
     // Remove Tag
     $('#selected-service-tags').on('click', '.remove-tag', function () {
@@ -129,70 +126,70 @@ $('#selected-service-cards').on('click', '.remove-tag', function () {
 
     // Submit Service with Tags
    // Function to handle adding a new service
-   $('#service_add_btn').click(function () {
-    let formData = new FormData();
-    formData.append('page_name', $('#page_name').val());
-    formData.append('service_title', $('#service_title').val());
-    formData.append('service_description', $('#service_description').val());
-    formData.append('service_owner_contact', $('#service_owner_contact').val());
+//    $('#service_add_btn').click(function () {
+//     let formData = new FormData();
+//     formData.append('page_name', $('#page_name').val());
+//     formData.append('service_title', $('#service_title').val());
+//     formData.append('service_description', $('#service_description').val());
+//     formData.append('service_owner_contact', $('#service_owner_contact').val());
 
-    // Append tags and icons
-    tagsArray.forEach((item, index) => {
-        formData.append(`tags[${index}][tag]`, item.tag);
-        formData.append(`tags[${index}][icon]`, item.icon);
-    });
-    console.log('cardarray',serviceCardsArray);
+//     // Append tags and icons
+//     tagsArray.forEach((item, index) => {
+//         formData.append(`tags[${index}][tag]`, item.tag);
+//         formData.append(`tags[${index}][icon]`, item.icon);
+//     });
+//     console.log('cardarray',serviceCardsArray);
 
-    // Append service cards
-    serviceCardsArray.forEach((item, index) => {
-        formData.append(`service_cards[${index}][title]`, item.card_title);
-        formData.append(`service_cards[${index}][description]`, item.card_description);
+//     // Append service cards
+//     serviceCardsArray.forEach((item, index) => {
+//         formData.append(`service_cards[${index}][title]`, item.card_title);
+//         formData.append(`service_cards[${index}][description]`, item.card_description);
         
-        // Handle image upload for each service card
-        // if (item.image) {
+//         // Handle image upload for each service card
+//         // if (item.image) {
         
-            formData.append(`service_cards[${index}][service_card_image]`, item.image);
-        // }
-    });
-    for (let pair of formData.entries()) {
-        console.log(pair[0] + ':', pair[1]);
-    }
-    // Append service images
-    $.each($('#file-input-service')[0].files, function (index, file) {
-        formData.append('images[]', file);
-    });
+//             formData.append(`service_cards[${index}][service_card_image]`, item.image);
+//         // }
+//     });
+//     for (let pair of formData.entries()) {
+//         console.log(pair[0] + ':', pair[1]);
+//     }
+//     // Append service images
+//     $.each($('#file-input-service')[0].files, function (index, file) {
+//         formData.append('images[]', file);
+//     });
 
-    $.each($('#file-input-service-icon')[0].files, function (index, file) {
-        formData.append('icons[]', file);
-    });
+//     $.each($('#file-input-service-icon')[0].files, function (index, file) {
+//         formData.append('icons[]', file);
+//     });
 
-    // Send AJAX request
-    $.ajax({
-        url: "<?= base_url('/api/add/service') ?>",
-        type: "POST",
-        data: formData,
-        contentType: false,
-        processData: false,
-        beforeSend: function () {
-            $('#service_add_btn').text("Submitting...").attr('disabled', true);
-        },
-        success: function (response) {
-            console.log('services',response);
-            if (response.status) {
-                alert(response.message);
-                location.reload();
-            } else {
-                alert(`Error: ${response.message}`);
-            }
-        },
-        error: function (err) {
-            console.error("Error:", err);
-        },
-        complete: function () {
-            $('#service_add_btn').text("Submit").attr('disabled', false);
-        }
-    });
-});
+//     // Send AJAX request
+//     $.ajax({
+//         url: "<?= base_url('/api/add/service') ?>",
+//         type: "POST",
+//         data: formData,
+//         contentType: false,
+//         processData: false,
+//         beforeSend: function () {
+//             $('#service_add_btn').text("Submitting...").attr('disabled', true);
+//         },
+//         success: function (response) {
+//             console.log('services',response);
+//             if (response.status) {
+//                 alert(response.message);
+//                 location.reload();
+//             } else {
+//                 alert(`Error: ${response.message}`);
+//             }
+//         },
+//         error: function (err) {
+//             console.error("Error:", err);
+//         },
+//         complete: function () {
+//             $('#service_add_btn').text("Submit").attr('disabled', false);
+//         }
+//     });
+// });
 
 // Update function
 $('#service_update_btn').click(function () {
@@ -208,7 +205,7 @@ $('#service_update_btn').click(function () {
     // Append tags and icons
     tagsArray.forEach((item, index) => {
         formData.append(`tags[${index}][tag]`, item.tag);
-        formData.append(`tags[${index}][icon]`, item.icon);
+        // formData.append(`tags[${index}][icon]`, item.icon);
     });
 
     // Append service cards
@@ -281,8 +278,8 @@ $('#service_update_btn').click(function () {
         let tagsArray = [];
         $(serviceTagsHtml).find('.badge').each(function () {
             let tagText = $(this).text().trim(); // Extract the tag text
-            let iconText = $(this).next('span').text().trim(); // Extract the icon text
-            tagsArray.push({ tag: tagText, icon: iconText });
+            // let iconText = $(this).next('span').text().trim(); // Extract the icon text
+            tagsArray.push({ tag: tagText });
         });
 
         // Populate form fields
@@ -298,7 +295,7 @@ $('#service_update_btn').click(function () {
             $('#selected-service-tags').append(`
                 <span class="tag-item badge bg-primary me-2">
                     ${item.tag}
-                    <span class="icon-text ms-2">${item.icon}</span>
+                    
                     <button type="button" class="btn-close btn-sm remove-tag" data-tag="${item.tag}"></button>
                 </span>
             `);
@@ -460,7 +457,7 @@ function load_all_services() {
                             $.each(service.tags, function (tagIndex, tag) {
                                 tagsHtml += `<div class="d-flex align-items-center mb-2">
                                                 <span class="badge bg-info">${tag.tag_name}</span>
-                                                <span class="ms-2">${tag.service_tag_icon}<span>
+                                                
                                             </div>`;
                             });
                         } else {
@@ -475,14 +472,14 @@ function load_all_services() {
                                     <td>${index + 1}</td>
                                     <td>${service.page_name}</td>
                                     <td>${service.service_title}</td>
-                                    <td>${service.service_description}</td>
+                                    <td class="truncate">${service.service_description}</td>
                                     <td>${tagsHtml}
                                         <input type='hidden' id="service_uid" value="${service.uid}"></td>
                                     <td>
                                         <img src="${imageUrl}" alt="Service Image" style="width: 50px; height: auto;">
                                     </td>
                                     <td>${service.service_contact}</td>
-                                    <td><img src="${iconUrl}" alt="Service Image" style="width: 50px; height: auto;"></td>
+                                    <td><img src="${iconUrl}" alt="Service Icon" style="width: 50px; height: auto;"></td>
                                     `;
 
                         // Add cards data if it exists
@@ -510,8 +507,13 @@ function load_all_services() {
                         }
 
                         html += `<td>
-                                    <i class="fa fa-close" id="delete_service"></i>
-                                    <i class="fa fa-edit" id="edit_service"></i>
+                                    <i class="fa fa-edit btn btn-info" id="edit_service" data-bs-toggle="modal" data-bs-target="#exampleModal"></i>
+                                    
+                                    
+                                </td>
+                                <td>
+                                    <i class="fa fa-trash btn btn-danger" id="delete_service"></i>
+                                    
                                 </td>
                             </tr>`;
                     });
