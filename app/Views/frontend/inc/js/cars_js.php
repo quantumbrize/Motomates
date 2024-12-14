@@ -29,13 +29,12 @@
                                     <div class="image-box"><a href="<?=base_url()?>single-car?product_uid=${product.product_id}"><img fetchpriority="high" width="410" height="234" src="<?=base_url()?>public/uploads/product_images/${product.src}" class="attachment-novaride-thumb size-novaride-thumb wp-post-image" alt="" decoding="async"></a></div>    
                                     <div class="perfect-fleet-content">
                                         <div class="perfect-fleet-title">
-                                                                                                <h3>${product.manufacturer_name}</h3>
-                                                                                                <h2>${product.name}</h2>                                        </div>
+                                            <h3>${product.manufacturer_name}</h3>
+                                            <h2>${product.name}</h2>                                        
+                                        </div>
                                          <div class="perfect-fleet-title">
                                             <p>
-                                                
-                                                    ${truncatedDescription}
-                                                
+                                                ${truncatedDescription}
                                             </p>
                                         
                                         </div>
