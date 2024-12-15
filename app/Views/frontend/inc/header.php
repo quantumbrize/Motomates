@@ -1,5 +1,9 @@
 </head>
-
+<style>
+    #company_logo {
+        width: 180px; /* Adjust the width as needed */
+    }
+</style>
 <body
 	class="page-template page-template-elementor_header_footer page page-id-776 wp-custom-logo tt-magic-cursor novaride-light elementor-default elementor-template-full-width elementor-kit-8 elementor-page elementor-page-776">
 	<!-- <div class="preloader">
