@@ -528,6 +528,7 @@
                             truncatedDescription=truncateText(product.description,50)
                             discountedPrice= product.base_price - (product.base_discount*product.base_price/100)
                             totalPrice= discountedPrice+(product.tax*discountedPrice/100);
+                            let finalPrice = parseFloat(totalPrice.toFixed(2));
                             html+=`<div class="swiper-slide">
                             <a href="<?=base_url()?>single-car?product_uid=${product.product_id}">
 											<div class="perfect-fleet-item">
@@ -565,7 +566,7 @@
 
 													<div class="perfect-fleet-footer">
 														<div class="perfect-fleet-pricing">
-															<h2>₹ ${totalPrice}</h2>
+															<h2>₹ ${finalPrice}</h2>
 														</div>
 														<div class="perfect-fleet-btn">
 															<a href="<?=base_url()?>single-car?product_uid=${product.product_id}"

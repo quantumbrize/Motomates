@@ -79,6 +79,7 @@
                 if((resp.data.base_price)!=null && (resp.data.base_discount)!=null && (resp.data.tax)!=null){
                     discountedPrice= resp.data.base_price - (resp.data.base_discount*resp.data.base_price/100)
                     totalPrice= discountedPrice+(resp.data.tax*discountedPrice/100);
+                    let finalPrice = parseFloat(totalPrice.toFixed(2));
                     htmlPrice=`<div class="price-details">
     <div class="price-summary">
         <span>
@@ -96,7 +97,7 @@
     </div>
     <div class="total-price">
         <small id="price_label">Total Price</small>
-        <b>₹ ${totalPrice}</b>
+        <b>₹ ${finalPrice}</b>
     </div>
 </div>
 
@@ -472,6 +473,7 @@
                     const truncatedDescription = truncateText(product.description, 50);
                     discountedPrice= product.base_price - (product.base_discount*product.base_price/100)
                     totalPrice= discountedPrice+(product.tax*discountedPrice/100);
+                    let finalPrice = parseFloat(totalPrice.toFixed(2));
 
                     html += `
                         <div class="col-lg-4 col-md-6">
@@ -506,7 +508,7 @@
                                         </div>
                                         <div class="perfect-fleet-footer">
                                             <div class="perfect-fleet-pricing">
-                                                <h2>₹${totalPrice}</h2>
+                                                <h2>₹${finalPrice}</h2>
                                             </div>
                                             <div class="perfect-fleet-btn">
                                                 <a href="<?=base_url()?>single-car?product_uid=${product.product_id}" 

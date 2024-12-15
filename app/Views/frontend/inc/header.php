@@ -25,7 +25,7 @@
 							<div class="elementor-widget-container">
 								<div class="ata-site-logo">
 									<a data-elementor-open-lightbox="" class='elementor-clickable'
-										href="https://demo.awaikenthemes.com/novaride">
+										href="">
 										<div class="ata-site-logo-set">
 											<div class="ata-site-logo-container">
 												<img class="ata-site-logo-img elementor-animation-"
@@ -226,7 +226,7 @@
 										<div class="elementskit-nav-identity-panel">
 											<div class="elementskit-site-title">
 												<a class="elementskit-nav-logo"
-													href="https://demo.awaikenthemes.com/novaride" target="_self"
+													href="" target="_self"
 													rel="">
 													<img src="" title="" alt="">
 												</a>

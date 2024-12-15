@@ -23,6 +23,7 @@
                             truncatedDescription=truncateText(product.description,50)
                             discountedPrice= product.base_price - (product.base_discount*product.base_price/100)
                             totalPrice= discountedPrice+(product.tax*discountedPrice/100);
+                            let finalPrice = parseFloat(totalPrice.toFixed(2));
                             html+=`<div class="col-lg-4 col-md-6">
                             <a href="<?=base_url()?>single-car?product_uid=${product.product_id}">
                             <div class="perfect-fleet-item fleets-collection-item">
@@ -43,7 +44,7 @@
 
                                         <div class="perfect-fleet-footer">
                                             <div class="perfect-fleet-pricing">
-                                                <h2>₹ ${totalPrice}</h2>                                            </div>
+                                                <h2>₹ ${finalPrice}</h2>                                            </div>
                                             <div class="perfect-fleet-btn">
                                                 <a href="<?=base_url()?>single-car?product_uid=${product.product_id}" class="section-icon-btn"><img src="<?=base_url()?>public/assets/motomates/wp-content/themes/novaride/assets/images/arrow-white.svg" alt=""></a>
                                             </div>
