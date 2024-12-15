@@ -502,8 +502,7 @@
 						data-settings="{&quot;ekit_we_effect_on&quot;:&quot;none&quot;}"
 						data-widget_type="heading.default">
 						<div class="elementor-widget-container">
-							<h2 class="elementor-heading-title elementor-size-default">Explore our perfect and extensive
-								fleet</h2>
+							<h2 class="elementor-heading-title elementor-size-default">Buy & Sell Car</h2>
 						</div>
 					</div>
 				</div>

@@ -125,21 +125,16 @@ define('EVENT_PRIORITY_HIGH', 10);
 
 //////////////////////////////////////////////__URL
 // defined('BASE_URL') || define('BASE_URL', 'https://daltonusstore.com/');
-defined('BASE_URL') || define('BASE_URL', 'http://localhost/Motomates');
+defined('BASE_URL') || define('BASE_URL', 'https://quantumbrize.in/web/moto/');
 
 
 //////////////////////////////////////////////__DATABASE
-// defined('DB_TEST_hostname') || define('DB_TEST_hostname', 'localhost');
-// defined('DB_TEST_username') || define('DB_TEST_username', 'u865002673_user');
-// defined('DB_TEST_password') || define('DB_TEST_password', 'Rtw@1342AQ!');
-// defined('DB_TEST_database') || define('DB_TEST_database', 'u865002673_database');
-// defined('DB_TEST_DBDriver') || define('DB_TEST_DBDriver', 'MySQLi');
-
 defined('DB_TEST_hostname') || define('DB_TEST_hostname', 'localhost');
-defined('DB_TEST_username') || define('DB_TEST_username', 'root');
-defined('DB_TEST_password') || define('DB_TEST_password', '');
-defined('DB_TEST_database') || define('DB_TEST_database', 'jungleef_motomates');
+defined('DB_TEST_username') || define('DB_TEST_username', 'u865002673_motouser');
+defined('DB_TEST_password') || define('DB_TEST_password', 'Rtw@1342AQ!');
+defined('DB_TEST_database') || define('DB_TEST_database', 'u865002673_motodb');
 defined('DB_TEST_DBDriver') || define('DB_TEST_DBDriver', 'MySQLi');
+
 
 // defined('DB_TEST_hostname') || define('DB_TEST_hostname', '103.92.235.18');
 // defined('DB_TEST_username') || define('DB_TEST_username', 'jungleef');
