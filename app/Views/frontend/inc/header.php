@@ -29,7 +29,7 @@
 							<div class="elementor-widget-container">
 								<div class="ata-site-logo">
 									<a data-elementor-open-lightbox="" class='elementor-clickable'
-										href="">
+										href="https://motomates.in/">
 										<div class="ata-site-logo-set">
 											<div class="ata-site-logo-container">
 												<img class="ata-site-logo-img elementor-animation-"
@@ -62,26 +62,8 @@
 												class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-8428 nav-item elementskit-dropdown-has relative_position elementskit-dropdown-menu-default_width elementskit-mobile-builder-content"
 												data-vertical-menu="750px"><a href="<?= base_url()?>"
 													class="ekit-menu-nav-link ekit-menu-dropdown-toggle">Home</a>
-												<!-- <ul class="elementskit-dropdown elementskit-submenu-panel">
-													<li id="menu-item-4584"
-														class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-4584 nav-item elementskit-mobile-builder-content"
-														data-vertical-menu="750px"><a href="<?= base_url()?>"
-															class=" dropdown-item">Home – Image</a>
-													<li id="menu-item-8429"
-														class="menu-item menu-item-type-post_type menu-item-object-page menu-item-8429 nav-item elementskit-mobile-builder-content"
-														data-vertical-menu="750px"><a href="../home-video/index.htm"
-															class=" dropdown-item">Home – Video</a>
-													<li id="menu-item-8619"
-														class="menu-item menu-item-type-post_type menu-item-object-page menu-item-8619 nav-item elementskit-mobile-builder-content"
-														data-vertical-menu="750px"><a href="../home-slideshow/index.htm"
-															class=" dropdown-item">Home – Slideshow</a></li>
-												</ul> -->
 											</li>
-											<!-- <li id="menu-item-4586"
-												class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-776 current_page_item menu-item-4586 nav-item elementskit-mobile-builder-content"
-												data-vertical-menu="750px"><a href="<?= base_url()?>about-us"
-													class="ekit-menu-nav-link">About Us</a></li> -->
-                          <li id="menu-item-4586"
+                                            <li id="menu-item-4586"
 												class="menu-item menu-item-type-post_type menu-item-object-page page_item page-item-776 current_page_item menu-item-4586 nav-item elementskit-mobile-builder-content"
 												data-vertical-menu="750px"><a href="<?= base_url()?>about-us"
 													class="ekit-menu-nav-link">About Us</a></li>
@@ -93,139 +75,80 @@
 													
 												</ul>
 											</li>
+											
+										    <li id="menu-item-4586"
+												class="menu-item menu-item-type-post_type menu-item-object-page page_item page-item-776 current_page_item menu-item-4586 nav-item elementskit-mobile-builder-content"
+												data-vertical-menu="750px"><a href="https://motomates.in/single-service?service_uid=SERPAG0A175DD220241218"
+													class="ekit-menu-nav-link">Car Cleaning</a>
+											</li>
+											<li id="menu-item-4586"
+												class="menu-item menu-item-type-post_type menu-item-object-page page_item page-item-776 current_page_item menu-item-4586 nav-item elementskit-mobile-builder-content"
+												data-vertical-menu="750px"><a href="https://motomates.in/book-a-rental"
+													class="ekit-menu-nav-link">Car On Rent</a>
+											</li>
+											
+											<li id="menu-item-4586"
+												class="menu-item menu-item-type-post_type menu-item-object-page page_item page-item-776 current_page_item menu-item-4586 nav-item elementskit-mobile-builder-content"
+												data-vertical-menu="750px"><a href="https://motomates.in/book-a-rental"
+													class="ekit-menu-nav-link">Self Drive</a>
+											</li>
+											
+											<li id="menu-item-4586"
+												class="menu-item menu-item-type-post_type menu-item-object-page page_item page-item-776 current_page_item menu-item-4586 nav-item elementskit-mobile-builder-content"
+												data-vertical-menu="750px"><a href=""
+													class="ekit-menu-nav-link">Occasional Driver</a>
+											</li>
+											
+											<li id="menu-item-4586"
+												class="menu-item menu-item-type-post_type menu-item-object-page page_item page-item-776 current_page_item menu-item-4586 nav-item elementskit-mobile-builder-content"
+												data-vertical-menu="750px"><a href=""
+													class="ekit-menu-nav-link">Private Driving School</a>
+											</li>
+											
+											<li id="menu-item-4586"
+												class="menu-item menu-item-type-post_type menu-item-object-page page_item page-item-776 current_page_item menu-item-4586 nav-item elementskit-mobile-builder-content"
+												data-vertical-menu="750px"><a href=""
+													class="ekit-menu-nav-link">Self-learning Facility</a>
+											</li>
+											
+											<li id="menu-item-4586"
+												class="menu-item menu-item-type-post_type menu-item-object-page page_item page-item-776 current_page_item menu-item-4586 nav-item elementskit-mobile-builder-content"
+												data-vertical-menu="750px"><a href=""
+													class="ekit-menu-nav-link">Accessories For Sale</a>
+											</li>
+											
+											<li id="menu-item-4586"
+												class="menu-item menu-item-type-post_type menu-item-object-page page_item page-item-776 current_page_item menu-item-4586 nav-item elementskit-mobile-builder-content"
+												data-vertical-menu="750px"><a href=""
+													class="ekit-menu-nav-link">Accessories For Rent</a>
+											</li>
+											
 											<li id="menu-item-6727"
 												class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children nav-item elementskit-dropdown-has relative_position elementskit-dropdown-menu-default_width elementskit-mobile-builder-content"
 												data-vertical-menu="750px">
-												<a href="<?= base_url()?>cars" class="ekit-menu-nav-link ekit-menu-dropdown-toggle">Cars</a>
-												<!-- <ul id="categories_list_header" class="elementskit-dropdown elementskit-submenu-panel">
-													
-													 
-												</ul> -->
+												<a href="<?= base_url()?>cars" class="ekit-menu-nav-link ekit-menu-dropdown-toggle">Cars Buy & Sell</a>
+											
 											</li>
-
-											<!-- <li id="menu-item-4597"
-												class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-4597 nav-item elementskit-dropdown-has relative_position elementskit-dropdown-menu-default_width elementskit-mobile-builder-content"
-												data-vertical-menu="750px"><a href="#"
-													class="ekit-menu-nav-link ekit-menu-dropdown-toggle">Pages<i
-														aria-hidden="true"
-														class="icon icon-down-arrow1 elementskit-submenu-indicator"></i></a>
-												<ul class="elementskit-dropdown elementskit-submenu-panel">
-													<li id="menu-item-4585"
-														class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4585 nav-item elementskit-mobile-builder-content"
-														data-vertical-menu="750px"><a href="../blog/index.htm"
-															class=" dropdown-item">Blog</a>
-													<li id="menu-item-6734"
-														class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-6734 nav-item elementskit-dropdown-has relative_position elementskit-dropdown-menu-default_width elementskit-mobile-builder-content"
-														data-vertical-menu="750px"><a href="../drivers/index.htm"
-															class=" dropdown-item">Drivers<i aria-hidden="true"
-																class="icon icon-down-arrow1 elementskit-submenu-indicator"></i></a>
-														<ul class="elementskit-dropdown elementskit-submenu-panel">
-															<li id="menu-item-6735"
-																class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6735 nav-item elementskit-mobile-builder-content"
-																data-vertical-menu="750px"><a
-																	href="../drivers/davis-casey/index.htm"
-																	class=" dropdown-item">Davis Casey</a>
-															<li id="menu-item-6736"
-																class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6736 nav-item elementskit-mobile-builder-content"
-																data-vertical-menu="750px"><a
-																	href="../drivers/john-smith/index.htm"
-																	class=" dropdown-item">John Smith</a>
-															<li id="menu-item-6737"
-																class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6737 nav-item elementskit-mobile-builder-content"
-																data-vertical-menu="750px"><a
-																	href="../drivers/jordan-brown/index.htm"
-																	class=" dropdown-item">Jordan Brown</a>
-															<li id="menu-item-6738"
-																class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6738 nav-item elementskit-mobile-builder-content"
-																data-vertical-menu="750px"><a
-																	href="../drivers/taylor-smith/index.htm"
-																	class=" dropdown-item">Taylor Smith</a> </li>
-														</ul>
-													<li id="menu-item-4592"
-														class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4592 nav-item elementskit-mobile-builder-content"
-														data-vertical-menu="750px"><a href="../pricing/index.htm"
-															class=" dropdown-item">Pricing</a>
-													<li id="menu-item-4591"
-														class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4591 nav-item elementskit-mobile-builder-content"
-														data-vertical-menu="750px"><a href="../image-gallery/index.htm"
-															class=" dropdown-item">Image Gallery</a>
-													<li id="menu-item-4595"
-														class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4595 nav-item elementskit-mobile-builder-content"
-														data-vertical-menu="750px"><a href="../video-gallery/index.htm"
-															class=" dropdown-item">Video Gallery</a>
-													<li id="menu-item-4594"
-														class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4594 nav-item elementskit-mobile-builder-content"
-														data-vertical-menu="750px"><a href="../testimonials/index.htm"
-															class=" dropdown-item">Testimonials</a>
-													<li id="menu-item-4590"
-														class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4590 nav-item elementskit-mobile-builder-content"
-														data-vertical-menu="750px"><a href="../faqs/index.htm"
-															class=" dropdown-item">Faqs</a>
-													<li id="menu-item-7624"
-														class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-7624 nav-item elementskit-dropdown-has relative_position elementskit-dropdown-menu-default_width elementskit-mobile-builder-content"
-														data-vertical-menu="750px"><a href="#"
-															class=" dropdown-item">Header Layouts<i aria-hidden="true"
-																class="icon icon-down-arrow1 elementskit-submenu-indicator"></i></a>
-														<ul class="elementskit-dropdown elementskit-submenu-panel">
-															<li id="menu-item-7625"
-																class="menu-item menu-item-type-custom menu-item-object-custom menu-item-7625 nav-item elementskit-mobile-builder-content"
-																data-vertical-menu="750px"><a target="_blank"
-																	href="../index-1.htm?elementskit_template=header"
-																	class=" dropdown-item">Header Layout 1</a>
-															<li id="menu-item-7626"
-																class="menu-item menu-item-type-custom menu-item-object-custom menu-item-7626 nav-item elementskit-mobile-builder-content"
-																data-vertical-menu="750px"><a target="_blank"
-																	href="../index-2.htm?elementskit_template=header-layout-2"
-																	class=" dropdown-item">Header Layout 2</a>
-															<li id="menu-item-7627"
-																class="menu-item menu-item-type-custom menu-item-object-custom menu-item-7627 nav-item elementskit-mobile-builder-content"
-																data-vertical-menu="750px"><a target="_blank"
-																	href="../index-3.htm?elementskit_template=header-layout-3"
-																	class=" dropdown-item">Header Layout 3</a>
-															<li id="menu-item-7628"
-																class="menu-item menu-item-type-custom menu-item-object-custom menu-item-7628 nav-item elementskit-mobile-builder-content"
-																data-vertical-menu="750px"><a target="_blank"
-																	href="../index-4.htm?elementskit_template=header-layout-4"
-																	class=" dropdown-item">Header Layout 4</a> </li>
-														</ul>
-													<li id="menu-item-7629"
-														class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-7629 nav-item elementskit-dropdown-has relative_position elementskit-dropdown-menu-default_width elementskit-mobile-builder-content"
-														data-vertical-menu="750px"><a href="#"
-															class=" dropdown-item">Footer Layouts<i aria-hidden="true"
-																class="icon icon-down-arrow1 elementskit-submenu-indicator"></i></a>
-														<ul class="elementskit-dropdown elementskit-submenu-panel">
-															<li id="menu-item-7630"
-																class="menu-item menu-item-type-custom menu-item-object-custom menu-item-7630 nav-item elementskit-mobile-builder-content"
-																data-vertical-menu="750px"><a target="_blank"
-																	href="../index-5.htm?elementskit_template=footer"
-																	class=" dropdown-item">Footer Layout 1</a>
-															<li id="menu-item-7631"
-																class="menu-item menu-item-type-custom menu-item-object-custom menu-item-7631 nav-item elementskit-mobile-builder-content"
-																data-vertical-menu="750px"><a target="_blank"
-																	href="../index-6.htm?elementskit_template=footer-layoyt-2"
-																	class=" dropdown-item">Footer Layout 2</a>
-															<li id="menu-item-7632"
-																class="menu-item menu-item-type-custom menu-item-object-custom menu-item-7632 nav-item elementskit-mobile-builder-content"
-																data-vertical-menu="750px"><a target="_blank"
-																	href="../index-7.htm?elementskit_template=footer-layout-3"
-																	class=" dropdown-item">Footer Layout 3</a>
-															<li id="menu-item-7633"
-																class="menu-item menu-item-type-custom menu-item-object-custom menu-item-7633 nav-item elementskit-mobile-builder-content"
-																data-vertical-menu="750px"><a target="_blank"
-																	href="../index-8.htm?elementskit_template=footer-layout-4"
-																	class=" dropdown-item">Footer Layout 4</a> </li>
-														</ul>
-													</li>
-												</ul>
-											</li> -->
+                                            <li id="menu-item-6727"
+												class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children nav-item elementskit-dropdown-has relative_position elementskit-dropdown-menu-default_width elementskit-mobile-builder-content"
+												data-vertical-menu="750px">
+												<a href="<?= base_url()?>cars" class="ekit-menu-nav-link ekit-menu-dropdown-toggle">Tips & Ticks</a>
+											
+											</li>
+											<li id="menu-item-6727"
+												class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children nav-item elementskit-dropdown-has relative_position elementskit-dropdown-menu-default_width elementskit-mobile-builder-content"
+												data-vertical-menu="750px">
+												<a href="<?= base_url()?>cars" class="ekit-menu-nav-link ekit-menu-dropdown-toggle">Pre-Delivery Inspection</a>
+											
+											</li>
 											<li id="menu-item-4588"
 												class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4588 nav-item elementskit-mobile-builder-content"
 												data-vertical-menu="750px"><a href="<?= base_url()?>contact-us"
 													class="ekit-menu-nav-link">Contact Us</a></li>
-											<li id="menu-item-6883"
+											<!--<li id="menu-item-6883"
 												class="mobile-menu menu-item menu-item-type-custom menu-item-object-custom menu-item-6883 nav-item elementskit-mobile-builder-content"
 												data-vertical-menu="750px"><a href="<?= base_url()?>book-a-rental" class="ekit-menu-nav-link">Book A
-													Rental</a></li>
+													Rental</a></li>-->
 										</ul>
 										<div class="elementskit-nav-identity-panel">
 											<div class="elementskit-site-title">
