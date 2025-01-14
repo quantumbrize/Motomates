@@ -26,9 +26,11 @@ class Banner_Controller extends Api_Controller
         $uploadedFiles = $this->request->getFiles();
         if (empty ($uploadedFiles['images'])) {
             $resp['message'] = 'Your Banner Has No Image';
-        } else if (empty ($data['bannerLink'])) {
-            $resp['message'] = 'Please Add A Link';
-        }else {
+        } 
+        // else if (empty ($data['bannerLink'])) {
+        //     $resp['message'] = 'Please Add A Link';
+        // }
+        else {
 
 
             $banner_data = [
@@ -146,8 +148,8 @@ class Banner_Controller extends Api_Controller
             'data' => null
         ];
         
-        if (empty ($data['bannerLink'])) {
-            $resp['message'] = 'Please Add A Link';
+        if (empty ($data['banner_id'])) {
+            $resp['message'] = 'Banner Not Found!';
         }else {
 
 

@@ -2,7 +2,9 @@
     $(document).ready(function () {
         get_promotion_card();
         load_all_blog();
-        loadBannerImage();
+        // loadBannerImage();
+        // load_banners();
+        loadBannerImages()
         load_all_services();
         load_all_products();
         
@@ -289,34 +291,93 @@
         }
     }
 
-    function loadBannerImage() {
+    // function loadBannerImages() {
+    //     $.ajax({
+    //         url: "<?= base_url() ?>api/banners", // URL to fetch the banner image
+    //         type: "GET",
+    //         success: function (response) {
+    //             console.log('banner',response)
+    //             imageUrl= `<?= base_url()?>public/uploads/banner_images/${response.data.img}`
+    //             if (response.status && imageUrl) {
+    //                 // Assuming response.imageUrl contains the URL of the banner image
+    //                 $('.elementor-9 .elementor-element.elementor-element-5983312')
+    //                     .css('background-image', `url('${imageUrl}')`);
+    //             } else {
+    //                 console.error('Failed to retrieve banner image:', response.message);
+    //             }
+    //             htmlt=`${response.data.title}`
+    //             htmld=`${response.data.description}`
+    //             htmll=`${response.data.link}`
+
+    //             $("#banner_heading").html(htmlt);
+    //             $("#banner_description").html(htmld);
+    //             $("#banner_description").html(htmld);
+    //             $("#banner_link").attr('href', htmll);
+    //         },
+    //         error: function (error) {
+    //             console.error('Error fetching banner image:', error);
+    //         }
+    //     });
+    // }
+
+    
+
+    function loadBannerImages() {
         $.ajax({
-            url: "<?= base_url() ?>get/single/banner", // URL to fetch the banner image
+            url: "<?= base_url() ?>api/banners", // URL to fetch banner data
             type: "GET",
             success: function (response) {
-                console.log('banner',response)
-                imageUrl= `<?= base_url()?>public/uploads/banner_images/${response.data.img}`
-                if (response.status && imageUrl) {
-                    // Assuming response.imageUrl contains the URL of the banner image
-                    $('.elementor-9 .elementor-element.elementor-element-5983312')
-                        .css('background-image', `url('${imageUrl}')`);
-                } else {
-                    console.error('Failed to retrieve banner image:', response.message);
-                }
-                htmlt=`${response.data.title}`
-                htmld=`${response.data.description}`
-                htmll=`${response.data.link}`
+                console.log('Banner Response:', response.data);
 
-                $("#banner_heading").html(htmlt);
-                $("#banner_description").html(htmld);
-                $("#banner_description").html(htmld);
-                $("#banner_link").attr('href', htmll);
+                if (response.data && response.data.length > 0) {
+                    const banners = response.data; // Assign the banner data
+                    const containerClass = `.elementor-element-5983312`;
+                    let currentIndex = 0; // Start with the first banner
+                    const totalBanners = banners.length;
+
+                    // Function to update the banner content
+                    function updateBanner(index) {
+                        const banner = banners[index];
+
+                        // Update the background image
+                        if (banner.img) {
+                            $(containerClass).css(
+                                'background-image',
+                                `url('<?= base_url() ?>public/uploads/banner_images/${banner.img}')`
+                            );
+                        }
+
+                        // Update title
+                        // $("#banner_heading").html(banner.title || "Default Title");
+
+                        // Update description
+                        $("#banner_description").html(banner.description || "Default Description");
+
+                        // Update link
+                        $("#banner_link").attr('href', banner.link || "#");
+                    }
+
+                    // Initial load of the first banner
+                    updateBanner(currentIndex);
+
+                    // Autoscroll functionality
+                    setInterval(() => {
+                        currentIndex = (currentIndex + 1) % totalBanners; // Move to the next banner, looping back to the start
+                        updateBanner(currentIndex);
+                    }, 3000); // Change banner every 5 seconds
+                } else {
+                    console.error('No banners found in the response');
+                }
             },
             error: function (error) {
-                console.error('Error fetching banner image:', error);
+                console.error('Error fetching banner data:', error);
             }
         });
     }
+
+
+
+
     document.addEventListener('DOMContentLoaded', function() {
     const serviceDropdown = document.getElementById('service');
     const cabOptions = document.getElementById('cab-options');
