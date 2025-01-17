@@ -600,34 +600,15 @@
 															alt=""></a></div>
 												<div class="perfect-fleet-content">
 													<div class="perfect-fleet-title">
-														<h3>${product.manufacturer_name}
+														<h3>${product.category}
 														</h3>
-														<h2>${product.name}
+														<h2>Model: ${product.name}
 														</h2>
 													</div>
-                                                    <div class="perfect-fleet-title">
-                                                        <p>
-                                                           
-                                                                ${truncatedDescription}
-                                                            
-                                                        </p>
                                                     
-                                                    </div>
-
-													<div class="perfect-fleet-body">
-														<ul>
-															<li><label><img decoding="async"
-																		src="<?=base_url()?>public/uploads/product_images/Doors.png">
-																	<span
-																		class="feature-label">Doors</span></label><span
-																	class="feature-value"> ${product.doors}</span></li>
-															
-														</ul>
-													</div>
-
 													<div class="perfect-fleet-footer">
 														<div class="perfect-fleet-pricing">
-															<h2>₹ ${finalPrice}</h2>
+															<h2>₹ ${finalPrice} ${product.price_unit}</h2>
 														</div>
 														<div class="perfect-fleet-btn">
 															<a href="<?=base_url()?>single-car?product_uid=${product.product_id}"

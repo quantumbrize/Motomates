@@ -79,27 +79,34 @@
             <table id="product-table" class="table nowrap align-middle table-hover" style="width:100%">
                 <thead>
                 <tr>
-                    <th class="product-column">Car Name</th>
-                    <th class="store-name-column">Store Name</th>
-                    <th class="barcode-column">Make</th>
+                    <th class="product-column">Model</th>
+                    <th class="store-name-column">Price (₹)</th>
+                    <th class="store-name-column">Price Unit</th>
+                    <th class="barcode-column">Engine</th>
                     <!-- <th class="barcode-column">Make Icon</th> -->
-                    <th class="barcode-column">Model</th>
+                    <th class="barcode-column">Power</th>
                     <!-- <th class="barcode-column">Model Icon</th> -->
-                    <th class="category-column">Category</th>
-                    <th class="size-column">Year</th>
+                    <!-- <th class="category-column">Transmission</th> -->
+                    <th class="size-column">Mileage (Kmpl)</th>
                     <!-- <th class="size-column">Year Icon</th> -->
-                    <th class="tags-column">Mileage</th>
+                    <th class="tags-column">Fuel</th>
                     <!-- <th class="tags-column">Mileage Icon</th> -->
-                    <th class="tags-column">Location</th>
+                    <th class="tags-column">Number of Airbags</th>
                     <!-- <th class="tags-column">Location Icon</th> -->
-                    <th class="tags-column">Doors</th>
+                    <th class="tags-column">Car Overview</th>
                     <!-- <th class="tags-column">Doors Icon</th> -->
-                    <th class="delivery-charge-column">Badges </th>
+                    <th class="delivery-charge-column">Registration</th>
                     <!-- <th class="delivery-charge-column">Badges Icon</th> -->
-                    <th class="tax-column">Tax</th>
-                    <th class="discount-column">Discount</th>
-                    <th class="price-column">Price</th>
-                    <th class="details-column">Details</th>
+                    <th class="tax-column">Insurance</th>
+                    <!-- <th class="discount-column">Fuel Type</th> -->
+                    <th class="price-column">Seats</th>
+                    <th class="details-column">Kilometers Driven</th>
+                    <th class="images-column">RTO</th>
+                    <th class="images-column">Ownership</th>
+                    <th class="images-column">Engine Displacement</th>
+                    <th class="images-column">Transmission</th>
+                    <th class="images-column">Year of Manufacture</th>
+                    <th class="images-column">Details</th>
                     <th class="images-column">Images</th>
                     <!-- <th class="size-chart-column">Size Chart</th> -->
                     <th class="delete-column">Delete</th>
@@ -107,43 +114,74 @@
                 </thead>
                 <tbody id="product-table-body">
                     <tr>
-                        <td><input type="text" placeholder="Enter Product Name" required></td>
+                        <td><input type="text" placeholder="Enter Model" required></td>
                         <!-- <td><input type="number" placeholder="Enter Price"></td>
                         <td><input type="number" placeholder="Enter Discount"></td> -->
-                        <td><input type="text" placeholder="Enter Store Name"></td>
-                        <td><input type="text" placeholder="Enter Make"></td>
-                        <!-- <td><input type="file" id="make_icon" placeholder="Enter Make Icon"></td> -->
-                        <td><input type="text" placeholder="Enter Model"></td>
-                        <!-- <td><input type="file" id="model_icon" placeholder="Enter Model Icon"></td> -->
                         <td>
-                            <select class="product-category-list" id="product-category-0"
+                            <input type="text" placeholder="Enter Price">
+                    
+                        </td>
+                        <td>
+                            <select class="form-control">
+                                <option value="">Select-Unit</option>
+                                <option value="Lakh">Lakh</option>
+                                <option value="Cr">Cr</option>
+                            </select>
+                    
+                        </td>
+                        <td><input type="text" placeholder="Enter Engine"></td>
+                        <!-- <td><input type="file" id="make_icon" placeholder="Enter Make Icon"></td> -->
+                        <td><input type="text" placeholder="Enter power"></td>
+                        <!-- <td><input type="file" id="model_icon" placeholder="Enter Model Icon"></td> -->
+                        <!-- <td> -->
+                            <!-- <input type="text" placeholder="Enter Transmission"> -->
+                            <!-- <select class="product-category-list" id="product-category-0"
                                 onChange="get_sub_category('0')"></select>
                             <input type="hidden" id="selected-cat-name-0">
                             <p>
                                 Selected Category:- <b id="selected-cat-0"></b>
                                 <i class="fas fa-redo" onclick="reset_category('0')"></i>
-                            </p>
-                        </td>
-                        <td><input type="text" placeholder="Enter Year"></td>
+                            </p> -->
+                        <!-- </td> -->
+                        <td><input type="text" placeholder="Enter Milage"></td>
                         <!-- <td><input type="file" id="year_icon" placeholder="Enter Year Icon"></td> -->
-                        <td><input type="text" placeholder="Enter Mileage"></td>
-                        <!-- <td><input type="file" id="mileage_icon" placeholder="Enter Mileage Icon"></td> -->
-                        <td><input type="text" placeholder="Enter Location"></td>
-                        <!-- <td><input type="file" id="location_icon" placeholder="Enter Location Icon"></td> -->
-                        <!-- <td><input type="number" placeholder="Enter Quantity"></td> -->
-                        <!-- <td><input type="text" placeholder="Enter Tags"></td> -->
-                        <td><input type="text" placeholder="Enter Doors"></td>
-                        <!-- <td><input type="file" id="doors_icon" placeholder="Enter Doors Icon"></td> -->
                         <td>
+                            <select class="form-control">
+                                <option value="">Select-Type</option>
+                                <option value="Petrol">Pertol</option>
+                                <option value="Diesel">Diesel</option>
+                                <option value="Ethanol">Ethanol</option>
+                                <option value="Biodiesel">Biodiesel</option>
+                                <option value="Electricity">Electricity</option>
+                            </select>
+                        </td>
+                        <!-- <td><input type="file" id="mileage_icon" placeholder="Enter Mileage Icon"></td> -->
+                        <td><input type="text" placeholder="Enter Air Bags"></td>
+                        <!-- <td><input type="file" id="location_icon" placeholder="Enter Location Icon"></td> -->
+                        <td><input type="text" placeholder="Enter Car Overview"></td>
+                        <td><input type="text" placeholder="Enter Registration"></td>
+                        <td><input type="text" placeholder="Enter Insurance"></td>
+                        <!-- <td><input type="text" placeholder="Enter Fuel Type"></td> -->
+                        <td><input type="text" placeholder="Enter Seats"></td>
+                        <td><input type="text" placeholder="Enter Kilometers Driven"></td>
+                        <td><input type="text" placeholder="Enter RTO"></td>
+                        <td><input type="text" placeholder="Enter Ownership"></td>
+                        <td><input type="text" placeholder="Enter Engine Displacement"></td>
+                        <td><input type="text" placeholder="Enter Transmission"></td>
+                        <td><input type="text" placeholder="Enter Year of Manufacture"></td>
+                        <!-- <td><input type="text" placeholder="Enter Doors"></td>
+                        <td><input type="text" placeholder="Enter Doors"></td> -->
+                        <!-- <td><input type="file" id="doors_icon" placeholder="Enter Doors Icon"></td> -->
+                        <!-- <td>
                             <select class="form-control">
                                 <option value="">Select-Badge</option>
                                 <option value="New">New</option>
                                 <option value="Used">Used</option>
                                 <option value="Certified Pre-Owned">Certified Pre-Owned</option>
                             </select>
-                        </td>
+                        </td> -->
                         <!-- <td><input type="file" id="badge_icon" placeholder="Enter Badge Icon"></td> -->
-                        <td>
+                        <!-- <td>
                             <select class="product-tax-list" id="product-tax-0">
                                 <option value="0">00.00% IGST - (00.00% CGST & 00.00% SGST)</option>
                                 <option value="0.1">00.10% IGST - (00.05% CGST & 00.05% SGST)</option>
@@ -158,14 +196,14 @@
                                 <option value="18">18.00% IGST - (09.00% CGST & 09.00% SGST)</option>
                                 <option value="28">28.00% IGST - (14.00% CGST & 14.00% SGST)</option>
                             </select>
-                        </td>
-                        <td><input type="text" placeholder="Discount"></td>
+                        </td> -->
+                        <!-- <td><input type="text" placeholder="Discount"></td> -->
                         <!-- <td>
                             <button type="button" class="btn btn-md btn-secondary" onclick="openPriceModal(this)">
                                 <i class="ri-money-dollar-circle-fill"></i>
                             </button>
                         </td> -->
-                        <td><input type="text" id="price" placeholder="Enter Price"></td>
+                        <!-- <td><input type="text" id="price" placeholder="Enter Price"></td> -->
                         <td>
                             <button type="button" class="btn btn-md btn-primary" onclick="openDescriptionModal(this)">
                                 <i class="ri-edit-fill"></i>

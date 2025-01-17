@@ -145,8 +145,12 @@
                 // console.log(resp);
                 if (resp) {
                     let html = '<option value="">Select-a-Vendor</option>';
+                    console.log(resp.data)
                     $.each(resp.data, function (key, val) {
-                        html += `<option value="${val.vendor_id}">${val.user_name}</option>`;
+                        if(val.type == 'admin'){
+                            html += `<option selected value="${val.vendor_id}">${val.user_name}</option>`;
+                        }
+                        
                     });
                     $('#vendor_drop_down').html(html);
                     $('#vendor_drop_down').select2({
@@ -220,7 +224,7 @@
         document.getElementById('currentRowIndex').value = currentRowIndex;
 
         // Get existing description if any
-        const descriptionCell = row.cells[13]; // Get the description cell
+        const descriptionCell = row.cells[18]; // Get the description cell
         const existingDescription = descriptionCell.querySelector('span') ? descriptionCell.querySelector('span').innerHTML : '';
 
         // Set existing description in CKEditor
@@ -284,7 +288,7 @@
         const row = document.querySelectorAll('#product-table-body tr')[currentRowIndex];
 
         // Update the description cell (you can also add a hidden input if needed)
-        row.cells[13].innerHTML = `<span class="truncate">${description}</span><button class="btn btn-sm btn-success" type="button" onclick="openDescriptionModal(this)">Edit Description</button>`;
+        row.cells[18].innerHTML = `<span class="truncate">${description}</span><button class="btn btn-sm btn-success" type="button" onclick="openDescriptionModal(this)">Edit Description</button>`;
 
         // Close modal
         closeModal();
@@ -309,53 +313,45 @@
         const tableBody = document.getElementById('product-table-body');
         const newRow = document.createElement('tr');
         category_id += 1;
-        newRow.innerHTML = `<td><input type="text" placeholder="Enter Product Name" required></td>
-        <td><input type="text" placeholder="Enter Store Name"></td>
-        <td><input type="text" placeholder="Enter Make"></td>
-        
-        <td><input type="text" placeholder="Enter Model"></td>
-        
-        <td>
-            <select class="product-category-list" id="product-category-${category_id}" onChange="get_sub_category('${category_id}')"></select>
-            <input type="hidden" id="selected-cat-name-${category_id}">
-            <p>Selected Category:- <b id="selected-cat-${category_id}"></b><i class="fas fa-redo" onclick="reset_category('${category_id}')"></i></p>
-        </td>
-        <td><input type="text" placeholder="Enter Year"></td>
-        
-        <td><input type="text" placeholder="Enter Mileage"></td>
-        
-        <td><input type="text" placeholder="Enter Location"></td>
-        
-        <!-- <td><input type="number" placeholder="Enter Quantity"></td> -->
-        <!-- <td><input type="text" placeholder="Enter Tags"></td> -->
-        <td><input type="text" placeholder="Enter Doors"></td>
-       
+        newRow.innerHTML = `<td><input type="text" placeholder="Enter Model" required></td>
+        <td><input type="text" placeholder="Enter Price"></td>
         <td>
             <select class="form-control">
-                <option value="">Select-Badge</option>
-                <option value="New">New</option>
-                <option value="Used">Used</option>
-                <option value="Certified Pre-Owned">Certified Pre-Owned</option>
+                <option value="">Select-Unit</option>
+                <option value="Lakh">Lakh</option>
+                <option value="Cr">Cr</option>
             </select>
+    
         </td>
+        <td><input type="text" placeholder="Enter Engine"></td>
+        
+        <td><input type="text" placeholder="Enter power"></td>
+        
+        <td><input type="text" placeholder="Enter Milage"></td>
         <td>
-            <select class="product-tax-list" id="product-tax-${category_id}">
-                <option value="0">00.00% IGST - (00.00% CGST & 00.00% SGST)</option>
-                <option value="0.1">00.10% IGST - (00.05% CGST & 00.05% SGST)</option>
-                <option value="0.25">00.25% IGST - (00.125% CGST & 00.125% SGST)</option>
-                <option value="1">01.00% IGST - (00.50% CGST & 00.50% SGST)</option>
-                <option value="1.5">01.50% IGST - (00.75% CGST & 00.75% SGST)</option>
-                <option value="3">03.00% IGST - (01.50% CGST & 01.50% SGST)</option>
-                <option value="5">05.00% IGST - (02.50% CGST & 02.50% SGST)</option>
-                <option value="6">06.00% IGST - (03.00% CGST & 03.00% SGST)</option>
-                <option value="7.5">07.50% IGST - (03.75% CGST & 03.75% SGST)</option>
-                <option value="12">12.00% IGST - (06.00% CGST & 06.00% SGST)</option>
-                <option value="18">18.00% IGST - (09.00% CGST & 09.00% SGST)</option>
-                <option value="28">28.00% IGST - (14.00% CGST & 14.00% SGST)</option>
+            <select class="form-control">
+                <option value="">Select-Type</option>
+                <option value="Petrol">Pertol</option>
+                <option value="Diesel">Diesel</option>
+                <option value="Ethanol">Ethanol</option>
+                <option value="Biodiesel">Biodiesel</option>
+                <option value="Electricity">Electricity</option>
             </select>
         </td>
-        <td><input type="text" placeholder="Discount"></td>
-        <td><input type="text" id="price" placeholder="Enter Price"></td>
+        
+        <td><input type="text" placeholder="Enter Air Bags"></td>
+        
+        <td><input type="text" placeholder="Enter Car Overview"></td>
+        <td><input type="text" placeholder="Enter Registration"></td>
+        <td><input type="text" placeholder="Enter Insurance"></td>
+        
+        <td><input type="text" placeholder="Enter Seats"></td>
+        <td><input type="text" placeholder="Enter Kilometers Driven"></td>
+        <td><input type="text" placeholder="Enter RTO"></td>
+        <td><input type="text" placeholder="Enter Ownership"></td>
+        <td><input type="text" placeholder="Enter Engine Displacement"></td>
+        <td><input type="text" placeholder="Enter Transmission"></td>
+        <td><input type="text" placeholder="Enter Year of Manufacture"></td>
         <td>
             <button type="button" class="btn btn-md btn-primary" onclick="openDescriptionModal(this)">
                 <i class="ri-edit-fill"></i>
@@ -660,19 +656,24 @@ function submitProducts() {
 
     rows.forEach((row, index) => {
         const productName = row.cells[0].children[0].value;
-        const storeName = row.cells[1].children[0].value;
-        const make = row.cells[2].children[0].value;
-        const model = row.cells[3].children[0].value;
-        const category = row.cells[4].children[1].value;
-        const year = row.cells[5].children[0].value;
-        const mileage = row.cells[6].children[0].value;
-        const location = row.cells[7].children[0].value;
-        const doors = row.cells[8].children[0].value;
-        const badges = row.cells[9].children[0].value;
-        const tax = row.cells[10].children[0].value;
-        const discount = row.cells[11].children[0].value;
-        const price = row.cells[12].children[0].value;
-        const description = row.cells[13].querySelector('span') ? row.cells[13].querySelector('span').textContent : '';
+        const price = row.cells[1].children[0].value;
+        const priceUnit = row.cells[2].children[0].value;
+        const engine = row.cells[3].children[0].value;
+        const power = row.cells[4].children[0].value;
+        const mileage = row.cells[5].children[0].value;
+        const fuel = row.cells[6].children[0].value;
+        const airBags = row.cells[7].children[0].value;
+        const overView = row.cells[8].children[0].value;
+        const registration = row.cells[9].children[0].value;
+        const insurance = row.cells[10].children[0].value;
+        const seats = row.cells[11].children[0].value;
+        const kiloDriven = row.cells[12].children[0].value;
+        const rto = row.cells[13].children[0].value;
+        const ownership = row.cells[14].children[0].value;
+        const engineDisplacement = row.cells[15].children[0].value;
+        const transmission = row.cells[16].children[0].value;
+        const manufacturingYear = row.cells[17].children[0].value;
+        const description = row.cells[18].querySelector('span') ? row.cells[18].querySelector('span').textContent : '';
         // const makeIcon = row.querySelector("#make_icon").files[0];
         // const modelIcon = row.querySelector("#model_icon").files[0];
         // const yearIcon = row.querySelector("#year_icon").files[0];
@@ -721,18 +722,23 @@ function submitProducts() {
 
         products.push({
             productName,
-            storeName,
-            make,
-            model,
-            category,
-            year,
-            mileage,
-            location,
-            doors,
-            badges,
             price,
-            discount,
-            tax,
+            priceUnit,
+            engine,
+            power,
+            mileage,
+            fuel,
+            airBags,
+            overView,
+            registration,
+            insurance,
+            seats,
+            kiloDriven,
+            rto,
+            ownership,
+            engineDisplacement,
+            transmission,
+            manufacturingYear,
             description,
             // make_icon: makeIcon,
             // model_icon: modelIcon,
@@ -764,18 +770,23 @@ function submitProducts() {
         products.forEach((product, index) => {
             formData.append(`products[${index}][productName]`, product.productName);
             formData.append(`products[${index}][description]`, product.description);
-            formData.append(`products[${index}][tax]`, product.tax);
-            formData.append(`products[${index}][year]`, product.year);
-            formData.append(`products[${index}][discount]`, product.discount);
-            formData.append(`products[${index}][storeName]`, product.storeName);
-            formData.append(`products[${index}][make]`, product.make);
-            formData.append(`products[${index}][category]`, product.category);
-            formData.append(`products[${index}][mileage]`, product.mileage);
-            formData.append(`products[${index}][badges]`, product.badges);
-            formData.append(`products[${index}][doors]`, product.doors);
-            formData.append(`products[${index}][location]`, product.location);
-            formData.append(`products[${index}][model]`, product.model);
             formData.append(`products[${index}][price]`, product.price);
+            formData.append(`products[${index}][priceUnit]`, product.priceUnit);
+            formData.append(`products[${index}][engine]`, product.engine);
+            formData.append(`products[${index}][power]`, product.power);
+            formData.append(`products[${index}][mileage]`, product.mileage);
+            formData.append(`products[${index}][fuel]`, product.fuel);
+            formData.append(`products[${index}][airBags]`, product.airBags);
+            formData.append(`products[${index}][overView]`, product.overView);
+            formData.append(`products[${index}][registration]`, product.registration);
+            formData.append(`products[${index}][insurance]`, product.insurance);
+            formData.append(`products[${index}][seats]`, product.seats);
+            formData.append(`products[${index}][kiloDriven]`, product.kiloDriven);
+            formData.append(`products[${index}][rto]`, product.rto);
+            formData.append(`products[${index}][ownership]`, product.ownership);
+            formData.append(`products[${index}][engineDisplacement]`, product.engineDisplacement);
+            formData.append(`products[${index}][transmission]`, product.transmission);
+            formData.append(`products[${index}][manufacturingYear]`, product.manufacturingYear);
 
             product.images.forEach((imageFile, imgIndex) => {
                 formData.append(`products[${index}][images][${imgIndex}]`, imageFile);

@@ -21,11 +21,15 @@
     }
 
     function redirect_single_product(product_id) {
-        if ($(event.target).hasClass('stock_number_bx') || $(event.target).hasClass('btn-number')) {
-            return false
-        }else{
-            window.location.href = "<?= base_url('/admin/product?p_id=') ?>" + product_id;
-        }
+        $('#alert').html(`<div class="alert alert-warning alert-dismissible alert-label-icon label-arrow fade show material-shadow" role="alert">
+                            <i class="ri-alert-line label-icon"></i><strong>Warning</strong> - Please click on bulk edit.
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>`)
+        // if ($(event.target).hasClass('stock_number_bx') || $(event.target).hasClass('btn-number')) {
+        //     return false
+        // }else{
+        //     window.location.href = "<?= base_url('/admin/product?p_id=') ?>" + product_id;
+        // }
     }
 
     function updateStock(product_id,type){

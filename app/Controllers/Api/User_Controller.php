@@ -1005,6 +1005,7 @@ class User_Controller extends Api_Controller
                         users.user_name,
                         users.number,
                         users.email,
+                        users.type,
                         users.status
                     FROM
                         vendor

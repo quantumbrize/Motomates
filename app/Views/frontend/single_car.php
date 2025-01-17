@@ -136,18 +136,9 @@
 	<div class="page-fleets-single">
 		<div class="container">
 			<div class="row">
-				<div class="col-lg-4 col-md-12">
+				<!-- <div class="col-lg-4 col-md-12">
 					<div class="car-single-sidebar">
 						<div class="fleets-single-sidebar">
-							<!-- <div class="fleets-single-sidebar-box">
-								<div class="fleets-single-sidebar-pricing">
-									<h3>Categories</h3>
-									<div class="elementor-widget-container">
-										<div id="categories_list"></div>
-									</div>
-								</div>
-
-							</div> -->
 							<div class="accordion" id="accordionExample">
 								<div class="accordion-item">
 									<h2 class="accordion-header" id="headingOne">
@@ -168,8 +159,8 @@
 						<div class="sidebar-widget">
 						</div>
 					</div>
-				</div>
-				<div class="col-lg-8 col-md-12">
+				</div> -->
+				<div class="col-lg-12 col-md-12">
 					<div class="fleets-single-content">
 						<div data-elementor-type="wp-post" data-elementor-id="8009" class="elementor elementor-8009">
 							<div class="elementor-element elementor-element-3b6d0a9 e-flex e-con-boxed e-con e-parent" data-id="3b6d0a9" data-element_type="container">
@@ -194,14 +185,14 @@
 
 														<div class="elementor-icon-box-wrapper" style="display: flex; align-items: center;">
 															<!-- Image icon for Car Make -->
-															<img  style="width: 10%; margin-right: 10px;" src="<?=base_url()?>public/uploads/product_images/Make.png" alt="Car Make Icon">
+															<img  style="width: 10%; margin-right: 10px;" src="<?=base_url()?>public/uploads/product_images/Model.png" alt="Car Make Icon">
 
 															<!-- Car Make Text -->
 															<div class="elementor-icon-box-content">
 																<h3 class="elementor-icon-box-title">
-																	<span>Car Make</span>
+																	<span>Model</span>
 																</h3>
-																<p id="car_make" class="elementor-icon-box-description"></p>
+																<p id="car_model" class="elementor-icon-box-description"></p>
 															</div>
 														</div>
 
@@ -216,14 +207,14 @@
 
 														<div class="elementor-icon-box-wrapper" style="display: flex; align-items: center;">
 															<!-- Image icon for Car Model -->
-															<img  style="width: 10%; margin-right: 10px;" src="<?=base_url()?>public/uploads/product_images/Model.png" alt="Car Model Icon">
+															<img  style="width: 10%; margin-right: 10px;" src="<?=base_url()?>public/uploads/product_images/Make.png" alt="Car Model Icon">
 
 															<!-- Car Model Text -->
 															<div class="elementor-icon-box-content">
 																<h3 class="elementor-icon-box-title">
-																	<span>Car Model</span>
+																	<span>Price</span>
 																</h3>
-																<p id="car_model" class="elementor-icon-box-description"></p>
+																<p id="car_price" class="elementor-icon-box-description"></p>
 															</div>
 														</div>
 
@@ -252,54 +243,86 @@
 												<div class="elementor-widget-container">
 													<ul class="elementor-icon-list-items">
 														<li class="elementor-icon-list-item">
-															
-
-																<span id="year_span" class="elementor-icon-list-icon">
-																	<!-- <i aria-hidden="true" class="fas fa-check-circle"></i>						</span>
-										<span class="elementor-icon-list-text">Music System</span> -->
-																</span>
-															
+															<span id="year_span" class="elementor-icon-list-icon">
+																<!-- <i aria-hidden="true" class="fas fa-check-circle"></i>						</span>
+																	<span class="elementor-icon-list-text">Music System</span> -->
+															</span>
 														</li>
 														<li class="elementor-icon-list-item">
-															
-
-																<span id="mileage_span" class="elementor-icon-list-icon">
-																	<!-- <i aria-hidden="true" class="fas fa-check-circle"></i>						</span>
-										<span class="elementor-icon-list-text">Toolkit</span> -->
-															
+															<span id="mileage_span" class="elementor-icon-list-icon">
+																<!-- <i aria-hidden="true" class="fas fa-check-circle"></i>						</span>
+																	<span class="elementor-icon-list-text">Toolkit</span> -->
 														</li>
 														<li class="elementor-icon-list-item">
-															
-
-																<span id="location_span" class="elementor-icon-list-icon">
-																	<!-- <i aria-hidden="true" class="fas fa-check-circle"></i>						</span>
-										<span class="elementor-icon-list-text">Abs System</span> -->
-															
+															<span id="location_span" class="elementor-icon-list-icon">
+																<!-- <i aria-hidden="true" class="fas fa-check-circle"></i>						</span>
+																<span class="elementor-icon-list-text">Abs System</span> -->
 														</li>
 														<li class="elementor-icon-list-item">
-															
-
-																<span id="badge_span" class="elementor-icon-list-icon">
-																	<!-- <i aria-hidden="true" class="fas fa-check-circle"></i>						</span>
-										<span class="elementor-icon-list-text">Bluetooth</span> -->
-															
+															<span id="badge_span" class="elementor-icon-list-icon">
+																<!-- <i aria-hidden="true" class="fas fa-check-circle"></i>						</span>
+																	<span class="elementor-icon-list-text">Bluetooth</span> -->
 														</li>
 														<li class="elementor-icon-list-item">
-															
-
-																<span id="doors_span" class="elementor-icon-list-icon">
-																	<!-- <i aria-hidden="true" class="fas fa-check-circle"></i>						</span>
-										<span class="elementor-icon-list-text">Bluetooth</span> -->
-															
+															<span id="doors_span" class="elementor-icon-list-icon">
+																<!-- <i aria-hidden="true" class="fas fa-check-circle"></i>						</span>
+																	<span class="elementor-icon-list-text">Bluetooth</span> -->
+														</li>
+														<!-- /////////////////////////////////////////////////////////////////////// -->
+														<li class="elementor-icon-list-item">
+															<span id="registration_span" class="elementor-icon-list-icon">
+																<!-- <i aria-hidden="true" class="fas fa-check-circle"></i>						</span>
+																	<span class="elementor-icon-list-text">Bluetooth</span> -->
+														</li>
+														<li class="elementor-icon-list-item">
+															<span id="insurance_span" class="elementor-icon-list-icon">
+																<!-- <i aria-hidden="true" class="fas fa-check-circle"></i>						</span>
+																	<span class="elementor-icon-list-text">Bluetooth</span> -->
+														</li>
+														<li class="elementor-icon-list-item">
+															<span id="seats_span" class="elementor-icon-list-icon">
+																<!-- <i aria-hidden="true" class="fas fa-check-circle"></i>						</span>
+																	<span class="elementor-icon-list-text">Bluetooth</span> -->
+														</li>
+														<li class="elementor-icon-list-item">
+															<span id="driven_span" class="elementor-icon-list-icon">
+																<!-- <i aria-hidden="true" class="fas fa-check-circle"></i>						</span>
+																	<span class="elementor-icon-list-text">Bluetooth</span> -->
+														</li>
+														<li class="elementor-icon-list-item">
+															<span id="rto_span" class="elementor-icon-list-icon">
+																<!-- <i aria-hidden="true" class="fas fa-check-circle"></i>						</span>
+																	<span class="elementor-icon-list-text">Bluetooth</span> -->
+														</li>
+														<li class="elementor-icon-list-item">
+															<span id="ownership_span" class="elementor-icon-list-icon">
+																<!-- <i aria-hidden="true" class="fas fa-check-circle"></i>						</span>
+																	<span class="elementor-icon-list-text">Bluetooth</span> -->
+														</li>
+														<li class="elementor-icon-list-item">
+															<span id="engine_displacement_span" class="elementor-icon-list-icon">
+																<!-- <i aria-hidden="true" class="fas fa-check-circle"></i>						</span>
+																	<span class="elementor-icon-list-text">Bluetooth</span> -->
+														</li>
+														<li class="elementor-icon-list-item">
+															<span id="transmission_span" class="elementor-icon-list-icon">
+																<!-- <i aria-hidden="true" class="fas fa-check-circle"></i>						</span>
+																	<span class="elementor-icon-list-text">Bluetooth</span> -->
+														</li>
+														<li class="elementor-icon-list-item">
+															<span id="manufacturing_year_span" class="elementor-icon-list-icon">
+																<!-- <i aria-hidden="true" class="fas fa-check-circle"></i>						</span>
+																	<span class="elementor-icon-list-text">Bluetooth</span> -->
 														</li>
 														<!-- <li class="elementor-icon-list-item">
-											<a href="#">
-
-												<span class="elementor-icon-list-icon">
-							<i aria-hidden="true" class="fas fa-check-circle"></i>						</span>
-										<span class="elementor-icon-list-text">Full Boot Space</span>
-											</a>
-									</li> -->
+																<a href="#">
+																	<span class="elementor-icon-list-icon">
+																		<i aria-hidden="true" class="fas fa-check-circle"></i>						
+																	</span>
+																	<span class="elementor-icon-list-text">Full Boot Space</span>
+																</a>
+														</li> -->
+														
 														<!-- <li class="elementor-icon-list-item">
 											<a href="#">
 

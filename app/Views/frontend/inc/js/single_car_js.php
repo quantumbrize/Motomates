@@ -22,6 +22,16 @@
             let htmlPrice=``;
             let htmlDesc=``;
             let htmlDoors=``;
+            // /////////////////////////////////////////////////////////////////////////////////////
+            let htmlRegistration=``;
+            let htmlInsurance=``;
+            let htmlSeats=``;
+            let htmlDriven=``;
+            let htmlRto=``;
+            let htmlOwnership=``;
+            let htmlDisplacement=``;
+            let htmlTransmission=``;
+            let htmlManufacturingYear=``;
             // console.log('uid', serviceId)
             // resp = JSON.parse(resp)
             // console.log(resp.user_data.number)
@@ -32,48 +42,121 @@
             
                htmlmake=`${resp.data.make}`
                htmlmodel=`${resp.data.model}`
-               htmlyear=`<div style="display: flex; flex-direction: column; align-items: flex-start; gap: 2px;">
+                        htmlyear=`<div style="display: flex; flex-direction: column; align-items: flex-start; gap: 2px;">
                             <div style="display: flex; align-items: center; gap: 5px;">
                                 <img src="<?=base_url()?>public/uploads/product_images/Year.png" width="30" alt="Year Icon">
-                                <small style="font-size: 12px;margin-top:-10px;">Year</small>
+                                <small style="font-size: 12px;margin-top:-10px;">Engine</small>
                             </div>
-                            <span class="elementor-icon-list-text" style="font-size: 14px;margin-left:35px;margin-top:-20px;">${resp.data.year}</span>
+                            <span class="elementor-icon-list-text" style="font-size: 14px;margin-left:35px;margin-top:-20px;">${resp.data.engine}</span>
                         </div>
                         `
                         htmlmileage = `
                             <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 2px;">
                                 <div style="display: flex; align-items: center; gap: 5px;">
                                     <img src="<?=base_url()?>public/uploads/product_images/Mileage.png" width="30" alt="Mileage Icon">
-                                    <small style="font-size: 12px;margin-top:-10px;">Mileage</small>
+                                    <small style="font-size: 12px;margin-top:-10px;">Power</small>
                                 </div>
-                                <span class="elementor-icon-list-text" style="font-size: 14px;margin-left:35px;margin-top:-20px;">${resp.data.mileage}</span>
+                                <span class="elementor-icon-list-text" style="font-size: 14px;margin-left:35px;margin-top:-20px;">${resp.data.power}</span>
                             </div>`;
 
                         htmllocation = `
                             <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 2px;">
                                 <div style="display: flex; align-items: center; gap: 5px;">
                                     <img src="<?=base_url()?>public/uploads/product_images/Location.png" width="30" alt="Location Icon">
-                                    <small style="font-size: 12px;margin-top:-10px;">Location</small>
+                                    <small style="font-size: 12px;margin-top:-10px;">Mileage</small>
                                 </div>
-                                <span class="elementor-icon-list-text" style="font-size: 14px;margin-left:35px;margin-top:-20px;">${resp.data.location}</span>
+                                <span class="elementor-icon-list-text" style="font-size: 14px;margin-left:35px;margin-top:-20px;">${resp.data.mileage} Km/l</span>
                             </div>`;
 
                         htmlDoors = `
                             <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 2px;">
                                 <div style="display: flex; align-items: center; gap: 5px;">
                                     <img src="<?=base_url()?>public/uploads/product_images/Doors.png" width="30" alt="Doors Icon">
-                                    <small style="font-size: 12px;margin-top:-10px;">Doors</small>
+                                    <small style="font-size: 12px;margin-top:-10px;">Fuel</small>
                                 </div>
-                                <span class="elementor-icon-list-text" style="font-size: 14px;margin-left:35px;margin-top:-20px;">${resp.data.doors}</span>
+                                <span class="elementor-icon-list-text" style="font-size: 14px;margin-left:35px;margin-top:-20px;">${resp.data.fuel}</span>
                             </div>`;
 
                         htmlbadge = `
                             <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 2px;">
                                 <div style="display: flex; align-items: center; gap: 5px;">
                                     <img src="<?=base_url()?>public/uploads/product_images/Badges.png" width="30" alt="Badge Icon">
-                                    <small style="font-size: 12px;margin-top:-10px;">Badge</small>
+                                    <small style="font-size: 12px;margin-top:-10px;">No. of Air Bags</small>
                                 </div>
-                                <span class="elementor-icon-list-text" style="font-size: 14px;margin-left:35px;margin-top:-20px;">${resp.data.badges}</span>
+                                <span class="elementor-icon-list-text" style="font-size: 14px;margin-left:35px;margin-top:-20px;">${resp.data.airbags}</span>
+                            </div>`;
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                        htmlRegistration = `
+                            <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 2px;">
+                                <div style="display: flex; align-items: center; gap: 5px;">
+                                    <img src="<?=base_url()?>public/uploads/product_images/Badges.png" width="30" alt="Badge Icon">
+                                    <small style="font-size: 12px;margin-top:-10px;">Registration</small>
+                                </div>
+                                <span class="elementor-icon-list-text" style="font-size: 14px;margin-left:35px;margin-top:-20px;">${resp.data.registration}</span>
+                            </div>`;
+                        htmlInsurance = `
+                            <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 2px;">
+                                <div style="display: flex; align-items: center; gap: 5px;">
+                                    <img src="<?=base_url()?>public/uploads/product_images/Badges.png" width="30" alt="Badge Icon">
+                                    <small style="font-size: 12px;margin-top:-10px;">Insurance</small>
+                                </div>
+                                <span class="elementor-icon-list-text" style="font-size: 14px;margin-left:35px;margin-top:-20px;">${resp.data.insurance}</span>
+                            </div>`;
+                        htmlSeats = `
+                            <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 2px;">
+                                <div style="display: flex; align-items: center; gap: 5px;">
+                                    <img src="<?=base_url()?>public/uploads/product_images/Badges.png" width="30" alt="Badge Icon">
+                                    <small style="font-size: 12px;margin-top:-10px;">Seats</small>
+                                </div>
+                                <span class="elementor-icon-list-text" style="font-size: 14px;margin-left:35px;margin-top:-20px;">${resp.data.seats}</span>
+                            </div>`;
+                        htmlDriven = `
+                            <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 2px;">
+                                <div style="display: flex; align-items: center; gap: 5px;">
+                                    <img src="<?=base_url()?>public/uploads/product_images/Badges.png" width="30" alt="Badge Icon">
+                                    <small style="font-size: 12px;margin-top:-10px;">Kilometers Driven</small>
+                                </div>
+                                <span class="elementor-icon-list-text" style="font-size: 14px;margin-left:35px;margin-top:-20px;">${resp.data.driven}</span>
+                            </div>`;
+                        htmlRto = `
+                            <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 2px;">
+                                <div style="display: flex; align-items: center; gap: 5px;">
+                                    <img src="<?=base_url()?>public/uploads/product_images/Badges.png" width="30" alt="Badge Icon">
+                                    <small style="font-size: 12px;margin-top:-10px;">RTO</small>
+                                </div>
+                                <span class="elementor-icon-list-text" style="font-size: 14px;margin-left:35px;margin-top:-20px;">${resp.data.rto}</span>
+                            </div>`;
+                        htmlOwnership = `
+                            <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 2px;">
+                                <div style="display: flex; align-items: center; gap: 5px;">
+                                    <img src="<?=base_url()?>public/uploads/product_images/Badges.png" width="30" alt="Badge Icon">
+                                    <small style="font-size: 12px;margin-top:-10px;">Ownership</small>
+                                </div>
+                                <span class="elementor-icon-list-text" style="font-size: 14px;margin-left:35px;margin-top:-20px;">${resp.data.ownership}</span>
+                            </div>`;
+                        htmlDisplacement = `
+                            <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 2px;">
+                                <div style="display: flex; align-items: center; gap: 5px;">
+                                    <img src="<?=base_url()?>public/uploads/product_images/Badges.png" width="30" alt="Badge Icon">
+                                    <small style="font-size: 12px;margin-top:-10px;">Engine Displacement</small>
+                                </div>
+                                <span class="elementor-icon-list-text" style="font-size: 14px;margin-left:35px;margin-top:-20px;">${resp.data.engine_displacement}</span>
+                            </div>`;
+                        htmlTransmission = `
+                            <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 2px;">
+                                <div style="display: flex; align-items: center; gap: 5px;">
+                                    <img src="<?=base_url()?>public/uploads/product_images/Badges.png" width="30" alt="Badge Icon">
+                                    <small style="font-size: 12px;margin-top:-10px;">Transmission</small>
+                                </div>
+                                <span class="elementor-icon-list-text" style="font-size: 14px;margin-left:35px;margin-top:-20px;">${resp.data.transmission}</span>
+                            </div>`;
+                        htmlManufacturingYear = `
+                            <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 2px;">
+                                <div style="display: flex; align-items: center; gap: 5px;">
+                                    <img src="<?=base_url()?>public/uploads/product_images/Badges.png" width="30" alt="Badge Icon">
+                                    <small style="font-size: 12px;margin-top:-10px;">Year of Manufacture</small>
+                                </div>
+                                <span class="elementor-icon-list-text" style="font-size: 14px;margin-left:35px;margin-top:-20px;">${resp.data.manufacturing_year}</span>
                             </div>`;
 
                 if((resp.data.base_price)!=null && (resp.data.base_discount)!=null && (resp.data.tax)!=null){
@@ -81,25 +164,25 @@
                     totalPrice= discountedPrice+(resp.data.tax*discountedPrice/100);
                     let finalPrice = parseFloat(totalPrice.toFixed(2));
                     htmlPrice=`<div class="price-details">
-    <div class="price-summary">
-        <span>
-            <small id="price_label">Base Price</small>
-            <b>₹ ${resp.data.base_price}</b>
-        </span>
-        <span>
-            <small id="price_label">Discount</small>
-            <b>${resp.data.base_discount}%</b>
-        </span>
-        <span>
-            <small id="price_label">Tax</small>
-            <b>${resp.data.tax}%</b>
-        </span>
-    </div>
-    <div class="total-price">
-        <small id="price_label">Total Price</small>
-        <b>₹ ${finalPrice}</b>
-    </div>
-</div>
+                                    <div class="price-summary">
+                                        <span>
+                                            <small id="price_label">Base Price</small>
+                                            <b>₹ ${resp.data.base_price}</b>
+                                        </span>
+                                        <span>
+                                            <small id="price_label">Discount</small>
+                                            <b>${resp.data.base_discount}%</b>
+                                        </span>
+                                        <span>
+                                            <small id="price_label">Tax</small>
+                                            <b>${resp.data.tax}%</b>
+                                        </span>
+                                    </div>
+                                    <div class="total-price">
+                                        <small id="price_label">Total Price</small>
+                                        <b>₹ ${finalPrice}</b>
+                                    </div>
+                                </div>
 
 
                                 `
@@ -110,18 +193,28 @@
                 $('#product_description').html(htmlDesc)
                 $('#product_doors').html(htmlDoors)
                 // $('#product_title_2').html(htmlTitle)
-                $('#car_make').html(htmlmake)
-                $('#car_model').html(htmlmodel)
+                $('#car_model').html(htmlTitle)
+                $('#car_make').html(htmlmodel)
+                $('#car_price').html(`₹ ${resp.data.base_price} ${resp.data.price_unit}`)
+                $('#registration_span').html(htmlRegistration)
+                $('#insurance_span').html(htmlInsurance)
+                $('#seats_span').html(htmlSeats)
+                $('#driven_span').html(htmlDriven)
+                $('#rto_span').html(htmlRto)
+                $('#ownership_span').html(htmlOwnership)
+                $('#engine_displacement_span').html(htmlDisplacement)
+                $('#transmission_span').html(htmlTransmission)
+                $('#manufacturing_year_span').html(htmlManufacturingYear)
                 $('#year_span').html(htmlyear)
                 $('#mileage_span').html(htmlmileage)
                 $('#location_span').html(htmllocation)
                 $('#badge_span').html(htmlbadge)
-                $('#product_price').html(htmlPrice)
-                $('#product_title_big').html(htmlTitle)
+                // $('#product_price').html(htmlPrice)
+                // $('#product_title_big').html(htmlTitle)
                 $('#doors_span').html(htmlDoors)
-                $('#make_icon').attr('src',makeIconsrc)
-                $('#make_icon').attr('src',makeIconsrc)
-                $('#model_icon').attr('src',modelIconsrc)
+                // $('#make_icon').attr('src',makeIconsrc)
+                // $('#make_icon').attr('src',makeIconsrc)
+                // $('#model_icon').attr('src',modelIconsrc)
             } else {
                 console.log(resp)
             }
