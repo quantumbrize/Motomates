@@ -44,7 +44,7 @@
                htmlmodel=`${resp.data.model}`
                         htmlyear=`<div style="display: flex; flex-direction: column; align-items: flex-start; gap: 2px;">
                             <div style="display: flex; align-items: center; gap: 5px;">
-                                <img src="<?=base_url()?>public/uploads/product_images/Year.png" width="30" alt="Year Icon">
+                                <i class="fa-solid fa-gears"></i>
                                 <small style="font-size: 12px;margin-top:-10px;">Engine</small>
                             </div>
                             <span class="elementor-icon-list-text" style="font-size: 14px;margin-left:35px;margin-top:-20px;">${resp.data.engine}</span>
@@ -53,7 +53,7 @@
                         htmlmileage = `
                             <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 2px;">
                                 <div style="display: flex; align-items: center; gap: 5px;">
-                                    <img src="<?=base_url()?>public/uploads/product_images/Mileage.png" width="30" alt="Mileage Icon">
+                                    <i class="fa-solid fa-bolt"></i>
                                     <small style="font-size: 12px;margin-top:-10px;">Power</small>
                                 </div>
                                 <span class="elementor-icon-list-text" style="font-size: 14px;margin-left:35px;margin-top:-20px;">${resp.data.power}</span>
@@ -62,7 +62,7 @@
                         htmllocation = `
                             <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 2px;">
                                 <div style="display: flex; align-items: center; gap: 5px;">
-                                    <img src="<?=base_url()?>public/uploads/product_images/Location.png" width="30" alt="Location Icon">
+                                    <i class="fa-solid fa-road"></i>
                                     <small style="font-size: 12px;margin-top:-10px;">Mileage</small>
                                 </div>
                                 <span class="elementor-icon-list-text" style="font-size: 14px;margin-left:35px;margin-top:-20px;">${resp.data.mileage} Km/l</span>
@@ -71,7 +71,7 @@
                         htmlDoors = `
                             <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 2px;">
                                 <div style="display: flex; align-items: center; gap: 5px;">
-                                    <img src="<?=base_url()?>public/uploads/product_images/Doors.png" width="30" alt="Doors Icon">
+                                    <i class="fa-solid fa-gas-pump"></i>
                                     <small style="font-size: 12px;margin-top:-10px;">Fuel</small>
                                 </div>
                                 <span class="elementor-icon-list-text" style="font-size: 14px;margin-left:35px;margin-top:-20px;">${resp.data.fuel}</span>
@@ -80,16 +80,16 @@
                         htmlbadge = `
                             <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 2px;">
                                 <div style="display: flex; align-items: center; gap: 5px;">
-                                    <img src="<?=base_url()?>public/uploads/product_images/Badges.png" width="30" alt="Badge Icon">
+                                    <i class="fa-solid fa-car-side"></i>
                                     <small style="font-size: 12px;margin-top:-10px;">No. of Air Bags</small>
                                 </div>
                                 <span class="elementor-icon-list-text" style="font-size: 14px;margin-left:35px;margin-top:-20px;">${resp.data.airbags}</span>
                             </div>`;
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                         htmlRegistration = `
                             <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 2px;">
                                 <div style="display: flex; align-items: center; gap: 5px;">
-                                    <img src="<?=base_url()?>public/uploads/product_images/Badges.png" width="30" alt="Badge Icon">
+                                    <i class="fa-solid fa-calendar"></i>
                                     <small style="font-size: 12px;margin-top:-10px;">Registration</small>
                                 </div>
                                 <span class="elementor-icon-list-text" style="font-size: 14px;margin-left:35px;margin-top:-20px;">${resp.data.registration}</span>
@@ -97,7 +97,7 @@
                         htmlInsurance = `
                             <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 2px;">
                                 <div style="display: flex; align-items: center; gap: 5px;">
-                                    <img src="<?=base_url()?>public/uploads/product_images/Badges.png" width="30" alt="Badge Icon">
+                                    <i class="fa-solid fa-shield"></i>
                                     <small style="font-size: 12px;margin-top:-10px;">Insurance</small>
                                 </div>
                                 <span class="elementor-icon-list-text" style="font-size: 14px;margin-left:35px;margin-top:-20px;">${resp.data.insurance}</span>
@@ -105,7 +105,7 @@
                         htmlSeats = `
                             <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 2px;">
                                 <div style="display: flex; align-items: center; gap: 5px;">
-                                    <img src="<?=base_url()?>public/uploads/product_images/Badges.png" width="30" alt="Badge Icon">
+                                    <i class="fa-solid fa-chair"></i>
                                     <small style="font-size: 12px;margin-top:-10px;">Seats</small>
                                 </div>
                                 <span class="elementor-icon-list-text" style="font-size: 14px;margin-left:35px;margin-top:-20px;">${resp.data.seats}</span>
@@ -113,7 +113,7 @@
                         htmlDriven = `
                             <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 2px;">
                                 <div style="display: flex; align-items: center; gap: 5px;">
-                                    <img src="<?=base_url()?>public/uploads/product_images/Badges.png" width="30" alt="Badge Icon">
+                                    <i class="fa-solid fa-tachometer-alt"></i>
                                     <small style="font-size: 12px;margin-top:-10px;">Kilometers Driven</small>
                                 </div>
                                 <span class="elementor-icon-list-text" style="font-size: 14px;margin-left:35px;margin-top:-20px;">${resp.data.driven}</span>
@@ -121,7 +121,7 @@
                         htmlRto = `
                             <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 2px;">
                                 <div style="display: flex; align-items: center; gap: 5px;">
-                                    <img src="<?=base_url()?>public/uploads/product_images/Badges.png" width="30" alt="Badge Icon">
+                                    <i class="fa-solid fa-building"></i>
                                     <small style="font-size: 12px;margin-top:-10px;">RTO</small>
                                 </div>
                                 <span class="elementor-icon-list-text" style="font-size: 14px;margin-left:35px;margin-top:-20px;">${resp.data.rto}</span>
@@ -129,7 +129,7 @@
                         htmlOwnership = `
                             <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 2px;">
                                 <div style="display: flex; align-items: center; gap: 5px;">
-                                    <img src="<?=base_url()?>public/uploads/product_images/Badges.png" width="30" alt="Badge Icon">
+                                    <i class="fa-solid fa-user"></i>
                                     <small style="font-size: 12px;margin-top:-10px;">Ownership</small>
                                 </div>
                                 <span class="elementor-icon-list-text" style="font-size: 14px;margin-left:35px;margin-top:-20px;">${resp.data.ownership}</span>
@@ -137,7 +137,7 @@
                         htmlDisplacement = `
                             <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 2px;">
                                 <div style="display: flex; align-items: center; gap: 5px;">
-                                    <img src="<?=base_url()?>public/uploads/product_images/Badges.png" width="30" alt="Badge Icon">
+                                    <i class="fa-solid fa-cogs"></i>
                                     <small style="font-size: 12px;margin-top:-10px;">Engine Displacement</small>
                                 </div>
                                 <span class="elementor-icon-list-text" style="font-size: 14px;margin-left:35px;margin-top:-20px;">${resp.data.engine_displacement}</span>
@@ -145,7 +145,7 @@
                         htmlTransmission = `
                             <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 2px;">
                                 <div style="display: flex; align-items: center; gap: 5px;">
-                                    <img src="<?=base_url()?>public/uploads/product_images/Badges.png" width="30" alt="Badge Icon">
+                                    <i class="fa-solid fa-cog"></i>
                                     <small style="font-size: 12px;margin-top:-10px;">Transmission</small>
                                 </div>
                                 <span class="elementor-icon-list-text" style="font-size: 14px;margin-left:35px;margin-top:-20px;">${resp.data.transmission}</span>
@@ -153,7 +153,7 @@
                         htmlManufacturingYear = `
                             <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 2px;">
                                 <div style="display: flex; align-items: center; gap: 5px;">
-                                    <img src="<?=base_url()?>public/uploads/product_images/Badges.png" width="30" alt="Badge Icon">
+                                    <i class="fa-solid fa-calendar-days"></i>
                                     <small style="font-size: 12px;margin-top:-10px;">Year of Manufacture</small>
                                 </div>
                                 <span class="elementor-icon-list-text" style="font-size: 14px;margin-left:35px;margin-top:-20px;">${resp.data.manufacturing_year}</span>
@@ -632,7 +632,8 @@
 
     function submit_enquiry() {
         const urlParams = new URLSearchParams(window.location.search);
-        const serviceId = urlParams.get('service_uid');
+        const serviceId = urlParams.get('product_uid');
+        // alert(serviceId)
         let formData = new FormData();
         formData.append('enquiry_name', $('#enquiry_name').val());
         formData.append('enquiry_email', $('#enquiry_email').val());
@@ -692,10 +693,17 @@
             }
         });
     }
-    document.getElementById('whatsappIcon').addEventListener('click', function() {
-        openPopup('popup1');
-        // window.open(`https://wa.me/${whatsapp_number}?text=Hello%20there!`, "_blank");
-    });
+    // document.getElementById('whatsappIcon').addEventListener('click', function() {
+    //     // openPopup('popup1');
+    //     alert(whatsapp_number)
+    //     window.open(`https://wa.me/${whatsapp_number}?text=Hello%20there!`, "_blank");
+    // });
+
+    function redirect_whatsapp(){
+        // alert('hello')
+        // alert(whatsapp_number)
+        window.open(`https://wa.me/${whatsapp_number}?text=Hello%20there!`, "_blank");
+    }
 
     document.getElementById('enquiryButton').addEventListener('click', function() {
         openPopup('enquiryPopup');

@@ -135,4 +135,10 @@
         object-fit: cover;
         /* Ensure the image covers the container */
     }
+
+    @media (min-width: 1024px) {
+        .service_image{
+            max-width: 50% !important;
+        }
+    }
 </style>

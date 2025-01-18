@@ -7,6 +7,7 @@
         loadBannerImages()
         load_all_services();
         load_all_products();
+        categories();
         
     })
     function get_promotion_card(){
@@ -461,6 +462,49 @@
         });
     }); 
 })
+
+    function categories() {
+        $.ajax({
+            url: "<?= base_url('/api/categories') ?>",
+            type: "GET",
+            beforeSend: function () { },
+            success: function (resp) {
+                if (resp.status) {
+                    // console.log(resp)
+                    html = ``
+                    $.each(resp.data, function (index, item) {
+                        // html += `<div class="swiper-slide category category-classic category-absolute overlay-zoom br-xs">
+                        //             <a href="<?= base_url('product/category?c_id=') ?>${item.uid}" class="category-media">
+                        //                 <img src="<?= base_url('public/uploads/category_images/') ?>${item.img_path}" alt="Category" width="130" height="130">
+                        //             </a> <br>
+                        //             <div class="category-content">
+                                        
+                        //                 <a href="<?= base_url('product/category?c_id=') ?>${item.uid}" class="btn btn-primary btn-link btn-underline">Shop
+                        //                     Now</a>
+                        //             </div>
+                        //             <h4 class="category-name" style="color:#000;">${item.name}</h4>
+                        //         </div>`
+                        if(item.uid != 'CAT62B2D1AA20241212'){
+                            html += `<a href="${item.link}" target="__blank">
+                                    <div class="service-item">
+                                        <img src="<?= base_url('public/uploads/category_images/') ?>${item.img_path}" class="service_image" alt="Car Cleaning">
+                                        <p>${item.name}</p>
+                                    </div>
+                                </a>`
+                        }
+                        
+                    })
+                    $('#all_categoris').html(html)
+
+                }
+            },
+            error: function (err) {
+                console.error(err)
+            }
+        })
+
+
+    }
 
 
     function load_all_services() {

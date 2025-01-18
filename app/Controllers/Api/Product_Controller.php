@@ -481,34 +481,40 @@ class Product_Controller extends Api_Controller
     foreach ($data['products'] as $index => $product) {
         $product_update_data = [
             'name' => $product['productName'],
-            'category_id' => $product['category'],
         ];
 
         $product_item_update_data = [
-            'manufacturer_name' => $product['storeName'],
-            'tax' => $product['tax'],
-            'discount' => $product['discount'],
             'price' => $product['price'],
+            'price_unit' => $product['priceUnit'],
         ];
 
         $car_specification_data = [
-            'make' => $product['make'],
-            'model' => $product['model'],
-            'year' => $product['year'],
             'mileage' => $product['mileage'],
-            'location' => $product['location'],
-            'doors' => $product['doors'],
-            'badges' => $product['badges'],
+            'engine' => $product['engine'],
+            'power' => $product['power'],
+            'fuel' => $product['fuel'],
+            'airbags' => $product['airBags'],
+            'overview' => $product['overView'],
+            'registration' => $product['registration'],
+            'insurance' => $product['insurance'],
+            'seats' => $product['seats'],
+            'driven' => $product['kiloDriven'],
+            'rto' => $product['rto'],
+            'ownership' => $product['ownership'],
+            'engine_displacement' => $product['engineDisplacement'],
+            'transmission' => $product['transmission'],
+            'manufacturing_year' => $product['manufacturingYear'],
         ];
-        foreach (['make', 'model', 'year', 'mileage', 'location', 'doors', 'badge'] as $field) {
-            if (!empty($uploadedFiles['products'][$index]["{$field}_icon"])) {
-                $file = $uploadedFiles['products'][$index]["{$field}_icon"];
-                if ($file->isValid()) {
-                    $file_src = $this->single_upload($file, 'public/uploads/product_images');
-                    $car_specification_data["{$field}_icon"] = $file_src;
-                }
-            }
-        }
+        // $this->prd($car_specification_data);
+        // foreach (['make', 'model', 'year', 'mileage', 'location', 'doors', 'badge'] as $field) {
+        //     if (!empty($uploadedFiles['products'][$index]["{$field}_icon"])) {
+        //         $file = $uploadedFiles['products'][$index]["{$field}_icon"];
+        //         if ($file->isValid()) {
+        //             $file_src = $this->single_upload($file, 'public/uploads/product_images');
+        //             $car_specification_data["{$field}_icon"] = $file_src;
+        //         }
+        //     }
+        // }
 
         // Update queries
         $ProductModel->set($product_update_data)
@@ -2916,15 +2922,17 @@ private function service_update($data)
             $resp['message'] = 'No Service service_id';
         } else {
             $enquiry_uid = $this->generate_uid('ENQUSR');
-    
-            $ServiceModel = new ServiceModel();
-            $service = $ServiceModel->where('uid', $data['service_id'])->first();
-    
+            // $this->prd($data['service_id']);
+            $ProductModel = new ProductModel();
+            $service = $ProductModel->where('uid', $data['service_id'])->first();
+            // $ServiceModel = new ServiceModel();
+            // $service = $ServiceModel->where('uid', $data['service_id'])->first();
+            // $this->prd($service);
             if (!$service) {
                 $resp['message'] = 'Service not found.';
             }
-    
-            $service_title = $service['service_title'];
+            
+            $service_title = $service['name'];
     
             $enquiry_data = [
                 'uid' => $enquiry_uid,

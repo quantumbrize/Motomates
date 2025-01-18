@@ -299,13 +299,13 @@
                             aria-expanded="<?= isset($sidebar['products']) ? 'true' : 'false' ?>"
                             aria-controls="sidebarProduct">
                             <i class="ri-archive-line"></i>
-                            <span>Products</span>
+                            <span>Cars</span>
                         </a>
                         <div class="<?= isset($sidebar['products']) ? '' : 'collapse' ?> menu-dropdown" id="sidebarProduct">
                             <ul class="nav nav-sm flex-column">
                                 <li class="nav-item">
                                     <a href="<?= base_url('/admin/product/list') ?>" class="nav-link">
-                                        All Products
+                                        All Cars
                                     </a>
                                 </li>
                                 <!-- <li class="nav-item">
@@ -326,13 +326,13 @@
                                 aria-expanded="<?= isset($sidebar['products']) ? 'true' : 'false' ?>"
                                 aria-controls="sidebarProduct">
                                 <i class="ri-archive-line"></i>
-                                <span>Products</span>
+                                <span>Cars</span>
                             </a>
                             <div class="<?= isset($sidebar['products']) ? '' : 'collapse' ?> menu-dropdown" id="sidebarProduct">
                                 <ul class="nav nav-sm flex-column">
                                     <li class="nav-item">
                                         <a href="<?= base_url('/admin/product/list') ?>" class="nav-link">
-                                            All Products
+                                            All Cars
                                         </a>
                                     </li>
                                     <!-- <li class="nav-item">

@@ -3,6 +3,12 @@
     #company_logo {
         width: 180px; /* Adjust the width as needed */
     }
+
+    /* @media (max-width: 1024px) {
+      .categories-mobile-sidebar{
+        display: none !important;
+      }
+    } */
 </style>
 <body
 	class="page-template page-template-elementor_header_footer page page-id-776 wp-custom-logo tt-magic-cursor novaride-light elementor-default elementor-template-full-width elementor-kit-8 elementor-page elementor-page-776">
@@ -56,27 +62,34 @@
 										<i aria-hidden="true" class="ekit-menu-icon icon icon-menu-11"></i> </button>
 									<div id="ekit-megamenu-header-menu"
 										class="elementskit-menu-container elementskit-menu-offcanvas-elements elementskit-navbar-nav-default ekit-nav-menu-one-page-no ekit-nav-dropdown-hover">
-										<ul id="menu-header-menu"
-											class="elementskit-navbar-nav elementskit-menu-po-center submenu-click-on-icon">
+										<ul id="menu-header-menu" class="elementskit-navbar-nav elementskit-menu-po-center submenu-click-on-icon">
 											<li id="menu-item-8428"
 												class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-8428 nav-item elementskit-dropdown-has relative_position elementskit-dropdown-menu-default_width elementskit-mobile-builder-content"
 												data-vertical-menu="750px"><a href="<?= base_url()?>"
 													class="ekit-menu-nav-link ekit-menu-dropdown-toggle">Home</a>
 											</li>
-                                            <li id="menu-item-4586"
+                      <li id="menu-item-4586"
 												class="menu-item menu-item-type-post_type menu-item-object-page page_item page-item-776 current_page_item menu-item-4586 nav-item elementskit-mobile-builder-content"
 												data-vertical-menu="750px"><a href="<?= base_url()?>about-us"
 													class="ekit-menu-nav-link">About Us</a></li>
-											<li id="menu-item-7722"
+                        <!-- <li id="menu-item-7722"
+                          class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-7722 nav-item elementskit-dropdown-has relative_position elementskit-dropdown-menu-default_width elementskit-mobile-builder-content"
+                          data-vertical-menu="750px"><a href="<?= base_url()?>all/service"
+                            class="ekit-menu-nav-link ekit-menu-dropdown-toggle">Service</a>
+                          <ul id="service_pages" class="elementskit-dropdown elementskit-submenu-panel">
+                            
+                          </ul>
+                        </li> -->
+                      <li id="menu-item-7722"
 												class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-7722 nav-item elementskit-dropdown-has relative_position elementskit-dropdown-menu-default_width elementskit-mobile-builder-content"
-												data-vertical-menu="750px"><a href="<?= base_url()?>all/service"
-													class="ekit-menu-nav-link ekit-menu-dropdown-toggle">Service</a>
-												<ul id="service_pages" class="elementskit-dropdown elementskit-submenu-panel">
+												data-vertical-menu="750px"><a href="javascript:void(0)"
+													class="ekit-menu-nav-link ekit-menu-dropdown-toggle">Service<i class="fa-solid fa-chevron-down"></i></a>
+												<ul id="categories_list_header" class="elementskit-dropdown elementskit-submenu-panel">
 													
 												</ul>
 											</li>
 											
-										    <li id="menu-item-4586"
+										  <!-- <li id="menu-item-4586"
 												class="menu-item menu-item-type-post_type menu-item-object-page page_item page-item-776 current_page_item menu-item-4586 nav-item elementskit-mobile-builder-content"
 												data-vertical-menu="750px"><a href="https://motomates.in/single-service?service_uid=SERPAG0A175DD220241218"
 													class="ekit-menu-nav-link">Car Cleaning</a>
@@ -140,15 +153,11 @@
 												data-vertical-menu="750px">
 												<a href="<?= base_url()?>cars" class="ekit-menu-nav-link ekit-menu-dropdown-toggle">Pre-Delivery Inspection</a>
 											
-											</li>
+											</li> 
 											<li id="menu-item-4588"
 												class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4588 nav-item elementskit-mobile-builder-content"
 												data-vertical-menu="750px"><a href="<?= base_url()?>contact-us"
-													class="ekit-menu-nav-link">Contact Us</a></li>
-											<!--<li id="menu-item-6883"
-												class="mobile-menu menu-item menu-item-type-custom menu-item-object-custom menu-item-6883 nav-item elementskit-mobile-builder-content"
-												data-vertical-menu="750px"><a href="<?= base_url()?>book-a-rental" class="ekit-menu-nav-link">Book A
-													Rental</a></li>-->
+													class="ekit-menu-nav-link">Contact Us</a></li> -->
 										</ul>
 										<div class="elementskit-nav-identity-panel">
 											<div class="elementskit-site-title">
@@ -227,7 +236,7 @@
     //     console.log(err)
     //   },
     // })
-	
+  let whatsapp_number = ""
 	$.ajax({
       url: "<?= base_url('/api/about') ?>",
       type: "GET",
@@ -235,6 +244,7 @@
         console.log('aboutdata',resp)
         if (resp.status) {
         //   $('#about_description_footer').html(resp.data.about_description)
+        whatsapp_number = resp.data.phone2
           let newLogoSrc = `<?= base_url() ?>public/uploads/logo/${resp.data.logo}`;
           $('#company_logo').attr('src', newLogoSrc);
           $('#footer_company_logo').attr('src', newLogoSrc);
@@ -246,7 +256,7 @@
           $('#home_about_text').html(resp.data.about_description);
           $('#home_mission_text').html(resp.data.mission);
           $('#home_vision_text').html(resp.data.vision);
-		  $('#about_about_text').html(resp.data.about_description);
+		      $('#about_about_text').html(resp.data.about_description);
           $('#about_mission_text').html(resp.data.mission);
           $('#about_vision_text').html(resp.data.vision);
           $('#contact_us_contact_number').html(resp.data.phone1);
@@ -395,6 +405,7 @@
         font-size: 8px !important;
       }
     }
+    
   </style>
 
   <script>
@@ -497,7 +508,7 @@ load_all_service_details();
             // Optional: Any additional steps after the request is complete.
         }
     });
-}
+  }
 
 function get_parent_categories() {
 	// alert(1)
@@ -506,27 +517,60 @@ function get_parent_categories() {
         type: "GET",
         success: function (resp) {
             let html = '';
+            let html2 = '';
             if (resp.status && resp.data.length > 0) {
                 $.each(resp.data, (index, category) => {
                     console.log('categories', category);
-                    html += `
-					<li id="menu-item-${category.id}"
-                            class="menu-item menu-item-type-post_type_archive menu-item-object-cars nav-item elementskit-mobile-builder-content">
-                            <a href="<?= base_url()?>all-categories" class="dropdown-item">
-                                ${category.name}
-                            </a>
-                        </li>`;
+                    // html += `<li id="menu-item-${category.id}"
+                    //         class="menu-item menu-item-type-post_type_archive menu-item-object-cars nav-item elementskit-mobile-builder-content">
+                    //         <a href="<?= base_url()?>all-categories" class="dropdown-item">
+                    //             ${category.name}
+                    //         </a>
+                    //     </li>`;
+                    if(category.uid != 'CAT62B2D1AA20241212'){
+                      html += `<li id="menu-item-6732"
+                                  class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6732 nav-item elementskit-mobile-builder-content"
+                                  data-vertical-menu="750px">
+                                  <a href="${category.link}" target="__blank"
+                                    class=" dropdown-item"> ${category.name}</a>
+                              </li>`;
+                      html2 += `<li id="menu-item-4586"
+                                  class="categories-mobile-sidebar menu-item menu-item-type-post_type menu-item-object-page page_item page-item-776 current_page_item menu-item-4586 nav-item elementskit-mobile-builder-content"
+                                  data-vertical-menu="750px"><a href="${category.link}" target="__blank"
+                                    class="ekit-menu-nav-link">${category.name}</a>
+                                </li>`;
+                    }
                 });
             } else {
                 // Display a message if no categories are found
                 html = '<li class="no-categories">No categories available</li>';
             }
-
-			// document.getElementById('categories_list_header').innerHTML = '<p>hi</p>'
-
-            // Append categories to the categories list header
-            // $('#categories_list_header').html('<p>hi</p>');
-            $('#categories_list_header').html(html);
+            html2 += `<div class="elementor-widget-container">
+								<div class="elementor-button-wrapper">
+									<a class="elementor-button elementor-button-link elementor-size-sm" href="<?=base_url() ?>book-a-rental/">
+										<span class="elementor-button-content-wrapper">
+											<span class="elementor-button-icon">
+												<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14"
+													viewbox="0 0 14 14" fill="none">
+													<path
+														d="M11.6654 3.97592L1.64141 13.9999L-0.00537109 12.3531L10.0174 2.32914H1.18372V-0.00012207H13.9946V12.8108H11.6654V3.97592Z"
+														fill="white"></path>
+												</svg> </span>
+											<span class="elementor-button-text">book a rental</span>
+										</span>
+									</a>
+								</div>
+							</div>`
+            const width = window.innerWidth;
+            if (width <= 768) {
+              $('#menu-header-menu').append(html2);
+            } else if (width <= 1024) {
+              $('#menu-header-menu').append(html2);
+            } else {
+              $('#categories_list_header').html(html);
+            }
+            
+            
 
         },
         error: function (err) {

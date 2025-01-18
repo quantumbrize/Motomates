@@ -51,7 +51,7 @@ class Category_Controller extends Api_Controller
         return $categories;
     }
 
-    private function addCategory($parent_id, $category_name)
+    private function addCategory($parent_id, $category_name, $category_link)
     {   
         $uploadedFiles = $this->request->getFiles();
 
@@ -59,7 +59,8 @@ class Category_Controller extends Api_Controller
             'uid' => $this->generate_uid(UID_CATEGORY),
             'name' => $category_name,
             'parent_id' => !empty($parent_id) ? $parent_id : '',
-            'img_path' => $this->single_upload($uploadedFiles['images'][0], PATH_CATEGORY_IMG)
+            'img_path' => $this->single_upload($uploadedFiles['images'][0], PATH_CATEGORY_IMG),
+            'link' => $category_link
         ];
         $categoriesModel = new CategoriesModel();
         $add = $categoriesModel->insert($data);
@@ -83,7 +84,7 @@ class Category_Controller extends Api_Controller
     }
 
 
-    private function updateCategory($category_id, $name)
+    private function updateCategory($category_id, $name, $link)
     {
 
         $categoriesModel = new CategoriesModel();
@@ -95,6 +96,7 @@ class Category_Controller extends Api_Controller
             }
             // Update the properties of the loaded record
             $category['name'] = $name;
+            $category['link'] = $link;
             // Save the changes
             $categoriesModel->save($category);
             return true;
@@ -238,7 +240,8 @@ class Category_Controller extends Api_Controller
     {
         $parent_id = !empty($this->request->getPost('parent_id')) ? $this->request->getPost('parent_id') : null;
         $category_name = !empty($this->request->getPost('category_name')) ? $this->request->getPost('category_name') : null;
-        $addData = $this->addCategory($parent_id, $category_name);
+        $category_link = !empty($this->request->getPost('category_link')) ? $this->request->getPost('category_link') : "";
+        $addData = $this->addCategory($parent_id, $category_name, $category_link);
         $response = [
             'status' => !empty($addData),
             'message' => !empty($addData) ? 'categories added' : 'categories not added',
@@ -251,7 +254,8 @@ class Category_Controller extends Api_Controller
     {
         $category_id = $this->request->getPost('category_id');
         $name = $this->request->getPost('name');
-        $update = $this->updateCategory($category_id, $name);
+        $link = $this->request->getPost('link');
+        $update = $this->updateCategory($category_id, $name, $link);
         $response = [
             'status' => $update,
             'message' => $update ? 'categories updated' : 'categories not updated',

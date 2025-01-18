@@ -457,66 +457,62 @@
 
             rows.forEach(row => {
                 const productId = row.cells[0].children[1].value;
+                // const productName = row.cells[1].children[0].value;
+                // const storeName = row.cells[2].children[0].value;
+                // const make = row.cells[3].children[0].value;
+                // const model = row.cells[4].children[0].value;
+                // const year = row.cells[5].children[0].value;
+                // const mileage = row.cells[6].children[0].value;
+                // const location = row.cells[7].children[0].value;
+                // const doors = row.cells[8].children[0].value;
+                // const badges = row.cells[9].children[0].value;
+                // const category = row.cells[10].children[1].value;
+                // const tax= row.cells[11].children[0].value;
+                // const discount=row.cells[12].children[0].value;
+                // const price=row.cells[13].children[0].value;
+                // ///////////////////////////////////////////////////////////////////////////////////////////////////////////
+
                 const productName = row.cells[1].children[0].value;
-                // const price = row.cells[2].children[0].value;
-                // const discount = row.cells[3].children[0].value;
-                // const visibility = row.cells[3].children[0].value;
-                const storeName = row.cells[2].children[0].value;
-                const make = row.cells[3].children[0].value;
-                const model = row.cells[4].children[0].value;
-                const year = row.cells[5].children[0].value;
+                const price = row.cells[2].children[0].value;
+                const priceUnit = row.cells[3].children[0].value;
+                const engine = row.cells[4].children[0].value;
+                const power = row.cells[5].children[0].value;
                 const mileage = row.cells[6].children[0].value;
-                const location = row.cells[7].children[0].value;
-                const doors = row.cells[8].children[0].value;
-                const badges = row.cells[9].children[0].value;
-                // const barCode = row.cells[3].children[0].value;
-                const category = row.cells[10].children[1].value;
-                // const size = row.cells[5].children[0].value;
-                // const qty = row.cells[8].children[0].value;
-                // const tags = row.cells[6].children[0].value;
-                const tax= row.cells[11].children[0].value;
-                const discount=row.cells[12].children[0].value;
-                // const delivery_charge=row.cells[9].children[0].value;  
-                const price=row.cells[13].children[0].value;  
-                // const makeIcon = row.querySelector("#make_icon").files[0]; // Make icon
-                // const modelIcon = row.querySelector("#model_icon").files[0]; // Model icon
-                // const yearIcon = row.querySelector("#year_icon").files[0]; // Year icon
-                // const mileageIcon = row.querySelector("#mileage_icon").files[0]; // Mileage icon
-                // const locationIcon = row.querySelector("#location_icon").files[0]; // Location icon
-                // const doorsIcon = row.querySelector("#doors_icon").files[0]; // Doors icon
-                // const badgeIcon = row.querySelector("#badge_icon").files[0]; 
+                const fuel = row.cells[7].children[0].value;
+                const airBags = row.cells[8].children[0].value;
+                const overView = row.cells[9].children[0].value;
+                const registration = row.cells[10].children[0].value;
+                const insurance = row.cells[11].children[0].value;
+                const seats = row.cells[12].children[0].value;
+                const kiloDriven = row.cells[13].children[0].value;
+                const rto = row.cells[14].children[0].value;
+                const ownership = row.cells[15].children[0].value;
+                const engineDisplacement = row.cells[16].children[0].value;
+                const transmission = row.cells[17].children[0].value;
+                const manufacturingYear = row.cells[18].children[0].value;
                  
 
 
                 products.push({
                     productName,
                     productId,
-                    // price,
-                    // discount,
-                    storeName,
-                    make,
-                    model,
-                    year,
-                    mileage,
-                    location,
-                    doors,
-                    badges,
-                    // barCode,
-                    category,
-                    // size,
-                    // qty,
-                    // tags,
-                    tax,
-                    discount,
-                    // delivery_charge,
                     price,
-                    // make_icon: makeIcon,
-                    // model_icon: modelIcon,
-                    // year_icon: yearIcon,
-                    // mileage_icon: mileageIcon,
-                    // location_icon: locationIcon,
-                    // doors_icon: doorsIcon,
-                    // badge_icon: badgeIcon,
+                    priceUnit,
+                    engine,
+                    power,
+                    mileage,
+                    fuel,
+                    airBags,
+                    overView,
+                    registration,
+                    insurance,
+                    seats,
+                    kiloDriven,
+                    rto,
+                    ownership,
+                    engineDisplacement,
+                    transmission,
+                    manufacturingYear,
                     
                 });
 
@@ -524,36 +520,26 @@
 
             let selectedProducts = products.filter(product => values.includes(product.productId));
             let isValid = true;
-             
-
+            
             selectedProducts.forEach(product => {
-                const productName = product.productName; 
-                // const price = product.price; 
-                // const discount = product.discount; 
-                const storeName = product.storeName; 
-                const make = product.make; 
-                const model = product.model; 
-                const year = product.year; 
+                const productName = product.productName;
+                const price = product.storeName; 
+                const priceUnit = product.priceUnit; 
+                const engine = product.engine; 
+                const power = product.power; 
                 const mileage = product.mileage; 
-                const location = product.location; 
-                const doors = product.doors; 
-                const badges = product.badges; 
-                // const barCode = product.barCode;
-                // const size = product.size;
-                const category = product.category;
-                // const qty = product.qty;
-                // const tags = product.tags;
-                const tax=product.tax;
-                const discount= product.discount;  
-                // const delivery_charge= product.delivery_charge;
-                const price= product.price;
-                // const makeIcon = make_icon; // Make icon
-                // const modelIcon = model_icon; // Model icon
-                // const yearIcon = year_icon; // Year icon
-                // const mileageIcon = mileage_icon; // Mileage icon
-                // const locationIcon = location_icon; // Location icon
-                // const doorsIcon = doors_icon; // Doors icon
-                // const badgeIcon = badge_icon;
+                const fuel = product.fuel; 
+                const airBags = product.airBags; 
+                const overView = product.overView;
+                const registration = product.registration;
+                const insurance = product.insurance;
+                const seats = product.seats;
+                const kiloDriven = product.kiloDriven;
+                const rto = product.rto;
+                const ownership = product.ownership;
+                const engineDisplacement = product.engineDisplacement;
+                const transmission = product.transmission;
+                const manufacturingYear = product.manufacturingYear;
                 
 
                 // Validate product name
@@ -565,55 +551,19 @@
                     isValid = false;
                 }
 
-                // Validate price (must be a positive number)
-                // if (!price || isNaN(price) || parseFloat(price) <= 0) {
-                //     html += `<div class="alert alert-warning alert-dismissible alert-label-icon label-arrow fade show material-shadow" role="alert">
-                //                 <i class="ri-alert-line label-icon"></i><strong>Warning</strong> - Price must be a positive number for Product Update.
-                //                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                //             </div>`;
-                //     isValid = false;
-                // }
-
-                // Validate discount (must be a non-negative number)
-                // if (discount && (isNaN(discount) || parseFloat(discount) < 0)) {
-                //     html += `<div class="alert alert-warning alert-dismissible alert-label-icon label-arrow fade show material-shadow" role="alert">
-                //                 <i class="ri-alert-line label-icon"></i><strong>Warning</strong> - Discount must be a non-negative number for Product Update
-                //                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                //             </div>`;
-                //     isValid = false;
-                // }
-
                 // Validate store name
-                if (!storeName) {
-                    html += `<div class="alert alert-warning alert-dismissible alert-label-icon label-arrow fade show material-shadow" role="alert">
-                                <i class="ri-alert-line label-icon"></i><strong>Warning</strong> - Store name is required for Product Update
-                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                            </div>`;
-                    isValid = false;
-                }
-
-                // Validate barcode
-                // if (!barCode) {
+                // if (!storeName) {
                 //     html += `<div class="alert alert-warning alert-dismissible alert-label-icon label-arrow fade show material-shadow" role="alert">
-                //                 <i class="ri-alert-line label-icon"></i><strong>Warning</strong> - Barcode is required for Product Update
+                //                 <i class="ri-alert-line label-icon"></i><strong>Warning</strong> - Store name is required for Product Update
                 //                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 //             </div>`;
                 //     isValid = false;
                 // }
 
                 // Validate category
-                if (!category || category == 'null') {
-                    html += `<div class="alert alert-warning alert-dismissible alert-label-icon label-arrow fade show material-shadow" role="alert">
-                                <i class="ri-alert-line label-icon"></i><strong>Warning</strong> - Category is required for Product Update
-                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                            </div>`;
-                    isValid = false;
-                }
-
-                // Validate quantity (must not be empty or zero)
-                // if (!qty || isNaN(qty) || parseInt(qty) <= 0) {
+                // if (!category || category == 'null') {
                 //     html += `<div class="alert alert-warning alert-dismissible alert-label-icon label-arrow fade show material-shadow" role="alert">
-                //                 <i class="ri-alert-line label-icon"></i><strong>Warning</strong> - Quantity is required for Product Update.
+                //                 <i class="ri-alert-line label-icon"></i><strong>Warning</strong> - Category is required for Product Update
                 //                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 //             </div>`;
                 //     isValid = false;
@@ -637,29 +587,34 @@
                     // formData.append(`products[${index}][qty]`, product.qty);
                     // formData.append(`products[${index}][price]`, product.price);
                     // formData.append(`products[${index}][discount]`, product.discount);
-                    formData.append(`products[${index}][storeName]`, product.storeName);
-                    formData.append(`products[${index}][make]`, product.make);
-                    formData.append(`products[${index}][model]`, product.model);
-                    formData.append(`products[${index}][year]`, product.year);
+                    formData.append(`products[${index}][price]`, product.price);
+                    formData.append(`products[${index}][priceUnit]`, product.priceUnit);
+                    formData.append(`products[${index}][engine]`, product.engine);
+                    formData.append(`products[${index}][power]`, product.power);
                     formData.append(`products[${index}][mileage]`, product.mileage);
-                    formData.append(`products[${index}][location]`, product.location);
-                    formData.append(`products[${index}][doors]`, product.doors);
-                    formData.append(`products[${index}][badges]`, product.badges);
+                    formData.append(`products[${index}][fuel]`, product.fuel);
+                    formData.append(`products[${index}][airBags]`, product.airBags);
+                    formData.append(`products[${index}][overView]`, product.overView);
                     // formData.append(`products[${index}][barCode]`, product.barCode);
-                    formData.append(`products[${index}][category]`, product.category);
+                    formData.append(`products[${index}][registration]`, product.registration);
                     // formData.append(`products[${index}][size]`, product.size);
                     // formData.append(`products[${index}][tags]`, product.tags);
-                    formData.append(`products[${index}][tax]`, product.tax);
-                    formData.append(`products[${index}][discount]`, product.discount);
+                    formData.append(`products[${index}][insurance]`, product.insurance);
+                    formData.append(`products[${index}][seats]`, product.seats);
                     // formData.append(`products[${index}][delivery_charge]`, product.delivery_charge);
-                    formData.append(`products[${index}][price]`, product.price);
-                    if (product.make_icon) formData.append(`products[${index}][make_icon]`, product.make_icon);
-                    if (product.model_icon) formData.append(`products[${index}][model_icon]`, product.model_icon);
-                    if (product.year_icon) formData.append(`products[${index}][year_icon]`, product.year_icon);
-                    if (product.mileage_icon) formData.append(`products[${index}][mileage_icon]`, product.mileage_icon);
-                    if (product.location_icon) formData.append(`products[${index}][location_icon]`, product.location_icon);
-                    if (product.doors_icon) formData.append(`products[${index}][doors_icon]`, product.doors_icon);
-                    if (product.badge_icon) formData.append(`products[${index}][badge_icon]`, product.badge_icon);
+                    formData.append(`products[${index}][kiloDriven]`, product.kiloDriven);
+                    formData.append(`products[${index}][rto]`, product.rto);
+                    formData.append(`products[${index}][ownership]`, product.ownership);
+                    formData.append(`products[${index}][engineDisplacement]`, product.engineDisplacement);
+                    formData.append(`products[${index}][transmission]`, product.transmission);
+                    formData.append(`products[${index}][manufacturingYear]`, product.manufacturingYear);
+                    // if (product.make_icon) formData.append(`products[${index}][make_icon]`, product.make_icon);
+                    // if (product.model_icon) formData.append(`products[${index}][model_icon]`, product.model_icon);
+                    // if (product.year_icon) formData.append(`products[${index}][year_icon]`, product.year_icon);
+                    // if (product.mileage_icon) formData.append(`products[${index}][mileage_icon]`, product.mileage_icon);
+                    // if (product.location_icon) formData.append(`products[${index}][location_icon]`, product.location_icon);
+                    // if (product.doors_icon) formData.append(`products[${index}][doors_icon]`, product.doors_icon);
+                    // if (product.badge_icon) formData.append(`products[${index}][badge_icon]`, product.badge_icon);
                     
 
                 });
@@ -900,57 +855,56 @@
                             <td>
                                 <input type="text" value="${product.name}" required>
                             </td>
-                            <td><input type="text" value="${product.manufacturer_name}"></td>
-                            
-                            <td><input type="text" value="${product.make}"></td>
-                            
-                            <td><input type="text" value="${product.model}"></td>
-                            
-                            <td><input type="text" value="${product.year}"></td>
-                            
-                            <td><input type="text" value="${product.mileage}"></td>
-                            
-                            <td><input type="text" value="${product.location}"></td>
-                            
-                            <td><input type="text" value="${product.doors}"></td>
+                            <td><input type="text" value="${product.base_price}"></td>
                             
                             <td>
                                 <select class="form-control">
-                                    <option value="">Select-Badge</option>
-                                    <option value="New" ${product.badges == 'New' ? 'selected' : ''}>New</option>
-                                    <option value="Used"  ${product.badges == 'Used' ? 'selected' : ''}>Used</option>
-                                    <option value="Certified Pre-Owned" ${product.badges == 'Certified Pre-Owned' ? 'selected' : ''}>Certified Pre-Owned</option>
+                                    <option selected value="${product.price_unit}">${product.price_unit}</option>
+                                    <option value="Lakh">Lakh</option>
+                                    <option value="Cr">Cr</option>
+                                </select>
+                        
+                            </td>
+                            
+                            <td><input type="text" value="${product.engine}"></td>
+                            
+                            <td><input type="text" value="${product.power}"></td>
+                            
+                            <td><input type="text" value="${product.mileage}"></td>
+                            
+                           <td>
+                                <select class="form-control">
+                                    <option value="">${product.fuel}</option>
+                                    <option value="Petrol">Pertol</option>
+                                    <option value="Diesel">Diesel</option>
+                                    <option value="Ethanol">Ethanol</option>
+                                    <option value="Biodiesel">Biodiesel</option>
+                                    <option value="Electricity">Electricity</option>
                                 </select>
                             </td>
                             
-                            <td>
-                                <select class="product-category-list" id="product-category-${category_id}" onChange="get_sub_category('${category_id}')">
-                                    <option selected value="${product.category_id}">${product.category}</option>
-                                </select>
-                                <input type="hidden" id="selected-cat-name-${category_id}" value="${product.category_id}">
-                                <p>Selected Category:- <b id="selected-cat-${category_id}">${product.category}</b><i class="fas fa-redo" onclick="reset_category('${category_id}')"></i></p>
-                            </td>
-                           
+                            <td><input type="text" value="${product.airbags}"></td>
                             
-                             <td>
-                                <select class="product-tax-list" id="product-tax-0">
-                                    <option value="0" ${product.tax == 0 ? 'selected' : ''}>00.00% IGST - (00.00% CGST & 00.00% SGST)</option>
-                                    <option value="0.1" ${product.tax == 0.1 ? 'selected' : ''}>00.10% IGST - (00.05% CGST & 00.05% SGST)</option>
-                                    <option value="0.25" ${product.tax == 0.25 ? 'selected' : ''}>00.25% IGST - (00.125% CGST & 00.125% SGST)</option>
-                                    <option value="1" ${product.tax == 1 ? 'selected' : ''}>01.00% IGST - (00.50% CGST & 00.50% SGST)</option>
-                                    <option value="1.5" ${product.tax == 1.5 ? 'selected' : ''}>01.50% IGST - (00.75% CGST & 00.75% SGST)</option>
-                                    <option value="3" ${product.tax == 3 ? 'selected' : ''}>03.00% IGST - (01.50% CGST & 01.50% SGST)</option>
-                                    <option value="5" ${product.tax == 5 ? 'selected' : ''}>05.00% IGST - (02.50% CGST & 02.50% SGST)</option>
-                                    <option value="6" ${product.tax == 6 ? 'selected' : ''}>06.00% IGST - (03.00% CGST & 03.00% SGST)</option>
-                                    <option value="7.5" ${product.tax == 7.5 ? 'selected' : ''}>07.50% IGST - (03.75% CGST & 03.75% SGST)</option>
-                                    <option value="12" ${product.tax == 12 ? 'selected' : ''}>12.00% IGST - (06.00% CGST & 06.00% SGST)</option>
-                                    <option value="18" ${product.tax == 18 ? 'selected' : ''}>18.00% IGST - (09.00% CGST & 09.00% SGST)</option>
-                                    <option value="28" ${product.tax == 28 ? 'selected' : ''}>28.00% IGST - (14.00% CGST & 14.00% SGST)</option>
-                                </select>
-                            </td>
-                            <td><input type="text" value="${product.base_discount}" placeholder="Discount"></td>
-                           
-                            <td><input type="text" id="price" placeholder="Enter Price" value="${product.base_price}"></td>
+                            <td><input type="text" value="${product.overview}"></td>
+
+                            <td><input type="text" value="${product.registration}"></td>
+                            
+                            <td><input type="text" value="${product.insurance}"></td>
+
+                            <td><input type="text" value="${product.seats}"></td>
+
+                            <td><input type="text" value="${product.driven}"></td>
+
+                            <td><input type="text" value="${product.rto}"></td>
+
+                            <td><input type="text" value="${product.ownership}"></td>
+
+                            <td><input type="text" value="${product.engine_displacement}"></td>
+
+                            <td><input type="text" value="${product.transmission}"></td>
+
+                            <td><input type="text" value="${product.manufacturing_year}"></td>
+
                             <td>
                                 <button type="button" class="btn btn-md btn-primary" onclick="openDescriptionModal('${product.product_id}')">
                                     <i class="ri-edit-fill"></i>
@@ -963,11 +917,12 @@
                                 </button>
                                 <!-- Modal for uploading images specific to this row -->
                             </td>
-                            <td>
+                            <!-- <td>
                                 <button type="button" class="btn btn-md btn-warning" onclick="updateStockModal('${product.product_id}')">
                                     Stock
                                 </button>
-                            </td>`;
+                            </td> -->
+                            `;
 
                             tableBody.appendChild(newRow);
                         })

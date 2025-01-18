@@ -395,7 +395,7 @@
 													</div>
 												</div>
 												<span>OR</span>
-												<a  id="whatsappIcon"   rel="noopener noreferrer" class="wp-btn"><i class="fa-brands fa-whatsapp"></i></a>
+												<a href="javascript:void(0)"  id="whatsappIcon" onclick="redirect_whatsapp()"  class="wp-btn"><i class="fa-brands fa-whatsapp"></i></a>
 
 											</div>
 											<!-- <div class="row" id="cars"></div> -->

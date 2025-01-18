@@ -484,8 +484,8 @@
 						</div>
 					</div>
 
-<div class="services-grid">
-    <a href="https://motomates.in/single-service?service_uid=SERPAG0A175DD220241218">
+<div class="services-grid" id="all_categoris">
+    <!-- <a href="https://motomates.in/single-service?service_uid=SERPAG0A175DD220241218">
       <div class="service-item">
         <img src="public/uploads/images/rental.png" alt="Car Cleaning">
         <p>Daily Car Care</p>
@@ -574,12 +574,12 @@
         <img src="public/uploads/images/tips-and-tricks.png" alt="Tips & Ticks">
         <p>Tips & Ticks</p>
       </div>
-    </a>
+    </a> -->
 </div>
 
 	
 	
-	<style>
+	<!-- <style>
     .whatsapp-icon {
         width: 60px;
         height: 60px;
@@ -602,21 +602,21 @@
     .whatsapp-icon:hover {
         transform: scale(1.1);
     }
-</style>
+</style> -->
 
 
-<div class="whatsapp-icon" onclick="openWhatsApp()">
+<!-- <div class="whatsapp-icon" onclick="openWhatsApp()">
     <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/WhatsApp_icon.png/598px-WhatsApp_icon.png"
         alt="WhatsApp Icon">
-</div>
+</div> -->
 
 
 <script>
-    function openWhatsApp() {
-        const phoneNumber = '+918983450345'; // Replace with your phone number
-        const message = 'Hello! I want to know more about this.'; // Optional default message
-        const url = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodeURIComponent(message)}`;
-        window.open(url, '_blank');
-    }
+    // function openWhatsApp() {
+    //     const phoneNumber = '+918983450345'; // Replace with your phone number
+    //     const message = 'Hello! I want to know more about this.'; // Optional default message
+    //     const url = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodeURIComponent(message)}`;
+    //     window.open(url, '_blank');
+    // }
 </script>
 	</div>

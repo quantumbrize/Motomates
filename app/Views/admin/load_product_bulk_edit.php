@@ -39,7 +39,7 @@
         <table id="product-table" class="table nowrap align-middle table-hover" style="width:100%">
     <thead>
         <tr>
-            <th></th>
+            <!-- <th></th>
             <th>Product</th>
             <th>Store Name</th>
             <th>Make</th>
@@ -55,7 +55,29 @@
             <th>Price</th>
             <th>Details</th>
             <th>Images</th>
-            <th>Stocks</th>
+            <th>Stocks</th> -->
+            <th></th>
+            <th>Model</th>
+            <th>Price (₹)</th>
+            <th>Price Unit</th>
+            <th>Engine</th>
+            <th>Power</th>
+            <th>Mileage (Kmpl)</th>
+            <th>Fuel</th>
+            <th>Number of Airbags</th>
+            <th>Car Overview</th>
+            <th>Registration</th>
+            <th>Insurance</th>
+            <th>Seats</th>
+            <th>Kilometers Driven</th>
+            <th>RTO</th>
+            <th>Ownership</th>
+            <th>Engine Displacement</th>
+            <th>Transmission</th>
+            <th>Year of Manufacture</th>
+            <th>Details</th>
+            <th>Images</th>
+            <!-- <th>Stocks</th> -->
         </tr>
     </thead>
     <tbody id="product-table-body">

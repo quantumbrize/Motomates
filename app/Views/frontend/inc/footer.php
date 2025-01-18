@@ -1,3 +1,31 @@
+<style>
+    .whatsapp-icon {
+        width: 60px;
+        height: 60px;
+        cursor: pointer;
+        transition: transform 0.3s;
+        position: fixed;
+        bottom: 20px;
+        /* Adjust the distance from the bottom */
+        right: 20px;
+        /* Adjust the distance from the right */
+        z-index: 1000;
+        /* Ensure it is above other elements */
+    }
+
+    .whatsapp-icon img {
+        width: 100%;
+        height: 100%;
+    }
+
+    .whatsapp-icon:hover {
+        transform: scale(1.1);
+    }
+</style>
+<div class="whatsapp-icon" onclick="openWhatsApp()">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/WhatsApp_icon.png/598px-WhatsApp_icon.png"
+        alt="WhatsApp Icon">
+</div>
 <div class="ekit-template-content-markup ekit-template-content-footer ekit-template-content-theme-support">
 		<div data-elementor-type="wp-post" data-elementor-id="82" class="elementor elementor-82">
 			<div class="elementor-element elementor-element-a0e9a20 e-con-full e-flex e-con e-parent" data-id="a0e9a20"
@@ -248,6 +276,12 @@
 	</div>
 
 	<script>
+		function openWhatsApp() {
+			const phoneNumber = whatsapp_number; // Replace with your phone number
+			const message = 'Hello! I want to know more about this.'; // Optional default message
+			const url = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodeURIComponent(message)}`;
+			window.open(url, '_blank');
+		}
 		 function get_social_link(){
         $.ajax({
             url: "<?= base_url('api/get/social') ?>",
