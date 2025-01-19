@@ -66,7 +66,15 @@
 			</div>
 		</div>
 		
-		
+		            <style>
+					    #container34 {
+                            background: linear-gradient(to right, #0047AB, #0096FF); /* Subtle gradient background */
+                            border: 2px solid #cccccc; /* Light gray border */
+                            border-radius: 10px; /* Rounded corners */
+                            padding: 20px; /* Space inside the container */
+                            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+                        }
+					</style>
 		
 			<div class="elementor-element elementor-element-2752b60 e-flex e-con-boxed e-con e-parent" data-id="2752b60"
 			data-element_type="container">
@@ -81,12 +89,13 @@
 							
 						</div>
 					</div>
+					
 					<div class="elementor-element elementor-element-3e688da at-heading-animation at-animation-heading-style-3 elementor-widget elementor-widget-heading"
 						data-id="3e688da" data-element_type="widget"
 						data-settings="{&quot;ekit_we_effect_on&quot;:&quot;none&quot;}"
 						data-widget_type="heading.default">
-						<div class="elementor-widget-container">
-							<h2 class="elementor-heading-title elementor-size-default">Buy & Sell Car</h2>
+						<div class="elementor-widget-container" id="container34">
+							<h2 class="elementor-heading-title elementor-size-default">Sell Car</h2>
 						</div>
 					</div>
 				</div>
