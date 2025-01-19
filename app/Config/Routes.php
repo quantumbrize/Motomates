@@ -70,6 +70,7 @@ $routes->get('/admin/product/list',                 'Admin\Product_Controller::i
 $routes->get('/admin/product/add',                  'Admin\Product_Controller::load_product_add'); // Admin product add page
 $routes->get('/admin/product/bulk/add',             'Admin\Product_Controller::load_product_add_bulk'); // Admin product add page
 $routes->get('/admin/product/bulk/edit',            'Admin\Product_Controller::load_product_bulk_edit'); // Admin product add page
+$routes->get('/admin/cars/enqueries',               'Admin\Product_Controller::load_cars_enquery'); // Admin cars enquries
 
 $routes->get('/admin/product/update',               'Admin\Product_Controller::load_product_update'); // Admin product update page
 $routes->get('/admin/product/variant/add',          'Admin\Product_Controller::load_add_variants'); // Admin add product variants page
@@ -96,7 +97,7 @@ $routes->get('/admin/add/expart-review',            'Admin\User_Controller::load
 $routes->get('/admin/exparts-reviews',              'Admin\User_Controller::load_expart_review'); // Admin Expart Review page
 $routes->get('/admin/reviews',                      'Admin\User_Controller::load_review'); // Admin Expart Review page
 $routes->get('/admin/service',                      'Admin\Admin_Controller::load_service');
-$routes->get('/admin/add/service',                      'Admin\Orders_Controller::load_service_enquiry');
+$routes->get('/admin/add/service',                  'Admin\Orders_Controller::load_service_enquiry');
 
 
 

@@ -4,11 +4,11 @@
         width: 180px; /* Adjust the width as needed */
     }
 
-    /* @media (max-width: 1024px) {
-      .categories-mobile-sidebar{
+    @media (max-width: 480px) {
+      #menu-item-77221{
         display: none !important;
       }
-    } */
+    }
 </style>
 <body
 	class="page-template page-template-elementor_header_footer page page-id-776 wp-custom-logo tt-magic-cursor novaride-light elementor-default elementor-template-full-width elementor-kit-8 elementor-page elementor-page-776">
@@ -80,7 +80,7 @@
                             
                           </ul>
                         </li> -->
-                      <li id="menu-item-7722"
+                      <li id="menu-item-77221"
 												class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-7722 nav-item elementskit-dropdown-has relative_position elementskit-dropdown-menu-default_width elementskit-mobile-builder-content"
 												data-vertical-menu="750px"><a href="javascript:void(0)"
 													class="ekit-menu-nav-link ekit-menu-dropdown-toggle">Service<i class="fa-solid fa-chevron-down"></i></a>

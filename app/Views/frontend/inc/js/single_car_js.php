@@ -44,119 +44,119 @@
                htmlmodel=`${resp.data.model}`
                         htmlyear=`<div style="display: flex; flex-direction: column; align-items: flex-start; gap: 2px;">
                             <div style="display: flex; align-items: center; gap: 5px;">
-                                <i class="fa-solid fa-gears"></i>
-                                <small style="font-size: 12px;margin-top:-10px;">Engine</small>
+                                <i class="fa-solid fa-gears car-features-icon"></i>
+                                <span class="car-features-name" style="">Engine</span>
                             </div>
-                            <span class="elementor-icon-list-text" style="font-size: 14px;margin-left:35px;margin-top:-20px;">${resp.data.engine}</span>
+                            <span class="elementor-icon-list-text car-features" style="">${resp.data.engine}</span>
                         </div>
                         `
                         htmlmileage = `
                             <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 2px;">
                                 <div style="display: flex; align-items: center; gap: 5px;">
-                                    <i class="fa-solid fa-bolt"></i>
-                                    <small style="font-size: 12px;margin-top:-10px;">Power</small>
+                                    <i class="fa-solid fa-bolt car-features-icon"></i>
+                                    <span class="car-features-name" style="">Power</span>
                                 </div>
-                                <span class="elementor-icon-list-text" style="font-size: 14px;margin-left:35px;margin-top:-20px;">${resp.data.power}</span>
+                                <span class="elementor-icon-list-text car-features" style="">${resp.data.power}</span>
                             </div>`;
 
                         htmllocation = `
                             <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 2px;">
                                 <div style="display: flex; align-items: center; gap: 5px;">
-                                    <i class="fa-solid fa-road"></i>
-                                    <small style="font-size: 12px;margin-top:-10px;">Mileage</small>
+                                    <i class="fa-solid fa-road car-features-icon"></i>
+                                    <span class="car-features-name" style="">Mileage</span>
                                 </div>
-                                <span class="elementor-icon-list-text" style="font-size: 14px;margin-left:35px;margin-top:-20px;">${resp.data.mileage} Km/l</span>
+                                <span class="elementor-icon-list-text car-features" style="">${resp.data.mileage}Km/l</span>
                             </div>`;
 
                         htmlDoors = `
                             <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 2px;">
                                 <div style="display: flex; align-items: center; gap: 5px;">
-                                    <i class="fa-solid fa-gas-pump"></i>
-                                    <small style="font-size: 12px;margin-top:-10px;">Fuel</small>
+                                    <i class="fa-solid fa-gas-pump car-features-icon"></i>
+                                    <span class="car-features-name" style="">Fuel</span>
                                 </div>
-                                <span class="elementor-icon-list-text" style="font-size: 14px;margin-left:35px;margin-top:-20px;">${resp.data.fuel}</span>
+                                <span class="elementor-icon-list-text car-features" style="">${resp.data.fuel}</span>
                             </div>`;
 
                         htmlbadge = `
                             <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 2px;">
                                 <div style="display: flex; align-items: center; gap: 5px;">
-                                    <i class="fa-solid fa-car-side"></i>
-                                    <small style="font-size: 12px;margin-top:-10px;">No. of Air Bags</small>
+                                    <i class="fa-solid fa-car-side car-features-icon"></i>
+                                    <span class="car-features-name" style="">No. of Air Bags</span>
                                 </div>
-                                <span class="elementor-icon-list-text" style="font-size: 14px;margin-left:35px;margin-top:-20px;">${resp.data.airbags}</span>
+                                <span class="elementor-icon-list-text car-features" style="">${resp.data.airbags}</span>
                             </div>`;
                         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                         htmlRegistration = `
                             <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 2px;">
                                 <div style="display: flex; align-items: center; gap: 5px;">
-                                    <i class="fa-solid fa-calendar"></i>
-                                    <small style="font-size: 12px;margin-top:-10px;">Registration</small>
+                                    <i class="fa-solid fa-calendar car-features-icon"></i>
+                                    <span class="car-features-name" style="">Registration</span>
                                 </div>
-                                <span class="elementor-icon-list-text" style="font-size: 14px;margin-left:35px;margin-top:-20px;">${resp.data.registration}</span>
+                                <span class="elementor-icon-list-text car-features" style="">${resp.data.registration}</span>
                             </div>`;
                         htmlInsurance = `
                             <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 2px;">
                                 <div style="display: flex; align-items: center; gap: 5px;">
-                                    <i class="fa-solid fa-shield"></i>
-                                    <small style="font-size: 12px;margin-top:-10px;">Insurance</small>
+                                    <i class="fa-solid fa-shield car-features-icon"></i>
+                                    <span class="car-features-name" style="">Insurance</span>
                                 </div>
-                                <span class="elementor-icon-list-text" style="font-size: 14px;margin-left:35px;margin-top:-20px;">${resp.data.insurance}</span>
+                                <span class="elementor-icon-list-text car-features" style="">${resp.data.insurance}</span>
                             </div>`;
                         htmlSeats = `
                             <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 2px;">
                                 <div style="display: flex; align-items: center; gap: 5px;">
-                                    <i class="fa-solid fa-chair"></i>
-                                    <small style="font-size: 12px;margin-top:-10px;">Seats</small>
+                                    <i class="fa-solid fa-chair car-features-icon"></i>
+                                    <span class="car-features-name" style="">Seats</span>
                                 </div>
-                                <span class="elementor-icon-list-text" style="font-size: 14px;margin-left:35px;margin-top:-20px;">${resp.data.seats}</span>
+                                <span class="elementor-icon-list-text car-features" style="">${resp.data.seats}</span>
                             </div>`;
                         htmlDriven = `
                             <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 2px;">
                                 <div style="display: flex; align-items: center; gap: 5px;">
-                                    <i class="fa-solid fa-tachometer-alt"></i>
-                                    <small style="font-size: 12px;margin-top:-10px;">Kilometers Driven</small>
+                                    <i class="fa-solid fa-tachometer-alt car-features-icon"></i>
+                                    <span class="car-features-name" style="">Kilometers Driven</span>
                                 </div>
-                                <span class="elementor-icon-list-text" style="font-size: 14px;margin-left:35px;margin-top:-20px;">${resp.data.driven}</span>
+                                <span class="elementor-icon-list-text car-features" style="">${resp.data.driven}</span>
                             </div>`;
                         htmlRto = `
                             <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 2px;">
                                 <div style="display: flex; align-items: center; gap: 5px;">
-                                    <i class="fa-solid fa-building"></i>
-                                    <small style="font-size: 12px;margin-top:-10px;">RTO</small>
+                                    <i class="fa-solid fa-building car-features-icon"></i>
+                                    <span class="car-features-name" style="">RTO</span>
                                 </div>
-                                <span class="elementor-icon-list-text" style="font-size: 14px;margin-left:35px;margin-top:-20px;">${resp.data.rto}</span>
+                                <span class="elementor-icon-list-text car-features" style="">${resp.data.rto}</span>
                             </div>`;
                         htmlOwnership = `
                             <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 2px;">
                                 <div style="display: flex; align-items: center; gap: 5px;">
-                                    <i class="fa-solid fa-user"></i>
-                                    <small style="font-size: 12px;margin-top:-10px;">Ownership</small>
+                                    <i class="fa-solid fa-user car-features-icon"></i>
+                                    <span class="car-features-name" style="">Ownership</span>
                                 </div>
-                                <span class="elementor-icon-list-text" style="font-size: 14px;margin-left:35px;margin-top:-20px;">${resp.data.ownership}</span>
+                                <span class="elementor-icon-list-text car-features" style="">${resp.data.ownership}</span>
                             </div>`;
                         htmlDisplacement = `
                             <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 2px;">
                                 <div style="display: flex; align-items: center; gap: 5px;">
-                                    <i class="fa-solid fa-cogs"></i>
-                                    <small style="font-size: 12px;margin-top:-10px;">Engine Displacement</small>
+                                    <i class="fa-solid fa-cogs car-features-icon"></i>
+                                    <span class="car-features-name" style="">Engine Displacement</span>
                                 </div>
-                                <span class="elementor-icon-list-text" style="font-size: 14px;margin-left:35px;margin-top:-20px;">${resp.data.engine_displacement}</span>
+                                <span class="elementor-icon-list-text car-features" style="">${resp.data.engine_displacement}</span>
                             </div>`;
                         htmlTransmission = `
                             <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 2px;">
                                 <div style="display: flex; align-items: center; gap: 5px;">
-                                    <i class="fa-solid fa-cog"></i>
-                                    <small style="font-size: 12px;margin-top:-10px;">Transmission</small>
+                                    <i class="fa-solid fa-cog car-features-icon"></i>
+                                    <span class="car-features-name" style="">Transmission</span>
                                 </div>
-                                <span class="elementor-icon-list-text" style="font-size: 14px;margin-left:35px;margin-top:-20px;">${resp.data.transmission}</span>
+                                <span class="elementor-icon-list-text car-features" style="">${resp.data.transmission}</span>
                             </div>`;
                         htmlManufacturingYear = `
                             <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 2px;">
                                 <div style="display: flex; align-items: center; gap: 5px;">
-                                    <i class="fa-solid fa-calendar-days"></i>
-                                    <small style="font-size: 12px;margin-top:-10px;">Year of Manufacture</small>
+                                    <i class="fa-solid fa-calendar-days car-features-icon"></i>
+                                    <span class="car-features-name" style="">Year of Manufacture</span>
                                 </div>
-                                <span class="elementor-icon-list-text" style="font-size: 14px;margin-left:35px;margin-top:-20px;">${resp.data.manufacturing_year}</span>
+                                <span class="elementor-icon-list-text car-features" style="">${resp.data.manufacturing_year}</span>
                             </div>`;
 
                 if((resp.data.base_price)!=null && (resp.data.base_discount)!=null && (resp.data.tax)!=null){

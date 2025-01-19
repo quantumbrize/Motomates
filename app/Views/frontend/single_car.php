@@ -121,7 +121,7 @@
 <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
 <main id="content" class="site-main post-8009 cars type-cars status-publish has-post-thumbnail hentry car-types-convertible-car car-types-coupe-car">
-	<div class="page-header background-section" style="background-image: url('../../wp-content/uploads/2024/08/page-header-bg.jpg')">
+	<!-- <div class="page-header background-section" style="background-image: url('../../wp-content/uploads/2024/08/page-header-bg.jpg')">
 		<div class="container">
 			<div class="row align-items-center">
 				<div class="col-md-12">
@@ -131,7 +131,7 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</div> -->
 
 	<div class="page-fleets-single">
 		<div class="container">
@@ -183,9 +183,9 @@
 
 
 
-														<div class="elementor-icon-box-wrapper" style="display: flex; align-items: center;">
+														<div class="elementor-icon-box-wrapper" style="display: ; align-items: center;">
 															<!-- Image icon for Car Make -->
-															<img  style="width: 10%; margin-right: 10px;" src="<?=base_url()?>public/uploads/product_images/Model.png" alt="Car Make Icon">
+															<img  class="model-priceimg" style="margin-right: 10px;" src="<?=base_url()?>public/uploads/product_images/Model.png" alt="Car Make Icon">
 
 															<!-- Car Make Text -->
 															<div class="elementor-icon-box-content">
@@ -196,6 +196,21 @@
 															</div>
 														</div>
 
+														<div class="elementor-icon-box-wrapper car-price-mobile" style="display: none; align-items: center;">
+															
+															<img class="model-priceimg"  style="margin-right: 10px;" src="<?=base_url()?>public/uploads/product_images/Make.png" alt="Car Model Icon">
+
+															
+															<div class="elementor-icon-box-content">
+																<h3 class="elementor-icon-box-title">
+																	<span>Price</span>
+																</h3>
+																<p id="car_price" class="elementor-icon-box-description"></p>
+															</div>
+														</div>
+
+														
+
 													</div>
 												</div>
 											</div>
@@ -205,11 +220,11 @@
 
 
 
-														<div class="elementor-icon-box-wrapper" style="display: flex; align-items: center;">
-															<!-- Image icon for Car Model -->
+														<div class="elementor-icon-box-wrapper car-price-desktop" style="display: flex; align-items: center;">
+															
 															<img  style="width: 10%; margin-right: 10px;" src="<?=base_url()?>public/uploads/product_images/Make.png" alt="Car Model Icon">
 
-															<!-- Car Model Text -->
+															
 															<div class="elementor-icon-box-content">
 																<h3 class="elementor-icon-box-title">
 																	<span>Price</span>
@@ -241,6 +256,7 @@
 											</div>
 											<div class="elementor-element elementor-element-d5b5c55 fleets-amenities-list  elementor-icon-list--layout-traditional elementor-list-item-link-full_width elementor-invisible elementor-widget elementor-widget-icon-list" data-id="d5b5c55" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeInUp&quot;,&quot;_animation_delay&quot;:100,&quot;ekit_we_effect_on&quot;:&quot;none&quot;}" data-widget_type="icon-list.default">
 												<div class="elementor-widget-container">
+													<span style="font-weight: bold; font-size: 20px;">Car Information</span>
 													<ul class="elementor-icon-list-items">
 														<li class="elementor-icon-list-item">
 															<span id="year_span" class="elementor-icon-list-icon">
@@ -394,7 +410,7 @@
 														</div>
 													</div>
 												</div>
-												<span>OR</span>
+												<span style="margin-left: 8px;margin-right: 8px;">OR</span>
 												<a href="javascript:void(0)"  id="whatsappIcon" onclick="redirect_whatsapp()"  class="wp-btn"><i class="fa-brands fa-whatsapp"></i></a>
 
 											</div>

@@ -4546,7 +4546,47 @@ aside.widget .wp-block-social-links{
 	width:calc(25% - 15px);
 }
 
+.car-features{
+	font-size: 14px;
+	margin-left:30px;
+	margin-top:-16px;
+}
+
+.car-features-name{
+	font-size: 12px;
+	margin-top:-10px;
+}
+.model-priceimg{
+	width: 10% !important;
+}
+
 @media only screen and (max-width: 767px) {
+	.model-priceimg{
+		width: 20% !important;
+	}
+	.car-price-desktop{
+		display: none !important;
+	}
+	.car-price-mobile{
+		display: flex !important;
+	}
+	.car-features-icon{
+		font-size: 30px;
+	}
+	.car-features{
+		font-size: 20px;
+		margin-left:290px;
+		margin-top:-20px;
+	}
+
+	.car-features-name{
+		font-size: 18px !important;
+		margin-top:-5px !important;
+	}
+
+	.elementor-icon-list-item{
+		margin-top: 10px !important;
+	}
 
     .fleets-amenities-list ul li {
         width: calc(50% - 10px);
@@ -4554,6 +4594,10 @@ aside.widget .wp-block-social-links{
 
 	.pricing-item  .elementor-pricing-img img{
 		max-width: 220px;
+	}
+
+	.fleets-amenities-list ul{
+		display: block !important;
 	}
 }
 

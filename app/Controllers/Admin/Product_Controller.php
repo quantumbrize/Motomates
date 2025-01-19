@@ -180,6 +180,30 @@ class Product_Controller extends Admin_Controller{
         $this->isAuth('/admin/product_update',$data);
     }
 
+    public function load_cars_enquery()
+    {
+        $data = PAGE_DATA_ADMIN;
+        $data = [
+            'data_page' => [],
+            'data_header' => [
+                'header_link' => ['cars_enquery_css.php'],
+                'header_asset_link' => [],
+                'title' => 'All Product Enqueries',
+                'header' => [],
+                'sidebar' => ['products' => true],
+                'site' => 'admin'
+            ],
+            'data_footer' => [
+                'footer_link' => ['cars_enquery_js.php'],
+                'footer_asset_link' => [],
+                'footer' => [],
+                'site' => 'admin'
+            ]
+        ];
+
+        $this->isAuth('/admin/cars_enquery', $data);
+    }
+
 
 
 }

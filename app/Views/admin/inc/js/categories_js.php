@@ -111,7 +111,7 @@
                                 <input type="file" id="file-input-new" class="file-input-cat-image"  onChange="preview('file-input-new','images-con-new')">
                                 <label for="file-input-new" id="btn_upload" class="btn btn-info file-input-cat-image-btn">Select Image</label>
                                 <div id="images-con-new"></div>
-                                <button class="btn btn-success" id="new-category-btn" onclick="add_category('null','new-category-input','new-category-btn','new-category-bx','file-input-new','images-con-new')">
+                                <button class="btn btn-success" id="new-category-btn" onclick="add_category('null','new-category-input', 'new-category-link-input','new-category-btn','new-category-bx','file-input-new','images-con-new')">
                                     <i class="ri-add-fill fs-15"></i>
                                 </button>
                             </h2>
@@ -218,7 +218,7 @@
                                 <input type="file" id="file-input-sub-${category_id}" class="file-input-cat-image"  onChange="preview('file-input-sub-${category_id}','images-con-sub-${category_id}')">
                                 <label for="file-input-sub-${category_id}" id="btn_upload" class="btn btn-info file-input-cat-image-btn">Select Image</label>
                                 <div id="images-con-sub-${category_id}"></div>
-                                <button class="btn btn-success" id="${category_id}-new-category-btn" onclick="add_category('${category_id}','${category_id}-new-category-input','${category_id}-new-category-btn','${category_id}-new-category-bx','file-input-sub-${category_id}','images-con-sub-${category_id}')">
+                                <button class="btn btn-success" id="${category_id}-new-category-btn" onclick="add_category('${category_id}','${category_id}-new-category-input', '${category_id}-new-category-link-input','${category_id}-new-category-btn','${category_id}-new-category-bx','file-input-sub-${category_id}','images-con-sub-${category_id}')">
                                     <i class="ri-add-fill fs-15"></i>
                                 </button>
                             </h2>

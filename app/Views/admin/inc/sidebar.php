@@ -115,7 +115,7 @@
             </div>
             <ul class="navbar-nav" id="navbar-nav">
                 <li class="menu-title"><span data-key="t-menu">Menu</span></li>
-                <?php
+                <!-- <?php
                 if (isset($_SESSION[SES_STAFF_USER_ID]) && in_array('dashboard', $_SESSION[SES_STAFF_ACCESS])) {
                     ?>
                     <li class="nav-item ">
@@ -131,6 +131,206 @@
                             <a class="nav-link menu-link <?= isset($sidebar['dashboard']) ? 'active' : '' ?>"
                                 href="<?= base_url('admin') ?>">
                                 <i class="ri-dashboard-2-line"></i> <span data-key="t-widgets">Dashboard</span>
+                            </a>
+                        </li>
+                    <?php
+                }
+                ?> -->
+
+                <?php
+                if (isset($_SESSION[SES_STAFF_USER_ID]) && in_array('products', $_SESSION[SES_STAFF_ACCESS])) {
+                    ?>
+                    <li class="nav-item">
+                        <a class="nav-link menu-link <?= isset($sidebar['products']) ? 'active' : '' ?>"
+                            href="#sidebarProduct" data-bs-toggle="collapse" role="button"
+                            aria-expanded="<?= isset($sidebar['products']) ? 'true' : 'false' ?>"
+                            aria-controls="sidebarProduct">
+                            <i class="ri-archive-line"></i>
+                            <span>Cars</span>
+                        </a>
+                        <div class="<?= isset($sidebar['products']) ? '' : 'collapse' ?> menu-dropdown" id="sidebarProduct">
+                            <ul class="nav nav-sm flex-column">
+                                <li class="nav-item">
+                                    <a href="<?= base_url('/admin/product/list') ?>" class="nav-link">
+                                        All Cars
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="<?= base_url('/admin/cars/enqueries') ?>" class="nav-link">
+                                        Cars Enqries
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </li>
+                    <?php
+                } else if (isset($_SESSION[SES_ADMIN_USER_ID])) {
+                    ?>
+                        <li class="nav-item">
+                            <a class="nav-link menu-link <?= isset($sidebar['products']) ? 'active' : '' ?>"
+                                href="#sidebarProduct" data-bs-toggle="collapse" role="button"
+                                aria-expanded="<?= isset($sidebar['products']) ? 'true' : 'false' ?>"
+                                aria-controls="sidebarProduct">
+                                <i class="ri-archive-line"></i>
+                                <span>Cars</span>
+                            </a>
+                            <div class="<?= isset($sidebar['products']) ? '' : 'collapse' ?> menu-dropdown" id="sidebarProduct">
+                                <ul class="nav nav-sm flex-column">
+                                    <li class="nav-item">
+                                        <a href="<?= base_url('/admin/product/list') ?>" class="nav-link">
+                                            All Cars
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="<?= base_url('/admin/cars/enqueries') ?>" class="nav-link">
+                                            Cars Enqries
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                        </li>
+                    <?php
+                }
+                ?>
+
+                <?php
+                if (isset($_SESSION[SES_STAFF_USER_ID]) && in_array('messages', $_SESSION[SES_STAFF_ACCESS])) {
+                    ?>
+                    <li class="nav-item ">
+                        <a  onclick="deleteMessageNotfication()" class="nav-link menu-link <?= isset($sidebar['messages']) ? 'active' : '' ?>"
+                            href="<?= base_url('admin/messages') ?>">
+                            <i class="ri-message-2-line"></i> <span data-key="t-widgets">Messages &nbsp;<small class='notification' id="messageLength"></small></span>
+                        </a>
+                    </li>
+                    <?php
+                } else if (isset($_SESSION[SES_ADMIN_USER_ID])) {
+                    ?>
+                        <li class="nav-item ">
+                            <a onclick="deleteMessageNotfication()" class="nav-link menu-link <?= isset($sidebar['messages']) ? 'active' : '' ?>"
+                                href="<?= base_url('admin/messages') ?>">
+                                <i class="ri-message-2-line"></i> <span  data-key="t-widgets">Messages &nbsp;<small class='notification' id="messageLength"></small></span>
+                            </a>
+                        </li>
+                    <?php
+                }
+                ?>
+
+                <?php
+                if (isset($_SESSION[SES_STAFF_USER_ID]) && in_array('bookings', $_SESSION[SES_STAFF_ACCESS])) {
+                    ?>
+                    <li class="nav-item ">
+                        <a onclick="deleteBookingNotfication()" class="nav-link menu-link <?= isset($sidebar['bookings']) ? 'active' : '' ?>"
+                            href="<?= base_url('load-bookings') ?>">
+                            <i class="ri-message-2-line"></i> <span  onclick="deleteBookingNotfication()" data-key="t-widgets">Bookings &nbsp; <small class='notification' id="bookingLength"></small></span>
+                        </a>
+                    </li>
+                    <?php
+                } else if (isset($_SESSION[SES_ADMIN_USER_ID])) {
+                    ?>
+                        <li class="nav-item ">
+                            <a onclick="deleteBookingNotfication()" class="nav-link menu-link <?= isset($sidebar['bookings']) ? 'active' : '' ?>"
+                                href="<?= base_url('load-bookings') ?>">
+                                <i class="ri-message-2-line"></i> <span onclick="deleteBookingNotfication()" data-key="t-widgets">Bookings&nbsp;<small class='notification' id="bookingLength"></small></span>
+                            </a>
+                        </li>
+                    <?php
+                }
+                ?>
+
+                
+                <!-- <?php
+                if (isset($_SESSION[SES_STAFF_USER_ID]) && in_array('promotion_card', $_SESSION[SES_STAFF_ACCESS])) {
+                    ?>
+                    <li class="nav-item ">
+                        <a class="nav-link menu-link <?= isset($sidebar['promotion_card']) ? 'active' : '' ?>"
+                            href="<?= base_url('admin/promotion-card') ?>">
+                            <i class="bx bx-category"></i> <span data-key="t-widgets">Promotion Card</span>
+                        </a>
+                    </li>
+                    <?php
+                } else if (isset($_SESSION[SES_ADMIN_USER_ID])) {
+                    ?>
+                        <li class="nav-item ">
+                            <a class="nav-link menu-link <?= isset($sidebar['promotion_card']) ? 'active' : '' ?>"
+                                href="<?= base_url('admin/promotion-card') ?>">
+                                <i class="bx bx-category"></i> <span data-key="t-widgets">Promotion Card</span>
+                            </a>
+                        </li>
+                    <?php
+                }
+                ?> -->
+
+                <?php
+                if (isset($_SESSION[SES_STAFF_USER_ID]) && in_array('categories', $_SESSION[SES_STAFF_ACCESS])) {
+                    ?>
+                    <li class="nav-item ">
+                        <a class="nav-link menu-link <?= isset($sidebar['categories']) ? 'active' : '' ?>"
+                            href="<?= base_url('admin/categories') ?>">
+                            <i class="bx bx-category"></i> <span data-key="t-widgets">Our Services</span>
+                        </a>
+                    </li>
+                    <?php
+                } else if (isset($_SESSION[SES_ADMIN_USER_ID])) {
+                    ?>
+                        <li class="nav-item ">
+                            <a class="nav-link menu-link <?= isset($sidebar['categories']) ? 'active' : '' ?>"
+                                href="<?= base_url('admin/categories') ?>">
+                                <i class="bx bx-category"></i> <span data-key="t-widgets">Our Services</span>
+                            </a>
+                        </li>
+                    <?php
+                }
+                ?>
+                
+                <?php
+                if ((isset($_SESSION[SES_STAFF_USER_ID]) && in_array('service', $_SESSION[SES_STAFF_ACCESS])) || isset($_SESSION[SES_ADMIN_USER_ID])) {
+                    ?>
+                    <li class="nav-item">
+                        <a class="nav-link menu-link <?= isset($sidebar['service']) ? 'active' : '' ?>"
+                            href="#sidebarService" data-bs-toggle="collapse" 
+                            role="button" 
+                            aria-expanded="<?= isset($sidebar['service']) ? 'true' : 'false' ?>"
+                            aria-controls="sidebarService">
+                            <i class="ri-archive-line"></i>
+                            <span>Create Services</span>
+                        </a>
+                        <div class="menu-dropdown <?= isset($sidebar['service']) ? 'show' : 'collapse' ?>" id="sidebarService">
+                            <ul class="nav nav-sm flex-column">
+                                <li class="nav-item">
+                                    <a href="<?= base_url('admin/service') ?>" class="nav-link">
+                                        Service All
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="<?= base_url('admin/add/service') ?>" class="nav-link">
+                                        Service Enquiry
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <?php
+                }
+                ?>
+
+                <?php
+                if (isset($_SESSION[SES_STAFF_USER_ID]) && in_array('about_add', $_SESSION[SES_STAFF_ACCESS])) {
+                    ?>
+                    <li class="nav-item ">
+                        <a class="nav-link menu-link <?= isset($sidebar['about_add']) ? 'active' : '' ?>"
+                            href="<?= base_url('admin/about') ?>">
+                            <i class="bx bx-info-circle"></i> <span data-key="t-widgets">About</span>
+                        </a>
+                    </li>
+                    <?php
+                } else if (isset($_SESSION[SES_ADMIN_USER_ID])) {
+                    ?>
+                        <li class="nav-item ">
+                            <a class="nav-link menu-link <?= isset($sidebar['about_add']) ? 'active' : '' ?>"
+                                href="<?= base_url('admin/about') ?>">
+                                <i class="bx bx-info-circle"></i> <span data-key="t-widgets">About</span>
                             </a>
                         </li>
                     <?php
@@ -168,106 +368,8 @@
                 }
                 ?>
 
-                <?php
-                if (isset($_SESSION[SES_STAFF_USER_ID]) && in_array('about_add', $_SESSION[SES_STAFF_ACCESS])) {
-                    ?>
-                    <li class="nav-item ">
-                        <a class="nav-link menu-link <?= isset($sidebar['about_add']) ? 'active' : '' ?>"
-                            href="<?= base_url('admin/about') ?>">
-                            <i class="bx bx-info-circle"></i> <span data-key="t-widgets">About</span>
-                        </a>
-                    </li>
-                    <?php
-                } else if (isset($_SESSION[SES_ADMIN_USER_ID])) {
-                    ?>
-                        <li class="nav-item ">
-                            <a class="nav-link menu-link <?= isset($sidebar['about_add']) ? 'active' : '' ?>"
-                                href="<?= base_url('admin/about') ?>">
-                                <i class="bx bx-info-circle"></i> <span data-key="t-widgets">About</span>
-                            </a>
-                        </li>
-                    <?php
-                }
-                ?>
-
 
                 <?php
-                if (isset($_SESSION[SES_STAFF_USER_ID]) && in_array('promotion_card', $_SESSION[SES_STAFF_ACCESS])) {
-                    ?>
-                    <li class="nav-item ">
-                        <a class="nav-link menu-link <?= isset($sidebar['promotion_card']) ? 'active' : '' ?>"
-                            href="<?= base_url('admin/promotion-card') ?>">
-                            <i class="bx bx-category"></i> <span data-key="t-widgets">Promotion Card</span>
-                        </a>
-                    </li>
-                    <?php
-                } else if (isset($_SESSION[SES_ADMIN_USER_ID])) {
-                    ?>
-                        <li class="nav-item ">
-                            <a class="nav-link menu-link <?= isset($sidebar['promotion_card']) ? 'active' : '' ?>"
-                                href="<?= base_url('admin/promotion-card') ?>">
-                                <i class="bx bx-category"></i> <span data-key="t-widgets">Promotion Card</span>
-                            </a>
-                        </li>
-                    <?php
-                }
-                ?>
-
-                <?php
-                if (isset($_SESSION[SES_STAFF_USER_ID]) && in_array('categories', $_SESSION[SES_STAFF_ACCESS])) {
-                    ?>
-                    <li class="nav-item ">
-                        <a class="nav-link menu-link <?= isset($sidebar['categories']) ? 'active' : '' ?>"
-                            href="<?= base_url('admin/categories') ?>">
-                            <i class="bx bx-category"></i> <span data-key="t-widgets">Categories</span>
-                        </a>
-                    </li>
-                    <?php
-                } else if (isset($_SESSION[SES_ADMIN_USER_ID])) {
-                    ?>
-                        <li class="nav-item ">
-                            <a class="nav-link menu-link <?= isset($sidebar['categories']) ? 'active' : '' ?>"
-                                href="<?= base_url('admin/categories') ?>">
-                                <i class="bx bx-category"></i> <span data-key="t-widgets">Categories</span>
-                            </a>
-                        </li>
-                    <?php
-                }
-                ?>
-                
-                <?php
-                if ((isset($_SESSION[SES_STAFF_USER_ID]) && in_array('service', $_SESSION[SES_STAFF_ACCESS])) || isset($_SESSION[SES_ADMIN_USER_ID])) {
-                    ?>
-                    <li class="nav-item">
-                        <a class="nav-link menu-link <?= isset($sidebar['service']) ? 'active' : '' ?>"
-                            href="#sidebarService" data-bs-toggle="collapse" 
-                            role="button" 
-                            aria-expanded="<?= isset($sidebar['service']) ? 'true' : 'false' ?>"
-                            aria-controls="sidebarService">
-                            <i class="ri-archive-line"></i>
-                            <span>Service</span>
-                        </a>
-                        <div class="menu-dropdown <?= isset($sidebar['service']) ? 'show' : 'collapse' ?>" id="sidebarService">
-                            <ul class="nav nav-sm flex-column">
-                                <li class="nav-item">
-                                    <a href="<?= base_url('admin/service') ?>" class="nav-link">
-                                        Service All
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="<?= base_url('admin/add/service') ?>" class="nav-link">
-                                        Service Enquiry
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
-                    <?php
-                }
-                ?>
-
-
-<?php
                 if (isset($_SESSION[SES_STAFF_USER_ID]) && in_array('blog', $_SESSION[SES_STAFF_ACCESS])) {
                     ?>
                     <li class="nav-item ">
@@ -290,63 +392,7 @@
                 ?>
 
 
-                <?php
-                if (isset($_SESSION[SES_STAFF_USER_ID]) && in_array('products', $_SESSION[SES_STAFF_ACCESS])) {
-                    ?>
-                    <li class="nav-item">
-                        <a class="nav-link menu-link <?= isset($sidebar['products']) ? 'active' : '' ?>"
-                            href="#sidebarProduct" data-bs-toggle="collapse" role="button"
-                            aria-expanded="<?= isset($sidebar['products']) ? 'true' : 'false' ?>"
-                            aria-controls="sidebarProduct">
-                            <i class="ri-archive-line"></i>
-                            <span>Cars</span>
-                        </a>
-                        <div class="<?= isset($sidebar['products']) ? '' : 'collapse' ?> menu-dropdown" id="sidebarProduct">
-                            <ul class="nav nav-sm flex-column">
-                                <li class="nav-item">
-                                    <a href="<?= base_url('/admin/product/list') ?>" class="nav-link">
-                                        All Cars
-                                    </a>
-                                </li>
-                                <!-- <li class="nav-item">
-                                    <a href="<?= base_url('/admin/product/add') ?>" class="nav-link">
-                                        Add Product
-                                    </a>
-                                </li> -->
-                            </ul>
-                        </div>
-
-                    </li>
-                    <?php
-                } else if (isset($_SESSION[SES_ADMIN_USER_ID])) {
-                    ?>
-                        <li class="nav-item">
-                            <a class="nav-link menu-link <?= isset($sidebar['products']) ? 'active' : '' ?>"
-                                href="#sidebarProduct" data-bs-toggle="collapse" role="button"
-                                aria-expanded="<?= isset($sidebar['products']) ? 'true' : 'false' ?>"
-                                aria-controls="sidebarProduct">
-                                <i class="ri-archive-line"></i>
-                                <span>Cars</span>
-                            </a>
-                            <div class="<?= isset($sidebar['products']) ? '' : 'collapse' ?> menu-dropdown" id="sidebarProduct">
-                                <ul class="nav nav-sm flex-column">
-                                    <li class="nav-item">
-                                        <a href="<?= base_url('/admin/product/list') ?>" class="nav-link">
-                                            All Cars
-                                        </a>
-                                    </li>
-                                    <!-- <li class="nav-item">
-                                        <a href="<?= base_url('/admin/product/add') ?>" class="nav-link">
-                                            Add Product
-                                        </a>
-                                    </li> -->
-                                </ul>
-                            </div>
-
-                        </li>
-                    <?php
-                }
-                ?>
+                
 
                 <!-- <li class="nav-item">
                     <a class="nav-link menu-link <?= isset($sidebar['expart_review']) ? 'active' : '' ?>"
@@ -435,52 +481,10 @@
 
                 
 
-                <?php
-                if (isset($_SESSION[SES_STAFF_USER_ID]) && in_array('messages', $_SESSION[SES_STAFF_ACCESS])) {
-                    ?>
-                    <li class="nav-item ">
-                        <a  onclick="deleteMessageNotfication()" class="nav-link menu-link <?= isset($sidebar['messages']) ? 'active' : '' ?>"
-                            href="<?= base_url('admin/messages') ?>">
-                            <i class="ri-message-2-line"></i> <span data-key="t-widgets">Messages &nbsp;<small class='notification' id="messageLength"></small></span>
-                        </a>
-                    </li>
-                    <?php
-                } else if (isset($_SESSION[SES_ADMIN_USER_ID])) {
-                    ?>
-                        <li class="nav-item ">
-                            <a onclick="deleteMessageNotfication()" class="nav-link menu-link <?= isset($sidebar['messages']) ? 'active' : '' ?>"
-                                href="<?= base_url('admin/messages') ?>">
-                                <i class="ri-message-2-line"></i> <span  data-key="t-widgets">Messages &nbsp;<small class='notification' id="messageLength"></small></span>
-                            </a>
-                        </li>
-                    <?php
-                }
-                ?>
-
-<?php
-                if (isset($_SESSION[SES_STAFF_USER_ID]) && in_array('bookings', $_SESSION[SES_STAFF_ACCESS])) {
-                    ?>
-                    <li class="nav-item ">
-                        <a onclick="deleteBookingNotfication()" class="nav-link menu-link <?= isset($sidebar['bookings']) ? 'active' : '' ?>"
-                            href="<?= base_url('load-bookings') ?>">
-                            <i class="ri-message-2-line"></i> <span  onclick="deleteBookingNotfication()" data-key="t-widgets">Bookings &nbsp; <small class='notification' id="bookingLength"></small></span>
-                        </a>
-                    </li>
-                    <?php
-                } else if (isset($_SESSION[SES_ADMIN_USER_ID])) {
-                    ?>
-                        <li class="nav-item ">
-                            <a onclick="deleteBookingNotfication()" class="nav-link menu-link <?= isset($sidebar['bookings']) ? 'active' : '' ?>"
-                                href="<?= base_url('load-bookings') ?>">
-                                <i class="ri-message-2-line"></i> <span onclick="deleteBookingNotfication()" data-key="t-widgets">Bookings&nbsp;<small class='notification' id="bookingLength"></small></span>
-                            </a>
-                        </li>
-                    <?php
-                }
-                ?>
+                
 
 
-                <?php
+                <!-- <?php
                 if (isset($_SESSION[SES_STAFF_USER_ID]) && in_array('users', $_SESSION[SES_STAFF_ACCESS])) {
                     ?>
                     <li class="nav-item">
@@ -544,7 +548,7 @@
                         </li>
                     <?php
                 }
-                ?>
+                ?> -->
 
 
 

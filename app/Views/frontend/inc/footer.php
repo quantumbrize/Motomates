@@ -57,7 +57,7 @@
 									</div>
 								</div>
 							</div>
-							<div class="elementor-element elementor-element-d5e2952 e-con-full e-flex e-con e-child"
+							<!-- <div class="elementor-element elementor-element-d5e2952 e-con-full e-flex e-con e-child"
 								data-id="d5e2952" data-element_type="container">
 								<div class="elementor-element elementor-element-082772d at-heading-animation at-animation-heading-none elementor-widget elementor-widget-heading"
 									data-id="082772d" data-element_type="widget"
@@ -90,17 +90,13 @@
 															class="menu-item menu-item-type-custom menu-item-object-custom menu-item-167 nav-item elementskit-mobile-builder-content"
 															data-vertical-menu="750px"><a href="#"
 																class="ekit-menu-nav-link">Legal Notice</a></li>
-														<!-- <li id="menu-item-168"
-															class="menu-item menu-item-type-custom menu-item-object-custom menu-item-168 nav-item elementskit-mobile-builder-content"
-															data-vertical-menu="750px"><a href="#"
-																class="ekit-menu-nav-link">Accessibility</a></li> -->
 													</ul>
 												</div>
 											</div>
 										</div>
 									</div>
 								</div>
-							</div>
+							</div> -->
 							<div class="elementor-element elementor-element-bb03360 e-con-full e-flex e-con e-child"
 								data-id="bb03360" data-element_type="container">
 								<div class="elementor-element elementor-element-5281755 at-heading-animation at-animation-heading-none elementor-widget elementor-widget-heading"
