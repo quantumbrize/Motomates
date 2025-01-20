@@ -34,26 +34,7 @@
 							<p id="banner_description"></p>
 						</div>
 					</div>
-					<div class="elementor-element elementor-element-e0ea783 e-con-full e-flex elementor-invisible e-con e-child"
-						data-id="e0ea783" data-element_type="container"
-						data-settings="{&quot;animation&quot;:&quot;fadeInUp&quot;,&quot;animation_delay&quot;:200}">
-						<div class="elementor-element elementor-element-454ff37 elementor-align-left elementor-widget elementor-widget-button"
-							data-id="454ff37" data-element_type="widget"
-							data-settings="{&quot;ekit_we_effect_on&quot;:&quot;none&quot;}"
-							data-widget_type="button.default">
-							<div class="elementor-widget-container">
-								<div class="elementor-button-wrapper">
-									<a id="banner_link" class="elementor-button elementor-button-link elementor-size-sm"
-										href="">
-										<span class="elementor-button-content-wrapper">
-											<span class="elementor-button-text">book now</span>
-										</span>
-									</a>
-								</div>
-							</div>
-						</div>
-						
-					</div>
+					
 				</div>
 			</div>
 			<div class="elementor-element elementor-element-ccc7b81 rent-details bg-section e-con-full e-flex e-con e-child"
@@ -68,7 +49,7 @@
 		
 		            <style>
 					    #container34 {
-                            background: linear-gradient(to right, #0047AB, #0096FF); /* Subtle gradient background */
+                            background: linear-gradient(to right, #C70039, #FFA500); /* Subtle gradient background */
                             border: 2px solid #cccccc; /* Light gray border */
                             border-radius: 10px; /* Rounded corners */
                             padding: 20px; /* Space inside the container */
