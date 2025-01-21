@@ -31,6 +31,7 @@ use App\Models\EnquiryModel;
 use App\Models\RentalModel;
 use App\Models\RentalNotificationModel;
 use App\Models\MessageNotificationModel;
+use App\Models\ServiceEnquiryModel;
 
 
 class User_Controller extends Api_Controller
@@ -1832,18 +1833,14 @@ class User_Controller extends Api_Controller
             $services = $ServiceModel->findAll();
     
             if (count($services) > 0) {
-                foreach ($services as &$service) {
-                    // Fetch tags for each service
-                    $tags = $ServicetagModel->where('service_uid', $service['uid'])->findAll();
-                    $service['tags'] = $tags; // Store the full tag data (name, description, etc.)
+                // foreach ($services as &$service) {
+                //     $tags = $ServicetagModel->where('service_uid', $service['uid'])->findAll();
+                //     $service['tags'] = $tags;
     
-                    // Fetch service cards for each service
-                    // Use 'service_card_uid' as the foreign key in the servicecards table
-                    $cards = $ServicecardModel->where('service_card_uid', $service['uid'])->findAll();
+                //     $cards = $ServicecardModel->where('service_card_uid', $service['uid'])->findAll();
                     
-                    // Store the full card data (title, description, image, etc.)
-                    $service['cards'] = $cards; 
-                }
+                //     $service['cards'] = $cards; 
+                // }
     
                 $resp = [
                     'status' => true,
@@ -2186,6 +2183,35 @@ class User_Controller extends Api_Controller
             ]);
         }
     }
+
+    private function service_enquries()
+    {
+        $resp = [
+            'status' => false,
+            'message' => 'No service found',
+            'data' => []
+        ];
+    
+        try {
+            $ServiceEnquiryModel = new ServiceEnquiryModel();
+            
+            
+            // Fetch all services
+            $enquiries = $ServiceEnquiryModel->findAll();
+    
+            if (count($enquiries) > 0) {   
+                $resp = [
+                    'status' => true,
+                    'message' => 'Services found',
+                    'data' => $enquiries
+                ];
+            }
+        } catch (\Exception $e) {
+            $resp['message'] = $e->getMessage();
+        }
+    
+        return $resp;
+    }
     
 
 
@@ -2227,6 +2253,13 @@ class User_Controller extends Api_Controller
     {
         $data = $this->request->getPost();
         $resp = $this->update_user_address($data);
+        return $this->response->setJSON($resp);
+    }
+
+    public function GET_service_enquries()
+    {
+        $data = $this->request->getGet();
+        $resp = $this->service_enquries($data);
         return $this->response->setJSON($resp);
     }
 

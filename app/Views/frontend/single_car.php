@@ -256,35 +256,8 @@
 											</div>
 											<div class="elementor-element elementor-element-d5b5c55 fleets-amenities-list  elementor-icon-list--layout-traditional elementor-list-item-link-full_width elementor-invisible elementor-widget elementor-widget-icon-list" data-id="d5b5c55" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeInUp&quot;,&quot;_animation_delay&quot;:100,&quot;ekit_we_effect_on&quot;:&quot;none&quot;}" data-widget_type="icon-list.default">
 												<div class="elementor-widget-container">
-													<span style="font-weight: bold; font-size: 20px;">Car Information</span>
+													<span style="font-weight: bold; font-size: 20px;">Car Overview</span>
 													<ul class="elementor-icon-list-items">
-														<li class="elementor-icon-list-item">
-															<span id="year_span" class="elementor-icon-list-icon">
-																<!-- <i aria-hidden="true" class="fas fa-check-circle"></i>						</span>
-																	<span class="elementor-icon-list-text">Music System</span> -->
-															</span>
-														</li>
-														<li class="elementor-icon-list-item">
-															<span id="mileage_span" class="elementor-icon-list-icon">
-																<!-- <i aria-hidden="true" class="fas fa-check-circle"></i>						</span>
-																	<span class="elementor-icon-list-text">Toolkit</span> -->
-														</li>
-														<li class="elementor-icon-list-item">
-															<span id="location_span" class="elementor-icon-list-icon">
-																<!-- <i aria-hidden="true" class="fas fa-check-circle"></i>						</span>
-																<span class="elementor-icon-list-text">Abs System</span> -->
-														</li>
-														<li class="elementor-icon-list-item">
-															<span id="badge_span" class="elementor-icon-list-icon">
-																<!-- <i aria-hidden="true" class="fas fa-check-circle"></i>						</span>
-																	<span class="elementor-icon-list-text">Bluetooth</span> -->
-														</li>
-														<li class="elementor-icon-list-item">
-															<span id="doors_span" class="elementor-icon-list-icon">
-																<!-- <i aria-hidden="true" class="fas fa-check-circle"></i>						</span>
-																	<span class="elementor-icon-list-text">Bluetooth</span> -->
-														</li>
-														<!-- /////////////////////////////////////////////////////////////////////// -->
 														<li class="elementor-icon-list-item">
 															<span id="registration_span" class="elementor-icon-list-icon">
 																<!-- <i aria-hidden="true" class="fas fa-check-circle"></i>						</span>
@@ -292,6 +265,11 @@
 														</li>
 														<li class="elementor-icon-list-item">
 															<span id="insurance_span" class="elementor-icon-list-icon">
+																<!-- <i aria-hidden="true" class="fas fa-check-circle"></i>						</span>
+																	<span class="elementor-icon-list-text">Bluetooth</span> -->
+														</li>
+														<li class="elementor-icon-list-item">
+															<span id="doors_span" class="elementor-icon-list-icon">
 																<!-- <i aria-hidden="true" class="fas fa-check-circle"></i>						</span>
 																	<span class="elementor-icon-list-text">Bluetooth</span> -->
 														</li>
@@ -330,6 +308,130 @@
 																<!-- <i aria-hidden="true" class="fas fa-check-circle"></i>						</span>
 																	<span class="elementor-icon-list-text">Bluetooth</span> -->
 														</li>
+													</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+													<ul class="elementor-icon-list-items" style="margin-top:15px">
+														<span style="font-weight: bold; font-size: 20px;">Car Details</span>
+														<li class="elementor-icon-list-item">
+															<span id="model_span" class="elementor-icon-list-icon">
+																<!-- <i aria-hidden="true" class="fas fa-check-circle"></i>						</span>
+																	<span class="elementor-icon-list-text">Music System</span> -->
+															</span>
+														</li>
+														<li class="elementor-icon-list-item">
+															<span id="price_span" class="elementor-icon-list-icon">
+																<!-- <i aria-hidden="true" class="fas fa-check-circle"></i>						</span>
+																	<span class="elementor-icon-list-text">Music System</span> -->
+															</span>
+														</li>
+													</ul>
+
+
+
+
+
+
+
+
+
+													<ul class="elementor-icon-list-items" style="margin-top:15px">
+														<span style="font-weight: bold; font-size: 20px;">Specifications</span>
+														<li class="elementor-icon-list-item">
+															<span id="engine_displacement_specifications" class="elementor-icon-list-icon">
+																<!-- <i aria-hidden="true" class="fas fa-check-circle"></i>						</span>
+																	<span class="elementor-icon-list-text">Bluetooth</span> -->
+														</li>
+														<li class="elementor-icon-list-item">
+															<span id="mileage_span" class="elementor-icon-list-icon">
+																<!-- <i aria-hidden="true" class="fas fa-check-circle"></i>						</span>
+																	<span class="elementor-icon-list-text">Toolkit</span> -->
+														</li>
+														<li class="elementor-icon-list-item">
+															<span id="transmission_specifications" class="elementor-icon-list-icon">
+																<!-- <i aria-hidden="true" class="fas fa-check-circle"></i>						</span>
+																	<span class="elementor-icon-list-text">Bluetooth</span> -->
+														</li>
+														<li class="elementor-icon-list-item">
+															<span id="location_span" class="elementor-icon-list-icon">
+																<!-- <i aria-hidden="true" class="fas fa-check-circle"></i>						</span>
+																<span class="elementor-icon-list-text">Abs System</span> -->
+														</li>
+														<li class="elementor-icon-list-item">
+															<span id="doors_specifications" class="elementor-icon-list-icon">
+																<!-- <i aria-hidden="true" class="fas fa-check-circle"></i>						</span>
+																	<span class="elementor-icon-list-text">Bluetooth</span> -->
+														</li>
+														<li class="elementor-icon-list-item">
+															<span id="badge_span" class="elementor-icon-list-icon">
+																<!-- <i aria-hidden="true" class="fas fa-check-circle"></i>						</span>
+																	<span class="elementor-icon-list-text">Bluetooth</span> -->
+														</li>
+
+
+
+
+
+
+
+
+														<!-- <li class="elementor-icon-list-item">
+															<span id="year_span" class="elementor-icon-list-icon">
+															</span>
+														</li>
+														<li class="elementor-icon-list-item">
+															<span id="mileage_span" class="elementor-icon-list-icon">
+														</li>
+														<li class="elementor-icon-list-item">
+															<span id="location_span" class="elementor-icon-list-icon">
+														</li>
+														<li class="elementor-icon-list-item">
+															<span id="badge_span" class="elementor-icon-list-icon">
+														</li>
+														<li class="elementor-icon-list-item">
+															<span id="doors_span" class="elementor-icon-list-icon">
+														</li> -->
+														<!-- /////////////////////////////////////////////////////////////////////// -->
+														
+														<!-- <li class="elementor-icon-list-item">
+															<span id="insurance_span" class="elementor-icon-list-icon">
+														</li>
+														<li class="elementor-icon-list-item">
+															<span id="seats_span" class="elementor-icon-list-icon">
+														</li>
+														<li class="elementor-icon-list-item">
+															<span id="driven_span" class="elementor-icon-list-icon">
+														</li>
+														<li class="elementor-icon-list-item">
+															<span id="rto_span" class="elementor-icon-list-icon">
+														</li>
+														<li class="elementor-icon-list-item">
+															<span id="ownership_span" class="elementor-icon-list-icon">
+														</li>
+														<li class="elementor-icon-list-item">
+															<span id="engine_displacement_span" class="elementor-icon-list-icon">
+														</li>
+														<li class="elementor-icon-list-item">
+															<span id="transmission_span" class="elementor-icon-list-icon">
+														</li>
+														<li class="elementor-icon-list-item">
+															<span id="manufacturing_year_span" class="elementor-icon-list-icon">
+														</li> -->
 														<!-- <li class="elementor-icon-list-item">
 																<a href="#">
 																	<span class="elementor-icon-list-icon">

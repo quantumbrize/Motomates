@@ -4,7 +4,7 @@
     })
     function load_all_service_enquiry() {
     $.ajax({
-        url: "<?= base_url('/api/all/service_enquiry') ?>",
+        url: "<?= base_url('/api/service/enqueries') ?>",
         type: "GET",
         beforeSend: function () {
             $('#table-banner-list-all-body').html(`<tr>
@@ -36,6 +36,7 @@
 
                     // Append the rows to the table
                     $('#service_enquiry_data_table_body').html(html);
+                    $('#service_enquiry_data_table').DataTable();
 
                     // Reinitialize DataTable if needed
                     

@@ -40,7 +40,7 @@
                         <th>Subject</th>
                         <th>Phone</th>
                         <th>Enquiry Details</th>
-                        <th>Car Model</th>
+                        <th>Service Title</th>
                         <!-- <th>Service Title</th> -->
                         <!-- <th>Service UID</th> -->
                         

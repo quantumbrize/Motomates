@@ -139,7 +139,7 @@
 
 															<div
 																class="elementskit-infobox text-center text- icon-top-align elementor-animation-   ">
-																<div
+																<!-- <div
 																	class="elementskit-box-header elementor-animation-">
 																	<div class="elementskit-info-box-icon  ">
 																		<svg xmlns="http://www.w3.org/2000/svg"
@@ -161,8 +161,8 @@
 																			</defs>
 																		</svg>
 																	</div>
-																</div>
-																<div class="box-body">
+																</div> -->
+																<!-- <div class="box-body">
 																	<h3 class="elementskit-info-box-title">
 																		Need help ? </h3>
 																	
@@ -177,7 +177,7 @@
 																		</button>
 																		</div>
 																	</div>
-																</div>
+																</div> -->
 
 
 															</div>

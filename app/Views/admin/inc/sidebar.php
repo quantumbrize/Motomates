@@ -201,7 +201,8 @@
                     <li class="nav-item ">
                         <a  onclick="deleteMessageNotfication()" class="nav-link menu-link <?= isset($sidebar['messages']) ? 'active' : '' ?>"
                             href="<?= base_url('admin/messages') ?>">
-                            <i class="ri-message-2-line"></i> <span data-key="t-widgets">Messages &nbsp;<small class='notification' id="messageLength"></small></span>
+                            <i class="ri-message-2-line"></i> <span data-key="t-widgets">Messages &nbsp;</span>
+                            <!-- <i class="ri-message-2-line"></i> <span data-key="t-widgets">Messages &nbsp;<small class='notification' id="messageLength"></small></span> -->
                         </a>
                     </li>
                     <?php
@@ -210,7 +211,8 @@
                         <li class="nav-item ">
                             <a onclick="deleteMessageNotfication()" class="nav-link menu-link <?= isset($sidebar['messages']) ? 'active' : '' ?>"
                                 href="<?= base_url('admin/messages') ?>">
-                                <i class="ri-message-2-line"></i> <span  data-key="t-widgets">Messages &nbsp;<small class='notification' id="messageLength"></small></span>
+                                <i class="ri-message-2-line"></i> <span  data-key="t-widgets">Messages &nbsp;</span>
+                                <!-- <i class="ri-message-2-line"></i> <span  data-key="t-widgets">Messages &nbsp;<small class='notification' id="messageLength"></small></span> -->
                             </a>
                         </li>
                     <?php
@@ -223,7 +225,8 @@
                     <li class="nav-item ">
                         <a onclick="deleteBookingNotfication()" class="nav-link menu-link <?= isset($sidebar['bookings']) ? 'active' : '' ?>"
                             href="<?= base_url('load-bookings') ?>">
-                            <i class="ri-message-2-line"></i> <span  onclick="deleteBookingNotfication()" data-key="t-widgets">Bookings &nbsp; <small class='notification' id="bookingLength"></small></span>
+                            <i class="ri-message-2-line"></i> <span  onclick="deleteBookingNotfication()" data-key="t-widgets">Bookings &nbsp;</span>
+                            <!-- <i class="ri-message-2-line"></i> <span  onclick="deleteBookingNotfication()" data-key="t-widgets">Bookings &nbsp; <small class='notification' id="bookingLength"></small></span> -->
                         </a>
                     </li>
                     <?php
@@ -232,7 +235,8 @@
                         <li class="nav-item ">
                             <a onclick="deleteBookingNotfication()" class="nav-link menu-link <?= isset($sidebar['bookings']) ? 'active' : '' ?>"
                                 href="<?= base_url('load-bookings') ?>">
-                                <i class="ri-message-2-line"></i> <span onclick="deleteBookingNotfication()" data-key="t-widgets">Bookings&nbsp;<small class='notification' id="bookingLength"></small></span>
+                                <i class="ri-message-2-line"></i> <span onclick="deleteBookingNotfication()" data-key="t-widgets">Bookings&nbsp;</span>
+                                <!-- <i class="ri-message-2-line"></i> <span onclick="deleteBookingNotfication()" data-key="t-widgets">Bookings&nbsp;<small class='notification' id="bookingLength"></small></span> -->
                             </a>
                         </li>
                     <?php

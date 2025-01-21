@@ -198,6 +198,8 @@ $routes->get('/api/discounts',                      'Api\Product_Controller::GET
 $routes->get('/api/discounts/delete',               'Api\Product_Controller::GET_discounts_delete'); // Delete discounts
 $routes->post('/api/discounts/add',                 'Api\Product_Controller::POST_discounts_add'); // Add discounts
 $routes->get('/api/product-size/list',              'Api\Product_Controller::GET_product_size_lists'); // Get Product Size List
+$routes->post('/api/add/service/enquery',           'Api\Product_Controller::POST_service_enquiry_add'); // Post Add Service Enquery
+
 
 $routes->get('/api/customers',                      'Api\User_Controller::GET_customer'); // Get customers
 $routes->get('/api/delete/customer',                'Api\User_Controller::GET_delete_customer'); // Delete customer
@@ -212,6 +214,7 @@ $routes->post('/api/update/seller',                 'Api\User_Controller::POST_u
 $routes->get('/api/get/admin',                      'Api\User_Controller::GET_get_admin');  // GET Admin Update
 $routes->post('/api/update/admin',                   'Api\User_Controller::POST_update_admin');  // POST Admin Data
 $routes->post('/api/change/admin/password',          'Api\User_Controller::POST_change_admin_password');  // POST Change Admin Password
+$routes->get('/api/service/enqueries',              'Api\User_Controller::GET_service_enquries'); // GET Service Enquery
 $routes->post('/api/add/expart-review',             'Api\Product_Controller::POST_expart_review_add');
 $routes->get('/api/exparts-review',                 'Api\Product_Controller::GET_expart_reviews');
 $routes->post('/api/add/review',                    'Api\Product_Controller::POST_review_add'); // POST Update About

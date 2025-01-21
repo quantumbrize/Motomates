@@ -23,6 +23,8 @@
             let htmlDesc=``;
             let htmlDoors=``;
             // /////////////////////////////////////////////////////////////////////////////////////
+            let htmlModelSpan=``;
+            let htmlPriceSpan=``;
             let htmlRegistration=``;
             let htmlInsurance=``;
             let htmlSeats=``;
@@ -42,6 +44,23 @@
             
                htmlmake=`${resp.data.make}`
                htmlmodel=`${resp.data.model}`
+                        htmlModelSpan=`<div style="display: flex; flex-direction: column; align-items: flex-start; gap: 2px;">
+                            <div style="display: flex; align-items: center; gap: 5px;">
+                                <i class="fa-solid fa-car car-features-icon"></i>
+                                <span class="car-features-name" style="">Model</span>
+                            </div>
+                            <span class="elementor-icon-list-text car-features" style="">${resp.data.name}</span>
+                        </div>
+                        `
+                        htmlPriceSpan=`<div style="display: flex; flex-direction: column; align-items: flex-start; gap: 2px;">
+                            <div style="display: flex; align-items: center; gap: 5px;">
+                                <i class="fa-solid fa-rupee car-features-icon"></i>
+                                <span class="car-features-name" style="">Price</span>
+                            </div>
+                            <span class="elementor-icon-list-text car-features" style="">₹${resp.data.base_price}${resp.data.price_unit}</span>
+                        </div>
+                        `
+
                         htmlyear=`<div style="display: flex; flex-direction: column; align-items: flex-start; gap: 2px;">
                             <div style="display: flex; align-items: center; gap: 5px;">
                                 <i class="fa-solid fa-gears car-features-icon"></i>
@@ -54,7 +73,7 @@
                             <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 2px;">
                                 <div style="display: flex; align-items: center; gap: 5px;">
                                     <i class="fa-solid fa-bolt car-features-icon"></i>
-                                    <span class="car-features-name" style="">Power</span>
+                                    <span class="car-features-name" style="">Power Output</span>
                                 </div>
                                 <span class="elementor-icon-list-text car-features" style="">${resp.data.power}</span>
                             </div>`;
@@ -81,7 +100,7 @@
                             <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 2px;">
                                 <div style="display: flex; align-items: center; gap: 5px;">
                                     <i class="fa-solid fa-car-side car-features-icon"></i>
-                                    <span class="car-features-name" style="">No. of Air Bags</span>
+                                    <span class="car-features-name" style="">Number of Air Bags</span>
                                 </div>
                                 <span class="elementor-icon-list-text car-features" style="">${resp.data.airbags}</span>
                             </div>`;
@@ -193,6 +212,8 @@
                 $('#product_description').html(htmlDesc)
                 $('#product_doors').html(htmlDoors)
                 // $('#product_title_2').html(htmlTitle)
+                $('#model_span').html(htmlModelSpan)
+                $('#price_span').html(htmlPriceSpan)
                 $('#car_model').html(htmlTitle)
                 $('#car_make').html(htmlmodel)
                 $('#car_price').html(`₹ ${resp.data.base_price} ${resp.data.price_unit}`)
@@ -203,7 +224,9 @@
                 $('#rto_span').html(htmlRto)
                 $('#ownership_span').html(htmlOwnership)
                 $('#engine_displacement_span').html(htmlDisplacement)
+                $('#engine_displacement_specifications').html(htmlDisplacement)
                 $('#transmission_span').html(htmlTransmission)
+                $('#transmission_specifications').html(htmlTransmission)
                 $('#manufacturing_year_span').html(htmlManufacturingYear)
                 $('#year_span').html(htmlyear)
                 $('#mileage_span').html(htmlmileage)
@@ -212,6 +235,7 @@
                 // $('#product_price').html(htmlPrice)
                 // $('#product_title_big').html(htmlTitle)
                 $('#doors_span').html(htmlDoors)
+                $('#doors_specifications').html(htmlDoors)
                 // $('#make_icon').attr('src',makeIconsrc)
                 // $('#make_icon').attr('src',makeIconsrc)
                 // $('#model_icon').attr('src',modelIconsrc)

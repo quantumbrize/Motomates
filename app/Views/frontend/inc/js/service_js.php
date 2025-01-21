@@ -46,6 +46,8 @@
     
         
 });
+
+
 function load_all_tags() {
     const urlParams = new URLSearchParams(window.location.search);
     const serviceId = urlParams.get('service_uid'); // Get the service_uid from the URL
@@ -233,6 +235,14 @@ function load_all_service_pages() {
     document.getElementById('enquiryButton1').addEventListener('click', function() {
         openPopup('enquiryPopup');
     });
+
+    
+
+
+
+    
+</script>
+<script>
     function submit_enquiry() {
         const urlParams = new URLSearchParams(window.location.search);
         const serviceId = urlParams.get('service_uid');
@@ -245,7 +255,7 @@ function load_all_service_pages() {
         formData.append('service_id', serviceId);
 
         $.ajax({
-            url: "<?= base_url('/api/add/enquiry') ?>",
+            url: "<?= base_url('/api/add/service/enquery') ?>",
             type: "POST",
             data: formData,
             contentType: false,
@@ -295,10 +305,4 @@ function load_all_service_pages() {
             }
         });
     }
-
-    
-
-
-
-    
 </script>

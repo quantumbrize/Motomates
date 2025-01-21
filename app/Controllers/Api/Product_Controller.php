@@ -25,6 +25,7 @@ use App\Models\ServicetagModel;
 use App\Models\ServicecardModel;
 use App\Models\EnquiryModel;
 use App\Models\CarSpecificationModel;
+use App\Models\ServiceEnquiryModel;
 
 
 class Product_Controller extends Api_Controller
@@ -2598,24 +2599,29 @@ public function service_add($data)
     $uploadedFiles = $this->request->getFiles();
 
     // Validate required fields
-    if (empty($data['page_name'])) {
-        $resp['message'] = 'Please Add Page Name';
-    } else if (empty($data['service_title'])) {
+    // if (empty($data['page_name'])) {
+    //     $resp['message'] = 'Please Add Page Name';
+    // } else 
+    if (empty($data['service_title'])) {
         $resp['message'] = 'Please Add A Title';
     } else if (empty($data['service_description'])) {
         $resp['message'] = 'Please Add Description';
-    } else if (empty($data['service_owner_contact'])) {
-        $resp['message'] = 'Please Add Contact';
+    } 
+    // else if (empty($data['service_owner_contact'])) {
+    //     $resp['message'] = 'Please Add Contact';
+    // } 
+    else if (empty($uploadedFiles['images'])) {
+        $resp['message'] = 'Please Add Image';
     } else {
         // Generate service data
         $service_uid = $this->generate_uid('SERPAG');
 
         $service_data = [
             'uid' => $service_uid,
-            'page_name' => $data['page_name'],
+            // 'page_name' => $data['page_name'],
             'service_title' => $data['service_title'],
             'service_description' => $data['service_description'],
-            'service_contact' => $data['service_owner_contact']
+            // 'service_contact' => $data['service_owner_contact']
         ];
 
         // Handle file uploads for service image
@@ -2627,14 +2633,14 @@ public function service_add($data)
                 }
             }
         }
-        if (isset($uploadedFiles['icons'])) {
-            foreach ($uploadedFiles['icons'] as $file) {
-                $file_src = $this->single_upload($file, PATH_SERVICE);
-                if ($file_src) {
-                    $service_data['service_icon'] = $file_src;
-                }
-            }
-        }
+        // if (isset($uploadedFiles['icons'])) {
+        //     foreach ($uploadedFiles['icons'] as $file) {
+        //         $file_src = $this->single_upload($file, PATH_SERVICE);
+        //         if ($file_src) {
+        //             $service_data['service_icon'] = $file_src;
+        //         }
+        //     }
+        // }
 
         $ServiceModel = new ServiceModel();
         $ServicetagModel = new ServicetagModel();
@@ -2647,45 +2653,45 @@ public function service_add($data)
             $ServiceModel->insert($service_data);
 
             // Save tags if provided
-            if (isset($data['tags']) && is_array($data['tags'])) {
-                $tag_data = [];
-                foreach ($data['tags'] as $tag) {
-                    $tag_data[] = [
-                        'service_uid' => $service_uid,
-                        'tag_name' => $tag['tag'],
-                        // 'service_tag_icon' => $tag['icon']
-                    ];
-                }
-                $ServicetagModel->insertBatch($tag_data);
-            }
+            // if (isset($data['tags']) && is_array($data['tags'])) {
+            //     $tag_data = [];
+            //     foreach ($data['tags'] as $tag) {
+            //         $tag_data[] = [
+            //             'service_uid' => $service_uid,
+            //             'tag_name' => $tag['tag'],
+            //             // 'service_tag_icon' => $tag['icon']
+            //         ];
+            //     }
+            //     $ServicetagModel->insertBatch($tag_data);
+            // }
 
             // Save service cards if provided
-            if (isset($data['service_cards']) && is_array($data['service_cards'])) {
-                $card_data = [];
-                foreach ($data['service_cards'] as $index => $card) {
-                    $service_card_image = null;
-                    // Handle image upload for each service card
-                    if (isset($uploadedFiles['service_cards'][$index]['service_card_image'])) {
-                        $file_src = $this->single_upload($uploadedFiles['service_cards'][$index]['service_card_image'], 'public/uploads/service_images');
-                        if ($file_src) {
-                            $service_card_image = $file_src;
-                        }
-                    }
+            // if (isset($data['service_cards']) && is_array($data['service_cards'])) {
+            //     $card_data = [];
+            //     foreach ($data['service_cards'] as $index => $card) {
+            //         $service_card_image = null;
+            //         // Handle image upload for each service card
+            //         if (isset($uploadedFiles['service_cards'][$index]['service_card_image'])) {
+            //             $file_src = $this->single_upload($uploadedFiles['service_cards'][$index]['service_card_image'], 'public/uploads/service_images');
+            //             if ($file_src) {
+            //                 $service_card_image = $file_src;
+            //             }
+            //         }
 
-                    // Collect card data
-                    $card_data[] = [
-                        'service_card_uid' => $service_uid,
-                        'service_card_title' => $card['title'],
-                        'service_card_description' => $card['description'],
-                        'service_card_image' => $service_card_image,  // Store image path or null
-                    ];
-                }
+            //         // Collect card data
+            //         $card_data[] = [
+            //             'service_card_uid' => $service_uid,
+            //             'service_card_title' => $card['title'],
+            //             'service_card_description' => $card['description'],
+            //             'service_card_image' => $service_card_image,  // Store image path or null
+            //         ];
+            //     }
 
-                // Insert service cards into the database
-                if (!empty($card_data)) {
-                    $ServicecardModel->insertBatch($card_data);
-                }
-            }
+            //     // Insert service cards into the database
+            //     if (!empty($card_data)) {
+            //         $ServicecardModel->insertBatch($card_data);
+            //     }
+            // }
 
             // Commit the transaction
             $ServiceModel->transComplete();
@@ -2709,160 +2715,163 @@ public function service_add($data)
 }
 
 
-private function service_update($data)
-{
-    $resp = [
-        'status' => false,
-        'message' => 'Service not updated',
-        'data' => null
-    ];
-
-    $uploadedFiles = $this->request->getFiles();
-
-    // Validate required fields
-    if (empty($data['page_name'])) {
-        $resp['message'] = 'Please Add Page Name';
-    } else if (empty($data['service_title'])) {
-        $resp['message'] = 'Please Add A Title';
-    } else if (empty($data['service_description'])) {
-        $resp['message'] = 'Please Add Description';
-    } else if (empty($data['service_uid'])) {
-        $resp['message'] = 'Unable to edit. Service UID is missing.';
-    } else if (empty($data['service_owner_contact'])) {
-        $resp['message'] = 'Please Add Contact';
-    } else {
-        // Set the service_uid from the request data
-        $service_uid = $data['service_uid'];
-
-        // Prepare service data
-        $service_data = [
-            'page_name' => $data['page_name'],
-            'service_title' => $data['service_title'],
-            'service_description' => $data['service_description'],
-            'service_contact' => $data['service_owner_contact']
+    private function service_update($data)
+    {
+        $resp = [
+            'status' => false,
+            'message' => 'Service not updated',
+            'data' => null
         ];
+        // $this->prd($data);
+        $uploadedFiles = $this->request->getFiles();
 
-        // Handle file uploads for service image (if any)
-        if (isset($uploadedFiles['images'])) {
-            foreach ($uploadedFiles['images'] as $file) {
-                $file_src = $this->single_upload($file, PATH_SERVICE); // Upload file for service image
-                $service_data['service_img'] = $file_src;
-            }
-        }
+        // Validate required fields
+        // if (empty($data['page_name'])) {
+        //     $resp['message'] = 'Please Add Page Name';
+        // } else 
+        if (empty($data['service_title'])) {
+            $resp['message'] = 'Please Add A Title';
+        } else if (empty($data['service_description'])) {
+            $resp['message'] = 'Please Add Description';
+        } else if (empty($data['service_uid'])) {
+            $resp['message'] = 'Unable to edit. Service UID is missing.';
+        } 
+        // else if (empty($data['service_owner_contact'])) {
+        //     $resp['message'] = 'Please Add Contact';
+        // } 
+        else {
+            // Set the service_uid from the request data
+            $service_uid = $data['service_uid'];
 
-        if (isset($uploadedFiles['icons'])) {
-            foreach ($uploadedFiles['icons'] as $file) {
-                $file_src = $this->single_upload($file, PATH_SERVICE); // Upload file for service image
-                $service_data['service_icon'] = $file_src;
-            }
-        }
-        
+            // Prepare service data
+            $service_data = [
+                // 'page_name' => $data['page_name'],
+                'service_title' => $data['service_title'],
+                'service_description' => $data['service_description'],
+                // 'service_contact' => $data['service_owner_contact']
+            ];
 
-        // Check if the service exists
-        $ServiceModel = new ServiceModel();
-        $service = $ServiceModel->where('uid', $service_uid)->first();
-        if (!$service) {
-            $resp['message'] = 'Service not found';
-            return $resp;
-        }
-
-        // Start the transaction
-        $ServiceModel->transStart();
-
-        try {
-            // Update the service data in the database
-            $ServiceModel->where('uid', $service_uid)
-                ->set($service_data)
-                ->update();
-
-            // Update tags if provided
-            if (isset($data['tags']) && is_array($data['tags'])) {
-                // Delete existing tags and insert the new ones
-                $ServicetagModel = new ServicetagModel();
-                // $ServicetagModel->where('service_uid', $service_uid)->delete(); // Delete existing tags
-                foreach ($data['tags'] as $tag) {
-                    $tag_data = [
-                        'service_uid' => $service_uid,
-                        'tag_name' => $tag['tag'], // Save the tag name
-                        // 'service_tag_icon' => $tag['icon'] // Save the tag icon
-                    ];
-                    $ServicetagModel->insert($tag_data); // Insert new tags
+            // Handle file uploads for service image (if any)
+            if (isset($uploadedFiles['images'])) {
+                foreach ($uploadedFiles['images'] as $file) {
+                    $file_src = $this->single_upload($file, PATH_SERVICE); // Upload file for service image
+                    $service_data['service_img'] = $file_src;
                 }
             }
 
-            // Handle service cards if provided
-            // if (isset($data['cards']) && is_array($data['cards'])) {
-            //     // Delete existing cards and insert the new ones
-            //     $ServicecardModel = new ServicecardModel();
-            //     $ServicecardModel->where('service_card_uid', $service_uid)->delete(); // Delete existing cards
-
-            //     foreach ($data['cards'] as $card) {
-            //         // Prepare card data
-            //         $card_data = [
-            //             'service_uid' => $service_uid,
-            //             'service_card_title' => $card['title'],
-            //             'service_card_description' => $card['description']
-            //         ];
-
-            //         // Handle card image upload if provided
-            //         if (isset($uploadedFiles['service_card_images'][$card['index']])) {
-            //             $file = $uploadedFiles['service_card_images'][$card['index']];
-            //             $card_image_src = $this->single_upload($file, PATH_SERVICE); // Upload card image
-            //             $card_data['service_card_image'] = $card_image_src;
-            //         }
-
-            //         // Insert card data
-            //         $ServicecardModel->insert($card_data);
+            // if (isset($uploadedFiles['icons'])) {
+            //     foreach ($uploadedFiles['icons'] as $file) {
+            //         $file_src = $this->single_upload($file, PATH_SERVICE); // Upload file for service image
+            //         $service_data['service_icon'] = $file_src;
             //     }
             // }
-            if (isset($data['service_cards']) && is_array($data['service_cards'])) {
-                $ServicecardModel = new ServicecardModel();
-                $ServicecardModel->where('service_card_uid', $service_uid)->delete();
-                $card_data = [];
-                foreach ($data['service_cards'] as $index => $card) {
-                    $service_card_image = null;
-                    // Handle image upload for each service card
-                    if (isset($uploadedFiles['service_cards'][$index]['service_card_image'])) {
-                        $file_src = $this->single_upload($uploadedFiles['service_cards'][$index]['service_card_image'], 'public/uploads/service_images');
-                        if ($file_src) {
-                            $service_card_image = $file_src;
-                        }
-                    }
+            
 
-                    // Collect card data
-                    $card_data[] = [
-                        'service_card_uid' => $service_uid,
-                        'service_card_title' => $card['title'],
-                        'service_card_description' => $card['description'],
-                        'service_card_image' => $service_card_image,  // Store image path or null
-                    ];
-                }
-
-                // Insert service cards into the database
-                if (!empty($card_data)) {
-                    $ServicecardModel->insertBatch($card_data);
-                }
+            // Check if the service exists
+            $ServiceModel = new ServiceModel();
+            $service = $ServiceModel->where('uid', $service_uid)->first();
+            if (!$service) {
+                $resp['message'] = 'Service not found';
+                return $resp;
             }
 
-            // Commit the transaction
-            $ServiceModel->transComplete();
+            // Start the transaction
+            $ServiceModel->transStart();
 
-            if ($ServiceModel->transStatus() === false) {
-                throw new \Exception("Transaction failed.");
+            try {
+                // Update the service data in the database
+                $ServiceModel->where('uid', $service_uid)
+                    ->set($service_data)
+                    ->update();
+
+                // Update tags if provided
+                // if (isset($data['tags']) && is_array($data['tags'])) {
+                //     // Delete existing tags and insert the new ones
+                //     $ServicetagModel = new ServicetagModel();
+                //     // $ServicetagModel->where('service_uid', $service_uid)->delete(); // Delete existing tags
+                //     foreach ($data['tags'] as $tag) {
+                //         $tag_data = [
+                //             'service_uid' => $service_uid,
+                //             'tag_name' => $tag['tag'], // Save the tag name
+                //             // 'service_tag_icon' => $tag['icon'] // Save the tag icon
+                //         ];
+                //         $ServicetagModel->insert($tag_data); // Insert new tags
+                //     }
+                // }
+
+                // Handle service cards if provided
+                // if (isset($data['cards']) && is_array($data['cards'])) {
+                //     // Delete existing cards and insert the new ones
+                //     $ServicecardModel = new ServicecardModel();
+                //     $ServicecardModel->where('service_card_uid', $service_uid)->delete(); // Delete existing cards
+
+                //     foreach ($data['cards'] as $card) {
+                //         // Prepare card data
+                //         $card_data = [
+                //             'service_uid' => $service_uid,
+                //             'service_card_title' => $card['title'],
+                //             'service_card_description' => $card['description']
+                //         ];
+
+                //         // Handle card image upload if provided
+                //         if (isset($uploadedFiles['service_card_images'][$card['index']])) {
+                //             $file = $uploadedFiles['service_card_images'][$card['index']];
+                //             $card_image_src = $this->single_upload($file, PATH_SERVICE); // Upload card image
+                //             $card_data['service_card_image'] = $card_image_src;
+                //         }
+
+                //         // Insert card data
+                //         $ServicecardModel->insert($card_data);
+                //     }
+                // }
+                // if (isset($data['service_cards']) && is_array($data['service_cards'])) {
+                //     $ServicecardModel = new ServicecardModel();
+                //     $ServicecardModel->where('service_card_uid', $service_uid)->delete();
+                //     $card_data = [];
+                //     foreach ($data['service_cards'] as $index => $card) {
+                //         $service_card_image = null;
+                //         // Handle image upload for each service card
+                //         if (isset($uploadedFiles['service_cards'][$index]['service_card_image'])) {
+                //             $file_src = $this->single_upload($uploadedFiles['service_cards'][$index]['service_card_image'], 'public/uploads/service_images');
+                //             if ($file_src) {
+                //                 $service_card_image = $file_src;
+                //             }
+                //         }
+
+                //         // Collect card data
+                //         $card_data[] = [
+                //             'service_card_uid' => $service_uid,
+                //             'service_card_title' => $card['title'],
+                //             'service_card_description' => $card['description'],
+                //             'service_card_image' => $service_card_image,  // Store image path or null
+                //         ];
+                //     }
+
+                //     // Insert service cards into the database
+                //     if (!empty($card_data)) {
+                //         $ServicecardModel->insertBatch($card_data);
+                //     }
+                // }
+
+                // Commit the transaction
+                $ServiceModel->transComplete();
+
+                if ($ServiceModel->transStatus() === false) {
+                    throw new \Exception("Transaction failed.");
+                }
+
+                $resp['status'] = true;
+                $resp['message'] = 'Service updated successfully';
+                $resp['data'] = $service_data;
+            } catch (\Exception $e) {
+                // Rollback the transaction if an error occurs
+                $ServiceModel->transRollback();
+                $resp['message'] = $e->getMessage();
             }
-
-            $resp['status'] = true;
-            $resp['message'] = 'Service updated successfully';
-            $resp['data'] = $service_data;
-        } catch (\Exception $e) {
-            // Rollback the transaction if an error occurs
-            $ServiceModel->transRollback();
-            $resp['message'] = $e->getMessage();
         }
-    }
 
-    return $resp;
-}
+        return $resp;
+    }
 
     
 
@@ -2968,6 +2977,75 @@ private function service_update($data)
     
         return $resp;
     }
+
+    public function service_enquiry_add($data)
+    {
+        $resp = [
+            'status' => false,
+            'message' => 'Enquiry not added',
+            'data' => null
+        ];
+    
+        if (empty($data['enquiry_name'])) {
+            $resp['message'] = 'Please Add Name';
+        } else if (empty($data['enquiry_email'])) {
+            $resp['message'] = 'Please Add an email';
+        } else if (empty($data['enquiry_phone'])) {
+            $resp['message'] = 'Please Add phone';
+        } else if (empty($data['enquiry_subject'])) {
+            $resp['message'] = 'Please Add subject';
+        } else if (empty($data['enquiry_details'])) {
+            $resp['message'] = 'Please Add enquiry_details';
+        } else if (empty($data['service_id'])) {
+            $resp['message'] = 'No Service service_id';
+        } else {
+            $enquiry_uid = $this->generate_uid('ENQUSR');
+            // $this->prd($data['service_id']);
+            $ServiceModel = new ServiceModel();
+            $service = $ServiceModel->where('uid', $data['service_id'])->first();
+            // $ServiceModel = new ServiceModel();
+            // $service = $ServiceModel->where('uid', $data['service_id'])->first();
+            // $this->prd($service);
+            if (!$service) {
+                $resp['message'] = 'Service not found.';
+            }
+            
+            $service_title = $service['service_title'];
+    
+            $enquiry_data = [
+                'uid' => $enquiry_uid,
+                'enquiry_name' => $data['enquiry_name'],
+                'enquiry_email' => $data['enquiry_email'],
+                'enquiry_subject' => $data['enquiry_subject'],
+                'enquiry_phone' => $data['enquiry_phone'],
+                'enquiry_details' => $data['enquiry_details'],
+                'service_title' => $service_title,
+                'service_id' => $data['service_id'],
+            ];
+    
+            $ServiceEnquiryModel = new ServiceEnquiryModel();
+    
+            $ServiceEnquiryModel->transStart();
+            try {
+                $ServiceEnquiryModel->insert($enquiry_data);
+                $ServiceEnquiryModel->transComplete();
+    
+                if ($ServiceEnquiryModel->transStatus() === false) {
+                    throw new \Exception("Transaction failed.");
+                }
+    
+                $resp['status'] = true;
+                $resp['message'] = 'Enquiry added successfully';
+                $resp['data'] = $enquiry_data;
+    
+            } catch (\Exception $e) {
+                $ServiceEnquiryModel->transRollback();
+                $resp['message'] = $e->getMessage();
+            }
+        }
+    
+        return $resp;
+    }
     
     
 
@@ -3005,6 +3083,16 @@ private function service_update($data)
         $resp = $this->add_bulk_product($data);
         return $this->response->setJSON($resp);
     }
+
+    public function POST_service_enquiry_add()
+    {
+        $data = $this->request->getPost();
+        // $this->prd($data);
+        // $data = $this->request->getJSON();
+        $resp = $this->service_enquiry_add($data);
+        return $this->response->setJSON($resp);
+    }
+
 
     public function POST_product_bulk_update()
     {
